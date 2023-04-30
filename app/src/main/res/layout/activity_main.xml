@@ -6,23 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/Viewpg"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/BottomMenu"
-        />
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/BottomMenu"
+    <com.etebarian.meowbottomnavigation.MeowBottomNavigation
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="#118BC5"
-        app:menu="@menu/bottom_menu"
-        app:itemIconSize="30dp"
-        app:itemIconTint = "@color/selected_color1"
-        app:itemTextColor= "@color/selected_color1"
+        app:mbn_circleColor="#ffffff"
+        app:mbn_backgroundBottomColor="#ffffff"
+        app:mbn_countBackgroundColor="#ff6f00"
+        app:mbn_countTextColor="#ffffff"
+        app:mbn_countTypeface="fonts/SourceSansPro-Regular.ttf"
+        app:mbn_defaultIconColor="#90a4ae"
+        app:mbn_rippleColor="#2f424242"
+        app:mbn_selectedIconColor="#3c415e"
+        app:mbn_shadowColor="#1f212121"
+        app:mbn_hasAnimation="true"
         />
+
+
+
 
 </RelativeLayout>
