@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="Todo Fragment"
-        android:textSize="100sp"/>
+        android:textSize="100sp"
+        android:background="@color/teal_700"/>
 
 </FrameLayout>
