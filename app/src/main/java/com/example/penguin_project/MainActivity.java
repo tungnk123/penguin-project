@@ -1,17 +1,17 @@
 package com.example.penguin_project;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
-import android.view.MenuItem;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.example.penguin_project.fragments.HomeFragment;
+import com.example.penguin_project.fragments.MenuFragment;
+import com.example.penguin_project.fragments.StoreFragment;
+import com.example.penguin_project.fragments.TodoFragment;
+import com.example.penguin_project.fragments.TrackerFragment;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -30,7 +30,8 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigation.add(new MeowBottomNavigation.Model(1, R.drawable.baseline_home_24));
         bottomNavigation.add(new MeowBottomNavigation.Model(2, R.drawable.baseline_notifications_24));
         bottomNavigation.add(new MeowBottomNavigation.Model(3, R.drawable.baseline_settings_24));
-
+        bottomNavigation.add(new MeowBottomNavigation.Model(4, R.drawable.baseline_home_24));
+        bottomNavigation.add(new MeowBottomNavigation.Model(5, R.drawable.baseline_settings_24));
         // hien HomeFragment ngay ban dau luon
         replaceFragment(new HomeFragment());
         bottomNavigation.show(1, true);
@@ -44,10 +45,16 @@ public class MainActivity extends AppCompatActivity {
                         replaceFragment(new HomeFragment());
                         break;
                     case 2:
-                        replaceFragment(new SettingFragment());
+                        replaceFragment(new TodoFragment());
                         break;
                     case 3:
-                        replaceFragment(new SettingsFragment());
+                        replaceFragment(new TrackerFragment());
+                        break;
+                    case 4:
+                        replaceFragment(new StoreFragment());
+                        break;
+                    case 5:
+                        replaceFragment(new MenuFragment());
                         break;
 
                 }
