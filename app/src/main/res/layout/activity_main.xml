@@ -17,13 +17,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:mbn_backgroundBottomColor="#040E45"
-        app:mbn_circleColor="#FF1100"
+        app:mbn_circleColor="#040E45"
         app:mbn_countBackgroundColor="#ff6f00"
         app:mbn_countTextColor="#E21818"
         app:mbn_defaultIconColor="#FFFFFF"
-        app:mbn_rippleColor="#00E2FF"
-        app:mbn_selectedIconColor="#0027FF"
-        app:mbn_shadowColor="@color/teal_200" />
+        app:mbn_selectedIconColor="#FF9800"
+        app:mbn_shadowColor="@color/teal_200"
+        />
 
 
 </RelativeLayout>
