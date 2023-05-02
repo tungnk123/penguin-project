@@ -26,11 +26,12 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
 
+
         // add menu item
         bottomNavigation.add(new MeowBottomNavigation.Model(1, R.drawable.baseline_home_24));
-        bottomNavigation.add(new MeowBottomNavigation.Model(2, R.drawable.baseline_notifications_24));
-        bottomNavigation.add(new MeowBottomNavigation.Model(3, R.drawable.baseline_settings_24));
-        bottomNavigation.add(new MeowBottomNavigation.Model(4, R.drawable.baseline_home_24));
+        bottomNavigation.add(new MeowBottomNavigation.Model(2, R.drawable.baseline_checklist_24));
+        bottomNavigation.add(new MeowBottomNavigation.Model(3, R.drawable.baseline_forest_24));
+        bottomNavigation.add(new MeowBottomNavigation.Model(4, R.drawable.baseline_local_grocery_store_24));
         bottomNavigation.add(new MeowBottomNavigation.Model(5, R.drawable.baseline_settings_24));
         // hien HomeFragment ngay ban dau luon
         replaceFragment(new HomeFragment());
