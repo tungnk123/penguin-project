@@ -12,6 +12,6 @@
         android:text="Menu fragment"
         android:textSize="40sp"
         android:fontFamily="@font/roboto_black"
-        android:background="@color/design_default_color_primary_variant"/>
+        android:background="@color/grey"/>
 
 </FrameLayout>
