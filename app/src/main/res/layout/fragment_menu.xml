@@ -3,15 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.MenuFragment">
+    tools:context=".view.fragment.MenuFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Menu fragment"
-        android:textSize="40sp"
+        android:background="@color/grey"
         android:fontFamily="@font/roboto_black"
-        android:background="@color/grey"/>
+        android:text="Menu fragment"
+        android:textSize="40sp" />
 
 </FrameLayout>
