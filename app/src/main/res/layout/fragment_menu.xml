@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="Menu fragment"
-        android:textSize="100sp"
+        android:textSize="40sp"
+        android:fontFamily="@font/roboto_black"
         android:background="@color/design_default_color_primary_variant"/>
 
 </FrameLayout>
