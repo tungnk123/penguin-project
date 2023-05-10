@@ -7,11 +7,11 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
-import com.example.penguin_project.fragments.HomeFragment;
-import com.example.penguin_project.fragments.MenuFragment;
-import com.example.penguin_project.fragments.StoreFragment;
-import com.example.penguin_project.fragments.TodoFragment;
-import com.example.penguin_project.fragments.TrackerFragment;
+import com.example.penguin_project.view.fragment.HomeFragment;
+import com.example.penguin_project.view.fragment.MenuFragment;
+import com.example.penguin_project.view.fragment.StoreFragment;
+import com.example.penguin_project.view.fragment.TodoFragment;
+import com.example.penguin_project.view.fragment.TrackerFragment;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
