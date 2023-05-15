@@ -7,11 +7,10 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        style="@style/LargeTitle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/yellow"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="Lorem ipsumulpa qui officia deserunt mollit anim id est laborum."
-        android:textSize="30sp" />
+        android:text="Home" />
 
 </FrameLayout>
