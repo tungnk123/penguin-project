@@ -10,7 +10,6 @@
         style="@style/LargeTitle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Todo Fragment"
-        android:background="@color/blue"/>
+        android:text="Todo Fragment" />
 
 </FrameLayout>
