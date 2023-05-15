@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/green"
-        android:fontFamily="@font/roboto_black"
+        android:fontFamily="@font/poppins_semibold"
         android:text="Store fragment"
         android:textSize="30sp" />
 
