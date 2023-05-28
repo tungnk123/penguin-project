@@ -16,7 +16,9 @@
     <color name="grey">#BACDDB</color>
     <color name="lavender">#B286FD</color>
     <color name="lime_energy">#B2F042</color>
-
+    <color name="black_title">#232323</color>
+    <color name="black_icon">#464646</color>
+    <color name="black_item">#575757</color>
 
     
 </resources>
