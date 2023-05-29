@@ -76,6 +76,32 @@
             android:text="Todo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_todoFragment_largeTitle" />
+        <ListView
+            android:id="@+id/lv_todoFragment_todoList"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_todoFragment_title1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginTop="14dp"
+            android:background="@color/black_item"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="COMPLETED"
+            style="@style/TitleWithWrapper"
+            app:layout_constraintTop_toBottomOf="@id/lv_todoFragment_todoList"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/title_shape"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:padding="5dp"
+            android:textAlignment="center"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
