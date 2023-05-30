@@ -30,7 +30,7 @@ public class HabitItemAdapter extends RecyclerView.Adapter<HabitItemAdapter.Item
     @Override
     public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.habit_item_layout, parent, false);
-        return new ItemViewHolder(view);
+        return new ItemViewHolder(view, this);
     }
 
     @Override
@@ -67,8 +67,9 @@ public class HabitItemAdapter extends RecyclerView.Adapter<HabitItemAdapter.Item
         public TextView item_timePerDay;
         public Button buttonDelete;
         public Button buttonCheckDone;
+        public HabitItemAdapter habitItemAdapter;
 
-        public ItemViewHolder(View itemView) {
+        public ItemViewHolder(View itemView, HabitItemAdapter habitItemAdapter) {
             super(itemView);
 
             buttonDelete = itemView.findViewById(R.id.buttonDelete);
@@ -78,6 +79,7 @@ public class HabitItemAdapter extends RecyclerView.Adapter<HabitItemAdapter.Item
             item_Title = itemView.findViewById(R.id.habitItem_Title);
             item_CurrentProgress = itemView.findViewById(R.id.habitItem_CurrentProgress);
             item_timePerDay = itemView.findViewById(R.id.habitItem_TimePerDay);
+            this.habitItemAdapter = habitItemAdapter;
 
 
             // Set different icons and colors for buttons
@@ -90,6 +92,9 @@ public class HabitItemAdapter extends RecyclerView.Adapter<HabitItemAdapter.Item
             buttonCheckDone.setCompoundDrawablesWithIntrinsicBounds(checkDoneIcon, null, null, null);
             buttonDelete.setBackgroundColor(deleteColor);
             buttonCheckDone.setBackgroundColor(checkDoneColor);
+        }
+        public HabitItemAdapter getAdapter(){
+            return habitItemAdapter;
         }
     }
 }

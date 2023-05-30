@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,19 +30,21 @@ import com.example.penguin_project.model.repo.local.Table.HabitGroup;
 import com.example.penguin_project.model.repo.local.Table.Habits;
 import com.example.penguin_project.view.adapter.DatePicker_Adapter;
 import com.example.penguin_project.view.adapter.HabitItemAdapter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
-    RecyclerView rcv_DatePicker, rcv_HabitListAnytime;
+    RecyclerView rcv_DatePicker, rcv_HabitListAnytime, rcv_HabitListMorning, rcv_HabitListAfternoon, rcv_HabitListEvening, rcv_HabitListCompleted, rcv_HabitListFailed;
     TextView txt_DayOfMonth, txt_DayOfWeek;
     TextView txt_Coin;
     ArrayList<HabitDate> arrDate;
     DatePicker_Adapter datePicker_adapter;
-    List<Habits> habitsList;
-    HabitItemAdapter habitItemAnytimeAdapter;
+    List<Habits> habitsListAnytime, habitsListMorning, habitsListAfternoon, habitsListEvening, habitsListCompleted, habitsListFailed;
+    HabitItemAdapter habitItemAnytimeAdapter, habitItemMorningAdapter, habitAfterNoonItemAdapter, habitEveningItemAdapter, habitCompletedItemAdapter, habitFailedItemAdapter;
+    FloatingActionButton btn_AddHabit;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -55,25 +58,133 @@ public class HomeFragment extends Fragment {
         View view =  inflater.inflate(R.layout.fragment_home, container, false);
 
         rcv_DatePicker = view.findViewById(R.id.rcv_datePicker);
-        rcv_HabitListAnytime = view.findViewById(R.id.rcv_Home_AnytimeHabit);
         txt_DayOfWeek = view.findViewById(R.id.txt_ActionBar_DayOfWeek);
         txt_DayOfMonth = view.findViewById(R.id.txt_ActionBar_DayOfMonth);
         txt_Coin = view.findViewById(R.id.txt_ActionBar_coin);
+        btn_AddHabit = view.findViewById(R.id.btn_Home_AddHabit);
+
+        rcv_HabitListAnytime = view.findViewById(R.id.rcv_Home_AnytimeHabit);
+        rcv_HabitListAnytime.setTag("rcv_HabitListAnytime");
+        rcv_HabitListMorning = view.findViewById(R.id.rcv_Home_MorningHabit);
+        rcv_HabitListMorning.setTag("rcv_HabitListMorning");
+        rcv_HabitListAfternoon = view.findViewById(R.id.rcv_Home_AfternoonHabit);
+        rcv_HabitListAfternoon.setTag("rcv_HabitListAfternoon");
+        rcv_HabitListEvening = view.findViewById(R.id.rcv_Home_EveningHabit);
+        rcv_HabitListEvening.setTag("rcv_HabitListEvening");
+        rcv_HabitListCompleted = view.findViewById(R.id.rcv_Home_CompletedHabit);
+        rcv_HabitListCompleted.setTag("rcv_HabitListCompleted");
+        rcv_HabitListFailed = view.findViewById(R.id.rcv_Home_FailedHabit);
+        rcv_HabitListFailed.setTag("rcv_HabitListFailed");
 
         Setting_DayOfWeekAndDayOfMonth();
         Setting_rcvDatePicker();
-        Setting_rcvHabitList();
+        Setting_rcvHabitAnytimeList();
+        Setting_rcvHabitMorningList();
+        Setting_rcvHabitAfternoonList();
+        Setting_rcvHabitEveningList();
+        Setting_rcvHabitConpletedList();
+        Setting_rcvHabitFailedList();
+        Setting_btnAddHabit();
 
         return view;
     }
 
-    private void Setting_rcvHabitList() {
-        habitsList = new ArrayList<>();
-        habitsList.add(new Habits(4, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
-        habitsList.add(new Habits(1, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
-        habitsList.add(new Habits(2, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
+    private void Setting_btnAddHabit() {
+        btn_AddHabit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "hello", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
-        habitItemAnytimeAdapter = new HabitItemAdapter(habitsList);
+    private void Setting_rcvHabitFailedList() {
+        habitsListFailed = new ArrayList<>();
+        habitsListFailed.add(new Habits(4, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
+        habitsListFailed.add(new Habits(1, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
+        habitsListFailed.add(new Habits(2, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
+
+        habitFailedItemAdapter = new HabitItemAdapter(habitsListFailed);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        rcv_HabitListFailed.setLayoutManager(linearLayoutManager);
+        rcv_HabitListFailed.setAdapter(habitFailedItemAdapter);
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new SwipeToDeleteCallback());
+        itemTouchHelper.attachToRecyclerView(rcv_HabitListFailed);
+    }
+
+    private void Setting_rcvHabitConpletedList() {
+        habitsListCompleted = new ArrayList<>();
+        habitsListCompleted.add(new Habits(4, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
+        habitsListCompleted.add(new Habits(1, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
+        habitsListCompleted.add(new Habits(2, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
+
+        habitCompletedItemAdapter = new HabitItemAdapter(habitsListCompleted);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        rcv_HabitListCompleted.setLayoutManager(linearLayoutManager);
+        rcv_HabitListCompleted.setAdapter(habitCompletedItemAdapter);
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new SwipeToDeleteCallback());
+        itemTouchHelper.attachToRecyclerView(rcv_HabitListCompleted);
+    }
+
+    private void Setting_rcvHabitEveningList() {
+        habitsListEvening = new ArrayList<>();
+        habitsListEvening.add(new Habits(4, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
+        habitsListEvening.add(new Habits(1, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
+        habitsListEvening.add(new Habits(2, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
+
+        habitEveningItemAdapter = new HabitItemAdapter(habitsListEvening);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        rcv_HabitListEvening.setLayoutManager(linearLayoutManager);
+        rcv_HabitListEvening.setAdapter(habitEveningItemAdapter);
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new SwipeToDeleteCallback());
+        itemTouchHelper.attachToRecyclerView(rcv_HabitListEvening);
+    }
+
+    private void Setting_rcvHabitAfternoonList() {
+        habitsListAfternoon = new ArrayList<>();
+        habitsListAfternoon.add(new Habits(4, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
+        habitsListAfternoon.add(new Habits(1, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
+        habitsListAfternoon.add(new Habits(2, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
+
+        habitAfterNoonItemAdapter = new HabitItemAdapter(habitsListAfternoon);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        rcv_HabitListAfternoon.setLayoutManager(linearLayoutManager);
+        rcv_HabitListAfternoon.setAdapter(habitAfterNoonItemAdapter);
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new SwipeToDeleteCallback());
+        itemTouchHelper.attachToRecyclerView(rcv_HabitListAfternoon);
+    }
+
+    private void Setting_rcvHabitMorningList() {
+        habitsListMorning = new ArrayList<>();
+        habitsListMorning.add(new Habits(4, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
+        habitsListMorning.add(new Habits(1, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
+        habitsListMorning.add(new Habits(2, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
+
+        habitItemMorningAdapter = new HabitItemAdapter(habitsListMorning);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        rcv_HabitListMorning.setLayoutManager(linearLayoutManager);
+        rcv_HabitListMorning.setAdapter(habitItemMorningAdapter);
+
+        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new SwipeToDeleteCallback());
+        itemTouchHelper.attachToRecyclerView(rcv_HabitListMorning);
+    }
+
+    private void Setting_rcvHabitAnytimeList() {
+        habitsListAnytime = new ArrayList<>();
+        habitsListAnytime.add(new Habits(4, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
+        habitsListAnytime.add(new Habits(1, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
+        habitsListAnytime.add(new Habits(2, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
+
+        habitItemAnytimeAdapter = new HabitItemAdapter(habitsListAnytime);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         rcv_HabitListAnytime.setLayoutManager(linearLayoutManager);
@@ -172,11 +283,13 @@ public class HomeFragment extends Fragment {
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
             int position = viewHolder.getAdapterPosition();
+            HabitItemAdapter.ItemViewHolder viewHolder1 = (HabitItemAdapter.ItemViewHolder) viewHolder;
+            HabitItemAdapter habitItemAdapter = viewHolder1.getAdapter();
             if (direction == ItemTouchHelper.LEFT) {
-                habitItemAnytimeAdapter.removeItem(position);
+                habitItemAdapter.removeItem(position);
                 Toast.makeText(getContext(), "Deleted", Toast.LENGTH_SHORT).show();
             } else if (direction == ItemTouchHelper.RIGHT) {
-                habitItemAnytimeAdapter.checkDoneItem(position);
+                habitItemAdapter.removeItem(position);
                 Toast.makeText(getContext(), "Check Done", Toast.LENGTH_SHORT).show();
             }
         }
