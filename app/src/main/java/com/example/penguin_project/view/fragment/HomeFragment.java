@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.example.penguin_project.R;
 import com.example.penguin_project.model.data.HabitDate;
 import com.example.penguin_project.model.repo.local.DataBase.HabitDataBase;
+import com.example.penguin_project.model.repo.local.Table.HabitGroup;
 import com.example.penguin_project.view.adapter.DatePicker_Adapter;
 
 import java.time.LocalDate;
@@ -76,8 +77,6 @@ public class HomeFragment extends Fragment {
         });
 
         rcv_DatePicker.setAdapter(datePicker_adapter);
-
-        HabitDataBase.getInstance(getContext());
 
         return view;
     }

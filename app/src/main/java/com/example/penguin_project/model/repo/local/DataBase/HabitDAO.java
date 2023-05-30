@@ -31,13 +31,13 @@ public interface HabitDAO {
     @Query("Select * from Habits")
     List<Habits> getHabitList();
     @Query("Select * from habit_day")
-    List<Habit_Day> getHabit_Day();
+    List<Habit_Day> getHabit_DayList();
     @Query("Select * from habit_dayofweek")
-    List<Habit_DayOfWeek> getHabit_DayOfWeek();
+    List<Habit_DayOfWeek> getHabit_DayOfWeekList();
     @Query("Select * from habitgroup")
-    List<HabitGroup> getHabitGroup();
+    List<HabitGroup> getHabitGroupList();
     @Query("Select * from RemindTime")
-    List<RemindTime> getRemindTime();
+    List<RemindTime> getRemindTimeList();
     @Query("Select * from TimeOfDay")
-    List<TimeOfDay> getTimeOfDay();
+    List<TimeOfDay> getTimeOfDayList();
 }
