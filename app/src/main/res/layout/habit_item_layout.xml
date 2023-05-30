@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp"
+    android:elevation="4dp"
+    android:layout_margin="10dp"
+    android:backgroundTint="@color/black"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/item_shape"
+        android:padding="5dp">
+        <RelativeLayout
+            android:id="@+id/habitItem_Color"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/item_icon_shape"
+            android:layout_margin="4dp"
+            >
+            <ImageView
+                android:id="@+id/habitItem_Icon"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_water" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="5dp"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/habitItem_Title"
+                android:text="Uống nước"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/habitItem_CurrentProgress"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="/"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/habitItem_TimePerDay"
+                    android:text="5"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <Button
+        android:id="@+id/buttonDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_marginStart="450dp"
+        android:background="@drawable/baseline_done_24"
+        android:text="Button" />
+    <Button
+        android:id="@+id/buttonCheckDone"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_marginStart="450dp"
+        android:text="Button" />
+</androidx.cardview.widget.CardView>
