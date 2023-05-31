@@ -25,6 +25,7 @@
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/white</item>
     </style>
+
     <style name="TodoTitle" parent="TextAppearance.AppCompat">
         <item name="android:fontFamily">@font/poppins_bold</item>
         <item name="android:textSize">17sp</item>
@@ -36,6 +37,7 @@
         <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/black</item>
     </style>
+
     <style name="LavenderSwitch" parent="Widget.AppCompat.CompoundButton.Switch">
         <item name="android:colorBackground">@color/lavender</item>
         <item name="android:layout_width">57dp</item>
