@@ -66,7 +66,7 @@ public class HomeFragment extends Fragment {
 
         Setting_rcv();
 
-        LinearLayoutManager linearLayoutManager =new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         rcv_DatePicker.setLayoutManager(linearLayoutManager);
 
         datePicker_adapter.setOnItemClickListener(new DatePicker_Adapter.OnItemClickListener() {
@@ -77,7 +77,6 @@ public class HomeFragment extends Fragment {
         });
 
         rcv_DatePicker.setAdapter(datePicker_adapter);
-
         return view;
     }
 
