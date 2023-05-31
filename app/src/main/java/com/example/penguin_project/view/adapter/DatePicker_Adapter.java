@@ -41,7 +41,8 @@ public class DatePicker_Adapter extends RecyclerView.Adapter<DatePicker_Adapter.
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(@NonNull DateViewHoder holder, int position) {
-        HabitDate habitDate = arrDate.get(position);
+        int adapterPosition = holder.getAdapterPosition();
+        HabitDate habitDate = arrDate.get(adapterPosition);
         LocalDate date = habitDate.getDate();
 
         switch (date.getDayOfWeek()){
@@ -62,7 +63,7 @@ public class DatePicker_Adapter extends RecyclerView.Adapter<DatePicker_Adapter.
         }
         holder.tv_DayOfMonth.setText(String.valueOf(date.getDayOfMonth()));
 
-        if (position == selectedItemPosition) {
+        if (adapterPosition == selectedItemPosition) {
             // Áp dụng giao diện khác biệt cho item đang được chọn
             holder.itemView.setBackgroundResource(R.drawable.rcv_date_item_shape_selected);
         } else {
@@ -76,8 +77,8 @@ public class DatePicker_Adapter extends RecyclerView.Adapter<DatePicker_Adapter.
                 if(listener != null){
                     listener.onItemClick(date);
                 }
-                if(position != RecyclerView.NO_POSITION){
-                    selectedItemPosition = position;
+                if(adapterPosition != RecyclerView.NO_POSITION){
+                    selectedItemPosition = adapterPosition;
                     notifyDataSetChanged();
                 }
             }
