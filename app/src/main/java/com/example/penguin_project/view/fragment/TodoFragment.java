@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.penguin_project.R;
+import com.example.penguin_project.view.adapter.TodoAdapter;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -58,58 +59,7 @@ public class TodoFragment extends Fragment {
         return view;
     }
 
-    private class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.TodoViewHolder> {
 
-        private List<String> itemList;
-
-        public TodoAdapter(List<String> itemList) {
-            this.itemList = itemList;
-        }
-
-        @NonNull
-        @Override
-        public TodoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.todo_item, parent, false);
-            return new TodoViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull TodoViewHolder holder, int position) {
-            String item = itemList.get(position);
-            holder.textView.setText(item);
-        }
-
-        @Override
-        public int getItemCount() {
-            return itemList.size();
-        }
-
-        public void removeItem(int position) {
-            itemList.remove(position);
-            notifyItemRemoved(position);
-        }
-
-        class TodoViewHolder extends RecyclerView.ViewHolder {
-            TextView textView;
-            Button buttonAction;
-
-            TodoViewHolder(View itemView) {
-                super(itemView);
-                textView = itemView.findViewById(R.id.tv_todoItem_todoTitle);
-                buttonAction = itemView.findViewById(R.id.btn_todoFragment_doneButton);
-
-                buttonAction.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    // khi nhan button done
-                    public void onClick(View v) {
-                        int position = getAdapterPosition();
-                        itemList.remove(position);
-                        notifyItemRemoved(position);
-                    }
-                });
-            }
-        }
-    }
 
     private class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
 
