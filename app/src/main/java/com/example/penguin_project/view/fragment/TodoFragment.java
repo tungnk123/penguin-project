@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.example.penguin_project.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -32,6 +33,7 @@ public class TodoFragment extends Fragment {
     private TodoAdapter todoAdapter;
     private List<String> todoList;
 //    private  List<String> completedTodoList;
+    public int draggedItemIndex;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,6 +46,7 @@ public class TodoFragment extends Fragment {
         todoList.add("Task 1");
         todoList.add("Task 2");
         todoList.add("Task 3");
+
 
         todoAdapter = new TodoAdapter(todoList);
         recyclerView.setAdapter(todoAdapter);
@@ -124,9 +127,20 @@ public class TodoFragment extends Fragment {
         }
 
         @Override
+        public int getMovementFlags(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
+            return makeMovementFlags(
+              ItemTouchHelper.UP | ItemTouchHelper.DOWN,
+                    ItemTouchHelper.END | ItemTouchHelper.START
+            );
+        }
+        @Override
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
 
-            Toast.makeText(getContext(), "move", Toast.LENGTH_LONG).show();
+            draggedItemIndex = viewHolder.getAdapterPosition();
+            int targetIndex = target.getAdapterPosition();
+
+            Collections.swap(todoList, draggedItemIndex, targetIndex);
+            todoAdapter.notifyItemMoved(draggedItemIndex, targetIndex);
 
             return false;
         }
