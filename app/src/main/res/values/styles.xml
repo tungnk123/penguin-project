@@ -41,6 +41,11 @@
         <item name="android:layout_width">57dp</item>
         <item name="android:layout_height">25dp</item>
     </style>
+
+    <style name="CustomCheckbox02" parent="@style/Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/checkbox_seletor</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
     // theme
 
 </resources>
