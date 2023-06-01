@@ -17,10 +17,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.penguin_project.R;
+import com.example.penguin_project.model.repo.local.Table.Todo;
+import com.example.penguin_project.view.adapter.CompletedTodoAdapter;
 import com.example.penguin_project.view.adapter.TodoAdapter;
 
 import java.util.ArrayList;
@@ -31,9 +34,11 @@ import java.util.List;
 public class TodoFragment extends Fragment {
 
     private RecyclerView recyclerView;
+    private ListView lvCompletedTodo;
     private TodoAdapter todoAdapter;
+    private CompletedTodoAdapter completedTodoAdapter;
     private List<String> todoList;
-//    private  List<String> completedTodoList;
+    private  List<Todo> completedTodoList;
     public int draggedItemIndex;
 
     @Override
@@ -42,6 +47,8 @@ public class TodoFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.rcv_todoFragment_todoList);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+
 
         todoList = new ArrayList<>();
         todoList.add("Task 1");
@@ -56,6 +63,17 @@ public class TodoFragment extends Fragment {
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new SwipeToDeleteCallback());
         itemTouchHelper.attachToRecyclerView(recyclerView);
 
+        // completed todo
+        lvCompletedTodo = view.findViewById(R.id.lv_todoFragment_todoCompletedList);
+        completedTodoList = new ArrayList<>();
+        completedTodoList.add(new Todo(1, "Task 1", "abcccccc", true));
+        completedTodoList.add(new Todo(2, "Task 1", "abcccccc", true));;
+        completedTodoList.add(new Todo(3, "Task 1", "abcccccc", true));
+
+        completedTodoAdapter = new CompletedTodoAdapter(this.getContext(), R.layout.completed_todo_item, completedTodoList);
+        lvCompletedTodo.setAdapter(completedTodoAdapter);
+
+        //
         return view;
     }
 

@@ -8,7 +8,7 @@
     android:background="@color/purple_700">
 
     <TextView
-        android:id="@+id/tv_todoItem_todoTitle"
+        android:id="@+id/tv_completedTodoItem_todoTitle"
         style="@style/TodoTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <CheckBox
-        android:id="@+id/cb_todoItem_checkDone"
+        android:id="@+id/cb_completedTodoItem_checkDone"
         style="@style/CustomCheckbox02"
         android:checked="true"
         android:layout_width="wrap_content"
