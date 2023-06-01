@@ -1,6 +1,7 @@
 package com.example.penguin_project.model.repo.local.Table;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
@@ -12,11 +13,11 @@ import java.time.LocalDateTime;
 @TypeConverters(LocalDateTimeConverter.class)
 public class Todo {
 
+
     @PrimaryKey(autoGenerate = true)
     private int Todo_id;
     private String Title;
     private String Description;
-
     private boolean IsDone;
     private LocalDateTime DueDate;
     private LocalDateTime RemindTime;
@@ -54,7 +55,6 @@ public class Todo {
     }
 
 
-
     public LocalDateTime getDueDate() {
         return DueDate;
     }
@@ -69,5 +69,21 @@ public class Todo {
 
     public void setRemindTime(LocalDateTime remindTime) {
         RemindTime = remindTime;
+    }
+    public Todo(int Todo_id, String Title, String Description, boolean IsDone) {
+        this.Todo_id = Todo_id;
+        this.Title = Title;
+        this.Description = Description;
+        this.IsDone = IsDone;
+    }
+
+    @Ignore
+    public Todo(int Todo_id, String Title, String Description, boolean IsDone, LocalDateTime DueDate, LocalDateTime RemindTime) {
+        this.Todo_id = Todo_id;
+        this.Title = Title;
+        this.Description = Description;
+        this.IsDone = IsDone;
+        this.DueDate = DueDate;
+        this.RemindTime = RemindTime;
     }
 }
