@@ -29,16 +29,17 @@ import com.example.penguin_project.view.adapter.TodoAdapter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 
-public class TodoFragment extends Fragment {
+public class TodoFragment extends Fragment{
 
     private RecyclerView recyclerView;
     private ListView lvCompletedTodo;
     private TodoAdapter todoAdapter;
     private CompletedTodoAdapter completedTodoAdapter;
-    private List<String> todoList;
-    private  List<Todo> completedTodoList;
+    private static List<Todo> todoList;
+    private static List<Todo> completedTodoList;
     public int draggedItemIndex;
 
     @Override
@@ -51,12 +52,12 @@ public class TodoFragment extends Fragment {
 
 
         todoList = new ArrayList<>();
-        todoList.add("Task 1");
-        todoList.add("Task 2");
-        todoList.add("Task 3");
+        todoList.add(new Todo(1, "Uong nuoc", "abcccccc", true));
+        todoList.add(new Todo(2, "Code", "abcccccc", true));
+        todoList.add(new Todo(3, "Doc sach", "abcccccc", true));
 
 
-        todoAdapter = new TodoAdapter(todoList);
+        todoAdapter = new TodoAdapter(todoList, this);
         recyclerView.setAdapter(todoAdapter);
 
         // Set up swipe functionality
@@ -66,11 +67,11 @@ public class TodoFragment extends Fragment {
         // completed todo
         lvCompletedTodo = view.findViewById(R.id.lv_todoFragment_todoCompletedList);
         completedTodoList = new ArrayList<>();
-        completedTodoList.add(new Todo(1, "Task 1", "abcccccc", true));
-        completedTodoList.add(new Todo(2, "Task 1", "abcccccc", true));;
-        completedTodoList.add(new Todo(3, "Task 1", "abcccccc", true));
+        completedTodoList.add(new Todo(1, "Ăn uống", "abcccccc", true));
+        completedTodoList.add(new Todo(2, "coi phim", "abcccccc", true));;
+        completedTodoList.add(new Todo(3, "Chơi game", "abcccccc", true));
 
-        completedTodoAdapter = new CompletedTodoAdapter(this.getContext(), R.layout.completed_todo_item, completedTodoList);
+        completedTodoAdapter = new CompletedTodoAdapter(this.getContext(), R.layout.completed_todo_item, completedTodoList, this);
         lvCompletedTodo.setAdapter(completedTodoAdapter);
 
         //
@@ -157,5 +158,26 @@ public class TodoFragment extends Fragment {
             checkDoneIcon.draw(c);
             deleteIcon.draw(c);
         }
+    }
+
+    public void moveItemToCompletedList(int position) {
+        Todo item = todoList.get(position);
+        todoList.remove(position);
+        todoAdapter.notifyItemRemoved(position);
+
+        // Add the item to the completedTodoList
+        completedTodoList.add(item);
+        completedTodoAdapter.notifyDataSetChanged();
+    }
+
+    public void moveCompletedItemToTodoList(int position) {
+
+        Todo item = completedTodoList.get(position);
+        completedTodoList.remove(position);
+        completedTodoAdapter.notifyDataSetChanged();
+
+        todoList.add(item);
+        todoAdapter.notifyItemInserted(position);
+
     }
 }

@@ -12,15 +12,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.penguin_project.R;
+import com.example.penguin_project.model.repo.local.Table.Todo;
+import com.example.penguin_project.view.fragment.TodoFragment;
 
 import java.util.List;
 
 public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.TodoViewHolder> {
 
-        private List<String> itemList;
+        private List<Todo> itemList;
+        private TodoFragment todoFragment;
 
-        public TodoAdapter(List<String> itemList) {
+        public TodoAdapter(List<Todo> itemList, TodoFragment todoFragment) {
             this.itemList = itemList;
+            this.todoFragment = todoFragment;
         }
 
         @NonNull
@@ -32,8 +36,11 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.TodoViewHolder
 
         @Override
         public void onBindViewHolder(@NonNull TodoViewHolder holder, int position) {
-            String item = itemList.get(position);
-            holder.textView.setText(item);
+            int adapterPosition = holder.getAdapterPosition();
+            Todo item = itemList.get(adapterPosition);
+            holder.textView.setText(item.getTitle());
+            holder.cbIsDone.setChecked(false);
+
         }
 
         @Override
@@ -60,8 +67,7 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.TodoViewHolder
                     // khi nhan button done
                     public void onClick(View v) {
                         int position = getAdapterPosition();
-                        itemList.remove(position);
-                        notifyItemRemoved(position);
+                        todoFragment.moveItemToCompletedList(position);
                     }
                 });
             }

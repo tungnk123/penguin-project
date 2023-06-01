@@ -14,17 +14,20 @@ import androidx.annotation.NonNull;
 
 import com.example.penguin_project.R;
 import com.example.penguin_project.model.repo.local.Table.Todo;
+import com.example.penguin_project.view.fragment.TodoFragment;
 
 import java.util.List;
 
 public class CompletedTodoAdapter extends ArrayAdapter<Todo> {
     public List<Todo> completedTodoList;
+    public TodoFragment todoFragment;
     int resource;
 
-    public CompletedTodoAdapter(Context context, int resource, List<Todo> completedTodoList) {
+    public CompletedTodoAdapter(Context context, int resource, List<Todo> completedTodoList, TodoFragment todoFragment) {
         super(context, resource, completedTodoList);
         this.resource = resource;
         this.completedTodoList = completedTodoList;
+        this.todoFragment = todoFragment;
     }
     @NonNull
     @Override
@@ -45,6 +48,12 @@ public class CompletedTodoAdapter extends ArrayAdapter<Todo> {
             if (cbIsDone != null) {
                 cbIsDone.setChecked(todo.getIsDone());
             }
+            cbIsDone.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    todoFragment.moveCompletedItemToTodoList(position);
+                }
+            });
         }
         return view;
 
