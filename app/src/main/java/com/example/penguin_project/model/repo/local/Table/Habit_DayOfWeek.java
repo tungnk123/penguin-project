@@ -18,7 +18,17 @@ public class Habit_DayOfWeek {
     @NonNull
     private DayOfWeek Habit_DayOfWeek_id;
     private int Habit_id;
+
+    private int Progress;
     private Boolean IsDone;
+
+    public int getProgress() {
+        return Progress;
+    }
+
+    public void setProgress(int Progress) {
+        this.Progress = Progress;
+    }
 
     public DayOfWeek getHabit_DayOfWeek_id() {
         return Habit_DayOfWeek_id;
@@ -44,9 +54,10 @@ public class Habit_DayOfWeek {
         this.IsDone = IsDone;
     }
 
-    public Habit_DayOfWeek(DayOfWeek Habit_DayOfWeek_id, int Habit_id, boolean IsDone) {
+    public Habit_DayOfWeek(DayOfWeek Habit_DayOfWeek_id, int Habit_id, boolean IsDone, int Progress) {
         this.Habit_DayOfWeek_id = Habit_DayOfWeek_id;
         this.Habit_id = Habit_id;
         this.IsDone = IsDone;
+        this.Progress = Progress;
     }
 }
