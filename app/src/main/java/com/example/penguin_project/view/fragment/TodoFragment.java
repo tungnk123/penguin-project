@@ -52,9 +52,9 @@ public class TodoFragment extends Fragment{
 
 
         todoList = new ArrayList<>();
-        todoList.add(new Todo(1, "Uong nuoc", "abcccccc", true));
-        todoList.add(new Todo(2, "Code", "abcccccc", true));
-        todoList.add(new Todo(3, "Doc sach", "abcccccc", true));
+        todoList.add(new Todo(1, "Uong nuoc", "abcccccc", false));
+        todoList.add(new Todo(2, "Code", "abcccccc", false));
+        todoList.add(new Todo(3, "Doc sach", "abcccccc", false));
 
 
         todoAdapter = new TodoAdapter(todoList, this);
@@ -67,9 +67,9 @@ public class TodoFragment extends Fragment{
         // completed todo
         lvCompletedTodo = view.findViewById(R.id.lv_todoFragment_todoCompletedList);
         completedTodoList = new ArrayList<>();
-        completedTodoList.add(new Todo(1, "Ăn uống", "abcccccc", true));
-        completedTodoList.add(new Todo(2, "coi phim", "abcccccc", true));;
-        completedTodoList.add(new Todo(3, "Chơi game", "abcccccc", true));
+        completedTodoList.add(new Todo(4, "Ăn uống", "abcccccc", true));
+        completedTodoList.add(new Todo(5, "coi phim", "abcccccc", true));;
+        completedTodoList.add(new Todo(6, "Chơi game", "abcccccc", true));
 
         completedTodoAdapter = new CompletedTodoAdapter(this.getContext(), R.layout.completed_todo_item, completedTodoList, this);
         lvCompletedTodo.setAdapter(completedTodoAdapter);
@@ -165,19 +165,22 @@ public class TodoFragment extends Fragment{
         todoList.remove(position);
         todoAdapter.notifyItemRemoved(position);
 
+        Todo completedItem = new Todo(item.getTodo_id(), item.getTitle(), item.getDescription(), true);
         // Add the item to the completedTodoList
-        completedTodoList.add(item);
+        completedTodoList.add(completedItem);
         completedTodoAdapter.notifyDataSetChanged();
+
     }
 
     public void moveCompletedItemToTodoList(int position) {
 
-        Todo item = completedTodoList.get(position);
+        Todo completedItem = completedTodoList.get(position);
         completedTodoList.remove(position);
         completedTodoAdapter.notifyDataSetChanged();
 
+        Todo item = new Todo(completedItem.getTodo_id(), completedItem.getTitle(), completedItem.getDescription(), false);
         todoList.add(item);
-        todoAdapter.notifyItemInserted(position);
+        todoAdapter.notifyItemInserted(todoList.size() - 1);
 
     }
 }
