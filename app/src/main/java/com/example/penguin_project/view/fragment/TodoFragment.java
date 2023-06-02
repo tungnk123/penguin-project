@@ -51,17 +51,26 @@ public class TodoFragment extends Fragment{
         // TodoViewModel
         todoViewModel =  new ViewModelProvider(this).get(TodoViewModel.class);
         // Set up observer de theo doi khi nao data thay doi thi observer dc trigger va update Ui voi thong tin moi
-        todoViewModel.getTodoList().observe(getViewLifecycleOwner(), todos -> {
+        todoViewModel.getTodoListByIsDone(false).observe(getViewLifecycleOwner(), todos -> {
             todoList.clear();
             todoList.addAll(todos);
-            todoAdapter.notifyItemRangeInserted(0, todos.size());
+            todoAdapter.notifyDataSetChanged();
         });
+
+        todoViewModel.getTodoListByIsDone(true).observe(getViewLifecycleOwner(), completedTodos -> {
+            completedTodoList.clear();
+            completedTodoList.addAll(completedTodos);
+            completedTodoAdapter.notifyDataSetChanged();
+        });
+
         //
         View view = inflater.inflate(R.layout.fragment_todo, container, false);
 
         recyclerView = view.findViewById(R.id.rcv_todoFragment_todoList);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+
+        // TEST data
 //        Todo todo1 = new Todo(1, "Uong nuoc", "abcccccc", false);
 //        Todo todo2 = new Todo(2, "Code", "abcccccc", false);
 //        Todo todo3 = new Todo(3, "Doc sach", "abcccccc", false);
@@ -69,8 +78,17 @@ public class TodoFragment extends Fragment{
 //        todoViewModel.insertTodo(todo1);
 //        todoViewModel.insertTodo(todo2);
 //        todoViewModel.insertTodo(todo3);
+//
+//
+//        Todo todo4 = new Todo(4, "Ăn uống", "abcccccc", true);
+//        Todo todo5 = new Todo(5, "coi phim", "abcccccc", true);
+//        Todo todo6 = new Todo(6, "Chơi game", "abcccccc", true);
+//
+//        todoViewModel.insertTodo(todo4);
+//        todoViewModel.insertTodo(todo5);
+//        todoViewModel.insertTodo(todo6);
 
-
+        //
         todoAdapter = new TodoAdapter(todoList, this);
         recyclerView.setAdapter(todoAdapter);
 
@@ -80,10 +98,6 @@ public class TodoFragment extends Fragment{
 
         // completed todo
         lvCompletedTodo = view.findViewById(R.id.lv_todoFragment_todoCompletedList);
-        completedTodoList = new ArrayList<>();
-        completedTodoList.add(new Todo(4, "Ăn uống", "abcccccc", true));
-        completedTodoList.add(new Todo(5, "coi phim", "abcccccc", true));;
-        completedTodoList.add(new Todo(6, "Chơi game", "abcccccc", true));
 
         completedTodoAdapter = new CompletedTodoAdapter(this.getContext(), R.layout.completed_todo_item, completedTodoList, this);
         lvCompletedTodo.setAdapter(completedTodoAdapter);

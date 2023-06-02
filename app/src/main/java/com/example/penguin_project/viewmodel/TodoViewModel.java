@@ -14,13 +14,22 @@ public class TodoViewModel extends AndroidViewModel {
 
     private HabitDataBase habitDatabase;
     private LiveData<List<Todo>> todoList;
+    private LiveData<List<Todo>> completedTodoList;
 
     public TodoViewModel(Application application) {
         super(application);
         habitDatabase = HabitDataBase.getInstance(application);
-        todoList = habitDatabase.habitDAO().getTodoList();
+        todoList = habitDatabase.habitDAO().getTodoListByIsDone(false);
+        completedTodoList = habitDatabase.habitDAO().getTodoListByIsDone(true);
     }
     public LiveData<List<Todo>> getTodoList() {
+        return todoList;
+    }
+
+    public LiveData<List<Todo>> getTodoListByIsDone(boolean isDone) {
+        if (isDone) {
+            return completedTodoList;
+        }
         return todoList;
     }
 

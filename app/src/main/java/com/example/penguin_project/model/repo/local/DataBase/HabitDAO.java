@@ -55,6 +55,9 @@ public interface HabitDAO {
     @Query("SELECT * FROM Todo")
     LiveData<List<Todo>> getTodoList();
 
+    @Query("SELECT * FROM todo WHERE IsDone = :isDone ")
+    LiveData<List<Todo>> getTodoListByIsDone(boolean isDone);
+
     @Query("SELECT * FROM Steps")
     List<Steps> getStepsList();
 
