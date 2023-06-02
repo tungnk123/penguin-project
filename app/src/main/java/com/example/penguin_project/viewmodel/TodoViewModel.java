@@ -12,12 +12,28 @@ import java.util.List;
 
 public class TodoViewModel extends AndroidViewModel {
 
-    private HabitDataBase habitDataBase;
+    private HabitDataBase habitDatabase;
     private LiveData<List<Todo>> todoList;
 
     public TodoViewModel(Application application) {
         super(application);
-        habitDataBase = HabitDataBase.getInstance(application);
+        habitDatabase = HabitDataBase.getInstance(application);
+        todoList = habitDatabase.habitDAO().getTodoList();
+    }
+    public LiveData<List<Todo>> getTodoList() {
+        return todoList;
+    }
+
+    public void insertTodo(Todo todo) {
+        habitDatabase.habitDAO().insertTodo(todo);
+    }
+
+    public void updateTodoName(int todoId, String newTodoName) {
+        habitDatabase.habitDAO().updateTodoName(todoId, newTodoName);
+    }
+
+    public void deleteTodo(int todoId) {
+        habitDatabase.habitDAO().deleteTodo(todoId);
     }
 
 }

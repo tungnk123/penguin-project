@@ -1,5 +1,6 @@
 package com.example.penguin_project.model.repo.local.DataBase;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -52,7 +53,7 @@ public interface HabitDAO {
     void insertSteps(Steps steps);
 
     @Query("SELECT * FROM Todo")
-    List<Todo> getTodoList();
+    LiveData<List<Todo>> getTodoList();
 
     @Query("SELECT * FROM Steps")
     List<Steps> getStepsList();
