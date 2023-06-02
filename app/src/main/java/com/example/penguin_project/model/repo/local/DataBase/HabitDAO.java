@@ -51,6 +51,12 @@ public interface HabitDAO {
     @Insert
     void insertSteps(Steps steps);
 
+    @Query("SELECT * FROM Todo")
+    List<Todo> getTodoList();
+
+    @Query("SELECT * FROM Steps")
+    List<Steps> getStepsList();
+
     @Query("SELECT * FROM Todo WHERE Todo_id = :todoId")
     Todo getTodoById(int todoId);
 
