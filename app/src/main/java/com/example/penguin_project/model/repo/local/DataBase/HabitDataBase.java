@@ -36,7 +36,8 @@ public abstract class HabitDataBase extends RoomDatabase {
     private static final Migration MIGRATION_1_2 = new Migration(1, 2) {
         @Override
         public void migrate(@NonNull SupportSQLiteDatabase database) {
-            database.execSQL("ALTER TABLE Habit_DayOfWeek ADD COLUMN Progress int");
+            database.execSQL("ALTER TABLE Habit_DayOfWeek ADD COLUMN Progress INTEGER DEFAULT 0 NOT NULL");
+            database.execSQL("ALTER TABLE Habit_DayOfWeek ADD COLUMN IsFailed boolean");
         }
     };
 
