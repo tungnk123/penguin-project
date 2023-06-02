@@ -9,6 +9,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,6 +26,7 @@ import com.example.penguin_project.R;
 import com.example.penguin_project.model.repo.local.Table.Todo;
 import com.example.penguin_project.view.adapter.CompletedTodoAdapter;
 import com.example.penguin_project.view.adapter.TodoAdapter;
+import com.example.penguin_project.viewmodel.TodoViewModel;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -34,27 +36,39 @@ import java.util.Locale;
 
 public class TodoFragment extends Fragment{
 
+    TodoViewModel todoViewModel;
     private RecyclerView recyclerView;
     private ListView lvCompletedTodo;
     private TodoAdapter todoAdapter;
     private CompletedTodoAdapter completedTodoAdapter;
-    private static List<Todo> todoList;
-    private static List<Todo> completedTodoList;
+    private static List<Todo> todoList = new ArrayList<>();
+    private static List<Todo> completedTodoList = new ArrayList<>();
     public int draggedItemIndex;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        // TodoViewModel
+        todoViewModel =  new ViewModelProvider(this).get(TodoViewModel.class);
+        // Set up observer de theo doi khi nao data thay doi thi observer dc trigger va update Ui voi thong tin moi
+        todoViewModel.getTodoList().observe(getViewLifecycleOwner(), todos -> {
+            todoList.clear();
+            todoList.addAll(todos);
+            todoAdapter.notifyItemRangeInserted(0, todos.size());
+        });
+        //
         View view = inflater.inflate(R.layout.fragment_todo, container, false);
 
         recyclerView = view.findViewById(R.id.rcv_todoFragment_todoList);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-
-
-        todoList = new ArrayList<>();
-        todoList.add(new Todo(1, "Uong nuoc", "abcccccc", false));
-        todoList.add(new Todo(2, "Code", "abcccccc", false));
-        todoList.add(new Todo(3, "Doc sach", "abcccccc", false));
+//        Todo todo1 = new Todo(1, "Uong nuoc", "abcccccc", false);
+//        Todo todo2 = new Todo(2, "Code", "abcccccc", false);
+//        Todo todo3 = new Todo(3, "Doc sach", "abcccccc", false);
+//
+//        todoViewModel.insertTodo(todo1);
+//        todoViewModel.insertTodo(todo2);
+//        todoViewModel.insertTodo(todo3);
 
 
         todoAdapter = new TodoAdapter(todoList, this);
@@ -75,6 +89,8 @@ public class TodoFragment extends Fragment{
         lvCompletedTodo.setAdapter(completedTodoAdapter);
 
         //
+
+
         return view;
     }
 
