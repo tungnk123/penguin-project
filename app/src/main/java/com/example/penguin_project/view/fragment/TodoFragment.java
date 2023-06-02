@@ -82,7 +82,7 @@ public class TodoFragment extends Fragment{
 //        Todo todo4 = new Todo(4, "Ăn uống", "abcccccc", true);
 //        Todo todo5 = new Todo(5, "coi phim", "abcccccc", true);
 //        Todo todo6 = new Todo(6, "Chơi game", "abcccccc", true);
-//
+////
 //        todoViewModel.insertTodo(todo4);
 //        todoViewModel.insertTodo(todo5);
 //        todoViewModel.insertTodo(todo6);
@@ -149,7 +149,16 @@ public class TodoFragment extends Fragment{
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
             int position = viewHolder.getAdapterPosition();
-            todoAdapter.removeItem(position);
+            Todo todo = todoList.get(position);
+            if (direction == ItemTouchHelper.START) {
+                // delete
+                todoViewModel.deleteTodo(todo.getTodo_id());
+
+            }
+            else if (direction == ItemTouchHelper.END){
+                // check done
+                moveItemToCompletedList(position);
+            }
         }
 
         @Override
