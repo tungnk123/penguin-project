@@ -11,6 +11,8 @@ import com.example.penguin_project.model.repo.local.Table.Habits;
 import com.example.penguin_project.model.repo.local.Table.RemindTime;
 import com.example.penguin_project.model.repo.local.Table.TimeOfDay;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.List;
 
 @Dao
@@ -40,4 +42,15 @@ public interface HabitDAO {
     List<RemindTime> getRemindTimeList();
     @Query("Select * from TimeOfDay")
     List<TimeOfDay> getTimeOfDayList();
+
+    @Query("Select * from Habits join TimeOfDay on Habits.TimeOfDay_id = TimeOfDay.TimeOfDay_id join Habit_DayOfWeek on Habit_DayOfWeek.Habit_id = Habits.Habit_id where Habit_DayOfWeek.Habit_DayOfWeek_id = :dayOfWeek and TimeOfDay.TimeOfDay = 'Anytime' and Habit_DayOfWeek.IsDone = 0")
+    List<Habits> getAnytimeHabits(DayOfWeek dayOfWeek);
+    @Query("Select * from Habits join TimeOfDay on Habits.TimeOfDay_id = TimeOfDay.TimeOfDay_id join Habit_DayOfWeek on Habit_DayOfWeek.Habit_id = Habits.Habit_id where Habit_DayOfWeek.Habit_DayOfWeek_id = :dayOfWeek and TimeOfDay.TimeOfDay = 'Morning' and Habit_DayOfWeek.IsDone = 0")
+    List<Habits> getMorningHabits(DayOfWeek dayOfWeek);
+    @Query("Select * from Habits join TimeOfDay on Habits.TimeOfDay_id = TimeOfDay.TimeOfDay_id join Habit_DayOfWeek on Habit_DayOfWeek.Habit_id = Habits.Habit_id where Habit_DayOfWeek.Habit_DayOfWeek_id = :dayOfWeek and TimeOfDay.TimeOfDay = 'Afternoon' and Habit_DayOfWeek.IsDone = 0")
+    List<Habits> getAfternoonHabits(DayOfWeek dayOfWeek);
+    @Query("Select * from Habits join TimeOfDay on Habits.TimeOfDay_id = TimeOfDay.TimeOfDay_id join Habit_DayOfWeek on Habit_DayOfWeek.Habit_id = Habits.Habit_id where Habit_DayOfWeek.Habit_DayOfWeek_id = :dayOfWeek and TimeOfDay.TimeOfDay = 'Evening' and Habit_DayOfWeek.IsDone = 0")
+    List<Habits> getEveningHabits(DayOfWeek dayOfWeek);
+    @Query("Select * from Habits join TimeOfDay on Habits.TimeOfDay_id = TimeOfDay.TimeOfDay_id join Habit_DayOfWeek on Habit_DayOfWeek.Habit_id = Habits.Habit_id where Habit_DayOfWeek.Habit_DayOfWeek_id = :dayOfWeek and Habit_DayOfWeek.IsDone = 1")
+    List<Habits> getDoneHabits(DayOfWeek dayOfWeek);
 }
