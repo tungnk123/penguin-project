@@ -40,6 +40,8 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_home, container, false);
 
+        getContext().deleteDatabase("Habit.db");
+
         rcv_DatePicker = view.findViewById(R.id.rcv_datePicker);
         txt_DayOfWeek = view.findViewById(R.id.txt_ActionBar_DayOfWeek);
         txt_DayOfMonth = view.findViewById(R.id.txt_ActionBar_DayOfMonth);
@@ -77,6 +79,8 @@ public class HomeFragment extends Fragment {
         });
 
         rcv_DatePicker.setAdapter(datePicker_adapter);
+
+        HabitDataBase.getInstance(getContext()).habitDAO().getHabit_DayOfWeekList();
         return view;
     }
 
