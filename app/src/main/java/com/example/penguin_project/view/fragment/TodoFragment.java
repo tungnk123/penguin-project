@@ -69,7 +69,6 @@ public class TodoFragment extends Fragment{
         recyclerView = view.findViewById(R.id.rcv_todoFragment_todoList);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-
         // TEST data
 //        Todo todo1 = new Todo(1, "Uong nuoc", "abcccccc", false);
 //        Todo todo2 = new Todo(2, "Code", "abcccccc", false);
@@ -87,6 +86,9 @@ public class TodoFragment extends Fragment{
 //        todoViewModel.insertTodo(todo4);
 //        todoViewModel.insertTodo(todo5);
 //        todoViewModel.insertTodo(todo6);
+
+
+
 
         //
         todoAdapter = new TodoAdapter(todoList, this);
@@ -195,9 +197,10 @@ public class TodoFragment extends Fragment{
         todoList.remove(position);
         todoAdapter.notifyItemRemoved(position);
 
-        Todo completedItem = new Todo(item.getTodo_id(), item.getTitle(), item.getDescription(), true);
-        // Add the item to the completedTodoList
-        completedTodoList.add(completedItem);
+        todoViewModel.updataIsDoneById(true, item.getTodo_id());
+//        Todo completedItem = new Todo(item.getTodo_id(), item.getTitle(), item.getDescription(), true);
+//        // Add the item to the completedTodoList
+//        completedTodoList.add(completedItem);
         completedTodoAdapter.notifyDataSetChanged();
 
     }
@@ -208,9 +211,10 @@ public class TodoFragment extends Fragment{
         completedTodoList.remove(position);
         completedTodoAdapter.notifyDataSetChanged();
 
-        Todo item = new Todo(completedItem.getTodo_id(), completedItem.getTitle(), completedItem.getDescription(), false);
-        todoList.add(item);
-        todoAdapter.notifyItemInserted(todoList.size() - 1);
+        todoViewModel.updataIsDoneById(false, completedItem.getTodo_id());
+//        Todo item = new Todo(completedItem.getTodo_id(), completedItem.getTitle(), completedItem.getDescription(), false);
+//        todoList.add(item);
+        todoAdapter.notifyDataSetChanged();
 
     }
 }

@@ -36,10 +36,9 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.TodoViewHolder
 
         @Override
         public void onBindViewHolder(@NonNull TodoViewHolder holder, int position) {
-            int adapterPosition = holder.getAdapterPosition();
-            Todo item = itemList.get(adapterPosition);
+            Todo item = itemList.get(position);
             holder.textView.setText(item.getTitle());
-            holder.cbIsDone.setChecked(false);
+            holder.cbIsDone.setChecked(item.getIsDone());
 
         }
 

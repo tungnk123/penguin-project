@@ -45,4 +45,8 @@ public class TodoViewModel extends AndroidViewModel {
         habitDatabase.habitDAO().deleteTodo(todoId);
     }
 
+    public void updataIsDoneById(boolean isDone, int todoId) {
+        habitDatabase.habitDAO().updateIsDoneById(isDone, todoId);
+    }
+
 }

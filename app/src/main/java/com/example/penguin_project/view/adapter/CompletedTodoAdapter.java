@@ -18,10 +18,12 @@ import com.example.penguin_project.view.fragment.TodoFragment;
 
 import java.util.List;
 
+
 public class CompletedTodoAdapter extends ArrayAdapter<Todo> {
     public List<Todo> completedTodoList;
     public TodoFragment todoFragment;
     int resource;
+
 
     public CompletedTodoAdapter(Context context, int resource, List<Todo> completedTodoList, TodoFragment todoFragment) {
         super(context, resource, completedTodoList);
@@ -31,31 +33,38 @@ public class CompletedTodoAdapter extends ArrayAdapter<Todo> {
     }
     @NonNull
     @Override
-    public View getView(int position, @NonNull View contextView, @NonNull ViewGroup viewGroup) {
-        View view = contextView;
-        LayoutInflater layoutInflater = LayoutInflater.from(this.getContext());
-        view = layoutInflater.inflate(this.resource, null);
+    public View getView(int position, View convertView, ViewGroup parent) {
+        TodoViewHolder holder;
+
+        if (convertView == null) {
+            convertView = LayoutInflater.from(getContext()).inflate(resource, parent, false);
+
+            holder = new TodoViewHolder();
+            holder.tvTitle = convertView.findViewById(R.id.tv_completedTodoItem_todoTitle);
+            holder.cbIsDone = convertView.findViewById(R.id.cb_completedTodoItem_checkDone);
+
+            convertView.setTag(holder);
+        } else {
+            holder = (TodoViewHolder) convertView.getTag();
+        }
 
         Todo todo = getItem(position);
         if (todo != null) {
-            TextView tvTitle = (TextView) view.findViewById(R.id.tv_completedTodoItem_todoTitle);
-            CheckBox cbIsDone = (CheckBox) view.findViewById(R.id.cb_completedTodoItem_checkDone);
-
-            if (tvTitle != null) {
-                tvTitle.setText(todo.getTitle().toString());
-                tvTitle.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-            }
-            if (cbIsDone != null) {
-                cbIsDone.setChecked(todo.getIsDone());
-            }
-            cbIsDone.setOnClickListener(new View.OnClickListener() {
+            holder.tvTitle.setText(todo.getTitle().toString());
+            holder.tvTitle.setPaintFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+            holder.cbIsDone.setChecked(todo.getIsDone());
+            holder.cbIsDone.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     todoFragment.moveCompletedItemToTodoList(position);
                 }
             });
         }
-        return view;
 
+        return convertView;
+    }
+    public static class TodoViewHolder {
+        TextView tvTitle;
+        CheckBox cbIsDone;
     }
 }

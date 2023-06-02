@@ -77,6 +77,9 @@ public interface HabitDAO {
     @Query("UPDATE Todo SET Title = :newTodoName WHERE Todo_id = :todoId")
     void updateTodoName(int todoId, String newTodoName);
 
+    @Query("UPDATE Todo SET IsDone = :isDone WHERE Todo_id = :todoId")
+    void updateIsDoneById(boolean isDone, int todoId);
+
     @Query("DELETE FROM Todo WHERE Todo_id = :todoId")
     void deleteTodo(int todoId);
 
