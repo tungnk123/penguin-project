@@ -16,6 +16,8 @@ public class TodoViewModel extends AndroidViewModel {
     private LiveData<List<Todo>> todoList;
     private LiveData<List<Todo>> completedTodoList;
 
+    private int todoSize;
+
     public TodoViewModel(Application application) {
         super(application);
         habitDatabase = HabitDataBase.getInstance(application);

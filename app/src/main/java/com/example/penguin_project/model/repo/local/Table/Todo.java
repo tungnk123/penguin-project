@@ -70,6 +70,13 @@ public class Todo {
     public void setRemindTime(LocalDateTime remindTime) {
         RemindTime = remindTime;
     }
+
+    public Todo(String title, String description, boolean isDone) {
+        this.Title = title;
+        this.Description = description;
+        this.IsDone = isDone;
+    }
+
     public Todo(int Todo_id, String Title, String Description, boolean IsDone) {
         this.Todo_id = Todo_id;
         this.Title = Title;
