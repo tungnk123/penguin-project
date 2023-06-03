@@ -1,5 +1,6 @@
 package com.example.penguin_project.view.fragment;
 
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -22,11 +23,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.penguin_project.MainActivity;
 import com.example.penguin_project.R;
 import com.example.penguin_project.model.repo.local.Table.Todo;
+import com.example.penguin_project.view.activity.AddTodoActivity;
 import com.example.penguin_project.view.adapter.CompletedTodoAdapter;
 import com.example.penguin_project.view.adapter.TodoAdapter;
 import com.example.penguin_project.viewmodel.TodoViewModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -44,6 +48,7 @@ public class TodoFragment extends Fragment{
     private static List<Todo> todoList = new ArrayList<>();
     private static List<Todo> completedTodoList = new ArrayList<>();
     public int draggedItemIndex;
+    public FloatingActionButton addTodoButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -106,7 +111,15 @@ public class TodoFragment extends Fragment{
 
         //
 
+        addTodoButton = (FloatingActionButton) view.findViewById(R.id.fabtn_fragmentTodo_addTodoButton);
 
+        addTodoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), AddTodoActivity.class);
+                startActivity(intent);
+            }
+        });
         return view;
     }
 
@@ -121,8 +134,8 @@ public class TodoFragment extends Fragment{
 
         public SwipeToDeleteCallback() {
             super(0, ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT);
-            checkDoneIcon = ContextCompat.getDrawable(requireContext(), R.drawable.icon_coin);
-            deleteIcon = ContextCompat.getDrawable(requireContext(), R.drawable.icon_coin);
+            checkDoneIcon = ContextCompat.getDrawable(requireContext(), R.drawable.icon_done);
+            deleteIcon = ContextCompat.getDrawable(requireContext(), R.drawable.icon_delete_24);
             checkDoneBackground = new ColorDrawable(Color.GREEN);
             deleteBackground = new ColorDrawable(Color.RED);
         }
