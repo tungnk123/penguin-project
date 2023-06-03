@@ -1,5 +1,6 @@
 package com.example.penguin_project.view.adapter;
 
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,16 +15,24 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.penguin_project.R;
+import com.example.penguin_project.model.repo.local.DataBase.HabitDataBase;
+import com.example.penguin_project.model.repo.local.Table.Habit_DayOfWeek;
 import com.example.penguin_project.model.repo.local.Table.Habits;
 
+import java.time.DayOfWeek;
+import java.util.ArrayList;
 import java.util.List;
 
 public class HabitItemAdapter extends RecyclerView.Adapter<HabitItemAdapter.ItemViewHolder> {
 
     private List<Habits> itemList;
+    private Context context;
+    private DayOfWeek dayOfWeek;
 
-    public HabitItemAdapter(List<Habits> itemList) {
+    public HabitItemAdapter(List<Habits> itemList, Context context, DayOfWeek dayOfWeek) {
         this.itemList = itemList;
+        this.context = context;
+        this.dayOfWeek = dayOfWeek;
     }
 
     @NonNull
@@ -36,11 +45,19 @@ public class HabitItemAdapter extends RecyclerView.Adapter<HabitItemAdapter.Item
     @Override
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
         Habits itemName = itemList.get(position);
-//        holder.itemColor.setBackgroundColor(itemName.getColor());
+        List<Habit_DayOfWeek> habit_dayOfWeeks = new ArrayList<>();
+        habit_dayOfWeeks = HabitDataBase.getInstance(context).habitDAO().findHabitDOWByID(itemName.getHabit_id(), dayOfWeek);
+        if(habit_dayOfWeeks.size() > 0){
+            Habit_DayOfWeek habit_dayOfWeek = habit_dayOfWeeks.get(0);
+            holder.item_CurrentProgress.setText(habit_dayOfWeek.getProgress());
+        }
+        else {
+            holder.item_CurrentProgress.setText("0");
+        }
+        holder.itemColor.setBackgroundResource(itemName.getColor());
         holder.item_Title.setText(itemName.getTitle());
-        holder.itemIcon.setImageResource(R.mipmap.icon_water);
-        holder.item_CurrentProgress.setText("0");
-        holder.item_timePerDay.setText("5");
+        holder.itemIcon.setImageResource(itemName.getIcon());
+        holder.item_timePerDay.setText(String.valueOf(itemName.getTimePerDay()));
     }
 
     @Override
@@ -49,13 +66,31 @@ public class HabitItemAdapter extends RecyclerView.Adapter<HabitItemAdapter.Item
     }
 
     public void removeItem(int position) {
-        itemList.remove(position);
-        notifyItemRemoved(position);
+        Habits habits = itemList.get(position);
+        List<Habit_DayOfWeek> habit_dayOfWeeks = new ArrayList<>();
+        habit_dayOfWeeks = HabitDataBase.getInstance(context).habitDAO().findHabitDOWByID(habits.getHabit_id(), dayOfWeek);
+        if(habit_dayOfWeeks.size() > 0){
+           Habit_DayOfWeek habit_dayOfWeek = habit_dayOfWeeks.get(0);
+           habit_dayOfWeek.setIsFailed(true);
+        }
     }
 
     public void checkDoneItem(int position) {
-        itemList.remove(position);
-        notifyItemRemoved(position);
+        Habits habits = itemList.get(position);
+        List<Habit_DayOfWeek> habit_dayOfWeeks = new ArrayList<>();
+        habit_dayOfWeeks = HabitDataBase.getInstance(context).habitDAO().findHabitDOWByID(habits.getHabit_id(), dayOfWeek);
+        if(habit_dayOfWeeks.size() > 0){
+            Habit_DayOfWeek habit_dayOfWeek = habit_dayOfWeeks.get(0);
+            if(habits.getTimePerDay() > habit_dayOfWeek.getProgress()){
+                habit_dayOfWeek.setProgress(habit_dayOfWeek.getProgress() + 1);
+                if(habit_dayOfWeek.getProgress() == habits.getTimePerDay()){
+                    habit_dayOfWeek.setIsDone(true);
+                }
+            }
+        }
+    }
+    public void updateDayOfWeek(DayOfWeek dayOfWeek){
+        this.dayOfWeek = dayOfWeek;
     }
 
     public class ItemViewHolder extends RecyclerView.ViewHolder {

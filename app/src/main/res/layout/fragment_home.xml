@@ -169,30 +169,30 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/rcv_Home_CompletedHabit"/>
-<!--                <LinearLayout-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:orientation="horizontal">-->
-<!--                    <ImageView-->
-<!--                        android:layout_width="30dp"-->
-<!--                        android:layout_height="30dp"-->
-<!--                        android:layout_marginStart="130dp"-->
-<!--                        android:src="@mipmap/icon_failed"-->
-<!--                        android:contentDescription="@string/app_name"/>-->
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="Failed"-->
-<!--                        android:textColor="@color/white"-->
-<!--                        android:layout_marginStart="10dp"-->
-<!--                        android:textSize="20sp"-->
-<!--                        android:textStyle="bold"-->
-<!--                        />-->
-<!--                </LinearLayout>-->
-<!--                <androidx.recyclerview.widget.RecyclerView-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:id="@+id/rcv_Home_FailedHabit"/>-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginStart="130dp"
+                        android:src="@mipmap/icon_failed"
+                        android:contentDescription="@string/app_name"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Failed"
+                        android:textColor="@color/white"
+                        android:layout_marginStart="10dp"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        />
+                </LinearLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/rcv_Home_FailedHabit"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="60dp"

@@ -3,6 +3,7 @@ package com.example.penguin_project.model.repo.local.DataBase;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.penguin_project.model.repo.local.Table.HabitGroup;
 import com.example.penguin_project.model.repo.local.Table.Habit_Day;
@@ -13,6 +14,7 @@ import com.example.penguin_project.model.repo.local.Table.Steps;
 import com.example.penguin_project.model.repo.local.Table.TimeOfDay;
 import com.example.penguin_project.model.repo.local.Table.Todo;
 
+import java.time.DayOfWeek;
 import java.util.List;
 
 @Dao
@@ -83,7 +85,24 @@ public interface HabitDAO {
     @Query("DELETE FROM Steps WHERE Step_id = :step_id")
     void deleteSteps(int step_id);
 
-
-
+    @Query("Select * from Habits join TimeOfDay on Habits.TimeOfDay_id = TimeOfDay.TimeOfDay_id join Habit_DayOfWeek on Habit_DayOfWeek.Habit_id = Habits.Habit_id where Habit_DayOfWeek.Habit_DayOfWeek_id = :dayOfWeek and TimeOfDay.TimeOfDay = 'Anytime' and Habit_DayOfWeek.IsDone = 0")
+    List<Habits> getAnytimeHabits(DayOfWeek dayOfWeek);
+    @Query("Select * from Habits join TimeOfDay on Habits.TimeOfDay_id = TimeOfDay.TimeOfDay_id join Habit_DayOfWeek on Habit_DayOfWeek.Habit_id = Habits.Habit_id where Habit_DayOfWeek.Habit_DayOfWeek_id = :dayOfWeek and TimeOfDay.TimeOfDay = 'Morning' and Habit_DayOfWeek.IsDone = 0")
+    List<Habits> getMorningHabits(DayOfWeek dayOfWeek);
+    @Query("Select * from Habits join TimeOfDay on Habits.TimeOfDay_id = TimeOfDay.TimeOfDay_id join Habit_DayOfWeek on Habit_DayOfWeek.Habit_id = Habits.Habit_id where Habit_DayOfWeek.Habit_DayOfWeek_id = :dayOfWeek and TimeOfDay.TimeOfDay = 'Afternoon' and Habit_DayOfWeek.IsDone = 0")
+    List<Habits> getAfternoonHabits(DayOfWeek dayOfWeek);
+    @Query("Select * from Habits join TimeOfDay on Habits.TimeOfDay_id = TimeOfDay.TimeOfDay_id join Habit_DayOfWeek on Habit_DayOfWeek.Habit_id = Habits.Habit_id where Habit_DayOfWeek.Habit_DayOfWeek_id = :dayOfWeek and TimeOfDay.TimeOfDay = 'Evening' and Habit_DayOfWeek.IsDone = 0")
+    List<Habits> getEveningHabits(DayOfWeek dayOfWeek);
+    @Query("Select * from Habits join TimeOfDay on Habits.TimeOfDay_id = TimeOfDay.TimeOfDay_id join Habit_DayOfWeek on Habit_DayOfWeek.Habit_id = Habits.Habit_id where Habit_DayOfWeek.Habit_DayOfWeek_id = :dayOfWeek and Habit_DayOfWeek.IsDone = 1")
+    List<Habits> getDoneHabits(DayOfWeek dayOfWeek);
+    @Query("Select * from Habits join TimeOfDay on Habits.TimeOfDay_id = TimeOfDay.TimeOfDay_id join Habit_DayOfWeek on Habit_DayOfWeek.Habit_id = Habits.Habit_id where Habit_DayOfWeek.Habit_DayOfWeek_id = :dayOfWeek and Habit_DayOfWeek.IsFailed = 1")
+    List<Habits> getFailedHabits(DayOfWeek dayOfWeek);
+    @Query("Select * from Habit_DayOfWeek where Habit_DayOfWeek.Habit_id = :habits_id and Habit_DayOfWeek.Habit_DayOfWeek_id = :dayOfWeek")
+    List<Habit_DayOfWeek> findHabitDOWByID(int habits_id, DayOfWeek dayOfWeek);
     //
+
+    @Update
+    void updateHabits(Habits habits);
+    @Update
+    void updateHabit_DayOfWeek(Habit_DayOfWeek habit_dayOfWeek);
 }
