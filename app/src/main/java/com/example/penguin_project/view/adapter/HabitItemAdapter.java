@@ -51,10 +51,10 @@ public class HabitItemAdapter extends RecyclerView.Adapter<HabitItemAdapter.Item
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
         Habits itemName = itemList.get(position);
         List<Habit_DayOfWeek> habit_dayOfWeeks = new ArrayList<>();
-        habit_dayOfWeeks = HabitDataBase.getInstance(context).habitDAO().findHabitDOWByID(itemName.getHabit_id(), dayOfWeek);
+        habit_dayOfWeeks = HabitDataBase.getInstance(context).habitDAO().findHabitDOWByID(itemName.getHabit_id(), dayOfWeek.getValue());
         if(habit_dayOfWeeks.size() > 0){
             Habit_DayOfWeek habit_dayOfWeek = habit_dayOfWeeks.get(0);
-            holder.item_CurrentProgress.setText(habit_dayOfWeek.getProgress());
+            holder.item_CurrentProgress.setText(String.valueOf(habit_dayOfWeek.getProgress()));
         }
         else {
             holder.item_CurrentProgress.setText("0");
@@ -73,23 +73,26 @@ public class HabitItemAdapter extends RecyclerView.Adapter<HabitItemAdapter.Item
     public void removeItem(int position) {
         Habits habits = itemList.get(position);
         List<Habit_DayOfWeek> habit_dayOfWeeks = new ArrayList<>();
-        habit_dayOfWeeks = HabitDataBase.getInstance(context).habitDAO().findHabitDOWByID(habits.getHabit_id(), dayOfWeek);
+        habit_dayOfWeeks = HabitDataBase.getInstance(context).habitDAO().findHabitDOWByID(habits.getHabit_id(), dayOfWeek.getValue());
         if(habit_dayOfWeeks.size() > 0){
            Habit_DayOfWeek habit_dayOfWeek = habit_dayOfWeeks.get(0);
            habit_dayOfWeek.setIsFailed(true);
+           HabitDataBase.getInstance(context).habitDAO().updateHabit_DayOfWeek(habit_dayOfWeek);
         }
     }
 
     public void checkDoneItem(int position) {
         Habits habits = itemList.get(position);
         List<Habit_DayOfWeek> habit_dayOfWeeks = new ArrayList<>();
-        habit_dayOfWeeks = HabitDataBase.getInstance(context).habitDAO().findHabitDOWByID(habits.getHabit_id(), dayOfWeek);
+        habit_dayOfWeeks = HabitDataBase.getInstance(context).habitDAO().findHabitDOWByID(habits.getHabit_id(), dayOfWeek.getValue());
         if(habit_dayOfWeeks.size() > 0){
             Habit_DayOfWeek habit_dayOfWeek = habit_dayOfWeeks.get(0);
             if(habits.getTimePerDay() > habit_dayOfWeek.getProgress()){
                 habit_dayOfWeek.setProgress(habit_dayOfWeek.getProgress() + 1);
+                HabitDataBase.getInstance(context).habitDAO().updateHabit_DayOfWeek(habit_dayOfWeek);
                 if(habit_dayOfWeek.getProgress() == habits.getTimePerDay()){
                     habit_dayOfWeek.setIsDone(true);
+                    HabitDataBase.getInstance(context).habitDAO().updateHabit_DayOfWeek(habit_dayOfWeek);
                 }
             }
         }

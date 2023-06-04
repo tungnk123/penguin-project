@@ -86,19 +86,19 @@ public interface HabitDAO {
     void deleteSteps(int step_id);
 
     @Query("Select * from Habits join TimeOfDay on Habits.TimeOfDay_id = TimeOfDay.TimeOfDay_id join Habit_DayOfWeek on Habit_DayOfWeek.Habit_id = Habits.Habit_id where Habit_DayOfWeek.Habit_DayOfWeek_id = :dayOfWeek and TimeOfDay.TimeOfDay = 'Anytime' and Habit_DayOfWeek.IsDone = 0")
-    List<Habits> getAnytimeHabits(DayOfWeek dayOfWeek);
+    List<Habits> getAnytimeHabits(int dayOfWeek);
     @Query("Select * from Habits join TimeOfDay on Habits.TimeOfDay_id = TimeOfDay.TimeOfDay_id join Habit_DayOfWeek on Habit_DayOfWeek.Habit_id = Habits.Habit_id where Habit_DayOfWeek.Habit_DayOfWeek_id = :dayOfWeek and TimeOfDay.TimeOfDay = 'Morning' and Habit_DayOfWeek.IsDone = 0")
-    List<Habits> getMorningHabits(DayOfWeek dayOfWeek);
+    List<Habits> getMorningHabits(int dayOfWeek);
     @Query("Select * from Habits join TimeOfDay on Habits.TimeOfDay_id = TimeOfDay.TimeOfDay_id join Habit_DayOfWeek on Habit_DayOfWeek.Habit_id = Habits.Habit_id where Habit_DayOfWeek.Habit_DayOfWeek_id = :dayOfWeek and TimeOfDay.TimeOfDay = 'Afternoon' and Habit_DayOfWeek.IsDone = 0")
-    List<Habits> getAfternoonHabits(DayOfWeek dayOfWeek);
+    List<Habits> getAfternoonHabits(int dayOfWeek);
     @Query("Select * from Habits join TimeOfDay on Habits.TimeOfDay_id = TimeOfDay.TimeOfDay_id join Habit_DayOfWeek on Habit_DayOfWeek.Habit_id = Habits.Habit_id where Habit_DayOfWeek.Habit_DayOfWeek_id = :dayOfWeek and TimeOfDay.TimeOfDay = 'Evening' and Habit_DayOfWeek.IsDone = 0")
-    List<Habits> getEveningHabits(DayOfWeek dayOfWeek);
-    @Query("Select * from Habits join TimeOfDay on Habits.TimeOfDay_id = TimeOfDay.TimeOfDay_id join Habit_DayOfWeek on Habit_DayOfWeek.Habit_id = Habits.Habit_id where Habit_DayOfWeek.Habit_DayOfWeek_id = :dayOfWeek and Habit_DayOfWeek.IsDone = 1")
-    List<Habits> getDoneHabits(DayOfWeek dayOfWeek);
+    List<Habits> getEveningHabits(int dayOfWeek);
+    @Query("Select * from Habits join TimeOfDay on Habits.TimeOfDay_id = TimeOfDay.TimeOfDay_id join Habit_DayOfWeek on Habit_DayOfWeek.Habit_id = Habits.Habit_id where Habit_DayOfWeek.Habit_DayOfWeek_id = :dayOfWeek and Habit_DayOfWeek.IsDone = 1 and Habit_DayOfWeek.IsFailed = 0")
+    List<Habits> getDoneHabits(int dayOfWeek);
     @Query("Select * from Habits join TimeOfDay on Habits.TimeOfDay_id = TimeOfDay.TimeOfDay_id join Habit_DayOfWeek on Habit_DayOfWeek.Habit_id = Habits.Habit_id where Habit_DayOfWeek.Habit_DayOfWeek_id = :dayOfWeek and Habit_DayOfWeek.IsFailed = 1")
-    List<Habits> getFailedHabits(DayOfWeek dayOfWeek);
+    List<Habits> getFailedHabits(int dayOfWeek);
     @Query("Select * from Habit_DayOfWeek where Habit_DayOfWeek.Habit_id = :habits_id and Habit_DayOfWeek.Habit_DayOfWeek_id = :dayOfWeek")
-    List<Habit_DayOfWeek> findHabitDOWByID(int habits_id, DayOfWeek dayOfWeek);
+    List<Habit_DayOfWeek> findHabitDOWByID(int habits_id, int dayOfWeek);
     //
 
     @Update

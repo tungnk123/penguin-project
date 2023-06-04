@@ -28,7 +28,9 @@ import com.example.penguin_project.R;
 import com.example.penguin_project.model.data.HabitDate;
 import com.example.penguin_project.model.repo.local.DataBase.HabitDataBase;
 import com.example.penguin_project.model.repo.local.Table.HabitGroup;
+import com.example.penguin_project.model.repo.local.Table.Habit_DayOfWeek;
 import com.example.penguin_project.model.repo.local.Table.Habits;
+import com.example.penguin_project.model.repo.local.Table.TimeOfDay;
 import com.example.penguin_project.view.adapter.DatePicker_Adapter;
 import com.example.penguin_project.view.adapter.HabitItemAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -73,6 +75,11 @@ public class HomeFragment extends Fragment {
         rcv_HabitListCompleted = view.findViewById(R.id.rcv_Home_CompletedHabit);
         rcv_HabitListFailed = view.findViewById(R.id.rcv_Home_FailedHabit);
 
+//        getContext().deleteDatabase("Habit.db");
+//
+//        setData();
+        selectedDayOfWeek = LocalDate.now().getDayOfWeek();
+        
         Setting_DayOfWeekAndDayOfMonth();
         Setting_rcvDatePicker();
         Setting_rcvHabitAnytimeList();
@@ -86,6 +93,24 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
+    private void setData() {
+        HabitDataBase.getInstance(getContext());
+        selectedDayOfWeek = LocalDate.now().getDayOfWeek();
+//        HabitDataBase.getInstance(getContext()).habitDAO().insertHabitGroup(new HabitGroup(1, "Trending", 4));
+//        HabitDataBase.getInstance(getContext()).habitDAO().insert_TimeOfDay(new TimeOfDay(1, "Anytime"));
+//        HabitDataBase.getInstance(getContext()).habitDAO().insert_TimeOfDay(new TimeOfDay(2, "Morning"));
+//        HabitDataBase.getInstance(getContext()).habitDAO().insert_TimeOfDay(new TimeOfDay(3, "Afternoon"));
+//        HabitDataBase.getInstance(getContext()).habitDAO().insert_TimeOfDay(new TimeOfDay(4, "Evening"));
+//        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("Uong nuoc", 2, 5, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0,0));
+//        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("Doc Sach", 3, 2, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0,0));
+//        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("uong nuoc", 2, 5, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0,0));
+//        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("Choi game", 2, 5, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0,0));
+//        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(selectedDayOfWeek.getValue(), 1, false, 0, false));
+//        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(selectedDayOfWeek.getValue(), 2, false, 0, false));
+//        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(selectedDayOfWeek.getValue(), 3, false, 0, false));
+        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(selectedDayOfWeek.getValue(), 4, false, 0, false));
+    }
+
     private void Setting_btnAddHabit() {
         btn_AddHabit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,9 +122,7 @@ public class HomeFragment extends Fragment {
 
     private void Setting_rcvHabitFailedList() {
         habitsListFailed = new ArrayList<>();
-        habitsListFailed.add(new Habits(4, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
-        habitsListFailed.add(new Habits(1, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
-        habitsListFailed.add(new Habits(2, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
+        habitsListFailed = HabitDataBase.getInstance(getContext()).habitDAO().getFailedHabits(selectedDayOfWeek.getValue());
 
         habitItemFailedAdapter = new HabitItemAdapter(habitsListFailed, getContext(), LocalDate.now().getDayOfWeek());
 
@@ -113,9 +136,7 @@ public class HomeFragment extends Fragment {
 
     private void Setting_rcvHabitConpletedList() {
         habitsListCompleted = new ArrayList<>();
-        habitsListCompleted.add(new Habits(4, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
-        habitsListCompleted.add(new Habits(1, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
-        habitsListCompleted.add(new Habits(2, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
+        habitsListCompleted = HabitDataBase.getInstance(getContext()).habitDAO().getDoneHabits(selectedDayOfWeek.getValue());
 
         habitItemCompletedAdapter = new HabitItemAdapter(habitsListCompleted,getContext(), LocalDate.now().getDayOfWeek());
 
@@ -129,9 +150,7 @@ public class HomeFragment extends Fragment {
 
     private void Setting_rcvHabitEveningList() {
         habitsListEvening = new ArrayList<>();
-        habitsListEvening.add(new Habits(4, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
-        habitsListEvening.add(new Habits(1, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
-        habitsListEvening.add(new Habits(2, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
+        habitsListEvening = HabitDataBase.getInstance(getContext()).habitDAO().getEveningHabits(selectedDayOfWeek.getValue());
 
         habitItemEveningAdapter = new HabitItemAdapter(habitsListEvening,getContext(), LocalDate.now().getDayOfWeek());
 
@@ -145,9 +164,7 @@ public class HomeFragment extends Fragment {
 
     private void Setting_rcvHabitAfternoonList() {
         habitsListAfternoon = new ArrayList<>();
-        habitsListAfternoon.add(new Habits(4, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
-        habitsListAfternoon.add(new Habits(1, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
-        habitsListAfternoon.add(new Habits(2, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
+        habitsListAfternoon = HabitDataBase.getInstance(getContext()).habitDAO().getAfternoonHabits(selectedDayOfWeek.getValue());
 
         habitItemAfterNoonAdapter = new HabitItemAdapter(habitsListAfternoon,getContext(), LocalDate.now().getDayOfWeek());
 
@@ -161,9 +178,7 @@ public class HomeFragment extends Fragment {
 
     private void Setting_rcvHabitMorningList() {
         habitsListMorning = new ArrayList<>();
-        habitsListMorning.add(new Habits(4, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
-        habitsListMorning.add(new Habits(1, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
-        habitsListMorning.add(new Habits(2, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
+        habitsListMorning = HabitDataBase.getInstance(getContext()).habitDAO().getMorningHabits(selectedDayOfWeek.getValue());
 
         habitItemMorningAdapter = new HabitItemAdapter(habitsListMorning,getContext(), LocalDate.now().getDayOfWeek());
 
@@ -177,9 +192,7 @@ public class HomeFragment extends Fragment {
 
     private void Setting_rcvHabitAnytimeList() {
         habitsListAnytime = new ArrayList<>();
-        habitsListAnytime.add(new Habits(4, "Uong nuoc", 1, 4, 1, R.drawable.item_icon_shape, R.mipmap.icon_water, LocalDate.now(), 0, 3));
-        habitsListAnytime.add(new Habits(1, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
-        habitsListAnytime.add(new Habits(2, "Uong nuoc", 1, 4, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 3));
+        habitsListAnytime = HabitDataBase.getInstance(getContext()).habitDAO().getAnytimeHabits(selectedDayOfWeek.getValue());
 
         habitItemAnytimeAdapter = new HabitItemAdapter(habitsListAnytime,getContext(), LocalDate.now().getDayOfWeek());
 
@@ -256,28 +269,18 @@ public class HomeFragment extends Fragment {
                 selectedDayOfWeek = date.getDayOfWeek();
                 habitsListAnytime.clear();
                 habitItemAnytimeAdapter.updateDayOfWeek(date.getDayOfWeek());
-                habitsListAnytime = HabitDataBase.getInstance(getContext()).habitDAO().getAnytimeHabits(date.getDayOfWeek());
-                habitItemAnytimeAdapter.notifyDataSetChanged();
                 habitsListMorning.clear();
                 habitItemMorningAdapter.updateDayOfWeek(date.getDayOfWeek());
-                habitsListMorning = HabitDataBase.getInstance(getContext()).habitDAO().getMorningHabits(date.getDayOfWeek());
-                habitItemMorningAdapter.notifyDataSetChanged();
                 habitsListAfternoon.clear();
                 habitItemAfterNoonAdapter.updateDayOfWeek(date.getDayOfWeek());
-                habitsListAfternoon = HabitDataBase.getInstance(getContext()).habitDAO().getAfternoonHabits(date.getDayOfWeek());
-                habitItemAfterNoonAdapter.notifyDataSetChanged();
                 habitsListEvening.clear();
                 habitItemEveningAdapter.updateDayOfWeek(date.getDayOfWeek());
-                habitsListEvening = HabitDataBase.getInstance(getContext()).habitDAO().getEveningHabits(date.getDayOfWeek());
-                habitItemEveningAdapter.notifyDataSetChanged();
                 habitsListCompleted.clear();
                 habitItemCompletedAdapter.updateDayOfWeek(date.getDayOfWeek());
-                habitsListCompleted = HabitDataBase.getInstance(getContext()).habitDAO().getDoneHabits(date.getDayOfWeek());
-                habitItemCompletedAdapter.notifyDataSetChanged();
                 habitsListFailed.clear();
                 habitItemFailedAdapter.updateDayOfWeek(date.getDayOfWeek());
-                habitsListFailed = HabitDataBase.getInstance(getContext()).habitDAO().getFailedHabits(date.getDayOfWeek());
-                habitItemFailedAdapter.notifyDataSetChanged();
+
+                notifyDatabaseChange();
             }
         });
 
@@ -311,56 +314,10 @@ public class HomeFragment extends Fragment {
             HabitItemAdapter habitItemAdapter = viewHolder1.getAdapter();
             if (direction == ItemTouchHelper.LEFT) {
                 habitItemAdapter.removeItem(position);
-
-                habitsListAnytime.clear();
-                habitsListAnytime = HabitDataBase.getInstance(getContext()).habitDAO().getAnytimeHabits(selectedDayOfWeek);
-                habitItemAnytimeAdapter.setHabits(habitsListAnytime);
-
-                habitsListMorning.clear();
-                habitsListMorning = HabitDataBase.getInstance(getContext()).habitDAO().getMorningHabits(selectedDayOfWeek);
-                habitItemMorningAdapter.setHabits(habitsListMorning);
-
-                habitsListAfternoon.clear();
-                habitsListAfternoon = HabitDataBase.getInstance(getContext()).habitDAO().getAfternoonHabits(selectedDayOfWeek);
-                habitItemAfterNoonAdapter.setHabits(habitsListAfternoon);
-
-                habitsListEvening.clear();
-                habitsListEvening = HabitDataBase.getInstance(getContext()).habitDAO().getEveningHabits(selectedDayOfWeek);
-                habitItemEveningAdapter.setHabits(habitsListEvening);
-
-                habitsListCompleted.clear();
-                habitsListCompleted = HabitDataBase.getInstance(getContext()).habitDAO().getDoneHabits(selectedDayOfWeek);
-                habitItemCompletedAdapter.setHabits(habitsListCompleted);
-
-                habitsListFailed.clear();
-                habitsListFailed = HabitDataBase.getInstance(getContext()).habitDAO().getFailedHabits(selectedDayOfWeek);
-                habitItemFailedAdapter.setHabits(habitsListFailed);
+                notifyDatabaseChange();
             } else if (direction == ItemTouchHelper.RIGHT) {
                 habitItemAdapter.checkDoneItem(position);
-
-                habitsListAnytime.clear();
-                habitsListAnytime = HabitDataBase.getInstance(getContext()).habitDAO().getAnytimeHabits(selectedDayOfWeek);
-                habitItemAnytimeAdapter.setHabits(habitsListAnytime);
-
-                habitsListMorning.clear();
-                habitsListMorning = HabitDataBase.getInstance(getContext()).habitDAO().getMorningHabits(selectedDayOfWeek);
-                habitItemMorningAdapter.setHabits(habitsListMorning);
-
-                habitsListAfternoon.clear();
-                habitsListAfternoon = HabitDataBase.getInstance(getContext()).habitDAO().getAfternoonHabits(selectedDayOfWeek);
-                habitItemAfterNoonAdapter.setHabits(habitsListAfternoon);
-
-                habitsListEvening.clear();
-                habitsListEvening = HabitDataBase.getInstance(getContext()).habitDAO().getEveningHabits(selectedDayOfWeek);
-                habitItemEveningAdapter.setHabits(habitsListEvening);
-
-                habitsListCompleted.clear();
-                habitsListCompleted = HabitDataBase.getInstance(getContext()).habitDAO().getDoneHabits(selectedDayOfWeek);
-                habitItemCompletedAdapter.setHabits(habitsListCompleted);
-
-                habitsListFailed.clear();
-                habitsListFailed = HabitDataBase.getInstance(getContext()).habitDAO().getFailedHabits(selectedDayOfWeek);
-                habitItemFailedAdapter.setHabits(habitsListFailed);
+                notifyDatabaseChange();
             }
         }
 
@@ -402,5 +359,31 @@ public class HomeFragment extends Fragment {
             checkDoneBackground.draw(c);
             checkDoneIcon.draw(c);
         }
+    }
+
+    private void notifyDatabaseChange() {
+        habitsListAnytime.clear();
+        habitsListAnytime = HabitDataBase.getInstance(getContext()).habitDAO().getAnytimeHabits(selectedDayOfWeek.getValue());
+        habitItemAnytimeAdapter.setHabits(habitsListAnytime);
+
+        habitsListMorning.clear();
+        habitsListMorning = HabitDataBase.getInstance(getContext()).habitDAO().getMorningHabits(selectedDayOfWeek.getValue());
+        habitItemMorningAdapter.setHabits(habitsListMorning);
+
+        habitsListAfternoon.clear();
+        habitsListAfternoon = HabitDataBase.getInstance(getContext()).habitDAO().getAfternoonHabits(selectedDayOfWeek.getValue());
+        habitItemAfterNoonAdapter.setHabits(habitsListAfternoon);
+
+        habitsListEvening.clear();
+        habitsListEvening = HabitDataBase.getInstance(getContext()).habitDAO().getEveningHabits(selectedDayOfWeek.getValue());
+        habitItemEveningAdapter.setHabits(habitsListEvening);
+
+        habitsListCompleted.clear();
+        habitsListCompleted = HabitDataBase.getInstance(getContext()).habitDAO().getDoneHabits(selectedDayOfWeek.getValue());
+        habitItemCompletedAdapter.setHabits(habitsListCompleted);
+
+        habitsListFailed.clear();
+        habitsListFailed = HabitDataBase.getInstance(getContext()).habitDAO().getFailedHabits(selectedDayOfWeek.getValue());
+        habitItemFailedAdapter.setHabits(habitsListFailed);
     }
 }
