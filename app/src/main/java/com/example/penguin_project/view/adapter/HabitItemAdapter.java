@@ -35,6 +35,11 @@ public class HabitItemAdapter extends RecyclerView.Adapter<HabitItemAdapter.Item
         this.dayOfWeek = dayOfWeek;
     }
 
+    public void setHabits(List<Habits> habitsList){
+        this.itemList = habitsList;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

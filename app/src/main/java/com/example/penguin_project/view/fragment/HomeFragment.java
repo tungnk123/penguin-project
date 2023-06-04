@@ -33,6 +33,7 @@ import com.example.penguin_project.view.adapter.DatePicker_Adapter;
 import com.example.penguin_project.view.adapter.HabitItemAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +47,7 @@ public class HomeFragment extends Fragment {
     List<Habits> habitsListAnytime, habitsListMorning, habitsListAfternoon, habitsListEvening, habitsListCompleted, habitsListFailed;
     HabitItemAdapter habitItemAnytimeAdapter, habitItemMorningAdapter, habitItemAfterNoonAdapter, habitItemEveningAdapter, habitItemCompletedAdapter, habitItemFailedAdapter;
     FloatingActionButton btn_AddHabit;
-
+    DayOfWeek selectedDayOfWeek;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -66,17 +67,11 @@ public class HomeFragment extends Fragment {
         btn_AddHabit = view.findViewById(R.id.btn_Home_AddHabit);
 
         rcv_HabitListAnytime = view.findViewById(R.id.rcv_Home_AnytimeHabit);
-        rcv_HabitListAnytime.setTag("rcv_HabitListAnytime");
         rcv_HabitListMorning = view.findViewById(R.id.rcv_Home_MorningHabit);
-        rcv_HabitListMorning.setTag("rcv_HabitListMorning");
         rcv_HabitListAfternoon = view.findViewById(R.id.rcv_Home_AfternoonHabit);
-        rcv_HabitListAfternoon.setTag("rcv_HabitListAfternoon");
         rcv_HabitListEvening = view.findViewById(R.id.rcv_Home_EveningHabit);
-        rcv_HabitListEvening.setTag("rcv_HabitListEvening");
         rcv_HabitListCompleted = view.findViewById(R.id.rcv_Home_CompletedHabit);
-        rcv_HabitListCompleted.setTag("rcv_HabitListCompleted");
         rcv_HabitListFailed = view.findViewById(R.id.rcv_Home_FailedHabit);
-        rcv_HabitListFailed.setTag("rcv_HabitListFailed");
 
         Setting_DayOfWeekAndDayOfMonth();
         Setting_rcvDatePicker();
@@ -221,6 +216,7 @@ public class HomeFragment extends Fragment {
     private void Setting_rcvDatePicker() {
         arrDate = new ArrayList<>();
         LocalDate date = LocalDate.now();
+        selectedDayOfWeek = date.getDayOfWeek();
         switch (LocalDate.now().getDayOfWeek()){
             case MONDAY: date = date.minusDays(0);
                 datePicker_adapter = new DatePicker_Adapter(arrDate, getContext(), 0);
@@ -257,6 +253,7 @@ public class HomeFragment extends Fragment {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onItemClick(LocalDate date) {
+                selectedDayOfWeek = date.getDayOfWeek();
                 habitsListAnytime.clear();
                 habitItemAnytimeAdapter.updateDayOfWeek(date.getDayOfWeek());
                 habitsListAnytime = HabitDataBase.getInstance(getContext()).habitDAO().getAnytimeHabits(date.getDayOfWeek());
@@ -314,10 +311,56 @@ public class HomeFragment extends Fragment {
             HabitItemAdapter habitItemAdapter = viewHolder1.getAdapter();
             if (direction == ItemTouchHelper.LEFT) {
                 habitItemAdapter.removeItem(position);
-                Toast.makeText(getContext(), "Deleted", Toast.LENGTH_SHORT).show();
+
+                habitsListAnytime.clear();
+                habitsListAnytime = HabitDataBase.getInstance(getContext()).habitDAO().getAnytimeHabits(selectedDayOfWeek);
+                habitItemAnytimeAdapter.setHabits(habitsListAnytime);
+
+                habitsListMorning.clear();
+                habitsListMorning = HabitDataBase.getInstance(getContext()).habitDAO().getMorningHabits(selectedDayOfWeek);
+                habitItemMorningAdapter.setHabits(habitsListMorning);
+
+                habitsListAfternoon.clear();
+                habitsListAfternoon = HabitDataBase.getInstance(getContext()).habitDAO().getAfternoonHabits(selectedDayOfWeek);
+                habitItemAfterNoonAdapter.setHabits(habitsListAfternoon);
+
+                habitsListEvening.clear();
+                habitsListEvening = HabitDataBase.getInstance(getContext()).habitDAO().getEveningHabits(selectedDayOfWeek);
+                habitItemEveningAdapter.setHabits(habitsListEvening);
+
+                habitsListCompleted.clear();
+                habitsListCompleted = HabitDataBase.getInstance(getContext()).habitDAO().getDoneHabits(selectedDayOfWeek);
+                habitItemCompletedAdapter.setHabits(habitsListCompleted);
+
+                habitsListFailed.clear();
+                habitsListFailed = HabitDataBase.getInstance(getContext()).habitDAO().getFailedHabits(selectedDayOfWeek);
+                habitItemFailedAdapter.setHabits(habitsListFailed);
             } else if (direction == ItemTouchHelper.RIGHT) {
-                habitItemAdapter.removeItem(position);
-                Toast.makeText(getContext(), "Check Done", Toast.LENGTH_SHORT).show();
+                habitItemAdapter.checkDoneItem(position);
+
+                habitsListAnytime.clear();
+                habitsListAnytime = HabitDataBase.getInstance(getContext()).habitDAO().getAnytimeHabits(selectedDayOfWeek);
+                habitItemAnytimeAdapter.setHabits(habitsListAnytime);
+
+                habitsListMorning.clear();
+                habitsListMorning = HabitDataBase.getInstance(getContext()).habitDAO().getMorningHabits(selectedDayOfWeek);
+                habitItemMorningAdapter.setHabits(habitsListMorning);
+
+                habitsListAfternoon.clear();
+                habitsListAfternoon = HabitDataBase.getInstance(getContext()).habitDAO().getAfternoonHabits(selectedDayOfWeek);
+                habitItemAfterNoonAdapter.setHabits(habitsListAfternoon);
+
+                habitsListEvening.clear();
+                habitsListEvening = HabitDataBase.getInstance(getContext()).habitDAO().getEveningHabits(selectedDayOfWeek);
+                habitItemEveningAdapter.setHabits(habitsListEvening);
+
+                habitsListCompleted.clear();
+                habitsListCompleted = HabitDataBase.getInstance(getContext()).habitDAO().getDoneHabits(selectedDayOfWeek);
+                habitItemCompletedAdapter.setHabits(habitsListCompleted);
+
+                habitsListFailed.clear();
+                habitsListFailed = HabitDataBase.getInstance(getContext()).habitDAO().getFailedHabits(selectedDayOfWeek);
+                habitItemFailedAdapter.setHabits(habitsListFailed);
             }
         }
 
