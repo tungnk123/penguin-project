@@ -38,7 +38,7 @@ import java.util.List;
 import java.util.Locale;
 
 
-public class TodoFragment extends Fragment{
+public class TodoFragment extends Fragment implements TodoAdapter.OnItemClickListener {
 
     TodoViewModel todoViewModel;
     private RecyclerView recyclerView;
@@ -54,7 +54,7 @@ public class TodoFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         // TodoViewModel
-        todoViewModel =  new ViewModelProvider(this).get(TodoViewModel.class);
+        todoViewModel = new ViewModelProvider(this).get(TodoViewModel.class);
         // Set up observer de theo doi khi nao data thay doi thi observer dc trigger va update Ui voi thong tin moi
         todoViewModel.getTodoListByIsDone(false).observe(getViewLifecycleOwner(), todos -> {
             todoList.clear();
@@ -74,36 +74,24 @@ public class TodoFragment extends Fragment{
         recyclerView = view.findViewById(R.id.rcv_todoFragment_todoList);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // TEST data
-//        Todo todo1 = new Todo(1, "Uong nuoc", "abcccccc", false);
-//        Todo todo2 = new Todo(2, "Code", "abcccccc", false);
-//        Todo todo3 = new Todo(3, "Doc sach", "abcccccc", false);
-//
-//        todoViewModel.insertTodo(todo1);
-//        todoViewModel.insertTodo(todo2);
-//        todoViewModel.insertTodo(todo3);
-//
-//
-//        Todo todo4 = new Todo(4, "Ăn uống", "abcccccc", true);
-//        Todo todo5 = new Todo(5, "coi phim", "abcccccc", true);
-//        Todo todo6 = new Todo(6, "Chơi game", "abcccccc", true);
-////
-//        todoViewModel.insertTodo(todo4);
-//        todoViewModel.insertTodo(todo5);
-//        todoViewModel.insertTodo(todo6);
 
-
-
-
-        //
-        todoAdapter = new TodoAdapter(todoList, this);
+        todoAdapter = new TodoAdapter(todoList, this, new TodoAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                // TODO xu ly khi user nhan vao 1 todo se chuyen qua edit todo
+                Toast.makeText(getContext(), "Item clicked at position: " + position, Toast.LENGTH_SHORT).show();
+            }
+        });
+        todoAdapter.setOnItemClickListener(this);
         recyclerView.setAdapter(todoAdapter);
+
+        recyclerView.addOnItemTouchListener(new RecyclerView.SimpleOnItemTouchListener());
 
         // Set up swipe functionality
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new SwipeToDeleteCallback());
         itemTouchHelper.attachToRecyclerView(recyclerView);
 
-        // completed todo
+        // completed TodoItem
         lvCompletedTodo = view.findViewById(R.id.lv_todoFragment_todoCompletedList);
 
         completedTodoAdapter = new CompletedTodoAdapter(this.getContext(), R.layout.completed_todo_item, completedTodoList, this);
@@ -123,6 +111,11 @@ public class TodoFragment extends Fragment{
         return view;
     }
 
+    @Override
+    public void onItemClick(int position) {
+
+        Toast.makeText(getContext(), "Item clicked at position: " + position, Toast.LENGTH_SHORT).show();
+    }
 
 
     private class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
@@ -143,10 +136,11 @@ public class TodoFragment extends Fragment{
         @Override
         public int getMovementFlags(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
             return makeMovementFlags(
-              ItemTouchHelper.UP | ItemTouchHelper.DOWN,
+                    ItemTouchHelper.UP | ItemTouchHelper.DOWN,
                     ItemTouchHelper.END | ItemTouchHelper.START
             );
         }
+
         @Override
         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
 
@@ -161,14 +155,15 @@ public class TodoFragment extends Fragment{
 
         @Override
         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+
+            // TODO: xu ly xoa notification khi tick done or delete
             int position = viewHolder.getAdapterPosition();
             Todo todo = todoList.get(position);
             if (direction == ItemTouchHelper.START) {
                 // delete
                 todoViewModel.deleteTodo(todo.getTodo_id());
 
-            }
-            else if (direction == ItemTouchHelper.END){
+            } else if (direction == ItemTouchHelper.END) {
                 // check done
                 moveItemToCompletedList(position);
             }
@@ -220,7 +215,6 @@ public class TodoFragment extends Fragment{
         todoAdapter.notifyItemRemoved(position);
 
         todoViewModel.updataIsDoneById(true, item.getTodo_id());
-//        Todo completedItem = new Todo(item.getTodo_id(), item.getTitle(), item.getDescription(), true);
 //        // Add the item to the completedTodoList
 //        completedTodoList.add(completedItem);
         completedTodoAdapter.notifyDataSetChanged();
@@ -234,8 +228,7 @@ public class TodoFragment extends Fragment{
         completedTodoAdapter.notifyDataSetChanged();
 
         todoViewModel.updataIsDoneById(false, completedItem.getTodo_id());
-//        Todo item = new Todo(completedItem.getTodo_id(), completedItem.getTitle(), completedItem.getDescription(), false);
-//        todoList.add(item);
+//
         todoAdapter.notifyDataSetChanged();
 
     }

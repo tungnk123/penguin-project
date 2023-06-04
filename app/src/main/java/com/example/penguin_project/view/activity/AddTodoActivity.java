@@ -34,10 +34,13 @@ import java.util.Date;
 
 public class AddTodoActivity extends AppCompatActivity {
 
+
     public Button btnSave;
     public Button btnRemind;
 
     public Button btnDueTime;
+
+    public Button btnAddSteps;
     public TodoViewModel todoViewModel;
     public EditText etTodoName;
     public EditText etDesc;
@@ -59,6 +62,8 @@ public class AddTodoActivity extends AppCompatActivity {
         etDesc = findViewById(R.id.et_activityAddTodo_description);
         btnRemind = findViewById(R.id.btn_activityAddTodo_remindButton);
         btnDueTime = findViewById(R.id.btn_activityAddTodo_ChooseButton);
+        btnAddSteps = findViewById(R.id.btn_activityAddTodo_addStepsButton);
+
         todoViewModel = new ViewModelProvider(this).get(TodoViewModel.class);
 
         Toolbar toolbar = findViewById(R.id.tb_activityAddTodo_toolbar);
@@ -116,6 +121,15 @@ public class AddTodoActivity extends AppCompatActivity {
             }
         });
 
+        btnAddSteps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // TODO: Xu ly add steps
+                Toast.makeText(AddTodoActivity.this, "Add steps Button Clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
         Spinner spinner = findViewById(R.id.spner_activityAddTodo_repeatSpinner);
         CharSequence[] options = getResources().getTextArray(R.array.spinner_options);
         CustomSpinnerAdapter adapter = new CustomSpinnerAdapter(this, R.layout.custom_spinner_item, options);
@@ -126,7 +140,8 @@ public class AddTodoActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // Handle the selected item
-                // TODO: xu ly phan repeat tai day
+                //
+                // Xu ly phan repeat tai day
                 String selectedOption = options[position].toString();
 
                 switch (selectedOption) {
@@ -145,7 +160,7 @@ public class AddTodoActivity extends AppCompatActivity {
                         break;
 
                     default:
-                        Toast.makeText(AddTodoActivity.this, "Not repeaat", Toast.LENGTH_LONG).show();
+
                 }
 
             }
@@ -197,7 +212,7 @@ public class AddTodoActivity extends AppCompatActivity {
                                             dueTimePick = dueTime;
                                             SimpleDateFormat formatter
                                                     = new SimpleDateFormat("dd.MM.yyyy ");
-                                            String btnText = "Due date:" +  formatter.format(dueTimePick);
+                                            String btnText = "Due date:" + formatter.format(dueTimePick);
                                             btnDueTime.setText(btnText);
                                         }
 //                                  setNotificationForDueTime(dueTime);
