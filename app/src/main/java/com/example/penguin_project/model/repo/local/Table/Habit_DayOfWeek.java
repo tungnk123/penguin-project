@@ -8,19 +8,20 @@ import androidx.room.PrimaryKey;
 
 import java.time.DayOfWeek;
 
-@Entity(tableName = "Habit_DayOfWeek", indices = {@Index(value = {"Habit_DayOfWeek_id", "Habit_id"}, unique = true)},
-       foreignKeys = {
-        @ForeignKey(entity = Habits.class, parentColumns = "Habit_id", childColumns = "Habit_id", onDelete = ForeignKey.CASCADE)
-       }
-)
+@Entity(tableName = "Habit_DayOfWeek",
+        foreignKeys = {
+                @ForeignKey(entity = Habits.class, parentColumns = "Habit_id", childColumns = "Habit_id", onDelete = ForeignKey.CASCADE)
+        },
+        primaryKeys = {"Habit_DayOfWeek_id", "Habit_id"})
 public class Habit_DayOfWeek {
-    @PrimaryKey
     @NonNull
-    private DayOfWeek Habit_DayOfWeek_id;
+    private int Habit_DayOfWeek_id;
+    @NonNull
     private int Habit_id;
-
-    private int Progress;
+    @NonNull
+    private Integer Progress;
     private Boolean IsDone;
+    private Boolean IsFailed;
 
     public int getProgress() {
         return Progress;
@@ -30,12 +31,20 @@ public class Habit_DayOfWeek {
         this.Progress = Progress;
     }
 
-    public DayOfWeek getHabit_DayOfWeek_id() {
+    public Boolean getIsFailed() {
+        return IsFailed;
+    }
+
+    public void setIsFailed(Boolean IsFailed) {
+        this.IsFailed = IsFailed;
+    }
+
+    public int getHabit_DayOfWeek_id() {
         return Habit_DayOfWeek_id;
     }
 
-    public void setHabit_DayOfWeek_id(DayOfWeek habit_DayOfWeek_id) {
-        Habit_DayOfWeek_id = habit_DayOfWeek_id;
+    public void setHabit_DayOfWeek_id(int Habit_DayOfWeek_id) {
+        this.Habit_DayOfWeek_id = Habit_DayOfWeek_id;
     }
 
     public int getHabit_id() {
@@ -54,10 +63,11 @@ public class Habit_DayOfWeek {
         this.IsDone = IsDone;
     }
 
-    public Habit_DayOfWeek(DayOfWeek Habit_DayOfWeek_id, int Habit_id, boolean IsDone, int Progress) {
+    public Habit_DayOfWeek(int Habit_DayOfWeek_id, int Habit_id, boolean IsDone, int Progress, boolean IsFailed) {
         this.Habit_DayOfWeek_id = Habit_DayOfWeek_id;
         this.Habit_id = Habit_id;
         this.IsDone = IsDone;
         this.Progress = Progress;
+        this.IsFailed = IsFailed;
     }
 }
