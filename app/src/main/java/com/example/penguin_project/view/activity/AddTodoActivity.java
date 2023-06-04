@@ -32,11 +32,16 @@ public class AddTodoActivity extends AppCompatActivity {
     public Button btnSave;
     public Button btnRemind;
 
+    public Button btnDueTime;
     public TodoViewModel todoViewModel;
     public EditText etTodoName;
     public EditText etDesc;
 
     public Date notificationTime;
+
+    public Date dueTimePick;
+
+    public int requestCode = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +51,7 @@ public class AddTodoActivity extends AppCompatActivity {
         etTodoName = findViewById(R.id.et_activityAddTodo_todoName);
         etDesc = findViewById(R.id.et_activityAddTodo_description);
         btnRemind = findViewById(R.id.btn_activityAddTodo_remindButton);
-
+        btnDueTime = findViewById(R.id.btn_activityAddTodo_ChooseButton);
         todoViewModel = new ViewModelProvider(this).get(TodoViewModel.class);
 
         Toolbar toolbar = findViewById(R.id.tb_activityAddTodo_toolbar);
@@ -73,27 +78,45 @@ public class AddTodoActivity extends AppCompatActivity {
 
                 Todo todo = new Todo(todoName, description, false);
                 todoViewModel.insertTodo(todo);
-                setNotificationForDueTime(notificationTime);
-                onBackPressed();
 
+                if (notificationTime != null) {
+                    setNotification(notificationTime, todoName, "Remind task ! ❤❤😊😂😁💕🤞🤞😊😂😁💕🤞🤞", "reminder");
+                }
+
+                if (dueTimePick != null) {
+                    setNotification(dueTimePick, todoName, "Your task is due! Please go and do it! ❤❤❤❤❤❤❤❤😊😊😊😊😊", "dueTime");
+                }
+
+
+                onBackPressed();
             }
         });
+
 
         btnRemind.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openDateTimePicker();
+                openDateTimePicker(1);
+            }
+        });
+
+        btnDueTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDateTimePicker(2);
             }
         });
     }
 
-    private void openDateTimePicker() {
+    private void openDateTimePicker(int number) {
         final Calendar calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
         int minute = calendar.get(Calendar.MINUTE);
+
+        final Date[] dueTime = new Date[1]; // Array to hold the dueTime value
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(AddTodoActivity.this,
                 new DatePickerDialog.OnDateSetListener() {
@@ -112,9 +135,13 @@ public class AddTodoActivity extends AppCompatActivity {
 
                                         Calendar dueTimeCalendar = Calendar.getInstance();
                                         dueTimeCalendar.set(selectedYear, selectedMonth, selectedDayOfMonth, selectedHourOfDay, selectedMinute);
-                                        Date dueTime = dueTimeCalendar.getTime();
-                                        notificationTime = dueTimeCalendar.getTime();
-//                                        setNotificationForDueTime(dueTime);
+                                        Date dueTime = dueTimeCalendar.getTime(); // Store the dueTime value
+                                        if (number == 1) {
+                                            notificationTime = dueTime;
+                                        } else if (number == 2) {
+                                            dueTimePick = dueTime;
+                                        }
+//                                  setNotificationForDueTime(dueTime);
                                     }
                                 }, hour, minute, false);
                         timePickerDialog.show();
@@ -122,26 +149,41 @@ public class AddTodoActivity extends AppCompatActivity {
                 }, year, month, day);
         datePickerDialog.getDatePicker().setMinDate(System.currentTimeMillis());
         datePickerDialog.show();
+
     }
 
-    private void setNotificationForDueTime(Date dueTime) {
-        long dueTimeMillis = dueTime.getTime();
+
+    private void setNotification(Date time, String title, String description, String notificationType) {
+        long notificationTimeMillis = time.getTime();
 
         try {
             Intent intent = new Intent(this, NotificationBroadcastReceiver.class);
-            intent.putExtra("todoName", etTodoName.getText().toString());
-            intent.putExtra("description", "Your task is due! Please go and do it! ❤❤❤❤❤❤❤❤😊😊😊😊😊");
+            if (notificationType.equals("reminder")) {
+                intent.putExtra("todoName", "Reminder: " + title);
+                intent.putExtra("type", "reminder");
+            } else if (notificationType.equals("dueTime")) {
+                intent.putExtra("todoName", "Due Time: " + title);
+                intent.putExtra("type", "dueTime");
+            }
+            int requestCode;
+            if (notificationType.equals("reminder")) {
+                requestCode = 0;
+            } else {
+                requestCode = 1;
+            }
+            intent.putExtra("description", description);
             AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
             if (alarmManager != null) {
-                PendingIntent alarmPendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
+                PendingIntent alarmPendingIntent = PendingIntent.getBroadcast(this, requestCode, intent, PendingIntent.FLAG_IMMUTABLE);
                 alarmManager.cancel(alarmPendingIntent);
-                alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, dueTimeMillis - 20000, alarmPendingIntent);
+                alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, notificationTimeMillis - 20000, alarmPendingIntent);
             }
 
-            Toast.makeText(AddTodoActivity.this, "Notification set for " + dueTime.toString(), Toast.LENGTH_LONG).show();
+            Toast.makeText(AddTodoActivity.this, "Notification set for " + time.toString(), Toast.LENGTH_LONG).show();
         } catch (SecurityException e) {
             Toast.makeText(AddTodoActivity.this, "Notification permission denied", Toast.LENGTH_LONG).show();
             e.printStackTrace();
         }
     }
+
 }
