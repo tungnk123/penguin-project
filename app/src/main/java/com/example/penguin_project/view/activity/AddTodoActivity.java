@@ -8,9 +8,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -22,8 +25,10 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.penguin_project.R;
 import com.example.penguin_project.model.repo.local.Table.Todo;
 import com.example.penguin_project.utils.NotificationBroadcastReceiver;
+import com.example.penguin_project.view.adapter.CustomSpinnerAdapter;
 import com.example.penguin_project.viewmodel.TodoViewModel;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -41,7 +46,9 @@ public class AddTodoActivity extends AppCompatActivity {
 
     public Date dueTimePick;
 
-    public int requestCode = 0;
+
+    public boolean isRepeating = false;
+    public String repeatType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +104,7 @@ public class AddTodoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 openDateTimePicker(1);
+
             }
         });
 
@@ -104,9 +112,52 @@ public class AddTodoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 openDateTimePicker(2);
+
             }
         });
+
+        Spinner spinner = findViewById(R.id.spner_activityAddTodo_repeatSpinner);
+        CharSequence[] options = getResources().getTextArray(R.array.spinner_options);
+        CustomSpinnerAdapter adapter = new CustomSpinnerAdapter(this, R.layout.custom_spinner_item, options);
+        spinner.setAdapter(adapter);
+        spinner.setSelection(0);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // Handle the selected item
+                // TODO: xu ly phan repeat tai day
+                String selectedOption = options[position].toString();
+
+                switch (selectedOption) {
+                    case "Every day":
+                        //
+                        setRepeatDalyNotification();
+                        break;
+                    case "Every week":
+                        setRepeatWeekNotification();
+                        break;
+                    case "Every month":
+                        setRepeatMonthNotification();
+                        break;
+                    case "Every year":
+                        setRepeatYearNotification();
+                        break;
+
+                    default:
+                        Toast.makeText(AddTodoActivity.this, "Not repeaat", Toast.LENGTH_LONG).show();
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Handle the case when nothing is selected
+            }
+        });
+
     }
+
 
     private void openDateTimePicker(int number) {
         final Calendar calendar = Calendar.getInstance();
@@ -138,8 +189,16 @@ public class AddTodoActivity extends AppCompatActivity {
                                         Date dueTime = dueTimeCalendar.getTime(); // Store the dueTime value
                                         if (number == 1) {
                                             notificationTime = dueTime;
+                                            SimpleDateFormat formatter
+                                                    = new SimpleDateFormat("hh:mm dd.MM.yyyy ");
+                                            String btnText = "Remind time at " + formatter.format(notificationTime);
+                                            btnRemind.setText(btnText);
                                         } else if (number == 2) {
                                             dueTimePick = dueTime;
+                                            SimpleDateFormat formatter
+                                                    = new SimpleDateFormat("dd.MM.yyyy ");
+                                            String btnText = "Due date:" +  formatter.format(dueTimePick);
+                                            btnDueTime.setText(btnText);
                                         }
 //                                  setNotificationForDueTime(dueTime);
                                     }
@@ -176,7 +235,38 @@ public class AddTodoActivity extends AppCompatActivity {
             if (alarmManager != null) {
                 PendingIntent alarmPendingIntent = PendingIntent.getBroadcast(this, requestCode, intent, PendingIntent.FLAG_IMMUTABLE);
                 alarmManager.cancel(alarmPendingIntent);
-                alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, notificationTimeMillis - 20000, alarmPendingIntent);
+                if (!isRepeating) {
+                    alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, notificationTimeMillis - 20000, alarmPendingIntent);
+                } else {
+                    switch (repeatType) {
+                        case "Every day":
+                            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, notificationTimeMillis - 20000, AlarmManager.INTERVAL_DAY, alarmPendingIntent);
+                            break;
+                        case "Every week":
+                            Calendar nextWeek = Calendar.getInstance();
+                            nextWeek.setTimeInMillis(notificationTimeMillis);
+                            nextWeek.add(Calendar.WEEK_OF_YEAR, 1);
+                            long nextWeekMillis = nextWeek.getTimeInMillis();
+                            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, nextWeekMillis - 20000, AlarmManager.INTERVAL_DAY * 7, alarmPendingIntent);
+                            break;
+                        case "Every month":
+                            Calendar nextMonth = Calendar.getInstance();
+                            nextMonth.setTimeInMillis(notificationTimeMillis);
+                            nextMonth.add(Calendar.MONTH, 1);
+                            long nextMonthMillis = nextMonth.getTimeInMillis();
+                            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, nextMonthMillis - 20000, AlarmManager.INTERVAL_DAY * 30, alarmPendingIntent);
+                            break;
+                        case "Every year":
+                            Calendar nextYear = Calendar.getInstance();
+                            nextYear.setTimeInMillis(notificationTimeMillis);
+                            nextYear.add(Calendar.YEAR, 1);
+                            long nextYearMillis = nextYear.getTimeInMillis();
+                            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, nextYearMillis, AlarmManager.INTERVAL_DAY * 365, alarmPendingIntent);
+                            break;
+
+                    }
+                }
+
             }
 
             Toast.makeText(AddTodoActivity.this, "Notification set for " + time.toString(), Toast.LENGTH_LONG).show();
@@ -184,6 +274,27 @@ public class AddTodoActivity extends AppCompatActivity {
             Toast.makeText(AddTodoActivity.this, "Notification permission denied", Toast.LENGTH_LONG).show();
             e.printStackTrace();
         }
+    }
+
+
+    private void setRepeatDalyNotification() {
+        isRepeating = true;
+        repeatType = "Every day";
+    }
+
+    private void setRepeatWeekNotification() {
+        isRepeating = true;
+        repeatType = "Every week";
+    }
+
+    private void setRepeatMonthNotification() {
+        isRepeating = true;
+        repeatType = "Every month";
+    }
+
+    private void setRepeatYearNotification() {
+        isRepeating = true;
+        repeatType = "Every year";
     }
 
 }
