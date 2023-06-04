@@ -55,6 +55,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="30dp"
         android:background="@drawable/title_shape"
+        android:backgroundTint="@color/black_item"
         android:hint="Input todo name"
         android:inputType="text"
         android:padding="10dp"
@@ -71,7 +72,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="25dp"
         android:layout_marginEnd="30dp"
-        android:backgroundTint="@color/black_title"
+        android:backgroundTint="@color/lavender"
         android:text="Them steps"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -115,7 +116,7 @@
             android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="30dp"
-            android:backgroundTint="@color/black_title"
+            android:backgroundTint="@color/lavender"
             android:text="Remind me"
             app:layout_constraintStart_toEndOf="@+id/img_activityAddTodo_remindIcon"
             app:layout_constraintTop_toBottomOf="@+id/tv_activityAddTodo_advancedCustom" />
@@ -144,7 +145,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
-            android:backgroundTint="@color/black_title"
+            android:backgroundTint="@color/lavender"
             android:paddingTop="5dp"
             android:text="Choose due time"
             app:layout_constraintStart_toStartOf="parent"
@@ -168,17 +169,15 @@
             android:layout_marginStart="40dp"
             android:src="@drawable/icon_repeat" />
 
-        <Button
-            android:id="@+id/btn_activityAddTodo_repeatButton"
+        <Spinner
+            android:id="@+id/spner_activityAddTodo_repeatSpinner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="5dp"
             android:layout_marginEnd="30dp"
-            android:backgroundTint="@color/black_title"
-            android:text="Repeat"
-            app:layout_constraintStart_toEndOf="@+id/img_activityAddTodo_repeatIcon"
-            app:layout_constraintTop_toBottomOf="@+id/tv_activityAddTodo_advancedCustom" />
+            android:background="@color/lavender"
+            android:contentDescription="Repeat Spinner"
+            android:paddingTop="8dp" />
 
     </LinearLayout>
 
@@ -206,6 +205,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="30dp"
         android:background="@drawable/title_shape"
+        android:backgroundTint="@color/black_item"
         android:hint="Input description"
         android:inputType="text"
         android:padding="10dp"
