@@ -27,8 +27,7 @@ public class Habits {
     private int CurrentStreak;
     private int MaxStreak;
 
-    public Habits(int Habit_id, String Title, int TimeOfDay_id, int TimePerDay, int Group_id, int Color, int Icon, LocalDate CreateDay, int CurrentStreak, int MaxStreak) {
-        this.Habit_id = Habit_id;
+    public Habits(String Title, int TimeOfDay_id, int TimePerDay, int Group_id, int Color, int Icon, LocalDate CreateDay, int CurrentStreak, int MaxStreak) {
         this.Title = Title;
         this.TimeOfDay_id = TimeOfDay_id;
         this.TimePerDay = TimePerDay;
