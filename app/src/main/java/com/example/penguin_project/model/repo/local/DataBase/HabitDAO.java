@@ -1,8 +1,11 @@
 package com.example.penguin_project.model.repo.local.DataBase;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.penguin_project.model.repo.local.Table.HabitGroup;
 import com.example.penguin_project.model.repo.local.Table.Habit_Day;
@@ -10,6 +13,7 @@ import com.example.penguin_project.model.repo.local.Table.Habit_DayOfWeek;
 import com.example.penguin_project.model.repo.local.Table.Habits;
 import com.example.penguin_project.model.repo.local.Table.RemindTime;
 import com.example.penguin_project.model.repo.local.Table.Steps;
+import com.example.penguin_project.model.repo.local.Table.StoreItem;
 import com.example.penguin_project.model.repo.local.Table.TimeOfDay;
 import com.example.penguin_project.model.repo.local.Table.Todo;
 
@@ -44,7 +48,7 @@ public interface HabitDAO {
     @Query("Select * from TimeOfDay")
     List<TimeOfDay> getTimeOfDayList();
 
-    // Todo
+    //region TodoQuery
     @Insert
     void insertTodo(Todo todo);
 
@@ -83,7 +87,33 @@ public interface HabitDAO {
     @Query("DELETE FROM Steps WHERE Step_id = :step_id")
     void deleteSteps(int step_id);
 
+    //endregion
+
+    //region Query for Store Item
+    @Query("SELECT * FROM StoreItem")
+    LiveData<List<StoreItem>> getStoreItem();
+
+    @Query("SELECT * FROM StoreItem WHERE Item_id=:item_id")
+    LiveData<List<StoreItem>> getStoreItemById(int item_id);
+
+    @Query("SELECT * FROM StoreItem WHERE ItemName = :itemName")
+    LiveData<List<StoreItem>> getStoreItemByName(String itemName);
+
+    @Insert
+    void insertStoreItem(StoreItem storeItem);
+
+    @Query("UPDATE StoreItem SET ItemName = :itemName WHERE Item_id =:item_id")
+    void updateItemName(int item_id, String itemName);
+
+    @Query("UPDATE StoreItem SET ItemImg = :itemImg WHERE Item_id =:item_id")
+    void updateItemImg(int item_id, int itemImg);
+
+    @Query("UPDATE StoreItem SET ItemPrice =:itemPrice WHERE Item_id =:item_id")
+    void updateItemPrice(int item_id, int itemPrice);
+
+    @Query("DELETE FROM StoreItem WHERE Item_id =:item_id")
+    void deleteItem(int item_id);
 
 
-    //
+    //endregion
 }
