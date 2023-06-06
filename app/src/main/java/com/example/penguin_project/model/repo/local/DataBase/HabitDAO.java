@@ -111,6 +111,9 @@ public interface HabitDAO {
     @Query("UPDATE StoreItem SET ItemPrice =:itemPrice WHERE Item_id =:item_id")
     void updateItemPrice(int item_id, int itemPrice);
 
+    @Query("UPDATE StoreItem SET IsPurchased =:isPurchased WHERE Item_id =:item_id")
+    void updateIsPurchasedById(int item_id, boolean isPurchased);
+
     @Query("DELETE FROM StoreItem WHERE Item_id =:item_id")
     void deleteItem(int item_id);
 

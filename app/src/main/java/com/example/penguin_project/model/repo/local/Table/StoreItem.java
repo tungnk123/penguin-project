@@ -12,12 +12,22 @@ public class StoreItem {
     private int ItemImg;
     private String Description;
 
+    private boolean IsPurchased;
+
     public int getItem_id() {
         return Item_id;
     }
 
     public void setItem_id(int Item_id) {
         this.Item_id = Item_id;
+    }
+
+    public boolean getIsPurchased() {
+        return IsPurchased;
+    }
+
+    public void setIsPurchased(boolean IsPurchased) {
+        this.IsPurchased = IsPurchased;
     }
 
     public String getItemName() {
@@ -44,6 +54,13 @@ public class StoreItem {
         this.ItemImg = ItemImg;
     }
 
+    public StoreItem(String itemName, int itemPrice, int itemImg, String description) {
+        ItemName = itemName;
+        ItemPrice = itemPrice;
+        ItemImg = itemImg;
+        Description = description;
+    }
+
     public String getDescription() {
         return Description;
     }
@@ -59,7 +76,6 @@ public class StoreItem {
         this.ItemImg = ItemImg;
         this.Description = Description;
     }
-
 
 
 }
