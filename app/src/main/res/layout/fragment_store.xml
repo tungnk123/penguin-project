@@ -84,11 +84,11 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcv_storeFragment_treeList"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="200dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="14dp"
                 android:layout_marginEnd="30dp"
-                android:background="@color/black_item"
+                android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_storeFragment_trees" />
@@ -107,11 +107,11 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcv_storeFragment_themeList"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="200dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="14dp"
                 android:layout_marginEnd="30dp"
-                android:background="@color/black_item"
+                android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_storeFragment_theme" />
@@ -130,11 +130,11 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcv_storeFragment_musicList"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="200dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="14dp"
                 android:layout_marginEnd="30dp"
-                android:background="@color/black_item"
+                android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_storeFragment_music" />
@@ -153,11 +153,11 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcv_storeFragment_specialItemsList"
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="200dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="14dp"
                 android:layout_marginEnd="30dp"
-                android:background="@color/black_item"
+                android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_storeFragment_specialItem" />

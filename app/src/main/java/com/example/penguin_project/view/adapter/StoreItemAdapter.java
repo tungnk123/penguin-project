@@ -1,5 +1,7 @@
 package com.example.penguin_project.view.adapter;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,11 +47,14 @@ public class StoreItemAdapter extends RecyclerView.Adapter<StoreItemAdapter.Stor
     public void onBindViewHolder(@NonNull StoreItemAdapter.StoreItemViewHolder holder, int position) {
             StoreItem storeItem = storeItemList.get(position);
             holder.imgIcon.setImageResource(storeItem.getItemImg());
-            holder.tvCoinNumber.setText(storeItem.getItemPrice());
+            holder.tvCoinNumber.setText(String.valueOf(storeItem.getItemPrice()));
     }
 
     @Override
     public int getItemCount() {
+        if (storeItemList == null) {
+            return 0;
+        }
         return storeItemList.size();
     }
 
@@ -58,19 +63,45 @@ public class StoreItemAdapter extends RecyclerView.Adapter<StoreItemAdapter.Stor
         ImageView imgIcon;
         LinearLayout llCoinWrapper;
 
+        ImageView imgCoin;
+
         StoreItemViewHolder (View itemView) {
             super(itemView);
             tvCoinNumber = itemView.findViewById(R.id.tv_storeItem_coin);
             imgIcon = itemView.findViewById(R.id.img_storeItem_icon);
             llCoinWrapper = itemView.findViewById(R.id.ll_storeItem_iconWrapper);
+            imgCoin = itemView.findViewById(R.id.img_storeItem_coin);
 
-            llCoinWrapper.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    // TODO xu ly khi nhan buy, hien dialog thong bao
-                    Toast.makeText(itemView.getContext(), "Buy click", Toast.LENGTH_LONG);
-                }
-            });
+            if (!tvCoinNumber.getText().equals("Purchased")) {
+                llCoinWrapper.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(itemView.getContext());
+                        builder.setTitle("Confirm Buy")
+                                .setMessage("Are you sure you want to buy this item?")
+                                .setPositiveButton("Buy", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        // TODO handle buy action
+                                        Toast.makeText(itemView.getContext(), "Item bought!", Toast.LENGTH_SHORT).show();
+                                        // Add your code here to perform the buy action
+                                        tvCoinNumber.setText("Purchased");
+                                        imgCoin.setVisibility(View.GONE);
+                                        llCoinWrapper.setBackgroundColor(view.getContext().getResources().getColor(R.color.grey));
+
+                                    }
+                                })
+                                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        // Dialog dismissed, do nothing
+                                    }
+                                })
+                                .show();
+                    }
+                });
+            }
+
 
         }
     }

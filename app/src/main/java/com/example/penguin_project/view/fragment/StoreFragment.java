@@ -3,64 +3,99 @@ package com.example.penguin_project.view.fragment;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.penguin_project.R;
+import com.example.penguin_project.model.repo.local.Table.StoreItem;
+import com.example.penguin_project.view.adapter.StoreItemAdapter;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link StoreFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class StoreFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private RecyclerView rcvTreeItems;
+    private RecyclerView rcvMusicItems;
+    private RecyclerView rcvThemeItems;
+    private RecyclerView rcvSpecialItems;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private StoreItemAdapter storeItemAdapter;
 
-    public StoreFragment() {
-        // Required empty public constructor
-    }
+    private List<StoreItem> treeItemsList;
+    private List<StoreItem> musicItemsList;
+    private List<StoreItem> themeItemsList;
+    private List<StoreItem> specialItemsList;
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment StoreFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static StoreFragment newInstance(String param1, String param2) {
-        StoreFragment fragment = new StoreFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_store, container, false);
+        View view = inflater.inflate(R.layout.fragment_store, container, false);
+        //region Anh xa
+        rcvTreeItems = view.findViewById(R.id.rcv_storeFragment_treeList);
+        rcvThemeItems = view.findViewById(R.id.rcv_storeFragment_themeList);
+        rcvMusicItems = view.findViewById(R.id.rcv_storeFragment_musicList);
+        rcvSpecialItems = view.findViewById(R.id.rcv_storeFragment_specialItemsList);
+        //endregion
+        //region Set Layout Manager
+        rcvTreeItems.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        rcvMusicItems.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        rcvThemeItems.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));;
+        rcvSpecialItems.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+
+        //endregion
+
+        //region Set data for list
+        treeItemsList = new ArrayList<>();
+        musicItemsList = new ArrayList<>();
+        themeItemsList = new ArrayList<>();
+        specialItemsList = new ArrayList<>();
+
+        treeItemsList.add(new StoreItem("Cay ABC", 12, R.mipmap.icon_bonsai, "Description"));
+        treeItemsList.add(new StoreItem("Cay A", 2, R.mipmap.oak, "Description"));
+        treeItemsList.add(new StoreItem("Cay B", 122, R.mipmap.icon_bonsai_1, "Description"));
+        treeItemsList.add(new StoreItem("Cay C", 120, R.mipmap.icon_bonsai_2, "Description"));
+
+        themeItemsList.add(new StoreItem("Cay ABC", 12, R.mipmap.icon_bonsai, "Description"));
+        themeItemsList.add(new StoreItem("Cay A", 2, R.mipmap.oak, "Description"));
+        themeItemsList.add(new StoreItem("Cay B", 122, R.mipmap.icon_bonsai_1, "Description"));
+        themeItemsList.add(new StoreItem("Cay C", 120, R.mipmap.icon_bonsai_2, "Description"));
+
+        musicItemsList.add(new StoreItem("Cay ABC", 12, R.mipmap.icon_bonsai, "Description"));
+        musicItemsList.add(new StoreItem("Cay A", 2, R.mipmap.oak, "Description"));
+        musicItemsList.add(new StoreItem("Cay B", 122, R.mipmap.icon_bonsai_1, "Description"));
+        musicItemsList.add(new StoreItem("Cay C", 120, R.mipmap.icon_bonsai_2, "Description"));
+
+        specialItemsList.add(new StoreItem("Cay ABC", 12, R.mipmap.icon_bonsai, "Description"));
+        specialItemsList.add(new StoreItem("Cay A", 2, R.mipmap.oak, "Description"));
+        specialItemsList.add(new StoreItem("Cay B", 122, R.mipmap.icon_bonsai_1, "Description"));
+        specialItemsList.add(new StoreItem("Cay C", 120, R.mipmap.icon_bonsai_2, "Description"));
+        //endregion
+        //region Set Adapter cho RecyclerView
+        storeItemAdapter = new StoreItemAdapter(treeItemsList, this){
+
+        };
+        rcvTreeItems.setAdapter(storeItemAdapter);
+        storeItemAdapter = new StoreItemAdapter(themeItemsList, this){
+
+        };
+        rcvThemeItems.setAdapter(storeItemAdapter);
+        storeItemAdapter = new StoreItemAdapter(musicItemsList, this){
+
+        };
+        rcvMusicItems.setAdapter(storeItemAdapter);
+        storeItemAdapter = new StoreItemAdapter(specialItemsList, this){
+
+        };
+        rcvSpecialItems.setAdapter(storeItemAdapter);
+
+        //endregion
+        return view;
     }
 }
