@@ -10,11 +10,15 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.constraintlayout.widget.Constraints;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.work.NetworkType;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,6 +30,7 @@ import android.widget.Toast;
 
 import com.example.penguin_project.R;
 import com.example.penguin_project.model.data.HabitDate;
+import com.example.penguin_project.model.data.ResetHabitsWorker;
 import com.example.penguin_project.model.repo.local.DataBase.HabitDataBase;
 import com.example.penguin_project.model.repo.local.Table.HabitGroup;
 import com.example.penguin_project.model.repo.local.Table.Habit_DayOfWeek;
@@ -38,7 +43,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class HomeFragment extends Fragment {
     RecyclerView rcv_DatePicker, rcv_HabitListAnytime, rcv_HabitListMorning, rcv_HabitListAfternoon, rcv_HabitListEvening, rcv_HabitListCompleted, rcv_HabitListFailed;
@@ -78,6 +85,9 @@ public class HomeFragment extends Fragment {
 //        getContext().deleteDatabase("Habit.db");
 //
 //        setData();
+
+        scheduleResetHabitsJob();
+        
         selectedDayOfWeek = LocalDate.now().getDayOfWeek();
         
         Setting_DayOfWeekAndDayOfMonth();
@@ -91,6 +101,29 @@ public class HomeFragment extends Fragment {
         Setting_btnAddHabit();
 
         return view;
+    }
+
+    private void scheduleResetHabitsJob() {
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+        calendar.set(Calendar.HOUR_OF_DAY, 1); // Thay đổi giờ và phút theo nhu cầu
+        calendar.set(Calendar.MINUTE, 0);
+
+// Kiểm tra nếu ngày hiện tại đã là thứ 2, thì cộng thêm 1 tuần
+        if (calendar.getTimeInMillis() < System.currentTimeMillis()) {
+            calendar.add(Calendar.WEEK_OF_YEAR, 1);
+        }
+
+// Tính toán khoảng thời gian initialDelay
+        long initialDelay = calendar.getTimeInMillis() - System.currentTimeMillis();
+
+// Tạo công việc và đăng ký với WorkManager
+        OneTimeWorkRequest resetHabitsRequest =
+                new OneTimeWorkRequest.Builder(ResetHabitsWorker.class)
+                        .setInitialDelay(initialDelay, TimeUnit.MILLISECONDS)
+                        .build();
+
+        WorkManager.getInstance(getContext()).enqueue(resetHabitsRequest);
     }
 
     private void setData() {
@@ -108,7 +141,7 @@ public class HomeFragment extends Fragment {
 //        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(selectedDayOfWeek.getValue(), 1, false, 0, false));
 //        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(selectedDayOfWeek.getValue(), 2, false, 0, false));
 //        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(selectedDayOfWeek.getValue(), 3, false, 0, false));
-        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(selectedDayOfWeek.getValue(), 4, false, 0, false));
+//        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(selectedDayOfWeek.getValue(), 4, false, 0, false));
     }
 
     private void Setting_btnAddHabit() {
