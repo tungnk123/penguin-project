@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
+
 import com.example.penguin_project.view.fragment.HomeFragment;
 import com.example.penguin_project.view.fragment.MenuFragment;
 import com.example.penguin_project.view.fragment.StoreFragment;

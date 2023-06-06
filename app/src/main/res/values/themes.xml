@@ -12,5 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">@color/lavender</item>
         <!-- Customize your theme here. -->
+        <!-- Customize text hint theme -->
+        <item name="android:textColorHint">@color/grey_hint</item>
     </style>
 </resources>
