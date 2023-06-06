@@ -12,7 +12,27 @@ public class StoreItem {
     private int ItemImg;
     private String Description;
 
+    private String StoreItemType;
+
+    public StoreItem(int item_id, String itemName, int itemPrice, int itemImg, String description, String storeItemType, boolean isPurchased) {
+        Item_id = item_id;
+        ItemName = itemName;
+        ItemPrice = itemPrice;
+        ItemImg = itemImg;
+        Description = description;
+        StoreItemType = storeItemType;
+        IsPurchased = isPurchased;
+    }
+
     private boolean IsPurchased;
+
+    public String getStoreItemType() {
+        return StoreItemType;
+    }
+
+    public void setStoreItemType(String storeItemType) {
+        StoreItemType = storeItemType;
+    }
 
     public int getItem_id() {
         return Item_id;
