@@ -1,5 +1,6 @@
 package com.example.penguin_project.view.fragment;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -19,7 +20,9 @@ import com.example.penguin_project.R;
 import com.example.penguin_project.model.data.HabitDate;
 import com.example.penguin_project.model.repo.local.DataBase.HabitDataBase;
 import com.example.penguin_project.model.repo.local.Table.HabitGroup;
+import com.example.penguin_project.view.activity.HabitCreateThemeActivity;
 import com.example.penguin_project.view.adapter.DatePicker_Adapter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -30,6 +33,7 @@ public class HomeFragment extends Fragment {
     TextView txt_Coin;
     ArrayList<HabitDate> arrDate;
     DatePicker_Adapter datePicker_adapter;
+    FloatingActionButton fabCreateHabit;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -81,6 +85,17 @@ public class HomeFragment extends Fragment {
         rcv_DatePicker.setAdapter(datePicker_adapter);
 
         HabitDataBase.getInstance(getContext()).habitDAO().getHabit_DayOfWeekList();
+
+        fabCreateHabit = view.findViewById(R.id.fabCreateHabit);
+
+        fabCreateHabit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), HabitCreateThemeActivity.class);
+                startActivity(intent);
+            }
+        });
+
         return view;
     }
 
@@ -115,4 +130,6 @@ public class HomeFragment extends Fragment {
         }
 
     }
+
+
 }
