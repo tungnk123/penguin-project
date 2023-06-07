@@ -1,0 +1,12 @@
+<Button xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tvTimeOfWeek"
+    android:text="2"
+    android:layout_width="50dp"
+    android:layout_height="50dp"
+    android:background="@drawable/circle_shape"
+    android:textColor="#FFFFFF"
+    android:textSize="16sp"
+    android:textStyle="bold"
+    android:layout_margin="4dp"
+    android:padding="8dp"
+    android:stateListAnimator="@null" />
