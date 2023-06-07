@@ -14,8 +14,7 @@ public class StoreItem {
 
     private String StoreItemType;
 
-    public StoreItem(int item_id, String itemName, int itemPrice, int itemImg, String description, String storeItemType, boolean isPurchased) {
-        Item_id = item_id;
+    public StoreItem(String itemName, int itemPrice, int itemImg, String description, String storeItemType, boolean isPurchased) {
         ItemName = itemName;
         ItemPrice = itemPrice;
         ItemImg = itemImg;

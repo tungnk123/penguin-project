@@ -47,6 +47,7 @@ public class StoreItemAdapter extends RecyclerView.Adapter<StoreItemAdapter.Stor
     public void onBindViewHolder(@NonNull StoreItemAdapter.StoreItemViewHolder holder, int position) {
             StoreItem storeItem = storeItemList.get(position);
             holder.imgIcon.setImageResource(storeItem.getItemImg());
+            holder.tvItemName.setText(storeItem.getItemName());
             holder.tvCoinNumber.setText(String.valueOf(storeItem.getItemPrice()));
     }
 
@@ -61,6 +62,7 @@ public class StoreItemAdapter extends RecyclerView.Adapter<StoreItemAdapter.Stor
     public class StoreItemViewHolder extends RecyclerView.ViewHolder {
         TextView tvCoinNumber;
         ImageView imgIcon;
+        TextView tvItemName;
         LinearLayout llCoinWrapper;
 
         ImageView imgCoin;
@@ -70,6 +72,7 @@ public class StoreItemAdapter extends RecyclerView.Adapter<StoreItemAdapter.Stor
             tvCoinNumber = itemView.findViewById(R.id.tv_storeItem_coin);
             imgIcon = itemView.findViewById(R.id.img_storeItem_icon);
             llCoinWrapper = itemView.findViewById(R.id.ll_storeItem_iconWrapper);
+            tvItemName = itemView.findViewById(R.id.tv_storeItem_itemName);
             imgCoin = itemView.findViewById(R.id.img_storeItem_coin);
 
             if (!tvCoinNumber.getText().equals("Purchased")) {
