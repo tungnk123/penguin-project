@@ -2,10 +2,4 @@
     <string name="app_name">penguin-project</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="create_new_habit">Thêm thói quen mới</string>
-    <string name="name_of_habit_cap">TÊN THÓI QUEN</string>
-    <string name="enter_habit_name_hint">Nhập tên thói quen</string>
-    <string name="icon_cap">ICON</string>
-    <string name="time_of_week_cap">THỜI GIAN THỰC HIỆN THÓI QUEN TRONG TUẦN</string>
-    <string name="time_of_date_cap">THỜI GIAN THỰC HIỆN THÓI QUEN TRONG NGÀY</string>
 </resources>
