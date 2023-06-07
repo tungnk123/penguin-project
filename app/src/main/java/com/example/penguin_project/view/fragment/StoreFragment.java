@@ -36,6 +36,10 @@ public class StoreFragment extends Fragment {
     private List<StoreItem> themeItemsList;
     private List<StoreItem> specialItemsList;
 
+    private StoreItemAdapter treeAdapter;
+    private StoreItemAdapter musicAdapter;
+    private StoreItemAdapter themeAdapter;
+    private StoreItemAdapter specialItemAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,11 +64,11 @@ public class StoreFragment extends Fragment {
         StoreItem tree3 = new StoreItem("Pine", 12, R.mipmap.icon_pine, "Desctioption", "tree", false);
         StoreItem tree4 = new StoreItem("Bamboo", 12, R.mipmap.icon_bamboo, "Desctioption", "tree", false);
         StoreItem tree5 = new StoreItem("Oak tree", 12, R.mipmap.icon_oak_tree, "Desctioption", "tree", false);
-        StoreItem theme1 = (new StoreItem("Pine Theme", 12, R.mipmap.icon_theme_pine, "Description", "theme", false));
-        StoreItem theme2 = (new StoreItem("Sand Theme", 2, R.mipmap.icon_theme_sand, "Description", "theme",false));
-        StoreItem theme3 = (new StoreItem("Swamp Theme", 122, R.mipmap.icon_theme_swamp, "Description", "theme",false));
-        StoreItem theme4 = (new StoreItem("Flower Theme", 120, R.mipmap.icon_theme_flower, "Description", "theme",false));
-        StoreItem theme5 = (new StoreItem("Beach Theme", 120, R.mipmap.icon_theme_beach, "Description", "theme",false));
+        StoreItem theme1 = (new StoreItem("Pine", 12, R.mipmap.icon_theme_pine, "Description", "theme", false));
+        StoreItem theme2 = (new StoreItem("Sand", 2, R.mipmap.icon_theme_sand, "Description", "theme",false));
+        StoreItem theme3 = (new StoreItem("Swamp", 122, R.mipmap.icon_theme_swamp, "Description", "theme",false));
+        StoreItem theme4 = (new StoreItem("Flower", 120, R.mipmap.icon_theme_flower, "Description", "theme",false));
+        StoreItem theme5 = (new StoreItem("Beach", 120, R.mipmap.icon_theme_beach, "Description", "theme",false));
         StoreItem music1 = (new StoreItem("Guitar", 12, R.mipmap.icon_music_guitar, "Description", "music", false));
         StoreItem music2 = (new StoreItem("Fire camp", 2, R.mipmap.icon_music_firecamp, "Description", "music", false));
         StoreItem music3 = (new StoreItem("Rain", 122, R.mipmap.icon_music_rain,"Description", "music", false));
@@ -77,47 +81,69 @@ public class StoreFragment extends Fragment {
         //endregion
 
         //region Add data into ViewModel
-        storeItemViewModel.insertStoreItem(tree1);
-        storeItemViewModel.insertStoreItem(tree2);
-        storeItemViewModel.insertStoreItem(tree3);
-        storeItemViewModel.insertStoreItem(tree4);
-        storeItemViewModel.insertStoreItem(tree5);
-        storeItemViewModel.insertStoreItem(music1);
-        storeItemViewModel.insertStoreItem(music2);
-        storeItemViewModel.insertStoreItem(music3);
-        storeItemViewModel.insertStoreItem(music4);
-        storeItemViewModel.insertStoreItem(theme1);
-        storeItemViewModel.insertStoreItem(theme2);
-        storeItemViewModel.insertStoreItem(theme3);
-        storeItemViewModel.insertStoreItem(theme4);
-        storeItemViewModel.insertStoreItem(theme5);
-        storeItemViewModel.insertStoreItem(specialItem1);
-        storeItemViewModel.insertStoreItem(specialItem2);
-        storeItemViewModel.insertStoreItem(specialItem3);
-        storeItemViewModel.insertStoreItem(specialItem4);
+        // Add data into ViewModel only if the lists are empty
+        if (storeItemViewModel.getStoreItemSize() == 0) {
+            storeItemViewModel.insertStoreItem(tree1);
+            storeItemViewModel.insertStoreItem(tree2);
+            storeItemViewModel.insertStoreItem(tree3);
+            storeItemViewModel.insertStoreItem(tree4);
+            storeItemViewModel.insertStoreItem(tree5);
+            storeItemViewModel.insertStoreItem(theme1);
+            storeItemViewModel.insertStoreItem(theme2);
+            storeItemViewModel.insertStoreItem(theme3);
+            storeItemViewModel.insertStoreItem(theme4);
+            storeItemViewModel.insertStoreItem(theme5);
+            storeItemViewModel.insertStoreItem(music1);
+            storeItemViewModel.insertStoreItem(music2);
+            storeItemViewModel.insertStoreItem(music3);
+            storeItemViewModel.insertStoreItem(music4);
+            storeItemViewModel.insertStoreItem(specialItem1);
+            storeItemViewModel.insertStoreItem(specialItem2);
+            storeItemViewModel.insertStoreItem(specialItem3);
+            storeItemViewModel.insertStoreItem(specialItem4);
+        }
+
+
+
 
         //endregion
+
+        // Create separate adapters for each section
+        treeAdapter = new StoreItemAdapter(treeItemsList, this, storeItemViewModel);
+        musicAdapter = new StoreItemAdapter(musicItemsList, this, storeItemViewModel);
+        themeAdapter = new StoreItemAdapter(themeItemsList, this, storeItemViewModel);
+        specialItemAdapter = new StoreItemAdapter(specialItemsList, this, storeItemViewModel);
+
+        // Set adapters to corresponding RecyclerViews
+        rcvTreeItems.setAdapter(treeAdapter);
+        rcvThemeItems.setAdapter(themeAdapter);
+        rcvMusicItems.setAdapter(musicAdapter);
+        rcvSpecialItems.setAdapter(specialItemAdapter);
 
         storeItemViewModel.getTreesList().observe(getViewLifecycleOwner(), trees -> {
             treeItemsList.clear();
             treeItemsList.addAll(trees);
-            storeItemAdapter.notifyDataSetChanged();
+            treeAdapter.notifyDataSetChanged();
         });
+
         storeItemViewModel.getThemesList().observe(getViewLifecycleOwner(), themes -> {
             themeItemsList.clear();
             themeItemsList.addAll(themes);
-            storeItemAdapter.notifyDataSetChanged();
+            themeAdapter.notifyDataSetChanged();
         });
+
         storeItemViewModel.getMusicsList().observe(getViewLifecycleOwner(), musics -> {
             musicItemsList.clear();
             musicItemsList.addAll(musics);
-            storeItemAdapter.notifyDataSetChanged();
+            musicAdapter.notifyDataSetChanged();
         });
+
         storeItemViewModel.getSpecialItemsList().observe(getViewLifecycleOwner(), specialItems -> {
             specialItemsList.clear();
             specialItemsList.addAll(specialItems);
-            storeItemAdapter.notifyDataSetChanged();
+            specialItemAdapter.notifyDataSetChanged();
         });
+
         //endregion
 
         //region Set Layout Manager
@@ -128,18 +154,7 @@ public class StoreFragment extends Fragment {
 
         //endregion
 
-        //region Set Adapter cho RecyclerView
-        storeItemAdapter = new StoreItemAdapter(treeItemsList, this);
-        rcvTreeItems.setAdapter(storeItemAdapter);
 
-        storeItemAdapter = new StoreItemAdapter(themeItemsList, this);
-        rcvThemeItems.setAdapter(storeItemAdapter);
-
-        storeItemAdapter = new StoreItemAdapter(musicItemsList, this);
-        rcvMusicItems.setAdapter(storeItemAdapter);
-
-        storeItemAdapter = new StoreItemAdapter(specialItemsList, this);
-        rcvSpecialItems.setAdapter(storeItemAdapter);
 
 
         //endregion

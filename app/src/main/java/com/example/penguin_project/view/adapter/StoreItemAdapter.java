@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.penguin_project.R;
 import com.example.penguin_project.model.repo.local.Table.StoreItem;
 import com.example.penguin_project.view.fragment.StoreFragment;
+import com.example.penguin_project.viewmodel.StoreItemViewModel;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -29,11 +30,14 @@ public class StoreItemAdapter extends RecyclerView.Adapter<StoreItemAdapter.Stor
     private final List<StoreItem> storeItemList;
 
     private final StoreFragment storeFragment;
+    private StoreItemViewModel storeItemViewModel;
 
 
-    public StoreItemAdapter(List<StoreItem> storeItemList, StoreFragment storeFragment) {
+    public StoreItemAdapter(List<StoreItem> storeItemList, StoreFragment storeFragment, StoreItemViewModel storeItemViewModel)
+    {
         this.storeItemList = storeItemList;
         this.storeFragment = storeFragment;
+        this.storeItemViewModel = storeItemViewModel;
     }
 
     @NonNull
@@ -88,10 +92,18 @@ public class StoreItemAdapter extends RecyclerView.Adapter<StoreItemAdapter.Stor
                                         // TODO handle buy action
                                         Toast.makeText(itemView.getContext(), "Item bought!", Toast.LENGTH_SHORT).show();
                                         // Add your code here to perform the buy action
+
+                                        // Get the clicked item
+                                        StoreItem clickedItem = storeItemList.get(getAdapterPosition());
+
+                                        // Update the purchase status
+                                        clickedItem.setIsPurchased(true);
+                                        storeItemViewModel.updateItemPurchased(clickedItem.getItem_id(), true);
+
+                                        // Update the UI
                                         tvCoinNumber.setText("Purchased");
                                         imgCoin.setVisibility(View.GONE);
                                         llCoinWrapper.setBackgroundColor(view.getContext().getResources().getColor(R.color.grey));
-
                                     }
                                 })
                                 .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -102,6 +114,7 @@ public class StoreItemAdapter extends RecyclerView.Adapter<StoreItemAdapter.Stor
                                 })
                                 .show();
                     }
+
                 });
             }
 
