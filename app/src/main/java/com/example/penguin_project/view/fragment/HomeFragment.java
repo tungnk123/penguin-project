@@ -1,6 +1,7 @@
 package com.example.penguin_project.view.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -28,6 +29,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.penguin_project.HabitsInfoActivity;
 import com.example.penguin_project.R;
 import com.example.penguin_project.model.data.HabitDate;
 import com.example.penguin_project.model.data.ResetHabitsWorker;
@@ -158,6 +160,14 @@ public class HomeFragment extends Fragment {
         habitsListFailed = HabitDataBase.getInstance(getContext()).habitDAO().getFailedHabits(selectedDayOfWeek.getValue());
 
         habitItemFailedAdapter = new HabitItemAdapter(habitsListFailed, getContext(), LocalDate.now().getDayOfWeek());
+        habitItemFailedAdapter.setOnItemClickListener(new HabitItemAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Habits habit) {
+                Intent intent = new Intent(getContext(), HabitsInfoActivity.class);
+                intent.putExtra("habitKey", habit);
+                startActivity(intent);
+            }
+        });
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         rcv_HabitListFailed.setLayoutManager(linearLayoutManager);
@@ -172,6 +182,14 @@ public class HomeFragment extends Fragment {
         habitsListCompleted = HabitDataBase.getInstance(getContext()).habitDAO().getDoneHabits(selectedDayOfWeek.getValue());
 
         habitItemCompletedAdapter = new HabitItemAdapter(habitsListCompleted,getContext(), LocalDate.now().getDayOfWeek());
+        habitItemCompletedAdapter.setOnItemClickListener(new HabitItemAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Habits habit) {
+                Intent intent = new Intent(getContext(), HabitsInfoActivity.class);
+                intent.putExtra("habitKey", habit);
+                startActivity(intent);
+            }
+        });
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         rcv_HabitListCompleted.setLayoutManager(linearLayoutManager);
@@ -186,6 +204,14 @@ public class HomeFragment extends Fragment {
         habitsListEvening = HabitDataBase.getInstance(getContext()).habitDAO().getEveningHabits(selectedDayOfWeek.getValue());
 
         habitItemEveningAdapter = new HabitItemAdapter(habitsListEvening,getContext(), LocalDate.now().getDayOfWeek());
+        habitItemEveningAdapter.setOnItemClickListener(new HabitItemAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Habits habit) {
+                Intent intent = new Intent(getContext(), HabitsInfoActivity.class);
+                intent.putExtra("habitKey", habit);
+                startActivity(intent);
+            }
+        });
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         rcv_HabitListEvening.setLayoutManager(linearLayoutManager);
@@ -200,6 +226,14 @@ public class HomeFragment extends Fragment {
         habitsListAfternoon = HabitDataBase.getInstance(getContext()).habitDAO().getAfternoonHabits(selectedDayOfWeek.getValue());
 
         habitItemAfterNoonAdapter = new HabitItemAdapter(habitsListAfternoon,getContext(), LocalDate.now().getDayOfWeek());
+        habitItemAfterNoonAdapter.setOnItemClickListener(new HabitItemAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Habits habit) {
+                Intent intent = new Intent(getContext(), HabitsInfoActivity.class);
+                intent.putExtra("habitKey", habit);
+                startActivity(intent);
+            }
+        });
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         rcv_HabitListAfternoon.setLayoutManager(linearLayoutManager);
@@ -214,6 +248,14 @@ public class HomeFragment extends Fragment {
         habitsListMorning = HabitDataBase.getInstance(getContext()).habitDAO().getMorningHabits(selectedDayOfWeek.getValue());
 
         habitItemMorningAdapter = new HabitItemAdapter(habitsListMorning,getContext(), LocalDate.now().getDayOfWeek());
+        habitItemMorningAdapter.setOnItemClickListener(new HabitItemAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Habits habit) {
+                Intent intent = new Intent(getContext(), HabitsInfoActivity.class);
+                intent.putExtra("habitKey", habit);
+                startActivity(intent);
+            }
+        });
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         rcv_HabitListMorning.setLayoutManager(linearLayoutManager);
@@ -228,6 +270,14 @@ public class HomeFragment extends Fragment {
         habitsListAnytime = HabitDataBase.getInstance(getContext()).habitDAO().getAnytimeHabits(selectedDayOfWeek.getValue());
 
         habitItemAnytimeAdapter = new HabitItemAdapter(habitsListAnytime,getContext(), LocalDate.now().getDayOfWeek());
+        habitItemAnytimeAdapter.setOnItemClickListener(new HabitItemAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Habits habit) {
+                Intent intent = new Intent(getContext(), HabitsInfoActivity.class);
+                intent.putExtra("habitKey", habit);
+                startActivity(intent);
+            }
+        });
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         rcv_HabitListAnytime.setLayoutManager(linearLayoutManager);

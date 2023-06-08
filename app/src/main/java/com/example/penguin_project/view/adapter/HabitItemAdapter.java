@@ -20,6 +20,7 @@ import com.example.penguin_project.model.repo.local.Table.Habit_DayOfWeek;
 import com.example.penguin_project.model.repo.local.Table.Habits;
 
 import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,6 +64,14 @@ public class HabitItemAdapter extends RecyclerView.Adapter<HabitItemAdapter.Item
         holder.item_Title.setText(itemName.getTitle());
         holder.itemIcon.setImageResource(itemName.getIcon());
         holder.item_timePerDay.setText(String.valueOf(itemName.getTimePerDay()));
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(mListener != null){
+                    mListener.onItemClick(itemName);
+                }
+            }
+        });
     }
 
     @Override
@@ -104,6 +113,14 @@ public class HabitItemAdapter extends RecyclerView.Adapter<HabitItemAdapter.Item
     }
     public void updateDayOfWeek(DayOfWeek dayOfWeek){
         this.dayOfWeek = dayOfWeek;
+    }
+
+    public interface OnItemClickListener{
+        void onItemClick(Habits habit);
+    }
+    private OnItemClickListener mListener;
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        mListener = listener;
     }
 
     public class ItemViewHolder extends RecyclerView.ViewHolder {

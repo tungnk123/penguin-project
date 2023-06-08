@@ -101,6 +101,9 @@ public interface HabitDAO {
     List<Habit_DayOfWeek> findHabitDOWByID(int habits_id, int dayOfWeek);
     //
 
+    @Query("Select * from Habit_DayOfWeek where Habit_DayOfWeek.Habit_id = :habits_id")
+    List<Habit_DayOfWeek> getListHabitDOWByID(int habits_id);
+
     @Update
     void updateHabits(Habits habits);
     @Update
