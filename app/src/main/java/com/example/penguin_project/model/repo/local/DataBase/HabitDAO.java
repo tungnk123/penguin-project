@@ -1,6 +1,7 @@
 package com.example.penguin_project.model.repo.local.DataBase;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
@@ -108,4 +109,9 @@ public interface HabitDAO {
     void updateHabits(Habits habits);
     @Update
     void updateHabit_DayOfWeek(Habit_DayOfWeek habit_dayOfWeek);
+
+    @Delete
+    void deleteHabit(Habits habits);
+    @Delete
+    void deleteHabitDayOfWeek(Habit_DayOfWeek habit_dayOfWeek);
 }

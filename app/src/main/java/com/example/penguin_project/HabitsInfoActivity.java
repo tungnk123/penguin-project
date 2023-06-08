@@ -1,7 +1,9 @@
 package com.example.penguin_project;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -27,42 +29,68 @@ public class HabitsInfoActivity extends AppCompatActivity {
     RelativeLayout HabitColor;
     ImageView HabitIcon;
     ImageButton btn_back, btn_deleteHabit, btn_editHabit;
+    Habits selectedHabit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_habits_info);
 
         setUpToggleButton();
+        setttingControls();
+        Loadhabits();
+        setUp3Button();
 
-        btn_anytime = findViewById(R.id.Habits_info_btnAnytime);
-        btn_morning = findViewById(R.id.Habits_info_btnMorning);
-        btn_afternoon = findViewById(R.id.Habits_info_btnAfternoon);
-        btn_evening = findViewById(R.id.Habits_info_btnEvening);
+    }
 
-        HabitsTitle = findViewById(R.id.HabitInfo_habitItem_Title);
-        HabitTimePerDay = findViewById(R.id.Habits_info_timePerDay);
-        HabitColor = findViewById(R.id.HabitInfo_habitItem_Color);
-        HabitIcon = findViewById(R.id.HabitInfo_habitItem_Icon);
+    private void setUp3Button() {
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        btn_deleteHabit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(HabitsInfoActivity.this);
+                builder.setTitle("Xác nhận xóa");
+                builder.setMessage("Bạn có chắc chắn muốn xóa thói quen này");
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Thực hiện xóa bản ghi
+                        List<Habit_DayOfWeek> listHabitDow = HabitDataBase.getInstance(getApplicationContext()).habitDAO().getListHabitDOWByID(selectedHabit.getHabit_id());
+                        for(int i = 0; i < listHabitDow.size(); i++){
+                            Habit_DayOfWeek habit_dayOfWeek = listHabitDow.get(i);
+                            HabitDataBase.getInstance(getApplicationContext()).habitDAO().deleteHabitDayOfWeek(habit_dayOfWeek);
+                        }
+                        HabitDataBase.getInstance(getApplicationContext()).habitDAO().deleteHabit(selectedHabit);
+                        finish();
+                    }
+                });
+                builder.setNegativeButton("Hủy", null);
 
-        btn_back = findViewById(R.id.HabitsInfo_btn_back);
-        btn_deleteHabit = findViewById(R.id.HabitsInfo_btn_deleteHabits);
-        btn_editHabit = findViewById(R.id.HabitsInfo_btn_editHabits);
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+    }
 
+    private void Loadhabits() {
         Intent intent = getIntent();
-        Habits habits = (Habits)intent.getSerializableExtra("habitKey");
-
-        switch (habits.getTimeOfDay_id()){
+        selectedHabit = (Habits)intent.getSerializableExtra("habitKey");
+        switch (selectedHabit.getTimeOfDay_id()){
             case 1: btn_anytime.setBackgroundResource(R.drawable.item_timeofday_shape);
-            break;
+                break;
             case 2: btn_morning.setBackgroundResource(R.drawable.item_timeofday_shape);
-            break;
+                break;
             case 3: btn_afternoon.setBackgroundResource(R.drawable.item_timeofday_shape);
-            break;
+                break;
             case 4: btn_evening.setBackgroundResource(R.drawable.item_timeofday_shape);
-            break;
+                break;
         }
 
-        List<Habit_DayOfWeek> listHabitDow = HabitDataBase.getInstance(getApplicationContext()).habitDAO().getListHabitDOWByID(habits.getHabit_id());
+        List<Habit_DayOfWeek> listHabitDow = HabitDataBase.getInstance(getApplicationContext()).habitDAO().getListHabitDOWByID(selectedHabit.getHabit_id());
         for(int i = 0; i < listHabitDow.size(); i++){
             Habit_DayOfWeek habit_dayOfWeek = listHabitDow.get(i);
             switch (habit_dayOfWeek.getHabit_DayOfWeek_id()){
@@ -83,17 +111,28 @@ public class HabitsInfoActivity extends AppCompatActivity {
             }
         }
 
-        HabitsTitle.setText(habits.getTitle());
-        HabitIcon.setImageResource(habits.getIcon());
-        HabitTimePerDay.setText(String.valueOf(habits.getTimePerDay()));
-        HabitColor.setBackgroundResource(habits.getColor());
+        HabitsTitle.setText(selectedHabit.getTitle());
+        HabitIcon.setImageResource(selectedHabit.getIcon());
+        HabitTimePerDay.setText(String.valueOf(selectedHabit.getTimePerDay()));
+        HabitColor.setBackgroundResource(selectedHabit.getColor());
 
-        btn_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+
+    }
+
+    private void setttingControls() {
+        btn_anytime = findViewById(R.id.Habits_info_btnAnytime);
+        btn_morning = findViewById(R.id.Habits_info_btnMorning);
+        btn_afternoon = findViewById(R.id.Habits_info_btnAfternoon);
+        btn_evening = findViewById(R.id.Habits_info_btnEvening);
+
+        HabitsTitle = findViewById(R.id.HabitInfo_habitItem_Title);
+        HabitTimePerDay = findViewById(R.id.Habits_info_timePerDay);
+        HabitColor = findViewById(R.id.HabitInfo_habitItem_Color);
+        HabitIcon = findViewById(R.id.HabitInfo_habitItem_Icon);
+
+        btn_back = findViewById(R.id.HabitsInfo_btn_back);
+        btn_deleteHabit = findViewById(R.id.HabitsInfo_btn_deleteHabits);
+        btn_editHabit = findViewById(R.id.HabitsInfo_btn_editHabits);
     }
 
     private void setUpToggleButton() {

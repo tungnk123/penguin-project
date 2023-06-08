@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.constraintlayout.widget.Constraints;
 import androidx.core.content.ContextCompat;
@@ -103,6 +104,12 @@ public class HomeFragment extends Fragment {
         Setting_btnAddHabit();
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        notifyDatabaseChange();
     }
 
     private void scheduleResetHabitsJob() {
