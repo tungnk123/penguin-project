@@ -84,7 +84,7 @@ public class HomeFragment extends Fragment {
 
 //        getContext().deleteDatabase("Habit.db");
 //
- //       setData();
+//        setData();
 
         scheduleResetHabitsJob();
         
@@ -128,18 +128,18 @@ public class HomeFragment extends Fragment {
 
     private void setData() {
         HabitDataBase.getInstance(getContext());
-//        selectedDayOfWeek = LocalDate.now().getDayOfWeek();
-//        HabitDataBase.getInstance(getContext()).habitDAO().insertHabitGroup(new HabitGroup(1, "Trending", 4));
-//        HabitDataBase.getInstance(getContext()).habitDAO().insert_TimeOfDay(new TimeOfDay(1, "Anytime"));
-//        HabitDataBase.getInstance(getContext()).habitDAO().insert_TimeOfDay(new TimeOfDay(2, "Morning"));
-//        HabitDataBase.getInstance(getContext()).habitDAO().insert_TimeOfDay(new TimeOfDay(3, "Afternoon"));
-//        HabitDataBase.getInstance(getContext()).habitDAO().insert_TimeOfDay(new TimeOfDay(4, "Evening"));
-//        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("Uong nuoc", 2, 5, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0,0));
-//        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("Doc Sach", 3, 2, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0,0));
-//        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("uong nuoc", 2, 5, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0,0));
-//        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("Choi game", 2, 5, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0,0));
-//        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(selectedDayOfWeek.getValue(), 1, false, 0, false));
-//        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(selectedDayOfWeek.getValue(), 2, false, 0, false));
+        selectedDayOfWeek = LocalDate.now().getDayOfWeek();
+        HabitDataBase.getInstance(getContext()).habitDAO().insertHabitGroup(new HabitGroup(1, "Trending", 4));
+        HabitDataBase.getInstance(getContext()).habitDAO().insert_TimeOfDay(new TimeOfDay(1, "Anytime"));
+        HabitDataBase.getInstance(getContext()).habitDAO().insert_TimeOfDay(new TimeOfDay(2, "Morning"));
+        HabitDataBase.getInstance(getContext()).habitDAO().insert_TimeOfDay(new TimeOfDay(3, "Afternoon"));
+        HabitDataBase.getInstance(getContext()).habitDAO().insert_TimeOfDay(new TimeOfDay(4, "Evening"));
+        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("Uong nuoc", 2, 5, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0,0));
+        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("Doc Sach", 3, 2, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0,0));
+        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("uong nuoc", 2, 5, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0,0));
+        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("Choi game", 2, 5, 1, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0,0));
+        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(selectedDayOfWeek.getValue(), 1, false, 0, false));
+        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(selectedDayOfWeek.getValue(), 2, false, 0, false));
         HabitDataBase.getInstance(getContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.TUESDAY.getValue(), 1, false, 0, false));
         HabitDataBase.getInstance(getContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.WEDNESDAY.getValue(), 4, false, 0, false));
     }

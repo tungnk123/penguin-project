@@ -14,6 +14,7 @@
         android:orientation="horizontal"
         >
         <ImageButton
+            android:id="@+id/HabitsInfo_btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/black"
@@ -103,6 +104,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/item_icon_shape"
             >
             <TextView
@@ -120,11 +122,232 @@
             android:padding="20dp"
             android:orientation="horizontal">
             <ToggleButton
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/item_circle_shape"
+                android:id="@+id/HabitsInfo_tgb2"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/toggle_button_off_shape"
                 android:textStyle="bold"
-                android:text="2"/>
+                android:layout_marginStart="7dp"
+                android:textOn="2"
+                android:textOff="2"
+                android:clickable="false"
+                android:focusable="false"/>
+            <ToggleButton
+                android:id="@+id/HabitsInfo_tgb3"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/toggle_button_off_shape"
+                android:textStyle="bold"
+                android:layout_marginStart="7dp"
+                android:textOn="3"
+                android:textOff="3"
+                android:clickable="false"
+                android:focusable="false"/>
+            <ToggleButton
+                android:id="@+id/HabitsInfo_tgb4"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/toggle_button_off_shape"
+                android:textStyle="bold"
+                android:layout_marginStart="7dp"
+                android:textOn="4"
+                android:textOff="4"
+                android:clickable="false"
+                android:focusable="false"/>
+            <ToggleButton
+                android:id="@+id/HabitsInfo_tgb5"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/toggle_button_off_shape"
+                android:textStyle="bold"
+                android:layout_marginStart="7dp"
+                android:textOn="5"
+                android:textOff="5"
+                android:clickable="false"
+                android:focusable="false"/>
+            <ToggleButton
+                android:id="@+id/HabitsInfo_tgb6"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/toggle_button_off_shape"
+                android:textStyle="bold"
+                android:layout_marginStart="7dp"
+                android:textOn="6"
+                android:textOff="6"
+                android:clickable="false"
+                android:focusable="false"/>
+            <ToggleButton
+                android:id="@+id/HabitsInfo_tgb7"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/toggle_button_off_shape"
+                android:textStyle="bold"
+                android:layout_marginStart="7dp"
+                android:textOn="7"
+                android:textOff="7"
+                android:clickable="false"
+                android:focusable="false"/>
+            <ToggleButton
+                android:id="@+id/HabitsInfo_tgbCN"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/toggle_button_off_shape"
+                android:textStyle="bold"
+                android:layout_marginStart="7dp"
+                android:textOn="CN"
+                android:textOff="CN"
+                android:clickable="false"
+                android:focusable="false"/>
         </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/item_icon_shape"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="TIME OF DAY"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            >
+            <LinearLayout
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/item_shape"
+                android:padding="10dp"
+                android:layout_marginStart="5dp"
+                android:id="@+id/Habits_info_btnMorning"
+                >
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@mipmap/icon_sun"
+                    android:contentDescription="@string/app_name" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Morning"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="10dp"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/item_shape"
+                android:padding="10dp"
+                android:id="@+id/Habits_info_btnAfternoon"
+                android:layout_toRightOf="@+id/Habits_info_btnMorning"
+                android:layout_marginStart="15dp"
+                >
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@mipmap/icon_afternoon"
+                    android:contentDescription="@string/app_name" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Afternoon"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="10dp"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/item_shape"
+                android:padding="10dp"
+                android:id="@+id/Habits_info_btnEvening"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/Habits_info_btnMorning"
+                >
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@mipmap/icon_night"
+                    android:contentDescription="@string/app_name" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Evening"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="10dp"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/item_shape"
+                android:padding="10dp"
+                android:id="@+id/Habits_info_btnAnytime"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/Habits_info_btnMorning"
+                android:layout_toRightOf="@id/Habits_info_btnEvening"
+                >
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@mipmap/icon_sun"
+                    android:contentDescription="@string/app_name" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Anytime"
+                    android:textColor="@color/white"
+                    android:layout_marginStart="10dp"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    />
+            </LinearLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/item_icon_shape"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="TIME PER DAY"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            >
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                android:text="5"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                android:background="@drawable/item_icon_shape"
+                android:textStyle="bold" />
+        </RelativeLayout>
     </LinearLayout>
 </LinearLayout>
