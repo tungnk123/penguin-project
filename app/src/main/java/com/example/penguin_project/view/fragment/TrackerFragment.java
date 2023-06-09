@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.penguin_project.R;
+import com.example.penguin_project.model.data.HabitDate;
+import com.example.penguin_project.model.repo.local.Table.Habit_Day;
 import com.example.penguin_project.view.adapter.CalendarAdapter;
 
 import java.time.LocalDate;
@@ -41,7 +43,8 @@ public class TrackerFragment extends Fragment {
 
         return view;
     }
-    private List<LocalDate> getDaysInCurrentMonth() {
+    private List<Habit_Day> getDaysInCurrentMonth() {
+        List<Habit_Day> habitDates = new ArrayList<>();
         List<LocalDate> days = new ArrayList<>();
 
         // Lấy ngày hiện tại
@@ -65,7 +68,13 @@ public class TrackerFragment extends Fragment {
             days.add(LocalDate.of(currentYear, currentMonth, i));
         }
 
-        return days;
+        for (int i = 1; i <= days.size() - 1; i++) {
+            // Các ngày trong tháng
+            boolean isDone = false;
+            if(i % 2 == 0) isDone = true;
+            habitDates.add(new Habit_Day(days.get(i), isDone));
+        }
+        return habitDates;
 
     }
 }

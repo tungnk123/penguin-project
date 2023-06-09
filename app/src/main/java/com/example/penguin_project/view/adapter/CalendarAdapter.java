@@ -9,15 +9,17 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.penguin_project.R;
+import com.example.penguin_project.model.data.HabitDate;
+import com.example.penguin_project.model.repo.local.Table.Habit_Day;
 
 import java.time.LocalDate;
 import java.util.List;
 
 public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHolder> {
-    private List<LocalDate> days;
+    private List<Habit_Day> habitDates;
 
-    public CalendarAdapter(List<LocalDate> days) {
-        this.days = days;
+    public CalendarAdapter(List<Habit_Day> days) {
+        this.habitDates = days;
     }
 
     @Override
@@ -36,10 +38,13 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
 //        } else {
 //            holder.dayTextView.setBackgroundColor(Color.WHITE);
 //        }
-        LocalDate day = days.get(position);
-
+        Habit_Day habit_day = habitDates.get(position);
+        LocalDate day = habit_day.getHabit_Day_id();
         if (day != null) {
             holder.dayTextView.setText(String.valueOf(day.getDayOfMonth()));
+            if(habit_day.getIsDone() == true){
+                holder.dayTextView.setBackgroundResource(R.drawable.item_daystreakmap_shape_done);
+            }
         } else {
             holder.dayTextView.setText("");
             holder.dayTextView.setBackgroundColor(Color.BLACK);
@@ -48,7 +53,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return days.size();
+        return habitDates.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
