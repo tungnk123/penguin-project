@@ -10,6 +10,7 @@ import androidx.room.migration.Migration;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.penguin_project.model.repo.local.Table.HabitGroup;
+import com.example.penguin_project.model.repo.local.Table.HabitOfTheme;
 import com.example.penguin_project.model.repo.local.Table.Habit_Day;
 import com.example.penguin_project.model.repo.local.Table.Habit_DayOfWeek;
 import com.example.penguin_project.model.repo.local.Table.Habits;
@@ -18,7 +19,7 @@ import com.example.penguin_project.model.repo.local.Table.Steps;
 import com.example.penguin_project.model.repo.local.Table.TimeOfDay;
 import com.example.penguin_project.model.repo.local.Table.Todo;
 
-@Database(entities = {Habits.class, Habit_Day.class, Habit_DayOfWeek.class, HabitGroup.class, RemindTime.class, TimeOfDay.class, Todo.class, Steps.class}, version = 2)
+@Database(entities = {Habits.class, Habit_Day.class, Habit_DayOfWeek.class, HabitGroup.class, RemindTime.class, TimeOfDay.class, Todo.class, Steps.class}, version = 3)
 public abstract class HabitDataBase extends RoomDatabase {
 
     private static final String DATABASE_NAME = "Habit.db";

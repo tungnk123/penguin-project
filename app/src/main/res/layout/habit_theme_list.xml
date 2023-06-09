@@ -22,7 +22,6 @@
             android:id="@+id/tvHabitThemeListTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Xu hướng"
             android:textSize="22dp"
             android:textStyle="bold"
             android:layout_marginLeft="15dp"
@@ -40,9 +39,6 @@
         android:dividerHeight="10.0sp"
         android:scrollbars="none"
         >
-
-
-
     </ListView>
 
 </LinearLayout>

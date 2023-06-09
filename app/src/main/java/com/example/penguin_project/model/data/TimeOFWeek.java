@@ -1,17 +1,24 @@
 package com.example.penguin_project.model.data;
 
 public class TimeOFWeek {
-    private String TimeOfWeek;
-
-    public TimeOFWeek(String timeOfWeek) {
-        TimeOfWeek = timeOfWeek;
-    }
-
-    public String getTimeOfWeek() {
+    public int getTimeOfWeek() {
         return TimeOfWeek;
     }
 
-    public void setTimeOfWeek(String timeOfWeek) {
+    public void setTimeOfWeek(int timeOfWeek) {
         TimeOfWeek = timeOfWeek;
     }
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
+
+    private int TimeOfWeek;
+
+    private boolean isChecked;
+
 }
