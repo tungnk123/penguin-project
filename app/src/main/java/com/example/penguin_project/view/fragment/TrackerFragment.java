@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 
 import com.example.penguin_project.R;
 import com.example.penguin_project.model.data.HabitDate;
+import com.example.penguin_project.model.data.LocalDateConverter;
+import com.example.penguin_project.model.repo.local.DataBase.HabitDataBase;
 import com.example.penguin_project.model.repo.local.Table.Habit_Day;
 import com.example.penguin_project.view.adapter.CalendarAdapter;
 
@@ -45,7 +47,6 @@ public class TrackerFragment extends Fragment {
     }
     private List<Habit_Day> getDaysInCurrentMonth() {
         List<Habit_Day> habitDates = new ArrayList<>();
-        List<LocalDate> days = new ArrayList<>();
 
         // Lấy ngày hiện tại
         LocalDate currentDate = LocalDate.now();
@@ -54,25 +55,22 @@ public class TrackerFragment extends Fragment {
 
         // Đặt ngày về đầu tháng
         LocalDate firstDayOfMonth = LocalDate.of(currentYear, currentMonth, 1);
-        int startDayOfWeek = firstDayOfMonth.getDayOfWeek().getValue();
+        int startDayOfWeek = firstDayOfMonth.getDayOfWeek().getValue() ;
         int maxDayOfMonth = firstDayOfMonth.lengthOfMonth();
 
         // Tạo danh sách các ngày trong tháng
-        for (int i = 1; i < startDayOfWeek; i++) {
+        for (int i = 1; i <= startDayOfWeek; i++) {
             // Các ngày trước đầu tháng
-            days.add(null);
+            habitDates.add(null);
         }
 
         for (int i = 1; i <= maxDayOfMonth; i++) {
             // Các ngày trong tháng
-            days.add(LocalDate.of(currentYear, currentMonth, i));
-        }
-
-        for (int i = 1; i <= days.size() - 1; i++) {
-            // Các ngày trong tháng
-            boolean isDone = false;
-            if(i % 2 == 0) isDone = true;
-            habitDates.add(new Habit_Day(days.get(i), isDone));
+            LocalDate day = LocalDate.of(currentYear, currentMonth, i);
+            Long dateInMillis = LocalDateConverter.toTimestamp(day);
+            List<Habit_Day> habit_days = HabitDataBase.getInstance(getContext()).habitDAO().getHabit_DayByID(dateInMillis);
+            Habit_Day habit_day = habit_days.get(0);
+            habitDates.add(habit_day);
         }
         return habitDates;
 

@@ -311,6 +311,7 @@
                 android:layout_height="wrap_content"
                 android:padding="20dp"
                 android:background="@drawable/item_shape_2"
+                android:layout_marginTop="10dp"
                 >
 
                 <RelativeLayout
@@ -370,7 +371,7 @@
                     android:textStyle="bold"
                     android:textColor="@color/white"
                     android:textSize="25dp"
-                    android:layout_marginLeft="70dp"
+                    android:layout_marginLeft="60dp"
                     android:layout_marginTop="20dp"
                     />
             </androidx.constraintlayout.widget.ConstraintLayout>

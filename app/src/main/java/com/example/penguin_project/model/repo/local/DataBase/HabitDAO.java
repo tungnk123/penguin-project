@@ -16,6 +16,7 @@ import com.example.penguin_project.model.repo.local.Table.TimeOfDay;
 import com.example.penguin_project.model.repo.local.Table.Todo;
 
 import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.List;
 
 @Dao
@@ -104,6 +105,15 @@ public interface HabitDAO {
 
     @Query("Select * from Habit_DayOfWeek where Habit_DayOfWeek.Habit_id = :habits_id")
     List<Habit_DayOfWeek> getListHabitDOWByID(int habits_id);
+
+    @Query("Select * from Habit_Day where Habit_Day.Habit_Day_id = :date")
+    List<Habit_Day> getHabit_DayByID(Long date);
+
+    @Query("Select * from Habit_DayOfWeek where Habit_DayOfWeek.Habit_id = :Dow")
+    List<Habit_DayOfWeek> getListHabitDowByDow(int Dow);
+
+    @Update
+    void updateHabit_Day(Habit_Day habit_day);
 
     @Update
     void updateHabits(Habits habits);

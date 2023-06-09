@@ -30,22 +30,23 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-
-        // Đặt ngày và tô màu nếu đã hoàn thành công việc
-        //holder.dayTextView.setText(String.valueOf(day.getDayOfMonth()));
-//        if (day.isCompleted()) {
-//            holder.dayTextView.setBackgroundColor(Color.GREEN);
-//        } else {
-//            holder.dayTextView.setBackgroundColor(Color.WHITE);
-//        }
         Habit_Day habit_day = habitDates.get(position);
-        LocalDate day = habit_day.getHabit_Day_id();
-        if (day != null) {
+        if(habit_day != null){
+            LocalDate day = habit_day.getHabit_Day_id();
             holder.dayTextView.setText(String.valueOf(day.getDayOfMonth()));
-            if(habit_day.getIsDone() == true){
+            if(habit_day.getIsDone()){
                 holder.dayTextView.setBackgroundResource(R.drawable.item_daystreakmap_shape_done);
             }
-        } else {
+            if(habit_day.getHabit_Day_id().isBefore(LocalDate.now())){
+                if(!habit_day.getIsDone()){
+                    holder.dayTextView.setBackgroundResource(R.drawable.item_daystreakmap_shape_failed);
+                }
+            }
+            else {
+                holder.dayTextView.setBackgroundResource(R.drawable.item_daystreakmap_shape_defaut);
+            }
+        }
+        else {
             holder.dayTextView.setText("");
             holder.dayTextView.setBackgroundColor(Color.BLACK);
         }
