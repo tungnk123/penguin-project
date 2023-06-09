@@ -57,12 +57,13 @@
                     android:src="@mipmap/icon_water" />
             </RelativeLayout>
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/txt_HabitInfoDay"
                 android:text="210 DAYS"
                 android:textColor="@color/white"
                 android:textStyle="bold"
+                android:textAlignment="center"
                 android:textSize="15dp"/>
         </LinearLayout>
 

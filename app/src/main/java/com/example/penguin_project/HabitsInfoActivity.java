@@ -19,13 +19,15 @@ import com.example.penguin_project.model.repo.local.DataBase.HabitDataBase;
 import com.example.penguin_project.model.repo.local.Table.Habit_DayOfWeek;
 import com.example.penguin_project.model.repo.local.Table.Habits;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 public class HabitsInfoActivity extends AppCompatActivity {
 
     ToggleButton tgb2, tgb3, tgb4, tgb5, tgb6, tgb7, tgbCN;
     LinearLayout btn_anytime, btn_morning, btn_afternoon, btn_evening;
-    TextView HabitsTitle, HabitTimePerDay;
+    TextView HabitsTitle, HabitTimePerDay, HabitDays;
     RelativeLayout HabitColor;
     ImageView HabitIcon;
     ImageButton btn_back, btn_deleteHabit, btn_editHabit;
@@ -115,7 +117,7 @@ public class HabitsInfoActivity extends AppCompatActivity {
         HabitIcon.setImageResource(selectedHabit.getIcon());
         HabitTimePerDay.setText(String.valueOf(selectedHabit.getTimePerDay()));
         HabitColor.setBackgroundResource(selectedHabit.getColor());
-
+        HabitDays.setText(String.valueOf(ChronoUnit.DAYS.between(selectedHabit.getCreateDay(), LocalDate.now())) + " DAY");
 
     }
 
@@ -129,6 +131,7 @@ public class HabitsInfoActivity extends AppCompatActivity {
         HabitTimePerDay = findViewById(R.id.Habits_info_timePerDay);
         HabitColor = findViewById(R.id.HabitInfo_habitItem_Color);
         HabitIcon = findViewById(R.id.HabitInfo_habitItem_Icon);
+        HabitDays = findViewById(R.id.txt_HabitInfoDay);
 
         btn_back = findViewById(R.id.HabitsInfo_btn_back);
         btn_deleteHabit = findViewById(R.id.HabitsInfo_btn_deleteHabits);
