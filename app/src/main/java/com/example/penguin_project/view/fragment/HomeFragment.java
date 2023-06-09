@@ -85,9 +85,9 @@ public class HomeFragment extends Fragment {
         rcv_HabitListCompleted = view.findViewById(R.id.rcv_Home_CompletedHabit);
         rcv_HabitListFailed = view.findViewById(R.id.rcv_Home_FailedHabit);
 
-        getContext().deleteDatabase("Habit.db");
+//        getContext().deleteDatabase("Habit.db");
 //
-        setData();
+//        setData();
 
         scheduleResetHabitsJob();
         
@@ -375,6 +375,7 @@ public class HomeFragment extends Fragment {
         });
 
         rcv_DatePicker.setAdapter(datePicker_adapter);
+        rcv_DatePicker.scrollToPosition(LocalDate.now().getDayOfWeek().getValue());
     }
 
     private class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
