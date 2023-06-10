@@ -25,7 +25,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-public class StoreItemAdapter extends RecyclerView.Adapter<StoreItemAdapter.StoreItemViewHolder>{
+public class StoreItemAdapter extends RecyclerView.Adapter<StoreItemAdapter.StoreItemViewHolder> {
 
     private final List<StoreItem> storeItemList;
 
@@ -33,8 +33,7 @@ public class StoreItemAdapter extends RecyclerView.Adapter<StoreItemAdapter.Stor
     private StoreItemViewModel storeItemViewModel;
 
 
-    public StoreItemAdapter(List<StoreItem> storeItemList, StoreFragment storeFragment, StoreItemViewModel storeItemViewModel)
-    {
+    public StoreItemAdapter(List<StoreItem> storeItemList, StoreFragment storeFragment, StoreItemViewModel storeItemViewModel) {
         this.storeItemList = storeItemList;
         this.storeFragment = storeFragment;
         this.storeItemViewModel = storeItemViewModel;
@@ -43,8 +42,8 @@ public class StoreItemAdapter extends RecyclerView.Adapter<StoreItemAdapter.Stor
     @NonNull
     @Override
     public StoreItemAdapter.StoreItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.store_item, parent, false);
-            return new StoreItemViewHolder(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.store_item, parent, false);
+        return new StoreItemViewHolder(view);
     }
 
     @Override

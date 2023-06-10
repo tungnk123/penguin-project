@@ -1,5 +1,7 @@
 package com.example.penguin_project.view.fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.penguin_project.R;
@@ -42,10 +45,21 @@ public class StoreFragment extends Fragment {
     private StoreItemAdapter themeAdapter;
     private StoreItemAdapter specialItemAdapter;
 
+    public static SharedPreferences coinSharedPreference;
+    private TextView tvCoinNumber;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_store, container, false);
+        //region Set Shared Preferences for coin number
+        coinSharedPreference = getContext().getSharedPreferences("coin_number", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = coinSharedPreference.edit();
+        editor.putInt("money", 100 );
+        editor.commit();
+        tvCoinNumber = (TextView) view.findViewById(R.id.txt_ActionBar_coin);
+        tvCoinNumber.setText(String.valueOf(coinSharedPreference.getInt("money", 100)));
+        //endregion
         treeItemsList = new ArrayList<>();
         musicItemsList = new ArrayList<>();
         themeItemsList = new ArrayList<>();
@@ -59,9 +73,6 @@ public class StoreFragment extends Fragment {
 
         //region set ViewModel
         storeItemViewModel = new ViewModelProvider(this).get(StoreItemViewModel.class);
-
-
-
 
 
         //endregion
@@ -107,17 +118,17 @@ public class StoreFragment extends Fragment {
         //region Set Layout Manager
         rcvTreeItems.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         rcvMusicItems.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-        rcvThemeItems.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));;
+        rcvThemeItems.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        ;
         rcvSpecialItems.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
 
         //endregion
 
 
-
-
         //endregion
         return view;
     }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -131,13 +142,13 @@ public class StoreFragment extends Fragment {
         StoreItem tree4 = new StoreItem("Bamboo", 12, R.mipmap.icon_bamboo, "Desctioption", "tree", false);
         StoreItem tree5 = new StoreItem("Oak tree", 12, R.mipmap.icon_oak_tree, "Desctioption", "tree", false);
         StoreItem theme1 = (new StoreItem("Pine", 12, R.mipmap.icon_theme_pine, "Description", "theme", false));
-        StoreItem theme2 = (new StoreItem("Sand", 2, R.mipmap.icon_theme_sand, "Description", "theme",false));
-        StoreItem theme3 = (new StoreItem("Swamp", 122, R.mipmap.icon_theme_swamp, "Description", "theme",false));
-        StoreItem theme4 = (new StoreItem("Flower", 120, R.mipmap.icon_theme_flower, "Description", "theme",false));
-        StoreItem theme5 = (new StoreItem("Beach", 120, R.mipmap.icon_theme_beach, "Description", "theme",false));
+        StoreItem theme2 = (new StoreItem("Sand", 2, R.mipmap.icon_theme_sand, "Description", "theme", false));
+        StoreItem theme3 = (new StoreItem("Swamp", 122, R.mipmap.icon_theme_swamp, "Description", "theme", false));
+        StoreItem theme4 = (new StoreItem("Flower", 120, R.mipmap.icon_theme_flower, "Description", "theme", false));
+        StoreItem theme5 = (new StoreItem("Beach", 120, R.mipmap.icon_theme_beach, "Description", "theme", false));
         StoreItem music1 = (new StoreItem("Guitar", 12, R.mipmap.icon_music_guitar, "Description", "music", false));
         StoreItem music2 = (new StoreItem("Fire camp", 2, R.mipmap.icon_music_firecamp, "Description", "music", false));
-        StoreItem music3 = (new StoreItem("Rain", 122, R.mipmap.icon_music_rain,"Description", "music", false));
+        StoreItem music3 = (new StoreItem("Rain", 122, R.mipmap.icon_music_rain, "Description", "music", false));
         StoreItem music4 = (new StoreItem("Piano", 120, R.mipmap.icon_music_piano, "Description", "music", false));
 
         StoreItem specialItem1 = (new StoreItem("Freeze", 12, R.mipmap.icon_freezing, "Description", "special item", false));
@@ -149,7 +160,7 @@ public class StoreFragment extends Fragment {
         //region Add data into ViewModel
         // Add data into ViewModel only if the lists are empty
         if (storeItemViewModel.getStoreItemSize() == 0) {
-            Toast.makeText(getContext(), String.valueOf(storeItemViewModel.getStoreItemSize()), Toast.LENGTH_LONG ).show();
+            Toast.makeText(getContext(), String.valueOf(storeItemViewModel.getStoreItemSize()), Toast.LENGTH_LONG).show();
             storeItemViewModel.insertStoreItem(tree1);
             storeItemViewModel.insertStoreItem(tree2);
             storeItemViewModel.insertStoreItem(tree3);
