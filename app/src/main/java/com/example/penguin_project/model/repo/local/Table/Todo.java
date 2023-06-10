@@ -22,6 +22,7 @@ public class Todo {
     private LocalDateTime DueDate;
     private LocalDateTime RemindTime;
 
+    @Ignore
     public Todo(int Todo_id, String Title, String Description, boolean IsDone, LocalDateTime DueDate, LocalDateTime RemindTime) {
         this.Todo_id = Todo_id;
         this.Title = Title;
@@ -94,13 +95,5 @@ public class Todo {
         this.IsDone = IsDone;
     }
 
-    @Ignore
-    public Todo(int Todo_id, String Title, String Description, boolean IsDone, LocalDateTime DueDate, LocalDateTime RemindTime) {
-        this.Todo_id = Todo_id;
-        this.Title = Title;
-        this.Description = Description;
-        this.IsDone = IsDone;
-        this.DueDate = DueDate;
-        this.RemindTime = RemindTime;
-    }
+
 }
