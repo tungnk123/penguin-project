@@ -12,6 +12,18 @@
         android:theme="@style/Theme.Penguinproject"
         tools:targetApi="31">
         <activity
+            android:name=".CreateHabitGoodNightActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateHabitHealthyMindActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateHabitTrendingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateHabitActivity"
+            android:exported="false" />
+        <activity
             android:name=".HabitsInfoActivity"
             android:exported="false" />
         <activity

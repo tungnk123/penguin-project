@@ -30,6 +30,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.penguin_project.CreateHabitActivity;
 import com.example.penguin_project.HabitsInfoActivity;
 import com.example.penguin_project.R;
 import com.example.penguin_project.model.data.HabitDate;
@@ -84,9 +85,9 @@ public class HomeFragment extends Fragment {
         rcv_HabitListCompleted = view.findViewById(R.id.rcv_Home_CompletedHabit);
         rcv_HabitListFailed = view.findViewById(R.id.rcv_Home_FailedHabit);
 
-        getContext().deleteDatabase("Habit.db");
+//        getContext().deleteDatabase("Habit.db");
 //
-        setData();
+//        setData();
 
         scheduleResetHabitsJob();
         
@@ -155,7 +156,8 @@ public class HomeFragment extends Fragment {
         btn_AddHabit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "hello", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), CreateHabitActivity.class);
+                startActivity(intent);
             }
         });
     }
