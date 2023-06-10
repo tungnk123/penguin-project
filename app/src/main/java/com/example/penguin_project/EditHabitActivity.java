@@ -1,8 +1,15 @@
 package com.example.penguin_project;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageButton;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.core.widget.ImageViewCompat;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -21,6 +28,7 @@ public class EditHabitActivity extends AppCompatActivity {
     RelativeLayout habitItemColor;
     ToggleButton tgb2, tgb3, tgb4, tgb5, tgb6, tgb7, tgbCN;
     LinearLayout btn_anytime, btn_morning, btn_afternoon, btn_evening;
+    int imgResource;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,10 +39,36 @@ public class EditHabitActivity extends AppCompatActivity {
         settingColorButton();
         settingOtherControls();
         settingIconPicker();
+        imgResource = R.mipmap.icon_drink_water;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 1){
+            if (resultCode == Activity.RESULT_OK) {
+                // Xử lý kết quả trả về
+                if (data != null) {
+                    // Lấy dữ liệu kết quả từ Intent
+                    int result = data.getIntExtra("Icon", 0);
+                    habitItemIcon.setImageResource(result);
+                    imgResource = result;
+                }
+            } else if (resultCode == Activity.RESULT_CANCELED) {
+                // Xử lý khi người dùng hủy bỏ hoặc không có kết quả trả về
+            }
+        }
     }
 
     private void settingIconPicker() {
         btn_iconPicker = findViewById(R.id.EditHabit_btn_iconPicker);
+        btn_iconPicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), IconPickerActivity.class);
+                startActivityForResult(intent, 1);
+            }
+        });
     }
 
     private void settingOtherControls() {
