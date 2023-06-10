@@ -100,13 +100,20 @@ public class StoreItemAdapter extends RecyclerView.Adapter<StoreItemAdapter.Stor
 
                                     if (!clickedItem.getIsPurchased()) {
                                         // Update the purchase status
-                                        clickedItem.setIsPurchased(true);
-                                        storeItemViewModel.updateItemPurchased(clickedItem.getItem_id(), true);
-                                        // Update the UI
-                                        tvCoinNumber.setText("Purchased");
-                                        imgCoin.setVisibility(View.GONE);
+                                        if (StoreFragment.coinSharedPreference.getInt("money", 100) >= clickedItem.getItemPrice()) {
+                                            clickedItem.setIsPurchased(true);
+                                            storeItemViewModel.updateItemPurchased(clickedItem.getItem_id(), true);
+                                            // Update the UI
+                                            tvCoinNumber.setText("Purchased");
+                                            imgCoin.setVisibility(View.GONE);
+                                            int newMoney = StoreFragment.coinSharedPreference.getInt("money", 100) - clickedItem.getItemPrice();
+                                            StoreFragment.storeNewMoney(newMoney);
+                                            Toast.makeText(itemView.getContext(), "Item bought!", Toast.LENGTH_SHORT).show();
+                                        }
+                                        else {
+                                            Toast.makeText(itemView.getContext(), "Not enough money!     😅😅😅😅", Toast.LENGTH_SHORT).show();
 
-                                        Toast.makeText(itemView.getContext(), "Item bought!", Toast.LENGTH_SHORT).show();
+                                        }
                                     } else {
                                         Toast.makeText(itemView.getContext(), "Item is already purchased!", Toast.LENGTH_SHORT).show();
                                     }
