@@ -11,7 +11,6 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity(tableName = "Habits", foreignKeys = {
-        @ForeignKey(entity = HabitGroup.class, parentColumns = "Group_id", childColumns = "Group_id", onDelete = ForeignKey.CASCADE),
         @ForeignKey(entity = TimeOfDay.class, parentColumns = "TimeOfDay_id", childColumns = "TimeOfDay_id", onDelete = ForeignKey.CASCADE)
 })
 @TypeConverters(LocalDateConverter.class)
@@ -21,18 +20,16 @@ public class Habits implements Serializable {
     private String Title;
     private int TimeOfDay_id;
     private int TimePerDay;
-    private int Group_id;
     private int Color;
     private int Icon;
     private LocalDate CreateDay;
     private int CurrentStreak;
     private int MaxStreak;
 
-    public Habits(String Title, int TimeOfDay_id, int TimePerDay, int Group_id, int Color, int Icon, LocalDate CreateDay, int CurrentStreak, int MaxStreak) {
+    public Habits(String Title, int TimeOfDay_id, int TimePerDay, int Color, int Icon, LocalDate CreateDay, int CurrentStreak, int MaxStreak) {
         this.Title = Title;
         this.TimeOfDay_id = TimeOfDay_id;
         this.TimePerDay = TimePerDay;
-        this.Group_id = Group_id;
         this.Color = Color;
         this.Icon = Icon;
         this.CreateDay = CreateDay;
@@ -70,14 +67,6 @@ public class Habits implements Serializable {
 
     public void setTimePerDay(int timePerDay) {
         TimePerDay = timePerDay;
-    }
-
-    public int getGroup_id() {
-        return Group_id;
-    }
-
-    public void setGroup_id(int group_id) {
-        Group_id = group_id;
     }
 
     public int getColor() {
