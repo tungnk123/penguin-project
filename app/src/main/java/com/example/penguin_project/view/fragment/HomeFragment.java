@@ -1,9 +1,7 @@
 package com.example.penguin_project.view.fragment;
 
-import android.os.Build;
 import android.os.Bundle;
 
-import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,14 +9,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.penguin_project.R;
 import com.example.penguin_project.model.data.HabitDate;
 import com.example.penguin_project.model.repo.local.DataBase.HabitDataBase;
-import com.example.penguin_project.model.repo.local.Table.HabitGroup;
 import com.example.penguin_project.view.adapter.DatePicker_Adapter;
 
 import java.time.LocalDate;
@@ -40,7 +36,6 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_home, container, false);
 
-        getContext().deleteDatabase("Habit.db");
 
         rcv_DatePicker = view.findViewById(R.id.rcv_datePicker);
         txt_DayOfWeek = view.findViewById(R.id.txt_ActionBar_DayOfWeek);
