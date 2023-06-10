@@ -12,6 +12,12 @@
         android:theme="@style/Theme.Penguinproject"
         tools:targetApi="31">
         <activity
+            android:name=".CreateHabitSavingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateHabitFocusActivity"
+            android:exported="false" />
+        <activity
             android:name=".CreateHabitGoodNightActivity"
             android:exported="false" />
         <activity

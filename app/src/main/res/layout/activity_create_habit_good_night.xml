@@ -105,7 +105,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
                     android:textColor="@color/white"
-                    android:textSize="23sp"
+                    android:textSize="20sp"
                     android:textStyle="bold" />
 
                 <ImageView

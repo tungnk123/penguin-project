@@ -56,5 +56,19 @@ public class CreateHabitActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        btn_habitFocus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), CreateHabitFocusActivity.class);
+                startActivity(intent);
+            }
+        });
+        btn_habitSaving.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), CreateHabitSavingActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

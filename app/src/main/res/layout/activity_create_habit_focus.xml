@@ -14,7 +14,7 @@
         android:padding="10dp"
         >
         <ImageButton
-            android:id="@+id/CreateHabitHealthyMind_btn_back"
+            android:id="@+id/CreateHabitFocus_btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/black"
@@ -22,7 +22,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Healthy Mind"
+            android:text="Focus"
             android:textColor="@color/lime_energy"
             android:textSize="30sp"
             android:textStyle="bold"
@@ -30,10 +30,10 @@
             android:layout_marginLeft="10dp"
             />
         <ImageView
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:src="@mipmap/icon_healthy_mind"
-            android:layout_marginLeft="30dp"/>
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@mipmap/icon_focus"
+            android:layout_marginLeft="90dp"/>
     </LinearLayout>
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -45,7 +45,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:id="@+id/CreateHabitHealthyMind_btnHabitMeditation"
+                android:id="@+id/CreateHabitFocus_btnHabitLearnSomethingNew"
                 android:padding="10dp"
                 android:background="@drawable/item_shape_3"
                 android:layout_marginTop="20dp"
@@ -56,17 +56,17 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:text="Meditation"
+                    android:text="Learn something new"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
                     android:textColor="@color/white"
-                    android:textSize="23sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@mipmap/icon_meditation"
+                    android:src="@mipmap/icon_think_about_your_day"
                     android:layout_marginEnd="20dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="5dp"
@@ -89,7 +89,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:id="@+id/CreateHabitHealthyMind_btnHabitConnectToNature"
+                android:id="@+id/CreateHabitFocus_btnHabitRead20page"
                 android:padding="10dp"
                 android:background="@drawable/item_shape_3"
                 android:layout_marginTop="20dp"
@@ -100,17 +100,17 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:text="Connect to nature"
+                    android:text="Read 20 pages"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
                     android:textColor="@color/white"
-                    android:textSize="20sp"
+                    android:textSize="23sp"
                     android:textStyle="bold" />
 
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@mipmap/icon_connect_nature"
+                    android:src="@mipmap/icon_study"
                     android:layout_marginEnd="20dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="5dp"
@@ -132,7 +132,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:id="@+id/CreateHabitHealthyMind_btnHabitDrinkWater"
+                android:id="@+id/CreateHabitFocus_btnHabitListenToPodcast"
                 android:padding="10dp"
                 android:background="@drawable/item_shape_3"
                 android:layout_marginTop="20dp"
@@ -143,7 +143,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:text="Drink Water"
+                    android:text="Listen to podcast"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
                     android:textColor="@color/white"
@@ -153,7 +153,7 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@mipmap/icon_drink_water"
+                    android:src="@mipmap/icon_listen_to_podcast"
                     android:layout_marginEnd="20dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="5dp"
@@ -175,7 +175,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:id="@+id/CreateHabitHealthyMind_btnHabitGoOutForWalk"
+                android:id="@+id/CreateHabitFocus_btnHabitWriteDiary"
                 android:padding="10dp"
                 android:background="@drawable/item_shape_3"
                 android:layout_marginTop="20dp"
@@ -186,7 +186,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:text="Go out for walk"
+                    android:text="Write diary"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
                     android:textColor="@color/white"
@@ -196,7 +196,7 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@mipmap/icon_walk"
+                    android:src="@mipmap/icon_write_diary"
                     android:layout_marginEnd="20dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="5dp"
@@ -218,7 +218,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
-                android:id="@+id/CreateHabitHealthyMind_btnHabitRelax"
+                android:id="@+id/CreateHabitFocus_btnHabitStretching"
                 android:padding="10dp"
                 android:background="@drawable/item_shape_3"
                 android:layout_marginTop="20dp"
@@ -229,7 +229,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:text="Relax"
+                    android:text="Stretching"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
                     android:textColor="@color/white"
@@ -239,7 +239,7 @@
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:src="@mipmap/icon_relax"
+                    android:src="@mipmap/icon_stretching"
                     android:layout_marginEnd="20dp"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="5dp"
