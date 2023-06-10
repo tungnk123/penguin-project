@@ -33,6 +33,7 @@ public class CreateHabitActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), EditHabitActivity.class);
+                intent.setAction("Blank habit");
                 startActivity(intent);
             }
         });

@@ -447,6 +447,7 @@
                         android:layout_width="40dp"
                         android:layout_height="30dp"
                         android:layout_centerInParent="true"
+                        android:inputType="number"
                         android:background="@drawable/item_icon_shape"
                         android:text="1"
                         android:textAlignment="center"
@@ -455,6 +456,27 @@
                         android:textStyle="bold" />
                 </RelativeLayout>
             </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:background="@drawable/item_shape"
+                android:backgroundTint="@color/lime_energy"
+                android:id="@+id/EditHabit_btn_addHabit"
+                android:layout_marginTop="20dp"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Add"
+                    android:id="@+id/EditHabit_AddTitle"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

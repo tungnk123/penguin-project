@@ -2,6 +2,7 @@ package com.example.penguin_project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -31,5 +32,56 @@ public class CreateHabitTrendingActivity extends AppCompatActivity {
         btn_exercise = findViewById(R.id.CreateHabitTrending_btnHabitExcercise);
         btn_cleanTheHouse = findViewById(R.id.CreateHabitTrending_btnHabitCleanTheHouse);
         btn_makeYourBed = findViewById(R.id.CreateHabitTrending_btnHabitMakeYourBed);
+
+        btn_eatHealthyMeal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), EditHabitActivity.class);
+                intent.putExtra("Title", "Eat healthy meal");
+                intent.putExtra("Icon", R.mipmap.icon_healthy_meal);
+                intent.setAction("New habit");
+                startActivity(intent);
+            }
+        });
+        btn_study.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), EditHabitActivity.class);
+                intent.putExtra("Title", "Study");
+                intent.putExtra("Icon", R.mipmap.icon_study);
+                intent.setAction("New habit");
+                startActivity(intent);
+            }
+        });
+        btn_exercise.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), EditHabitActivity.class);
+                intent.putExtra("Title", "Exercise");
+                intent.putExtra("Icon", R.mipmap.icon_exercise);
+                intent.setAction("New habit");
+                startActivity(intent);
+            }
+        });
+        btn_cleanTheHouse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), EditHabitActivity.class);
+                intent.putExtra("Title", "Clean the house");
+                intent.putExtra("Icon", R.mipmap.icon_clean_the_house);
+                intent.setAction("New habit");
+                startActivity(intent);
+            }
+        });
+        btn_makeYourBed.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), EditHabitActivity.class);
+                intent.putExtra("Title", "Make your bed");
+                intent.putExtra("Icon", R.mipmap.icon_make_bed);
+                intent.setAction("New habit");
+                startActivity(intent);
+            }
+        });
     }
 }

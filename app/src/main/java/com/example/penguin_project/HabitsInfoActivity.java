@@ -41,7 +41,19 @@ public class HabitsInfoActivity extends AppCompatActivity {
         setttingControls();
         Loadhabits();
         setUp3Button();
+        setupEditHabit();
+    }
 
+    private void setupEditHabit() {
+        btn_editHabit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), EditHabitActivity.class);
+                intent.putExtra("Selected habit", selectedHabit);
+                intent.setAction("Selected habit");
+                startActivity(intent);
+            }
+        });
     }
 
     private void setUp3Button() {
