@@ -102,6 +102,7 @@ public class StoreFragment extends Fragment {
             specialItemAdapter.notifyDataSetChanged();
         });
 
+        //endregion
 
         //region Set Layout Manager
         rcvTreeItems.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));

@@ -106,8 +106,6 @@ public class StoreItemAdapter extends RecyclerView.Adapter<StoreItemAdapter.Stor
                                         // Update the UI
                                         tvCoinNumber.setText("Purchased");
                                         imgCoin.setVisibility(View.GONE);
-                                        llCoinWrapper.setBackgroundColor(view.getContext().getResources().getColor(R.color.grey));
-                                        llCoinWrapper.refreshDrawableState();
 
                                         Toast.makeText(itemView.getContext(), "Item bought!", Toast.LENGTH_SHORT).show();
                                     } else {
