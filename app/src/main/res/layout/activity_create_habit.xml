@@ -44,14 +44,15 @@
                 android:padding="15dp"
                 android:background="@drawable/item_shape_3"
                 >
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:text="New habit"
-                    android:textStyle="bold"
                     android:textColor="@color/white"
-                    android:textSize="23sp"/>
+                    android:textSize="23sp"
+                    android:textStyle="bold" />
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

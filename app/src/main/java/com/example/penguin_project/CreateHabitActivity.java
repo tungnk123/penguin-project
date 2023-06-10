@@ -28,6 +28,15 @@ public class CreateHabitActivity extends AppCompatActivity {
         btn_habitFocus = findViewById(R.id.CreateHabit_btnHabitFocus);
         btn_habitSaving = findViewById(R.id.CreateHabit_btnHabitSaving);
         btn_back = findViewById(R.id.CreateHabit_btn_back);
+
+        btn_addNewHabit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), EditHabitActivity.class);
+                startActivity(intent);
+            }
+        });
+
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

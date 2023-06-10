@@ -12,6 +12,9 @@
         android:theme="@style/Theme.Penguinproject"
         tools:targetApi="31">
         <activity
+            android:name=".EditHabitActivity"
+            android:exported="false" />
+        <activity
             android:name=".CreateHabitSavingActivity"
             android:exported="false" />
         <activity

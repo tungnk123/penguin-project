@@ -144,9 +144,9 @@ public class HabitsInfoActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    tgb2.setBackgroundDrawable(getResources().getDrawable(R.drawable.toggle_button_on_shape));
+                    tgb2.setBackgroundResource(R.drawable.toggle_button_on_shape);
                 } else {
-                    tgb2.setBackgroundDrawable(getResources().getDrawable(R.drawable.toggle_button_off_shape));
+                    tgb2.setBackgroundResource(R.drawable.toggle_button_off_shape);
                 }
             }
         });
@@ -155,9 +155,9 @@ public class HabitsInfoActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    tgb3.setBackgroundDrawable(getResources().getDrawable(R.drawable.toggle_button_on_shape));
+                    tgb3.setBackgroundResource(R.drawable.toggle_button_on_shape);
                 } else {
-                    tgb3.setBackgroundDrawable(getResources().getDrawable(R.drawable.toggle_button_off_shape));
+                    tgb3.setBackgroundResource(R.drawable.toggle_button_off_shape);
                 }
             }
         });
@@ -166,9 +166,9 @@ public class HabitsInfoActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    tgb4.setBackgroundDrawable(getResources().getDrawable(R.drawable.toggle_button_on_shape));
+                    tgb4.setBackgroundResource(R.drawable.toggle_button_on_shape);
                 } else {
-                    tgb4.setBackgroundDrawable(getResources().getDrawable(R.drawable.toggle_button_off_shape));
+                    tgb4.setBackgroundResource(R.drawable.toggle_button_off_shape);
                 }
             }
         });
@@ -177,9 +177,9 @@ public class HabitsInfoActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    tgb5.setBackgroundDrawable(getResources().getDrawable(R.drawable.toggle_button_on_shape));
+                    tgb5.setBackgroundResource(R.drawable.toggle_button_on_shape);
                 } else {
-                    tgb5.setBackgroundDrawable(getResources().getDrawable(R.drawable.toggle_button_off_shape));
+                    tgb5.setBackgroundResource(R.drawable.toggle_button_off_shape);
                 }
             }
         });
@@ -188,9 +188,9 @@ public class HabitsInfoActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    tgb6.setBackgroundDrawable(getResources().getDrawable(R.drawable.toggle_button_on_shape));
+                    tgb6.setBackgroundResource(R.drawable.toggle_button_on_shape);
                 } else {
-                    tgb6.setBackgroundDrawable(getResources().getDrawable(R.drawable.toggle_button_off_shape));
+                    tgb6.setBackgroundResource(R.drawable.toggle_button_off_shape);
                 }
             }
         });
@@ -199,9 +199,9 @@ public class HabitsInfoActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    tgb7.setBackgroundDrawable(getResources().getDrawable(R.drawable.toggle_button_on_shape));
+                    tgb7.setBackgroundResource(R.drawable.toggle_button_on_shape);
                 } else {
-                    tgb7.setBackgroundDrawable(getResources().getDrawable(R.drawable.toggle_button_off_shape));
+                    tgb7.setBackgroundResource(R.drawable.toggle_button_off_shape);
                 }
             }
         });
@@ -210,9 +210,9 @@ public class HabitsInfoActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b) {
-                    tgbCN.setBackgroundDrawable(getResources().getDrawable(R.drawable.toggle_button_on_shape));
+                    tgbCN.setBackgroundResource(R.drawable.toggle_button_on_shape);
                 } else {
-                    tgbCN.setBackgroundDrawable(getResources().getDrawable(R.drawable.toggle_button_off_shape));
+                    tgbCN.setBackgroundResource(R.drawable.toggle_button_off_shape);
                 }
             }
         });
