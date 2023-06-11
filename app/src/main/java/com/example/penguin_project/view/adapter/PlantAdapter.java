@@ -7,46 +7,43 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.penguin_project.R;
 import com.example.penguin_project.model.repo.local.Table.Tree;
-import com.example.penguin_project.view.fragment.StoreFragment;
 
 import java.util.List;
 
 public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHolder> {
 
-    public List<Tree> plantList;
-    private final StoreFragment storeFragment;
+    private List<Tree> plantList;
+    public static int selectedPosition = RecyclerView.NO_POSITION;
 
-    public PlantAdapter(StoreFragment storeFragment, List<Tree> plantList) {
-        this.storeFragment = storeFragment;
+    public PlantAdapter(List<Tree> plantList) {
         this.plantList = plantList;
     }
 
-    @NonNull
     @Override
-    public PlantAdapter.PlantViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public PlantViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.plant_item, parent, false);
-        return new PlantAdapter.PlantViewHolder(view);
+        return new PlantViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PlantAdapter.PlantViewHolder holder, int position) {
+    public void onBindViewHolder(PlantViewHolder holder, int position) {
         Tree plant = plantList.get(position);
         holder.tvPlantName.setText(plant.getTitle());
         holder.imgPlantIcon.setImageResource(plant.getIcon());
-
+        holder.updateCardViewAppearance(position == selectedPosition);
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return plantList.size();
     }
 
-    public class PlantViewHolder extends RecyclerView.ViewHolder {
+    public class PlantViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView tvPlantName;
         ImageView imgPlantIcon;
 
@@ -54,14 +51,32 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHol
             super(itemView);
             tvPlantName = itemView.findViewById(R.id.tv_plantItem_plantName);
             imgPlantIcon = itemView.findViewById(R.id.img_plantItem_plantIcon);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Tree plant = plantList.get(getAdapterPosition());
-                    Toast.makeText(view.getContext(), plant.getTitle(), Toast.LENGTH_SHORT).show();
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            int position = getAdapterPosition();
+            if (position != RecyclerView.NO_POSITION) {
+                if (selectedPosition != RecyclerView.NO_POSITION) {
+                    // Deselect the previously selected item
+                    notifyItemChanged(selectedPosition);
                 }
-            });
-//            tvPlantName.setText();
+                selectedPosition = position;
+                // Select the clicked item
+                notifyItemChanged(selectedPosition);
+
+                Tree plant = plantList.get(position);
+                Toast.makeText(view.getContext(), plant.getTitle(), Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        private void updateCardViewAppearance(boolean isSelected) {
+            if (isSelected) {
+                itemView.setBackgroundColor(ContextCompat.getColor(itemView.getContext(), R.color.lime_energy));
+            } else {
+                itemView.setBackgroundColor(ContextCompat.getColor(itemView.getContext(), R.color.black_title));
+            }
         }
     }
 }

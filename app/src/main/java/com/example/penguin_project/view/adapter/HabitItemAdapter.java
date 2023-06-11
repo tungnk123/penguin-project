@@ -18,6 +18,7 @@ import com.example.penguin_project.R;
 import com.example.penguin_project.model.repo.local.DataBase.HabitDataBase;
 import com.example.penguin_project.model.repo.local.Table.Habit_DayOfWeek;
 import com.example.penguin_project.model.repo.local.Table.Habits;
+import com.example.penguin_project.model.repo.local.Table.Tree;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -36,7 +37,7 @@ public class HabitItemAdapter extends RecyclerView.Adapter<HabitItemAdapter.Item
         this.dayOfWeek = dayOfWeek;
     }
 
-    public void setHabits(List<Habits> habitsList){
+    public void setHabits(List<Habits> habitsList) {
         this.itemList = habitsList;
         notifyDataSetChanged();
     }
@@ -53,11 +54,10 @@ public class HabitItemAdapter extends RecyclerView.Adapter<HabitItemAdapter.Item
         Habits itemName = itemList.get(position);
         List<Habit_DayOfWeek> habit_dayOfWeeks = new ArrayList<>();
         habit_dayOfWeeks = HabitDataBase.getInstance(context).habitDAO().findHabitDOWByID(itemName.getHabit_id(), dayOfWeek.getValue());
-        if(habit_dayOfWeeks.size() > 0){
+        if (habit_dayOfWeeks.size() > 0) {
             Habit_DayOfWeek habit_dayOfWeek = habit_dayOfWeeks.get(0);
             holder.item_CurrentProgress.setText(String.valueOf(habit_dayOfWeek.getProgress()));
-        }
-        else {
+        } else {
             holder.item_CurrentProgress.setText("0");
         }
         holder.itemColor.setBackgroundResource(itemName.getColor());
@@ -67,11 +67,13 @@ public class HabitItemAdapter extends RecyclerView.Adapter<HabitItemAdapter.Item
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(mListener != null){
+                if (mListener != null) {
                     mListener.onItemClick(itemName);
                 }
             }
         });
+        Tree plant = HabitDataBase.getInstance(context).habitDAO().getTreeForestById(itemName.getTree_id());
+        holder.imgPlantIcon.setImageResource(plant.getIcon());
     }
 
     @Override
@@ -83,15 +85,14 @@ public class HabitItemAdapter extends RecyclerView.Adapter<HabitItemAdapter.Item
         Habits habits = itemList.get(position);
         List<Habit_DayOfWeek> habit_dayOfWeeks = new ArrayList<>();
         habit_dayOfWeeks = HabitDataBase.getInstance(context).habitDAO().findHabitDOWByID(habits.getHabit_id(), dayOfWeek.getValue());
-        if(habit_dayOfWeeks.size() > 0){
-           Habit_DayOfWeek habit_dayOfWeek = habit_dayOfWeeks.get(0);
-           if(habit_dayOfWeek.getIsFailed()){
-               habit_dayOfWeek.setIsFailed(false);
-           }
-           else{
-               habit_dayOfWeek.setIsFailed(true);
-           }
-           HabitDataBase.getInstance(context).habitDAO().updateHabit_DayOfWeek(habit_dayOfWeek);
+        if (habit_dayOfWeeks.size() > 0) {
+            Habit_DayOfWeek habit_dayOfWeek = habit_dayOfWeeks.get(0);
+            if (habit_dayOfWeek.getIsFailed()) {
+                habit_dayOfWeek.setIsFailed(false);
+            } else {
+                habit_dayOfWeek.setIsFailed(true);
+            }
+            HabitDataBase.getInstance(context).habitDAO().updateHabit_DayOfWeek(habit_dayOfWeek);
         }
     }
 
@@ -99,26 +100,29 @@ public class HabitItemAdapter extends RecyclerView.Adapter<HabitItemAdapter.Item
         Habits habits = itemList.get(position);
         List<Habit_DayOfWeek> habit_dayOfWeeks = new ArrayList<>();
         habit_dayOfWeeks = HabitDataBase.getInstance(context).habitDAO().findHabitDOWByID(habits.getHabit_id(), dayOfWeek.getValue());
-        if(habit_dayOfWeeks.size() > 0){
+        if (habit_dayOfWeeks.size() > 0) {
             Habit_DayOfWeek habit_dayOfWeek = habit_dayOfWeeks.get(0);
-            if(habits.getTimePerDay() > habit_dayOfWeek.getProgress()){
+            if (habits.getTimePerDay() > habit_dayOfWeek.getProgress()) {
                 habit_dayOfWeek.setProgress(habit_dayOfWeek.getProgress() + 1);
                 HabitDataBase.getInstance(context).habitDAO().updateHabit_DayOfWeek(habit_dayOfWeek);
-                if(habit_dayOfWeek.getProgress() == habits.getTimePerDay()){
+                if (habit_dayOfWeek.getProgress() == habits.getTimePerDay()) {
                     habit_dayOfWeek.setIsDone(true);
                     HabitDataBase.getInstance(context).habitDAO().updateHabit_DayOfWeek(habit_dayOfWeek);
                 }
             }
         }
     }
-    public void updateDayOfWeek(DayOfWeek dayOfWeek){
+
+    public void updateDayOfWeek(DayOfWeek dayOfWeek) {
         this.dayOfWeek = dayOfWeek;
     }
 
-    public interface OnItemClickListener{
+    public interface OnItemClickListener {
         void onItemClick(Habits habit);
     }
+
     private OnItemClickListener mListener;
+
     public void setOnItemClickListener(OnItemClickListener listener) {
         mListener = listener;
     }
@@ -134,18 +138,23 @@ public class HabitItemAdapter extends RecyclerView.Adapter<HabitItemAdapter.Item
         public Button buttonCheckDone;
         public HabitItemAdapter habitItemAdapter;
 
+        public RelativeLayout plantCircle;
+        public ImageView imgPlantIcon;
+
         public ItemViewHolder(View itemView, HabitItemAdapter habitItemAdapter) {
             super(itemView);
 
             buttonDelete = itemView.findViewById(R.id.buttonDelete);
             buttonCheckDone = itemView.findViewById(R.id.buttonCheckDone);
-            itemColor = itemView.findViewById(R.id.habitItem_Color);
-            itemIcon = itemView.findViewById(R.id.habitItem_Icon);
+            itemColor = itemView.findViewById(R.id.rll_habitItem_habitCircle);
+            itemIcon = itemView.findViewById(R.id.img_habitItem_habitIcon);
             item_Title = itemView.findViewById(R.id.habitItem_Title);
+            plantCircle = itemView.findViewById(R.id.rll_habitItem_plantCircle);
+            imgPlantIcon = itemView.findViewById(R.id.img_habitItem_plantIcon); // Updated ID
+
             item_CurrentProgress = itemView.findViewById(R.id.habitItem_CurrentProgress);
             item_timePerDay = itemView.findViewById(R.id.habitItem_TimePerDay);
             this.habitItemAdapter = habitItemAdapter;
-
 
             // Set different icons and colors for buttons
             Drawable deleteIcon = ContextCompat.getDrawable(itemView.getContext(), R.drawable.ic_launcher_background);
@@ -158,7 +167,9 @@ public class HabitItemAdapter extends RecyclerView.Adapter<HabitItemAdapter.Item
             buttonDelete.setBackgroundColor(deleteColor);
             buttonCheckDone.setBackgroundColor(checkDoneColor);
         }
-        public HabitItemAdapter getAdapter(){
+
+
+        public HabitItemAdapter getAdapter() {
             return habitItemAdapter;
         }
     }

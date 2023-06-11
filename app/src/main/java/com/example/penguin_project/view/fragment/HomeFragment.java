@@ -44,6 +44,7 @@ import com.example.penguin_project.view.adapter.DatePicker_Adapter;
 import com.example.penguin_project.view.adapter.HabitItemAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.sql.Time;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -90,7 +91,7 @@ public class HomeFragment extends Fragment {
 //
 
 //        setTimeOfDay();
-//        setTreeForest();
+        setTreeForest();
 //        setData();
         scheduleResetHabitsJob();
 
@@ -147,27 +148,34 @@ public class HomeFragment extends Fragment {
         HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("Uong nuoc", 2, 5, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 0, 1));
         HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("Doc Sach", 3, 2, R.color.purple_200, R.mipmap.icon_water, LocalDate.now().minusDays(1), 0, 0, 3));
         HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("uong nuoc", 2, 5, R.color.purple_200, R.mipmap.icon_water, LocalDate.now().minusDays(2), 0, 0, 2));
-        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("Choi game", 2, 5, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 0, 1));
+//        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("Choi game", 2, 5, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 0, 1));
         HabitDataBase.getInstance(getContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(selectedDayOfWeek.getValue(), 1, false, 0, false));
         HabitDataBase.getInstance(getContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(selectedDayOfWeek.getValue(), 2, false, 0, false));
         HabitDataBase.getInstance(getContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.TUESDAY.getValue(), 1, false, 0, false));
         HabitDataBase.getInstance(getContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.WEDNESDAY.getValue(), 4, false, 0, false));
     }
 
+
+    // Hàm kiểm tra xem trong database có data trong table TimeOfDat hay không? Nếu không thì thêm?
     private void setTimeOfDay() {
-        HabitDataBase.getInstance(getContext()).habitDAO().insert_TimeOfDay(new TimeOfDay(1, "Anytime"));
-        HabitDataBase.getInstance(getContext()).habitDAO().insert_TimeOfDay(new TimeOfDay(2, "Morning"));
-        HabitDataBase.getInstance(getContext()).habitDAO().insert_TimeOfDay(new TimeOfDay(3, "Afternoon"));
-        HabitDataBase.getInstance(getContext()).habitDAO().insert_TimeOfDay(new TimeOfDay(4, "Evening"));
+        if (!HabitDataBase.getInstance(getContext()).habitDAO().getTimeOfDayList().contains(new TimeOfDay(1, "Anytime"))) {
+            HabitDataBase.getInstance(getContext()).habitDAO().insert_TimeOfDay(new TimeOfDay(1, "Anytime"));
+            HabitDataBase.getInstance(getContext()).habitDAO().insert_TimeOfDay(new TimeOfDay(2, "Morning"));
+            HabitDataBase.getInstance(getContext()).habitDAO().insert_TimeOfDay(new TimeOfDay(3, "Afternoon"));
+            HabitDataBase.getInstance(getContext()).habitDAO().insert_TimeOfDay(new TimeOfDay(4, "Evening"));
+        }
     }
 
+    // Hàm kiểm tra xem trong database có data trong table Tree hay không? nếu không thì thêm Tree Item vào
     private void setTreeForest() {
-        Tree plant1 = new Tree("Plant 1", R.mipmap.icon_water, 5);
-        Tree plant2 = new Tree("Plant 2", R.mipmap.icon_bamboo, 5);
-        Tree plant3 = new Tree("Plant 3", R.mipmap.icon_bonsai_4, 5);
-        HabitDataBase.getInstance(getContext()).habitDAO().insertTree(plant1);
-        HabitDataBase.getInstance(getContext()).habitDAO().insertTree(plant2);
-        HabitDataBase.getInstance(getContext()).habitDAO().insertTree(plant3);
+        if (HabitDataBase.getInstance(getContext()).habitDAO().getTreeForestById(1) == null) {
+            Tree plant1 = new Tree("Plant 1", R.mipmap.icon_water, 5);
+            Tree plant2 = new Tree("Plant 2", R.mipmap.icon_bamboo, 5);
+            Tree plant3 = new Tree("Plant 3", R.mipmap.icon_bonsai_4, 5);
+            HabitDataBase.getInstance(getContext()).habitDAO().insertTree(plant1);
+            HabitDataBase.getInstance(getContext()).habitDAO().insertTree(plant2);
+            HabitDataBase.getInstance(getContext()).habitDAO().insertTree(plant3);
+        }
 
     }
 

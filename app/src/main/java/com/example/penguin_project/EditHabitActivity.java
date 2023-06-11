@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageButton;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.core.widget.ImageViewCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -25,9 +27,12 @@ import android.widget.ToggleButton;
 import com.example.penguin_project.model.repo.local.DataBase.HabitDataBase;
 import com.example.penguin_project.model.repo.local.Table.Habit_DayOfWeek;
 import com.example.penguin_project.model.repo.local.Table.Habits;
+import com.example.penguin_project.model.repo.local.Table.Tree;
+import com.example.penguin_project.view.adapter.PlantAdapter;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class EditHabitActivity extends AppCompatActivity {
@@ -42,6 +47,12 @@ public class EditHabitActivity extends AppCompatActivity {
     int imgResource;
     boolean isEdit = false;
     Habits editHabit;
+
+    // Plant
+
+    public RecyclerView plantRecyclerView;
+    public List<Tree> plantList;
+    //
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +66,24 @@ public class EditHabitActivity extends AppCompatActivity {
         imgResource = R.mipmap.icon_drink_water;
         receiveIntent();
         settingAddHabit();
+
+        //region Plant
+        plantRecyclerView = findViewById(R.id.rcv_EditHabit_plantRecyclerView);
+        plantList = new ArrayList<>();
+
+        Tree plant1 = new Tree("Plant 1", R.mipmap.icon_oak_tree, 5);
+        Tree plant2 = new Tree("Plant 2", R.mipmap.icon_bamboo, 5);
+        Tree plant3 = new Tree("Plant 3", R.mipmap.icon_bonsai_4, 5);
+
+        plantList.add(plant1);
+        plantList.add(plant2);
+        plantList.add(plant3);
+
+        PlantAdapter plantAdapter = new PlantAdapter(plantList);
+
+        plantRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        plantRecyclerView.setAdapter(plantAdapter);
+        //endregion
     }
 
     private void settingAddHabit() {
@@ -62,101 +91,114 @@ public class EditHabitActivity extends AppCompatActivity {
         btn_addHabit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isEdit){
-                    editHabit.setColor((int)habitItemColor.getTag());
+                if (isEdit) {
+                    editHabit.setColor((int) habitItemColor.getTag());
                     editHabit.setIcon(imgResource);
                     editHabit.setTitle(String.valueOf(edt_habitName.getText()));
-                    if((int)btn_anytime.getTag() == R.drawable.item_timeofday_shape){
+                    if ((int) btn_anytime.getTag() == R.drawable.item_timeofday_shape) {
                         editHabit.setTimeOfDay_id(1);
                     }
-                    if((int)btn_morning.getTag() == R.drawable.item_timeofday_shape){
+                    if ((int) btn_morning.getTag() == R.drawable.item_timeofday_shape) {
                         editHabit.setTimeOfDay_id(2);
                     }
-                    if((int)btn_afternoon.getTag() == R.drawable.item_timeofday_shape){
+                    if ((int) btn_afternoon.getTag() == R.drawable.item_timeofday_shape) {
                         editHabit.setTimeOfDay_id(3);
                     }
-                    if((int)btn_evening.getTag() == R.drawable.item_timeofday_shape){
+                    if ((int) btn_evening.getTag() == R.drawable.item_timeofday_shape) {
                         editHabit.setTimeOfDay_id(4);
                     }
                     int choosingDay = 0;
-                    if(tgb2.isChecked()) choosingDay++;
-                    if(tgb3.isChecked()) choosingDay++;
-                    if(tgb4.isChecked()) choosingDay++;
-                    if(tgb5.isChecked()) choosingDay++;
-                    if(tgb6.isChecked()) choosingDay++;
-                    if(tgb7.isChecked()) choosingDay++;
-                    if(tgbCN.isChecked()) choosingDay++;
-                    
-                    if(choosingDay == 0){
+                    if (tgb2.isChecked()) choosingDay++;
+                    if (tgb3.isChecked()) choosingDay++;
+                    if (tgb4.isChecked()) choosingDay++;
+                    if (tgb5.isChecked()) choosingDay++;
+                    if (tgb6.isChecked()) choosingDay++;
+                    if (tgb7.isChecked()) choosingDay++;
+                    if (tgbCN.isChecked()) choosingDay++;
+
+                    if (choosingDay == 0) {
                         Toast.makeText(getApplicationContext(), "choose at least 1 day of the week", Toast.LENGTH_SHORT).show();
                         return;
-                    }
-                    else {
+                    } else {
                         List<Habit_DayOfWeek> habit_dayOfWeeks = HabitDataBase.getInstance(getApplicationContext()).habitDAO().getListHabitDOWByID(editHabit.getHabit_id());
-                        for(Habit_DayOfWeek habit_dayOfWeek : habit_dayOfWeeks){
+                        for (Habit_DayOfWeek habit_dayOfWeek : habit_dayOfWeeks) {
                             HabitDataBase.getInstance(getApplicationContext()).habitDAO().deleteHabitDayOfWeek(habit_dayOfWeek);
                         }
-                        if(tgb2.isChecked()) HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.MONDAY.getValue(), editHabit.getHabit_id(), false, 0, false));
-                        if(tgb3.isChecked()) HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.TUESDAY.getValue(), editHabit.getHabit_id(), false, 0, false));
-                        if(tgb4.isChecked()) HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.WEDNESDAY.getValue(), editHabit.getHabit_id(), false, 0, false));
-                        if(tgb5.isChecked()) HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.THURSDAY.getValue(), editHabit.getHabit_id(), false, 0, false));
-                        if(tgb6.isChecked()) HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.FRIDAY.getValue(), editHabit.getHabit_id(), false, 0, false));
-                        if(tgb7.isChecked()) HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.SATURDAY.getValue(), editHabit.getHabit_id(), false, 0, false));
-                        if(tgbCN.isChecked()) HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.SUNDAY.getValue(), editHabit.getHabit_id(), false, 0, false));
+                        if (tgb2.isChecked())
+                            HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.MONDAY.getValue(), editHabit.getHabit_id(), false, 0, false));
+                        if (tgb3.isChecked())
+                            HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.TUESDAY.getValue(), editHabit.getHabit_id(), false, 0, false));
+                        if (tgb4.isChecked())
+                            HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.WEDNESDAY.getValue(), editHabit.getHabit_id(), false, 0, false));
+                        if (tgb5.isChecked())
+                            HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.THURSDAY.getValue(), editHabit.getHabit_id(), false, 0, false));
+                        if (tgb6.isChecked())
+                            HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.FRIDAY.getValue(), editHabit.getHabit_id(), false, 0, false));
+                        if (tgb7.isChecked())
+                            HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.SATURDAY.getValue(), editHabit.getHabit_id(), false, 0, false));
+                        if (tgbCN.isChecked())
+                            HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.SUNDAY.getValue(), editHabit.getHabit_id(), false, 0, false));
                     }
-                    if(Integer.parseInt(String.valueOf(edt_habitTimePerDay.getText())) < 1){
+                    if (Integer.parseInt(String.valueOf(edt_habitTimePerDay.getText())) < 1) {
                         Toast.makeText(getApplicationContext(), "Time per day must greater than 0", Toast.LENGTH_SHORT).show();
                         return;
-                    }
-                    else {
+                    } else {
                         editHabit.setTimePerDay(Integer.parseInt(String.valueOf(edt_habitTimePerDay.getText())));
                     }
                     HabitDataBase.getInstance(getApplicationContext()).habitDAO().updateHabits(editHabit);
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
-                }
-                else {
+                } else {
                     String title = String.valueOf(edt_habitName.getText());
                     int timePerDay = Integer.parseInt(String.valueOf(edt_habitTimePerDay.getText()));
                     int timeOfDayID = 1;
-                    if((int)btn_anytime.getTag() == R.drawable.item_timeofday_shape){
+                    if ((int) btn_anytime.getTag() == R.drawable.item_timeofday_shape) {
                         timeOfDayID = 1;
                     }
-                    if((int)btn_morning.getTag() == R.drawable.item_timeofday_shape){
+                    if ((int) btn_morning.getTag() == R.drawable.item_timeofday_shape) {
                         timeOfDayID = 2;
                     }
-                    if((int)btn_afternoon.getTag() == R.drawable.item_timeofday_shape){
+                    if ((int) btn_afternoon.getTag() == R.drawable.item_timeofday_shape) {
                         timeOfDayID = 3;
                     }
-                    if((int)btn_evening.getTag() == R.drawable.item_timeofday_shape){
+                    if ((int) btn_evening.getTag() == R.drawable.item_timeofday_shape) {
                         timeOfDayID = 4;
                     }
-                    int color = (int)habitItemColor.getTag();
+                    int color = (int) habitItemColor.getTag();
                     int img = imgResource;
 
                     int choosingDay = 0;
-                    if(tgb2.isChecked()) choosingDay++;
-                    if(tgb3.isChecked()) choosingDay++;
-                    if(tgb4.isChecked()) choosingDay++;
-                    if(tgb5.isChecked()) choosingDay++;
-                    if(tgb6.isChecked()) choosingDay++;
-                    if(tgb7.isChecked()) choosingDay++;
-                    if(tgbCN.isChecked()) choosingDay++;
+                    if (tgb2.isChecked()) choosingDay++;
+                    if (tgb3.isChecked()) choosingDay++;
+                    if (tgb4.isChecked()) choosingDay++;
+                    if (tgb5.isChecked()) choosingDay++;
 
-                    if(choosingDay == 0){
+                    if (tgb6.isChecked()) choosingDay++;
+                    if (tgb7.isChecked()) choosingDay++;
+                    if (tgbCN.isChecked()) choosingDay++;
+
+                    if (choosingDay == 0) {
                         Toast.makeText(getApplicationContext(), "choose at least 1 day of the week", Toast.LENGTH_SHORT).show();
                         return;
                     }
-                    Habits habits = new Habits(title, timeOfDayID, timePerDay, color, img, LocalDate.now(), 0,0, 1);
+
+                    Habits habits = new Habits(title, timeOfDayID, timePerDay, color, img, LocalDate.now(), 0, 0, PlantAdapter.selectedPosition + 1);
                     HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit(habits);
                     List<Habits> ListHabit = HabitDataBase.getInstance(getApplicationContext()).habitDAO().getHabitList();
-                    if(tgb2.isChecked()) HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.MONDAY.getValue(), ListHabit.size(), false, 0, false));
-                    if(tgb3.isChecked()) HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.TUESDAY.getValue(), ListHabit.size(), false, 0, false));
-                    if(tgb4.isChecked()) HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.WEDNESDAY.getValue(), ListHabit.size(), false, 0, false));
-                    if(tgb5.isChecked()) HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.THURSDAY.getValue(), ListHabit.size(), false, 0, false));
-                    if(tgb6.isChecked()) HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.FRIDAY.getValue(), ListHabit.size(), false, 0, false));
-                    if(tgb7.isChecked()) HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.SATURDAY.getValue(), ListHabit.size(), false, 0, false));
-                    if(tgbCN.isChecked()) HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.SUNDAY.getValue(), ListHabit.size(), false, 0, false));
+                    if (tgb2.isChecked())
+                        HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.MONDAY.getValue(), ListHabit.size(), false, 0, false));
+                    if (tgb3.isChecked())
+                        HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.TUESDAY.getValue(), ListHabit.size(), false, 0, false));
+                    if (tgb4.isChecked())
+                        HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.WEDNESDAY.getValue(), ListHabit.size(), false, 0, false));
+                    if (tgb5.isChecked())
+                        HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.THURSDAY.getValue(), ListHabit.size(), false, 0, false));
+                    if (tgb6.isChecked())
+                        HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.FRIDAY.getValue(), ListHabit.size(), false, 0, false));
+                    if (tgb7.isChecked())
+                        HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.SATURDAY.getValue(), ListHabit.size(), false, 0, false));
+                    if (tgbCN.isChecked())
+                        HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.SUNDAY.getValue(), ListHabit.size(), false, 0, false));
 
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);
@@ -167,20 +209,18 @@ public class EditHabitActivity extends AppCompatActivity {
 
     private void receiveIntent() {
         Intent intent = getIntent();
-        if(intent != null){
+        if (intent != null) {
             String action = intent.getAction();
-            if(action.equals("New habit")){
+            if (action.equals("New habit")) {
                 imgResource = intent.getIntExtra("Icon", 0);
                 habitItemIcon.setImageResource(imgResource);
                 String Title = intent.getStringExtra("Title");
                 edt_habitName.setText(Title);
-            }
-            else if(action.equals("Blank habit")){
+            } else if (action.equals("Blank habit")) {
                 return;
-            }
-            else if(action.equals("Selected habit")){
+            } else if (action.equals("Selected habit")) {
                 isEdit = true;
-                Habits habits = (Habits)intent.getSerializableExtra("Selected habit");
+                Habits habits = (Habits) intent.getSerializableExtra("Selected habit");
                 editHabit = habits;
                 imgResource = habits.getIcon();
                 mainTitle.setText("Edit habit");
@@ -191,34 +231,45 @@ public class EditHabitActivity extends AppCompatActivity {
                 btn_afternoon.setBackgroundResource(R.drawable.item_shape);
                 btn_evening.setBackgroundResource(R.drawable.item_shape);
 
-                switch (habits.getTimeOfDay_id()){
-                    case 1: btn_anytime.setBackgroundResource(R.drawable.item_timeofday_shape);
+                switch (habits.getTimeOfDay_id()) {
+                    case 1:
+                        btn_anytime.setBackgroundResource(R.drawable.item_timeofday_shape);
                         break;
-                    case 2: btn_morning.setBackgroundResource(R.drawable.item_timeofday_shape);
+                    case 2:
+                        btn_morning.setBackgroundResource(R.drawable.item_timeofday_shape);
                         break;
-                    case 3: btn_afternoon.setBackgroundResource(R.drawable.item_timeofday_shape);
+                    case 3:
+                        btn_afternoon.setBackgroundResource(R.drawable.item_timeofday_shape);
                         break;
-                    case 4: btn_evening.setBackgroundResource(R.drawable.item_timeofday_shape);
+                    case 4:
+                        btn_evening.setBackgroundResource(R.drawable.item_timeofday_shape);
                         break;
                 }
 
                 List<Habit_DayOfWeek> listHabitDow = HabitDataBase.getInstance(getApplicationContext()).habitDAO().getListHabitDOWByID(habits.getHabit_id());
-                for(int i = 0; i < listHabitDow.size(); i++){
+                for (int i = 0; i < listHabitDow.size(); i++) {
                     Habit_DayOfWeek habit_dayOfWeek = listHabitDow.get(i);
-                    switch (habit_dayOfWeek.getHabit_DayOfWeek_id()){
-                        case 1: tgb2.setChecked(true);
+                    switch (habit_dayOfWeek.getHabit_DayOfWeek_id()) {
+                        case 1:
+                            tgb2.setChecked(true);
                             break;
-                        case 2: tgb3.setChecked(true);
+                        case 2:
+                            tgb3.setChecked(true);
                             break;
-                        case 3: tgb4.setChecked(true);
+                        case 3:
+                            tgb4.setChecked(true);
                             break;
-                        case 4: tgb5.setChecked(true);
+                        case 4:
+                            tgb5.setChecked(true);
                             break;
-                        case 5: tgb6.setChecked(true);
+                        case 5:
+                            tgb6.setChecked(true);
                             break;
-                        case 6: tgb7.setChecked(true);
+                        case 6:
+                            tgb7.setChecked(true);
                             break;
-                        case 7: tgbCN.setChecked(true);
+                        case 7:
+                            tgbCN.setChecked(true);
                             break;
                     }
                 }
@@ -235,7 +286,7 @@ public class EditHabitActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 1){
+        if (requestCode == 1) {
             if (resultCode == Activity.RESULT_OK) {
                 // Xử lý kết quả trả về
                 if (data != null) {
@@ -357,7 +408,7 @@ public class EditHabitActivity extends AppCompatActivity {
         btn_morning.setTag(R.drawable.item_shape);
         btn_afternoon.setTag(R.drawable.item_shape);
         btn_evening.setTag(R.drawable.item_shape);
-        
+
         btn_anytime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
