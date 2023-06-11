@@ -10,9 +10,7 @@ import com.example.penguin_project.model.data.LocalDateConverter;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-@Entity(tableName = "Habits", foreignKeys = {
-        @ForeignKey(entity = TimeOfDay.class, parentColumns = "TimeOfDay_id", childColumns = "TimeOfDay_id", onDelete = ForeignKey.CASCADE)
-})
+@Entity(tableName = "Habits", foreignKeys = {@ForeignKey(entity = TimeOfDay.class, parentColumns = "TimeOfDay_id", childColumns = "TimeOfDay_id", onDelete = ForeignKey.CASCADE)})
 @TypeConverters(LocalDateConverter.class)
 public class Habits implements Serializable {
     @PrimaryKey(autoGenerate = true)
@@ -25,6 +23,29 @@ public class Habits implements Serializable {
     private LocalDate CreateDay;
     private int CurrentStreak;
     private int MaxStreak;
+
+    private int Tree_id;
+
+    public Habits(int habit_id, String title, int timeOfDay_id, int timePerDay, int color, int icon, LocalDate createDay, int currentStreak, int maxStreak, int tree_id) {
+        Habit_id = habit_id;
+        Title = title;
+        TimeOfDay_id = timeOfDay_id;
+        TimePerDay = timePerDay;
+        Color = color;
+        Icon = icon;
+        CreateDay = createDay;
+        CurrentStreak = currentStreak;
+        MaxStreak = maxStreak;
+        Tree_id = tree_id;
+    }
+
+    public int getTree_id() {
+        return Tree_id;
+    }
+
+    public void setTree_id(int Tree_id) {
+        this.Tree_id = Tree_id;
+    }
 
     public Habits(String Title, int TimeOfDay_id, int TimePerDay, int Color, int Icon, LocalDate CreateDay, int CurrentStreak, int MaxStreak) {
         this.Title = Title;
