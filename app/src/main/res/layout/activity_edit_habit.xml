@@ -496,7 +496,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:background="@color/lavender"
+                android:layout_marginTop="20dp"
                 android:id="@+id/rcv_EditHabit_plantRecyclerView"
                 />
             <RelativeLayout

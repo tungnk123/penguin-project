@@ -8,6 +8,7 @@
     android:orientation="vertical"
     app:cardCornerRadius="20dp"
     app:contentPadding="10dp"
+    android:id="@+id/cv_storeItem_cardviewStoreItem"
     app:cardElevation="100dp">
 
     <ImageView

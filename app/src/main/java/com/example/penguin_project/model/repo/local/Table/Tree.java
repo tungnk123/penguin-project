@@ -1,6 +1,7 @@
 package com.example.penguin_project.model.repo.local.Table;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "Tree")
@@ -13,6 +14,9 @@ public class Tree {
     private int Icon;
 
     private int TimeToGrow;
+
+    @Ignore
+    public boolean isSelected;
 
     public int getTree_id() {
         return Tree_id;
@@ -57,5 +61,13 @@ public class Tree {
         this.Title = Title;
         this.Icon = Icon;
         this.TimeToGrow = TimeToGrow;
+    }
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean b) {
+        isSelected = b;
     }
 }

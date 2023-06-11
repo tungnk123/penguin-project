@@ -15,14 +15,15 @@
         android:background="@drawable/item_shape"
         android:padding="5dp">
         <RelativeLayout
-            android:id="@+id/habitItem_Color"
+            android:id="@+id/rll_habitItem_habitCircle"
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:background="@drawable/item_icon_shape"
             android:layout_margin="4dp"
             >
+
             <ImageView
-                android:id="@+id/habitItem_Icon"
+                android:id="@+id/img_habitItem_habitIcon"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_centerInParent="true"
@@ -32,12 +33,12 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="30dp"
             android:layout_marginTop="5dp"
             android:orientation="vertical"
             >
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/habitItem_Title"
                 android:text="Uống nước"
@@ -74,6 +75,24 @@
                     />
             </LinearLayout>
         </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rll_habitItem_plantCircle"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/item_icon_shape"
+            android:layout_marginTop="4dp"
+            android:layout_marginStart="30dp">
+
+            <ImageView
+                android:id="@+id/img_habitItem_plantIcon"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_water" />
+        </RelativeLayout>
+
+        
     </LinearLayout>
     <Button
         android:id="@+id/buttonDelete"
