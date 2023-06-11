@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.penguin_project.R;
+import com.example.penguin_project.model.repo.local.DataBase.HabitDataBase;
 import com.example.penguin_project.model.repo.local.Table.StoreItem;
 import com.example.penguin_project.view.fragment.StoreFragment;
 import com.example.penguin_project.viewmodel.StoreItemViewModel;
@@ -24,6 +25,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Objects;
 
 public class StoreItemAdapter extends RecyclerView.Adapter<StoreItemAdapter.StoreItemViewHolder> {
 
@@ -109,6 +111,12 @@ public class StoreItemAdapter extends RecyclerView.Adapter<StoreItemAdapter.Stor
                                             int newMoney = StoreFragment.coinSharedPreference.getInt("money", 100) - clickedItem.getItemPrice();
                                             StoreFragment.storeNewMoney(newMoney);
                                             Toast.makeText(itemView.getContext(), "Item bought!", Toast.LENGTH_SHORT).show();
+                                            // neu mua item la tree se cap nhap trong db la plant da mua
+                                            if (Objects.equals(clickedItem.getStoreItemType(), "tree")) {
+                                                Toast.makeText(itemView.getContext(), clickedItem.getItemName() + " " + clickedItem.getItem_id(), Toast.LENGTH_LONG).show();
+                                                HabitDataBase.getInstance(itemView.getContext()).habitDAO().updateTreeForestIsPurchased(clickedItem.getItem_id(), true);
+                                                notifyDataSetChanged();
+                                            }
                                         }
                                         else {
                                             Toast.makeText(itemView.getContext(), "Not enough money!     😅😅😅😅", Toast.LENGTH_SHORT).show();

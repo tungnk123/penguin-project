@@ -136,8 +136,9 @@ public class StoreFragment extends Fragment {
         storeItemViewModel = new ViewModelProvider(this).get(StoreItemViewModel.class);
 
         //region Generate Data
-        StoreItem tree1 = new StoreItem("Tulip", 20, R.mipmap.icon_storeiten_tulip, "Description", "tree", false);
-        StoreItem tree2 = new StoreItem("Maple", 10, R.mipmap.icon_storeitem_maple_tree, "Description", "tree", false);
+
+        StoreItem tree1 = new StoreItem("Maple", 10, R.mipmap.icon_storeitem_maple_tree, "Description", "tree", true);
+        StoreItem tree2 = new StoreItem("Tulip", 20, R.mipmap.icon_storeiten_tulip, "Description", "tree", false);
         StoreItem tree3 = new StoreItem("Hickory", 10, R.mipmap.icon_storeitem_hickory, "Description", "tree", false);
         StoreItem tree4 = new StoreItem("Coconut", 50, R.mipmap.icon_storeitem_coconuttree, "Description", "tree", false);
         StoreItem tree5 = new StoreItem("Pine", 40, R.mipmap.icon_pine, "Description", "tree", false);

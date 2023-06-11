@@ -1,5 +1,6 @@
 package com.example.penguin_project.view.adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +11,10 @@ import android.widget.Toast;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.penguin_project.MainActivity;
 import com.example.penguin_project.R;
 import com.example.penguin_project.model.repo.local.Table.Tree;
+import com.example.penguin_project.view.fragment.StoreFragment;
 
 import java.util.List;
 
@@ -33,10 +36,19 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHol
     @Override
     public void onBindViewHolder(PlantViewHolder holder, int position) {
         Tree plant = plantList.get(position);
-        holder.tvPlantName.setText(plant.getTitle());
-        holder.imgPlantIcon.setImageResource(plant.getIcon());
-        holder.updateCardViewAppearance(position == selectedPosition);
+        if (plant.getIsPurchased()) {
+            holder.tvPlantName.setText(plant.getTitle());
+            holder.imgPlantIcon.setImageResource(plant.getIcon());
+            holder.imgPlantLock.setVisibility(View.GONE);  // Hide the lock icon
+            holder.updateCardViewAppearance(position == selectedPosition);
+        } else {
+            holder.imgPlantIcon.setImageResource(plant.getIcon());
+            holder.tvPlantName.setText(plant.getTitle());
+            holder.imgPlantLock.setVisibility(View.VISIBLE);  // Show the lock icon
+            holder.updateCardViewAppearance(position == selectedPosition);
+        }
     }
+
 
     @Override
     public int getItemCount() {
@@ -47,10 +59,13 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHol
         TextView tvPlantName;
         ImageView imgPlantIcon;
 
+        ImageView imgPlantLock;
+
         PlantViewHolder(View itemView) {
             super(itemView);
             tvPlantName = itemView.findViewById(R.id.tv_plantItem_plantName);
             imgPlantIcon = itemView.findViewById(R.id.img_plantItem_plantIcon);
+            imgPlantLock = itemView.findViewById(R.id.img_plantItem_lock);
             itemView.setOnClickListener(this);
         }
 
@@ -58,16 +73,26 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHol
         public void onClick(View view) {
             int position = getAdapterPosition();
             if (position != RecyclerView.NO_POSITION) {
-                if (selectedPosition != RecyclerView.NO_POSITION) {
-                    // Deselect the previously selected item
+                Tree tree = plantList.get(position);
+                // neu da mua plant
+                if (tree.getIsPurchased()) {
+                    if (selectedPosition != RecyclerView.NO_POSITION) {
+                        // Deselect the previously selected item
+                        notifyItemChanged(selectedPosition);
+                    }
+                    selectedPosition = position;
+                    // Select the clicked item
                     notifyItemChanged(selectedPosition);
-                }
-                selectedPosition = position;
-                // Select the clicked item
-                notifyItemChanged(selectedPosition);
 
-                Tree plant = plantList.get(position);
-                Toast.makeText(view.getContext(), plant.getTitle(), Toast.LENGTH_SHORT).show();
+                    Tree plant = plantList.get(position);
+                    Toast.makeText(view.getContext(), plant.getTitle(), Toast.LENGTH_SHORT).show();
+                }
+                // truong hop chua mua plant se chuyen den storefragment
+                else {
+                    Intent intent = new Intent(view.getContext(), MainActivity.class);
+                    intent.putExtra("Store Fragment", "store");
+                    view.getContext().startActivity(intent);
+                }
             }
         }
 

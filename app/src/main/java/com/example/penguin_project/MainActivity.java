@@ -2,6 +2,7 @@ package com.example.penguin_project;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.work.ExistingPeriodicWorkPolicy;
 import androidx.work.PeriodicWorkRequest;
@@ -78,6 +79,11 @@ public class MainActivity extends AppCompatActivity {
         
         setupHabit_Day();
         setUpHabit_DayWorker();
+        String selectedFragment = getIntent().getStringExtra("Store Fragment");
+        if (selectedFragment != null && selectedFragment.equals("store")) {
+            replaceFragment(new StoreFragment());
+            bottomNavigation.show(4, true);
+        }
     }
 
     private void setUpHabit_DayWorker() {

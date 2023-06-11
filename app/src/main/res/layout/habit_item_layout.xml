@@ -43,6 +43,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/habitItem_Title"
                 android:text="Uống nước"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 />
