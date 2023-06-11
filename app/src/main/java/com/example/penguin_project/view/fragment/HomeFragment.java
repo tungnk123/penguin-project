@@ -167,12 +167,19 @@ public class HomeFragment extends Fragment {
     // Hàm kiểm tra xem trong database có data trong table Tree hay không? nếu không thì thêm Tree Item vào
     private void setTreeForest() {
         if (HabitDataBase.getInstance(getContext()).habitDAO().getTreeForestById(1) == null) {
-            Tree plant1 = new Tree("Plant 1", R.mipmap.icon_sunflower, 5);
-            Tree plant2 = new Tree("Plant 2", R.mipmap.icon_bamboo, 5);
-            Tree plant3 = new Tree("Plant 3", R.mipmap.icon_bonsai_4, 5);
+            Tree plant1 = new Tree("Tulip", R.mipmap.icon_storeiten_tulip, 2);
+            Tree plant2 = new Tree("Maple", R.mipmap.icon_storeitem_maple_tree, 5);
+            Tree plant3 = new Tree("Hickory", R.mipmap.icon_storeitem_hickory, 7);
+            Tree plant4 = new Tree("Coconut", R.mipmap.icon_storeitem_coconuttree, 10);
+            Tree plant5 = new Tree("Pine", R.mipmap.icon_pine, 5);
+            Tree plant6 = new Tree("Bamboo", R.mipmap.icon_bamboo, 3);
+
             HabitDataBase.getInstance(getContext()).habitDAO().insertTree(plant1);
             HabitDataBase.getInstance(getContext()).habitDAO().insertTree(plant2);
             HabitDataBase.getInstance(getContext()).habitDAO().insertTree(plant3);
+            HabitDataBase.getInstance(getContext()).habitDAO().insertTree(plant4);
+            HabitDataBase.getInstance(getContext()).habitDAO().insertTree(plant5);
+            HabitDataBase.getInstance(getContext()).habitDAO().insertTree(plant6);
         }
 
     }
