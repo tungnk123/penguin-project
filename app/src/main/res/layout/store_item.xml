@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="150dp"
+    android:layout_height="200dp"
+    android:layout_marginEnd="20dp"
+    android:backgroundTint="#232323"
+    android:orientation="vertical"
+    app:cardCornerRadius="20dp"
+    app:contentPadding="10dp"
+    app:cardElevation="100dp">
+
+    <ImageView
+        android:id="@+id/img_storeItem_icon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:id="@+id/tv_storeItem_itemName"
+        style="@style/TitleWithWrapper"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="35dp"
+        android:text="Tree ABC"
+        android:textAlignment="center"
+        android:textColor="@color/lavender"
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:id="@+id/ll_storeItem_iconWrapper"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/item_shape"
+        android:backgroundTint="@color/lime_energy"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tv_storeItem_coin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="5dp"
+            android:padding="3dp"
+            android:text="30"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/img_storeItem_coin"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/icon_coin" />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
