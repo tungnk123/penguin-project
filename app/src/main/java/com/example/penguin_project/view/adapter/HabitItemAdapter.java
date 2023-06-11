@@ -85,7 +85,7 @@ public class HabitItemAdapter extends RecyclerView.Adapter<HabitItemAdapter.Item
         habit_dayOfWeeks = HabitDataBase.getInstance(context).habitDAO().findHabitDOWByID(habits.getHabit_id(), dayOfWeek.getValue());
         if(habit_dayOfWeeks.size() > 0){
            Habit_DayOfWeek habit_dayOfWeek = habit_dayOfWeeks.get(0);
-           if(habit_dayOfWeek.getIsFailed() == true){
+           if(habit_dayOfWeek.getIsFailed()){
                habit_dayOfWeek.setIsFailed(false);
            }
            else{

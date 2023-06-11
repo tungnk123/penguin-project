@@ -375,7 +375,7 @@ public class HomeFragment extends Fragment {
         });
 
         rcv_DatePicker.setAdapter(datePicker_adapter);
-        rcv_DatePicker.scrollToPosition(LocalDate.now().getDayOfWeek().getValue());
+        rcv_DatePicker.scrollToPosition(LocalDate.now().getDayOfWeek().getValue() -1);
     }
 
     private class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
