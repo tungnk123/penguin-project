@@ -9,7 +9,10 @@ import com.example.penguin_project.model.data.LocalDateConverter;
 
 import java.time.LocalDate;
 
-@Entity(tableName = "Habits", foreignKeys = {@ForeignKey(entity = TimeOfDay.class, parentColumns = "TimeOfDay_id", childColumns = "TimeOfDay_id", onDelete = ForeignKey.CASCADE)})
+@Entity(tableName = "Habits", foreignKeys = {
+        @ForeignKey(entity = TimeOfDay.class, parentColumns = "TimeOfDay_id", childColumns = "TimeOfDay_id", onDelete = ForeignKey.CASCADE),
+        @ForeignKey(entity = Tree.class, parentColumns = "Tree_id", childColumns = "Tree_id", onDelete = ForeignKey.CASCADE)
+})
 @TypeConverters(LocalDateConverter.class)
 public class Habits {
     @PrimaryKey(autoGenerate = true)
