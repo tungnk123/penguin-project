@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.fragment.TrackerFragment"
-    android:padding="10dp"
     android:background="@color/black"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".view.fragment.TrackerFragment">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,6 +48,7 @@
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="bold" />
+
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
@@ -59,42 +61,142 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="15dp"
+            android:background="@drawable/item_circle_shape"
             android:maxWidth="50dp"
             android:maxHeight="50dp"
-            android:background="@drawable/item_circle_shape"
             android:src="@mipmap/icon_user" />
     </LinearLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/item_icon_shape"
-        android:padding="6dp"
-        >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="OVERALL HISTORY"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textAlignment="center"
-            android:layout_centerInParent="true"
-            android:textSize="20dp"/>
-    </RelativeLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="20dp"
                 >
+
+                <ImageView
+                    android:id="@+id/img_fragmentTracker_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/background_final_1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/img_fragmentTracker_tree1"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="112dp"
+                    android:layout_marginTop="176dp"
+                    android:src="@null"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/img_fragmentTracker_tree2"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="136dp"
+                    android:layout_marginTop="236dp"
+                    android:src="@null"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/img_fragmentTracker_tree3"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="88dp"
+                    android:layout_marginTop="208dp"
+                    android:src="@null"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/img_fragmentTracker_tree4"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="164dp"
+                    android:layout_marginTop="188dp"
+                    android:src="@null"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/img_fragmentTracker_tree5"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="192dp"
+                    android:layout_marginTop="176dp"
+                    android:src="@null"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/img_fragmentTracker_tree6"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="192dp"
+                    android:layout_marginTop="248dp"
+                    android:src="@null"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/img_fragmentTracker_tree7"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="152dp"
+                    android:layout_marginTop="152dp"
+                    android:src="@null"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/img_fragmentTracker_tree8"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="240dp"
+                    android:layout_marginTop="208dp"
+                    android:src="@null"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/item_icon_shape"
+                android:padding="6dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="OVERALL HISTORY"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp">
 
                 <LinearLayout
                     android:id="@+id/linearLayout"
@@ -125,40 +227,43 @@
                         android:textSize="35dp"
                         android:textStyle="bold" />
                 </LinearLayout>
+
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintStart_toEndOf="@+id/linearLayout"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:layout_marginTop="5dp"
                     android:layout_marginLeft="50dp"
+                    android:layout_marginTop="5dp"
                     android:background="@drawable/item_icon_shape"
                     android:padding="10dp"
-                    >
+                    app:layout_constraintStart_toEndOf="@+id/linearLayout"
+                    app:layout_constraintTop_toTopOf="parent">
+
                     <LinearLayout
                         android:layout_width="135dp"
                         android:layout_height="135dp"
+                        android:background="@drawable/item_daystreakmap_shape_defaut"
                         android:orientation="vertical"
-                        android:padding="10dp"
-                        android:background="@drawable/item_daystreakmap_shape_defaut">
+                        android:padding="10dp">
+
                         <TextView
+                            android:id="@+id/HabitTracker_txtStreakDay"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/HabitTracker_txtStreakDay"
-                            android:text="4"
-                            android:textSize="50dp"
-                            android:textColor="@color/white"
                             android:padding="5dp"
+                            android:text="4"
                             android:textAlignment="center"
-                            android:textStyle="bold"/>
+                            android:textColor="@color/white"
+                            android:textSize="50dp"
+                            android:textStyle="bold" />
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Days"
-                            android:textStyle="bold"
-                            android:textColor="@color/white"
                             android:textAlignment="center"
-                            android:textSize="25sp"/>
+                            android:textColor="@color/white"
+                            android:textSize="25sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </RelativeLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -166,153 +271,159 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="10dp">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
+                    android:orientation="horizontal">
+
                     <TextView
                         android:layout_width="25dp"
                         android:layout_height="wrap_content"
-                        android:text="s"
-                        android:textSize="25sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/white"
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="5dp"
+                        android:text="s"
                         android:textAlignment="center"
-                        />
+                        android:textColor="@color/white"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="|"
-                        android:textSize="25sp"
-                        android:textStyle="bold"
                         android:layout_margin="5dp"
+                        android:text="|"
                         android:textAlignment="center"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+
                     <TextView
                         android:layout_width="25dp"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:text="m"
-                        android:textStyle="bold"
-                        android:textSize="25sp"
-                        android:layout_margin="5dp"
                         android:textAlignment="center"
                         android:textColor="@color/white"
-                        />
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="|"
-                        android:textStyle="bold"
-                        android:textSize="25sp"
                         android:layout_margin="5dp"
+                        android:text="|"
                         android:textAlignment="center"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+
                     <TextView
                         android:layout_width="25dp"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:text="t"
-                        android:textStyle="bold"
-                        android:layout_margin="5dp"
-                        android:textSize="25sp"
                         android:textAlignment="center"
                         android:textColor="@color/white"
-                        />
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="|"
-                        android:textSize="25sp"
-                        android:textStyle="bold"
                         android:layout_margin="5dp"
+                        android:text="|"
                         android:textAlignment="center"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+
                     <TextView
                         android:layout_width="25dp"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:text="w"
-                        android:textStyle="bold"
-                        android:textSize="25sp"
-                        android:layout_margin="5dp"
                         android:textAlignment="center"
                         android:textColor="@color/white"
-                        />
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="|"
-                        android:textSize="25sp"
-                        android:textStyle="bold"
                         android:layout_margin="5dp"
+                        android:text="|"
                         android:textAlignment="center"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+
                     <TextView
                         android:layout_width="25dp"
                         android:layout_height="wrap_content"
-                        android:text="t"
-                        android:textStyle="bold"
-                        android:textSize="25sp"
                         android:layout_margin="5dp"
+                        android:text="t"
                         android:textAlignment="center"
-                        android:textColor="@color/white"/>
+                        android:textColor="@color/white"
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="|"
-                        android:textStyle="bold"
-                        android:textSize="25sp"
                         android:layout_margin="5dp"
+                        android:text="|"
                         android:textAlignment="center"
                         android:textColor="@color/white"
-                        />
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+
                     <TextView
                         android:layout_width="20dp"
                         android:layout_height="wrap_content"
-                        android:text="f"
-                        android:textStyle="bold"
-                        android:textSize="25sp"
                         android:layout_margin="5dp"
+                        android:text="f"
                         android:textAlignment="center"
                         android:textColor="@color/white"
-                        />
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="|"
-                        android:textStyle="bold"
                         android:layout_margin="5dp"
-                        android:textSize="25sp"
+                        android:text="|"
                         android:textAlignment="center"
                         android:textColor="@color/white"
-                        />
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
+
                     <TextView
                         android:layout_width="25dp"
                         android:layout_height="wrap_content"
-                        android:text="s"
-                        android:textStyle="bold"
-                        android:layout_marginTop="5dp"
                         android:layout_marginStart="2dp"
-                        android:textSize="25sp"
+                        android:layout_marginTop="5dp"
+                        android:text="s"
                         android:textAlignment="center"
                         android:textColor="@color/white"
-                        />
+                        android:textSize="25sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/recyclerView"/>
+                    android:layout_height="wrap_content" />
             </LinearLayout>
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="20dp"
-                android:background="@drawable/item_shape_2"
                 android:layout_marginTop="10dp"
-                >
+                android:background="@drawable/item_shape_2"
+                android:padding="20dp">
 
                 <RelativeLayout
                     android:id="@+id/relativeLayout"
@@ -362,22 +473,23 @@
                     android:src="@mipmap/icon_cup"
                     app:layout_constraintStart_toEndOf="@+id/relativeLayout"
                     app:layout_constraintTop_toTopOf="parent" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Your longest streak"
-                    app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:textStyle="bold"
-                    android:textColor="@color/white"
-                    android:textSize="25dp"
                     android:layout_marginLeft="60dp"
                     android:layout_marginTop="20dp"
-                    />
+                    android:text="Your longest streak"
+                    android:textColor="@color/white"
+                    android:textSize="25dp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
             </androidx.constraintlayout.widget.ConstraintLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"/>
+                android:layout_height="150dp" />
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
