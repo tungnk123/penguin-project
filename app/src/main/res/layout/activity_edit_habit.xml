@@ -11,43 +11,46 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+        android:orientation="horizontal">
+
         <ImageButton
             android:id="@+id/EditHabit_btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/black"
-            android:src="@mipmap/icon_back"/>
+            android:src="@mipmap/icon_back" />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TextView
+                android:id="@+id/EditHabit_mainTitle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/EditHabit_mainTitle"
-                android:text="Add new habit"
-                android:textStyle="bold"
-                android:textSize="25dp"
-                android:textColor="@color/white"
                 android:layout_marginStart="20dp"
-                android:padding="5dp"/>
+                android:padding="5dp"
+                android:text="Add new habit"
+                android:textColor="@color/white"
+                android:textSize="25dp"
+                android:textStyle="bold" />
         </RelativeLayout>
     </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/item_shape_3"
-                android:padding="5dp"
-                >
+                android:padding="5dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -58,27 +61,28 @@
                     android:textSize="18dp"
                     android:textStyle="bold" />
             </RelativeLayout>
+
             <EditText
                 android:id="@+id/EdtiHabit_edtHabitName"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginTop="15dp"
-                android:background="@drawable/item_shape_3"
                 android:layout_marginStart="30dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginEnd="30dp"
+                android:background="@drawable/item_shape_3"
                 android:hint="Example: Reading...."
                 android:textAlignment="center"
-                android:textStyle="bold"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white"
-                />
+                android:textStyle="bold" />
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/item_shape_3"
-                android:padding="5dp"
                 android:layout_marginTop="15dp"
-                >
+                android:background="@drawable/item_shape_3"
+                android:padding="5dp">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -88,24 +92,26 @@
                     android:textSize="18dp"
                     android:textStyle="bold" />
             </RelativeLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
                 android:background="@color/black"
-                android:padding="10dp"
-                android:layout_marginTop="20dp">
+                android:orientation="horizontal"
+                android:padding="10dp">
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
                     <RelativeLayout
                         android:id="@+id/EditHabit_habitItem_Color"
                         android:layout_width="65dp"
                         android:layout_height="65dp"
-                        android:background="@drawable/item_icon_shape"
                         android:layout_margin="4dp"
-                        >
+                        android:background="@drawable/item_icon_shape">
 
                         <ImageView
                             android:id="@+id/EditHabit_habitItem_Icon"
@@ -114,197 +120,207 @@
                             android:layout_centerInParent="true"
                             android:src="@mipmap/icon_drink_water" />
                     </RelativeLayout>
+
                     <ImageButton
                         android:id="@+id/EditHabit_btn_iconPicker"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:src="@mipmap/icon_edit"
-                        android:background="@drawable/item_shape" />
+                        android:background="@drawable/item_shape"
+                        android:src="@mipmap/icon_edit" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
                     android:layout_marginLeft="20dp"
-                    >
+                    android:orientation="horizontal">
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
                         android:layout_marginLeft="5dp"
-                        >
+                        android:orientation="vertical">
+
                         <ImageButton
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
-                            android:background="@drawable/item_circle_shape"
                             android:id="@+id/EditHabit_btnColor1"
-                            />
-                        <ImageButton
                             android:layout_width="35dp"
                             android:layout_height="35dp"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/item_circle_shape_2"
+                            android:background="@drawable/item_circle_shape" />
+
+                        <ImageButton
                             android:id="@+id/EditHabit_btnColor2"
-                            />
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/item_circle_shape_2" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
                         android:layout_marginLeft="10dp"
-                        >
+                        android:orientation="vertical">
+
                         <ImageButton
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
-                            android:background="@drawable/item_circle_shape_3"
                             android:id="@+id/EditHabit_btnColor3"
-                            />
-                        <ImageButton
                             android:layout_width="35dp"
                             android:layout_height="35dp"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/item_circle_shape_4"
+                            android:background="@drawable/item_circle_shape_3" />
+
+                        <ImageButton
                             android:id="@+id/EditHabit_btnColor4"
-                            />
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/item_circle_shape_4" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
                         android:layout_marginLeft="10dp"
-                        >
+                        android:orientation="vertical">
+
                         <ImageButton
-                            android:layout_width="35dp"
-                            android:layout_height="35dp"
-                            android:background="@drawable/item_circle_shape_5"
                             android:id="@+id/EditHabit_btnColor5"
-                            />
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:background="@drawable/item_circle_shape_5" />
+
                         <ImageButton
+                            android:id="@+id/EditHabit_btnColor6"
                             android:layout_width="35dp"
                             android:layout_height="35dp"
                             android:layout_marginTop="5dp"
-                            android:background="@drawable/item_circle_shape_6"
-                            android:id="@+id/EditHabit_btnColor6"
-                            />
+                            android:background="@drawable/item_circle_shape_6" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
                         android:layout_marginLeft="10dp"
-                        >
+                        android:orientation="vertical">
+
                         <ImageButton
+                            android:id="@+id/EditHabit_btnColor7"
                             android:layout_width="35dp"
                             android:layout_height="35dp"
-                            android:background="@drawable/item_circle_shape_7"
-                            android:id="@+id/EditHabit_btnColor7"
-                            />
+                            android:background="@drawable/item_circle_shape_7" />
+
                         <ImageButton
+                            android:id="@+id/EditHabit_btnColor8"
                             android:layout_width="35dp"
                             android:layout_height="35dp"
                             android:layout_marginTop="5dp"
-                            android:background="@drawable/item_circle_shape_8"
-                            android:id="@+id/EditHabit_btnColor8"
-                            />
+                            android:background="@drawable/item_circle_shape_8" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/item_icon_shape"
-                    >
+                    android:padding="5dp">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:textColor="@color/white"
-                        android:text="TIME OF WEEK"
                         android:layout_centerInParent="true"
-                        />
+                        android:text="TIME OF WEEK"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
                 </RelativeLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="20dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="20dp">
+
                     <ToggleButton
                         android:id="@+id/EditHabit_tgb2"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:background="@drawable/toggle_button_off_shape"
-                        android:textStyle="bold"
                         android:layout_marginStart="7dp"
+                        android:background="@drawable/toggle_button_off_shape"
+                        android:textOff="2"
                         android:textOn="2"
-                        android:textOff="2" />
+                        android:textStyle="bold" />
+
                     <ToggleButton
                         android:id="@+id/EditHabit_tgb3"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:background="@drawable/toggle_button_off_shape"
-                        android:textStyle="bold"
                         android:layout_marginStart="7dp"
+                        android:background="@drawable/toggle_button_off_shape"
+                        android:textOff="3"
                         android:textOn="3"
-                        android:textOff="3" />
+                        android:textStyle="bold" />
+
                     <ToggleButton
                         android:id="@+id/EditHabit_tgb4"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:background="@drawable/toggle_button_off_shape"
-                        android:textStyle="bold"
                         android:layout_marginStart="7dp"
+                        android:background="@drawable/toggle_button_off_shape"
+                        android:textOff="4"
                         android:textOn="4"
-                        android:textOff="4" />
+                        android:textStyle="bold" />
+
                     <ToggleButton
                         android:id="@+id/EditHabit_tgb5"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:background="@drawable/toggle_button_off_shape"
-                        android:textStyle="bold"
                         android:layout_marginStart="7dp"
+                        android:background="@drawable/toggle_button_off_shape"
+                        android:textOff="5"
                         android:textOn="5"
-                        android:textOff="5" />
+                        android:textStyle="bold" />
+
                     <ToggleButton
                         android:id="@+id/EditHabit_tgb6"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:background="@drawable/toggle_button_off_shape"
-                        android:textStyle="bold"
                         android:layout_marginStart="7dp"
+                        android:background="@drawable/toggle_button_off_shape"
+                        android:textOff="6"
                         android:textOn="6"
-                        android:textOff="6" />
+                        android:textStyle="bold" />
+
                     <ToggleButton
                         android:id="@+id/EditHabit_tgb7"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:background="@drawable/toggle_button_off_shape"
-                        android:textStyle="bold"
                         android:layout_marginStart="7dp"
+                        android:background="@drawable/toggle_button_off_shape"
+                        android:textOff="7"
                         android:textOn="7"
-                        android:textOff="7" />
+                        android:textStyle="bold" />
+
                     <ToggleButton
                         android:id="@+id/EditHabit_tgbCN"
                         android:layout_width="35dp"
                         android:layout_height="35dp"
-                        android:background="@drawable/toggle_button_off_shape"
-                        android:textStyle="bold"
                         android:layout_marginStart="7dp"
+                        android:background="@drawable/toggle_button_off_shape"
+                        android:textOff="CN"
                         android:textOn="CN"
-                        android:textOff="CN" />
+                        android:textStyle="bold" />
                 </LinearLayout>
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/item_icon_shape"
-                    >
+                    android:padding="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -315,140 +331,144 @@
                         android:textSize="18dp"
                         android:textStyle="bold" />
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    >
+                    android:layout_marginTop="10dp">
+
                     <LinearLayout
+                        android:id="@+id/EditHabit_btnMorning"
                         android:layout_width="160dp"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/item_shape"
-                        android:padding="10dp"
                         android:layout_marginStart="5dp"
-                        android:id="@+id/EditHabit_btnMorning"
-                        >
+                        android:background="@drawable/item_shape"
+                        android:padding="10dp">
+
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@mipmap/icon_sun"
-                            android:contentDescription="@string/app_name" />
+                            android:contentDescription="@string/app_name"
+                            android:src="@mipmap/icon_sun" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
                             android:text="Morning"
                             android:textColor="@color/white"
-                            android:layout_marginStart="10dp"
                             android:textSize="20sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
                     </LinearLayout>
+
                     <LinearLayout
+                        android:id="@+id/EditHabit_btnAfternoon"
                         android:layout_width="160dp"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/item_shape"
-                        android:padding="10dp"
-                        android:id="@+id/EditHabit_btnAfternoon"
-                        android:layout_toRightOf="@+id/EditHabit_btnMorning"
                         android:layout_marginStart="15dp"
-                        >
+                        android:layout_toRightOf="@+id/EditHabit_btnMorning"
+                        android:background="@drawable/item_shape"
+                        android:padding="10dp">
+
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@mipmap/icon_afternoon"
-                            android:contentDescription="@string/app_name" />
+                            android:contentDescription="@string/app_name"
+                            android:src="@mipmap/icon_afternoon" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
                             android:text="Afternoon"
                             android:textColor="@color/white"
-                            android:layout_marginStart="10dp"
                             android:textSize="20sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
                     </LinearLayout>
+
                     <LinearLayout
+                        android:id="@+id/EditHabit_btnEvening"
                         android:layout_width="160dp"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/item_shape"
-                        android:padding="10dp"
-                        android:id="@+id/EditHabit_btnEvening"
+                        android:layout_below="@id/EditHabit_btnMorning"
                         android:layout_marginStart="5dp"
                         android:layout_marginTop="20dp"
-                        android:layout_below="@id/EditHabit_btnMorning"
-                        >
+                        android:background="@drawable/item_shape"
+                        android:padding="10dp">
+
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@mipmap/icon_night"
-                            android:contentDescription="@string/app_name" />
+                            android:contentDescription="@string/app_name"
+                            android:src="@mipmap/icon_night" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
                             android:text="Evening"
                             android:textColor="@color/white"
-                            android:layout_marginStart="10dp"
                             android:textSize="20sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
                     </LinearLayout>
+
                     <LinearLayout
+                        android:id="@+id/EditHabit_btnAnytime"
                         android:layout_width="160dp"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/item_shape"
-                        android:padding="10dp"
-                        android:id="@+id/EditHabit_btnAnytime"
+                        android:layout_below="@id/EditHabit_btnMorning"
                         android:layout_marginStart="15dp"
                         android:layout_marginTop="20dp"
-                        android:layout_below="@id/EditHabit_btnMorning"
                         android:layout_toRightOf="@id/EditHabit_btnEvening"
-                        >
+                        android:background="@drawable/item_shape"
+                        android:padding="10dp">
+
                         <ImageView
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@mipmap/icon_sun"
-                            android:contentDescription="@string/app_name" />
+                            android:contentDescription="@string/app_name"
+                            android:src="@mipmap/icon_sun" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
                             android:text="Anytime"
                             android:textColor="@color/white"
-                            android:layout_marginStart="10dp"
                             android:textSize="20sp"
-                            android:textStyle="bold"
-                            />
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
                     android:layout_marginTop="20dp"
                     android:background="@drawable/item_icon_shape"
-                    >
+                    android:padding="5dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:text="TIME PER DAY"
-                        android:textSize="18dp"
                         android:textColor="@color/white"
+                        android:textSize="18dp"
                         android:textStyle="bold" />
                 </RelativeLayout>
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    >
+                    android:padding="5dp">
 
                     <EditText
                         android:id="@+id/EditHabit_edtTimePerDay"
                         android:layout_width="40dp"
                         android:layout_height="30dp"
                         android:layout_centerInParent="true"
-                        android:inputType="number"
                         android:background="@drawable/item_icon_shape"
+                        android:inputType="number"
                         android:text="1"
                         android:textAlignment="center"
                         android:textColor="@color/white"
@@ -456,22 +476,44 @@
                         android:textStyle="bold" />
                 </RelativeLayout>
             </LinearLayout>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:background="@drawable/item_shape"
-                android:backgroundTint="@color/lime_energy"
-                android:id="@+id/EditHabit_btn_addHabit"
                 android:layout_marginTop="20dp"
-                >
+                android:background="@drawable/item_icon_shape"
+                android:padding="5dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:text="Add"
+                    android:text="PLANT"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@color/lavender"
+                android:id="@+id/rcv_EditHabit_plantRecyclerView"
+                />
+            <RelativeLayout
+                android:id="@+id/EditHabit_btn_addHabit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/item_shape"
+                android:backgroundTint="@color/lime_energy"
+                android:padding="10dp">
+
+                <TextView
                     android:id="@+id/EditHabit_AddTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="Add"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="25dp"

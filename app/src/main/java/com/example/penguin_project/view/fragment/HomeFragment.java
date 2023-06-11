@@ -70,7 +70,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_home, container, false);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         rcv_DatePicker = view.findViewById(R.id.rcv_datePicker);
         txt_DayOfWeek = view.findViewById(R.id.txt_ActionBar_DayOfWeek);
@@ -88,11 +88,13 @@ public class HomeFragment extends Fragment {
 //        getContext().deleteDatabase("Habit.db");
 //
 //        setData();
+//        setTimeOfDay();
+        setTreeForest();
 
         scheduleResetHabitsJob();
-        
+
         selectedDayOfWeek = LocalDate.now().getDayOfWeek();
-        
+
         Setting_DayOfWeekAndDayOfMonth();
         Setting_rcvDatePicker();
         Setting_rcvHabitAnytimeList();
@@ -105,6 +107,9 @@ public class HomeFragment extends Fragment {
 
         return view;
     }
+
+
+
 
     @Override
     public void onResume() {
@@ -142,14 +147,25 @@ public class HomeFragment extends Fragment {
         HabitDataBase.getInstance(getContext()).habitDAO().insert_TimeOfDay(new TimeOfDay(2, "Morning"));
         HabitDataBase.getInstance(getContext()).habitDAO().insert_TimeOfDay(new TimeOfDay(3, "Afternoon"));
         HabitDataBase.getInstance(getContext()).habitDAO().insert_TimeOfDay(new TimeOfDay(4, "Evening"));
-        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("Uong nuoc", 2, 5,  R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0,0));
-        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("Doc Sach", 3, 2,  R.color.purple_200, R.mipmap.icon_water, LocalDate.now().minusDays(1), 0,0));
-        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("uong nuoc", 2, 5,  R.color.purple_200, R.mipmap.icon_water, LocalDate.now().minusDays(2), 0,0));
-        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("Choi game", 2, 5,  R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0,0));
+        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("Uong nuoc", 2, 5, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 0));
+        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("Doc Sach", 3, 2, R.color.purple_200, R.mipmap.icon_water, LocalDate.now().minusDays(1), 0, 0));
+        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("uong nuoc", 2, 5, R.color.purple_200, R.mipmap.icon_water, LocalDate.now().minusDays(2), 0, 0));
+        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("Choi game", 2, 5, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 0));
         HabitDataBase.getInstance(getContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(selectedDayOfWeek.getValue(), 1, false, 0, false));
         HabitDataBase.getInstance(getContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(selectedDayOfWeek.getValue(), 2, false, 0, false));
         HabitDataBase.getInstance(getContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.TUESDAY.getValue(), 1, false, 0, false));
         HabitDataBase.getInstance(getContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.WEDNESDAY.getValue(), 4, false, 0, false));
+    }
+
+    private void setTimeOfDay() {
+        HabitDataBase.getInstance(getContext()).habitDAO().insert_TimeOfDay(new TimeOfDay(1, "Anytime"));
+        HabitDataBase.getInstance(getContext()).habitDAO().insert_TimeOfDay(new TimeOfDay(2, "Morning"));
+        HabitDataBase.getInstance(getContext()).habitDAO().insert_TimeOfDay(new TimeOfDay(3, "Afternoon"));
+        HabitDataBase.getInstance(getContext()).habitDAO().insert_TimeOfDay(new TimeOfDay(4, "Evening"));
+    }
+
+    private void setTreeForest() {
+
     }
 
     private void Setting_btnAddHabit() {
@@ -188,7 +204,7 @@ public class HomeFragment extends Fragment {
         habitsListCompleted = new ArrayList<>();
         habitsListCompleted = HabitDataBase.getInstance(getContext()).habitDAO().getDoneHabits(selectedDayOfWeek.getValue());
 
-        habitItemCompletedAdapter = new HabitItemAdapter(habitsListCompleted,getContext(), LocalDate.now().getDayOfWeek());
+        habitItemCompletedAdapter = new HabitItemAdapter(habitsListCompleted, getContext(), LocalDate.now().getDayOfWeek());
         habitItemCompletedAdapter.setOnItemClickListener(new HabitItemAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Habits habit) {
@@ -210,7 +226,7 @@ public class HomeFragment extends Fragment {
         habitsListEvening = new ArrayList<>();
         habitsListEvening = HabitDataBase.getInstance(getContext()).habitDAO().getEveningHabits(selectedDayOfWeek.getValue());
 
-        habitItemEveningAdapter = new HabitItemAdapter(habitsListEvening,getContext(), LocalDate.now().getDayOfWeek());
+        habitItemEveningAdapter = new HabitItemAdapter(habitsListEvening, getContext(), LocalDate.now().getDayOfWeek());
         habitItemEveningAdapter.setOnItemClickListener(new HabitItemAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Habits habit) {
@@ -232,7 +248,7 @@ public class HomeFragment extends Fragment {
         habitsListAfternoon = new ArrayList<>();
         habitsListAfternoon = HabitDataBase.getInstance(getContext()).habitDAO().getAfternoonHabits(selectedDayOfWeek.getValue());
 
-        habitItemAfterNoonAdapter = new HabitItemAdapter(habitsListAfternoon,getContext(), LocalDate.now().getDayOfWeek());
+        habitItemAfterNoonAdapter = new HabitItemAdapter(habitsListAfternoon, getContext(), LocalDate.now().getDayOfWeek());
         habitItemAfterNoonAdapter.setOnItemClickListener(new HabitItemAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Habits habit) {
@@ -254,7 +270,7 @@ public class HomeFragment extends Fragment {
         habitsListMorning = new ArrayList<>();
         habitsListMorning = HabitDataBase.getInstance(getContext()).habitDAO().getMorningHabits(selectedDayOfWeek.getValue());
 
-        habitItemMorningAdapter = new HabitItemAdapter(habitsListMorning,getContext(), LocalDate.now().getDayOfWeek());
+        habitItemMorningAdapter = new HabitItemAdapter(habitsListMorning, getContext(), LocalDate.now().getDayOfWeek());
         habitItemMorningAdapter.setOnItemClickListener(new HabitItemAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Habits habit) {
@@ -276,7 +292,7 @@ public class HomeFragment extends Fragment {
         habitsListAnytime = new ArrayList<>();
         habitsListAnytime = HabitDataBase.getInstance(getContext()).habitDAO().getAnytimeHabits(selectedDayOfWeek.getValue());
 
-        habitItemAnytimeAdapter = new HabitItemAdapter(habitsListAnytime,getContext(), LocalDate.now().getDayOfWeek());
+        habitItemAnytimeAdapter = new HabitItemAdapter(habitsListAnytime, getContext(), LocalDate.now().getDayOfWeek());
         habitItemAnytimeAdapter.setOnItemClickListener(new HabitItemAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Habits habit) {
@@ -295,60 +311,72 @@ public class HomeFragment extends Fragment {
     }
 
     private void Setting_DayOfWeekAndDayOfMonth() {
-        switch (LocalDate.now().getDayOfWeek()){
-            case MONDAY: txt_DayOfWeek.setText("Monday");
+        switch (LocalDate.now().getDayOfWeek()) {
+            case MONDAY:
+                txt_DayOfWeek.setText("Monday");
                 break;
-            case TUESDAY: txt_DayOfWeek.setText("Tuesday");
+            case TUESDAY:
+                txt_DayOfWeek.setText("Tuesday");
                 break;
-            case WEDNESDAY: txt_DayOfWeek.setText("Wednesday");
+            case WEDNESDAY:
+                txt_DayOfWeek.setText("Wednesday");
                 break;
-            case THURSDAY: txt_DayOfWeek.setText("Thursday");
+            case THURSDAY:
+                txt_DayOfWeek.setText("Thursday");
                 break;
-            case FRIDAY: txt_DayOfWeek.setText("Friday");
+            case FRIDAY:
+                txt_DayOfWeek.setText("Friday");
                 break;
-            case SATURDAY: txt_DayOfWeek.setText("Saturday");
+            case SATURDAY:
+                txt_DayOfWeek.setText("Saturday");
                 break;
-            case SUNDAY: txt_DayOfWeek.setText("Sunday");
+            case SUNDAY:
+                txt_DayOfWeek.setText("Sunday");
                 break;
         }
         txt_DayOfMonth.setText(String.valueOf(LocalDate.now().getDayOfMonth()));
     }
 
 
-
     private void Setting_rcvDatePicker() {
         arrDate = new ArrayList<>();
         LocalDate date = LocalDate.now();
         selectedDayOfWeek = date.getDayOfWeek();
-        switch (LocalDate.now().getDayOfWeek()){
-            case MONDAY: date = date.minusDays(0);
+        switch (LocalDate.now().getDayOfWeek()) {
+            case MONDAY:
+                date = date.minusDays(0);
                 datePicker_adapter = new DatePicker_Adapter(arrDate, getContext(), 0);
                 break;
-            case TUESDAY: date = date.minusDays(1);
+            case TUESDAY:
+                date = date.minusDays(1);
                 datePicker_adapter = new DatePicker_Adapter(arrDate, getContext(), 1);
                 break;
-            case WEDNESDAY: date = date.minusDays(2);
+            case WEDNESDAY:
+                date = date.minusDays(2);
                 datePicker_adapter = new DatePicker_Adapter(arrDate, getContext(), 2);
                 break;
-            case THURSDAY: date = date.minusDays(3);
+            case THURSDAY:
+                date = date.minusDays(3);
                 datePicker_adapter = new DatePicker_Adapter(arrDate, getContext(), 3);
                 break;
-            case FRIDAY: date = date.minusDays(4);
+            case FRIDAY:
+                date = date.minusDays(4);
                 datePicker_adapter = new DatePicker_Adapter(arrDate, getContext(), 4);
                 break;
-            case SATURDAY: date = date.minusDays(5);
+            case SATURDAY:
+                date = date.minusDays(5);
                 datePicker_adapter = new DatePicker_Adapter(arrDate, getContext(), 5);
                 break;
-            case SUNDAY: date = date.minusDays(6);
+            case SUNDAY:
+                date = date.minusDays(6);
                 datePicker_adapter = new DatePicker_Adapter(arrDate, getContext(), 6);
                 break;
         }
-        for(int i = 0; i < 7; i++){
+        for (int i = 0; i < 7; i++) {
             arrDate.add(new HabitDate(date.plusDays(i)));
         }
-        LinearLayoutManager linearLayoutManager =new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         rcv_DatePicker.setLayoutManager(linearLayoutManager);
-
 
 
         // xử lý onClickItem trong datePicker
@@ -375,7 +403,7 @@ public class HomeFragment extends Fragment {
         });
 
         rcv_DatePicker.setAdapter(datePicker_adapter);
-        rcv_DatePicker.scrollToPosition(LocalDate.now().getDayOfWeek().getValue() -1);
+        rcv_DatePicker.scrollToPosition(LocalDate.now().getDayOfWeek().getValue() - 1);
     }
 
     private class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
@@ -404,13 +432,13 @@ public class HomeFragment extends Fragment {
             HabitItemAdapter.ItemViewHolder viewHolder1 = (HabitItemAdapter.ItemViewHolder) viewHolder;
             HabitItemAdapter habitItemAdapter = viewHolder1.getAdapter();
             if (direction == ItemTouchHelper.LEFT) {
-                if(LocalDate.now().getDayOfWeek().getValue() >= selectedDayOfWeek.getValue()){
+                if (LocalDate.now().getDayOfWeek().getValue() >= selectedDayOfWeek.getValue()) {
                     habitItemAdapter.removeItem(position);
                     notifyDatabaseChange();
                 }
                 notifyDatabaseChange();
             } else if (direction == ItemTouchHelper.RIGHT) {
-                if(LocalDate.now().getDayOfWeek().getValue() >= selectedDayOfWeek.getValue()){
+                if (LocalDate.now().getDayOfWeek().getValue() >= selectedDayOfWeek.getValue()) {
                     habitItemAdapter.checkDoneItem(position);
                     notifyDatabaseChange();
                 }
