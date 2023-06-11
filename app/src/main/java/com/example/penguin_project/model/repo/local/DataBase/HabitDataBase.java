@@ -18,7 +18,7 @@ import com.example.penguin_project.model.repo.local.Table.TimeOfDay;
 import com.example.penguin_project.model.repo.local.Table.Todo;
 import com.example.penguin_project.model.repo.local.Table.Tree;
 
-@Database(entities = {Habits.class, Habit_Day.class, Habit_DayOfWeek.class, TimeOfDay.class, Todo.class, Steps.class, Tree.class}, version = 2)
+@Database(entities = {Habits.class, Habit_Day.class, Habit_DayOfWeek.class, TimeOfDay.class, Todo.class, Steps.class, Tree.class, StoreItem.class}, version = 2)
 public abstract class HabitDataBase extends RoomDatabase {
 
     private static final String DATABASE_NAME = "Habit.db";

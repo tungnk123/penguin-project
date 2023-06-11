@@ -56,7 +56,7 @@
             android:id="@+id/img_storeItem_coin"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:src="@drawable/icon_coin" />
+            android:src="@mipmap/icon_coin" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
