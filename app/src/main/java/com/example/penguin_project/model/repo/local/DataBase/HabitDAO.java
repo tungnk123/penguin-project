@@ -1,5 +1,6 @@
 package com.example.penguin_project.model.repo.local.DataBase;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -10,6 +11,7 @@ import com.example.penguin_project.model.repo.local.Table.Habits;
 import com.example.penguin_project.model.repo.local.Table.Steps;
 import com.example.penguin_project.model.repo.local.Table.TimeOfDay;
 import com.example.penguin_project.model.repo.local.Table.Todo;
+import com.example.penguin_project.model.repo.local.Table.Tree;
 
 import java.util.List;
 
@@ -76,4 +78,22 @@ public interface HabitDAO {
 
 
     //
+
+    //region Tree
+    @Insert
+    void insertTree(Tree tree);
+
+    @Query("SELECT * FROM TREE")
+    LiveData<List<Tree>> getTreeForestList();
+
+    @Query("SELECT * FROM TREE WHERE Tree_id =:tree_id")
+    Tree getTreeForestById(int tree_id);
+
+    @Query("UPDATE Tree SET Title = :title WHERE Tree_id =:tree_id")
+    void updateTreeForestById(int tree_id, String title);
+
+    @Query("DELETE FROM TREE WHERE Tree_id =:tree_id")
+    void deleteTreeForestById(int tree_id);
+
+    //endregion
 }
