@@ -29,8 +29,7 @@ public class Habits implements Serializable {
 
     private int Tree_id;
 
-    public Habits(int habit_id, String title, int timeOfDay_id, int timePerDay, int color, int icon, LocalDate createDay, int currentStreak, int maxStreak, int tree_id) {
-        Habit_id = habit_id;
+    public Habits( String title, int timeOfDay_id, int timePerDay, int color, int icon, LocalDate createDay, int currentStreak, int maxStreak, int tree_id) {
         Title = title;
         TimeOfDay_id = timeOfDay_id;
         TimePerDay = timePerDay;

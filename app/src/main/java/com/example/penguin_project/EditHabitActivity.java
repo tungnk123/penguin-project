@@ -147,7 +147,7 @@ public class EditHabitActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "choose at least 1 day of the week", Toast.LENGTH_SHORT).show();
                         return;
                     }
-                    Habits habits = new Habits(title, timeOfDayID, timePerDay, color, img, LocalDate.now(), 0,0);
+                    Habits habits = new Habits(title, timeOfDayID, timePerDay, color, img, LocalDate.now(), 0,0, 1);
                     HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit(habits);
                     List<Habits> ListHabit = HabitDataBase.getInstance(getApplicationContext()).habitDAO().getHabitList();
                     if(tgb2.isChecked()) HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.MONDAY.getValue(), ListHabit.size(), false, 0, false));

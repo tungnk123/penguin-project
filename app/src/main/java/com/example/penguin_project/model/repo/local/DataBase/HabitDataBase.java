@@ -28,7 +28,7 @@ public abstract class HabitDataBase extends RoomDatabase {
         if (instance == null) {
             instance = Room.databaseBuilder(context.getApplicationContext(), HabitDataBase.class, DATABASE_NAME)
                     .allowMainThreadQueries()
-//                    .addMigrations(MIGRATION_1_2)
+                    .addMigrations(MIGRATION_1_2)
                     .build();
         }
         return instance;

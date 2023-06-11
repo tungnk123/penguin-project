@@ -39,6 +39,7 @@ import com.example.penguin_project.model.repo.local.DataBase.HabitDataBase;
 import com.example.penguin_project.model.repo.local.Table.Habit_DayOfWeek;
 import com.example.penguin_project.model.repo.local.Table.Habits;
 import com.example.penguin_project.model.repo.local.Table.TimeOfDay;
+import com.example.penguin_project.model.repo.local.Table.Tree;
 import com.example.penguin_project.view.adapter.DatePicker_Adapter;
 import com.example.penguin_project.view.adapter.HabitItemAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -87,10 +88,10 @@ public class HomeFragment extends Fragment {
 
 //        getContext().deleteDatabase("Habit.db");
 //
-//        setData();
-//        setTimeOfDay();
-        setTreeForest();
 
+//        setTimeOfDay();
+//        setTreeForest();
+//        setData();
         scheduleResetHabitsJob();
 
         selectedDayOfWeek = LocalDate.now().getDayOfWeek();
@@ -143,14 +144,10 @@ public class HomeFragment extends Fragment {
     private void setData() {
         HabitDataBase.getInstance(getContext());
         selectedDayOfWeek = LocalDate.now().getDayOfWeek();
-        HabitDataBase.getInstance(getContext()).habitDAO().insert_TimeOfDay(new TimeOfDay(1, "Anytime"));
-        HabitDataBase.getInstance(getContext()).habitDAO().insert_TimeOfDay(new TimeOfDay(2, "Morning"));
-        HabitDataBase.getInstance(getContext()).habitDAO().insert_TimeOfDay(new TimeOfDay(3, "Afternoon"));
-        HabitDataBase.getInstance(getContext()).habitDAO().insert_TimeOfDay(new TimeOfDay(4, "Evening"));
-        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("Uong nuoc", 2, 5, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 0));
-        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("Doc Sach", 3, 2, R.color.purple_200, R.mipmap.icon_water, LocalDate.now().minusDays(1), 0, 0));
-        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("uong nuoc", 2, 5, R.color.purple_200, R.mipmap.icon_water, LocalDate.now().minusDays(2), 0, 0));
-        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("Choi game", 2, 5, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 0));
+        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("Uong nuoc", 2, 5, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 0, 1));
+        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("Doc Sach", 3, 2, R.color.purple_200, R.mipmap.icon_water, LocalDate.now().minusDays(1), 0, 0, 3));
+        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("uong nuoc", 2, 5, R.color.purple_200, R.mipmap.icon_water, LocalDate.now().minusDays(2), 0, 0, 2));
+        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("Choi game", 2, 5, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 0, 1));
         HabitDataBase.getInstance(getContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(selectedDayOfWeek.getValue(), 1, false, 0, false));
         HabitDataBase.getInstance(getContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(selectedDayOfWeek.getValue(), 2, false, 0, false));
         HabitDataBase.getInstance(getContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.TUESDAY.getValue(), 1, false, 0, false));
@@ -165,6 +162,12 @@ public class HomeFragment extends Fragment {
     }
 
     private void setTreeForest() {
+        Tree plant1 = new Tree("Plant 1", R.mipmap.icon_water, 5);
+        Tree plant2 = new Tree("Plant 2", R.mipmap.icon_bamboo, 5);
+        Tree plant3 = new Tree("Plant 3", R.mipmap.icon_bonsai_4, 5);
+        HabitDataBase.getInstance(getContext()).habitDAO().insertTree(plant1);
+        HabitDataBase.getInstance(getContext()).habitDAO().insertTree(plant2);
+        HabitDataBase.getInstance(getContext()).habitDAO().insertTree(plant3);
 
     }
 
