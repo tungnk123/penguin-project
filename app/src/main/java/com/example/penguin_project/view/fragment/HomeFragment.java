@@ -90,7 +90,7 @@ public class HomeFragment extends Fragment {
 //        getContext().deleteDatabase("Habit.db");
 //
 
-//        setTimeOfDay();
+        setTimeOfDay();
         setTreeForest();
 //        setData();
         scheduleResetHabitsJob();
@@ -109,8 +109,6 @@ public class HomeFragment extends Fragment {
 
         return view;
     }
-
-
 
 
     @Override
@@ -158,7 +156,7 @@ public class HomeFragment extends Fragment {
 
     // Hàm kiểm tra xem trong database có data trong table TimeOfDat hay không? Nếu không thì thêm?
     private void setTimeOfDay() {
-        if (!HabitDataBase.getInstance(getContext()).habitDAO().getTimeOfDayList().contains(new TimeOfDay(1, "Anytime"))) {
+        if (HabitDataBase.getInstance(getContext()).habitDAO().getTimeOfDayById(1) == null) {
             HabitDataBase.getInstance(getContext()).habitDAO().insert_TimeOfDay(new TimeOfDay(1, "Anytime"));
             HabitDataBase.getInstance(getContext()).habitDAO().insert_TimeOfDay(new TimeOfDay(2, "Morning"));
             HabitDataBase.getInstance(getContext()).habitDAO().insert_TimeOfDay(new TimeOfDay(3, "Afternoon"));
@@ -169,7 +167,7 @@ public class HomeFragment extends Fragment {
     // Hàm kiểm tra xem trong database có data trong table Tree hay không? nếu không thì thêm Tree Item vào
     private void setTreeForest() {
         if (HabitDataBase.getInstance(getContext()).habitDAO().getTreeForestById(1) == null) {
-            Tree plant1 = new Tree("Plant 1", R.mipmap.icon_water, 5);
+            Tree plant1 = new Tree("Plant 1", R.mipmap.icon_sunflower, 5);
             Tree plant2 = new Tree("Plant 2", R.mipmap.icon_bamboo, 5);
             Tree plant3 = new Tree("Plant 3", R.mipmap.icon_bonsai_4, 5);
             HabitDataBase.getInstance(getContext()).habitDAO().insertTree(plant1);

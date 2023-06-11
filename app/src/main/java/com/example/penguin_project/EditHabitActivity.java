@@ -69,16 +69,16 @@ public class EditHabitActivity extends AppCompatActivity {
 
         //region Plant
         plantRecyclerView = findViewById(R.id.rcv_EditHabit_plantRecyclerView);
-        plantList = new ArrayList<>();
-
-        Tree plant1 = new Tree("Plant 1", R.mipmap.icon_oak_tree, 5);
-        Tree plant2 = new Tree("Plant 2", R.mipmap.icon_bamboo, 5);
-        Tree plant3 = new Tree("Plant 3", R.mipmap.icon_bonsai_4, 5);
-
-        plantList.add(plant1);
-        plantList.add(plant2);
-        plantList.add(plant3);
-
+//        plantList = new ArrayList<>();
+//
+//        Tree plant1 = new Tree("Plant 1", R.mipmap.icon_oak_tree, 5);
+//        Tree plant2 = new Tree("Plant 2", R.mipmap.icon_bamboo, 5);
+//        Tree plant3 = new Tree("Plant 3", R.mipmap.icon_bonsai_4, 5);
+//
+//        plantList.add(plant1);
+//        plantList.add(plant2);
+//        plantList.add(plant3);
+        plantList = HabitDataBase.getInstance(getApplicationContext()).habitDAO().getTreeForestList();
         PlantAdapter plantAdapter = new PlantAdapter(plantList);
 
         plantRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));

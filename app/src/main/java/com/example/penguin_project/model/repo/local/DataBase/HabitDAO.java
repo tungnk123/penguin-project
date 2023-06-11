@@ -41,6 +41,9 @@ public interface HabitDAO {
     @Query("Select * from TimeOfDay")
     List<TimeOfDay> getTimeOfDayList();
 
+    @Query("SELECT * FROM TIMEOFDAY WHERE TimeOfDay_id =:timeOfDay_id")
+    TimeOfDay getTimeOfDayById(int timeOfDay_id);
+
     //region TodoQuery
     @Insert
     void insertTodo(Todo todo);
@@ -124,7 +127,7 @@ public interface HabitDAO {
     void insertTree(Tree tree);
 
     @Query("SELECT * FROM TREE")
-    LiveData<List<Tree>> getTreeForestList();
+    List<Tree> getTreeForestList();
 
     @Query("SELECT * FROM TREE WHERE Tree_id =:tree_id")
     Tree getTreeForestById(int tree_id);
