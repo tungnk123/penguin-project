@@ -137,6 +137,9 @@ public interface HabitDAO {
 
     @Query("DELETE FROM TREE WHERE Tree_id =:tree_id")
     void deleteTreeForestById(int tree_id);
+
+    @Query("UPDATE Tree SET IsPurchased =:is_purchased WHERE Tree_id =:tree_id")
+    void updateTreeForestIsPurchased(int tree_id, boolean is_purchased);
     //endregion
 
     //region Query for Store Item

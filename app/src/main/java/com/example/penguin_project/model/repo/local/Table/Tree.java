@@ -18,6 +18,23 @@ public class Tree {
     @Ignore
     public boolean isSelected;
 
+    public boolean IsPurchased;
+
+    public boolean getIsPurchased() {
+        return IsPurchased;
+    }
+
+    public Tree( String title, int icon, int timeToGrow, boolean isPurchased) {
+        Title = title;
+        Icon = icon;
+        TimeToGrow = timeToGrow;
+        this.IsPurchased = isPurchased;
+    }
+
+    public void setPurchased(boolean purchased) {
+        IsPurchased = purchased;
+    }
+
     public int getTree_id() {
         return Tree_id;
     }
