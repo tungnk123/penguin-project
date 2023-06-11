@@ -136,16 +136,20 @@ public class StoreFragment extends Fragment {
         storeItemViewModel = new ViewModelProvider(this).get(StoreItemViewModel.class);
 
         //region Generate Data
-        StoreItem tree1 = new StoreItem("Sunflower", 20, R.mipmap.icon_sunflower, "Desctioption", "tree", false);
-        StoreItem tree2 = new StoreItem("Bonsai", 50, R.mipmap.icon_bonsai_4, "Desctioption", "tree", false);
-        StoreItem tree3 = new StoreItem("Pine", 40, R.mipmap.icon_pine, "Desctioption", "tree", false);
-        StoreItem tree4 = new StoreItem("Bamboo", 25, R.mipmap.icon_bamboo, "Desctioption", "tree", false);
-        StoreItem tree5 = new StoreItem("Oak tree", 10, R.mipmap.icon_oak_tree, "Desctioption", "tree", false);
+        StoreItem tree1 = new StoreItem("Tulip", 20, R.mipmap.icon_storeiten_tulip, "Description", "tree", false);
+        StoreItem tree2 = new StoreItem("Maple", 10, R.mipmap.icon_storeitem_maple_tree, "Description", "tree", false);
+        StoreItem tree3 = new StoreItem("Hickory", 10, R.mipmap.icon_storeitem_hickory, "Description", "tree", false);
+        StoreItem tree4 = new StoreItem("Coconut", 50, R.mipmap.icon_storeitem_coconuttree, "Description", "tree", false);
+        StoreItem tree5 = new StoreItem("Pine", 40, R.mipmap.icon_pine, "Description", "tree", false);
+        StoreItem tree6 = new StoreItem("Bamboo", 25, R.mipmap.icon_bamboo, "Description", "tree", false);
+
+
         StoreItem theme1 = (new StoreItem("Pine", 120, R.mipmap.icon_theme_pine, "Description", "theme", false));
         StoreItem theme2 = (new StoreItem("Sand", 200, R.mipmap.icon_theme_sand, "Description", "theme", false));
         StoreItem theme3 = (new StoreItem("Swamp", 200, R.mipmap.icon_theme_swamp, "Description", "theme", false));
         StoreItem theme4 = (new StoreItem("Flower", 150, R.mipmap.icon_theme_flower, "Description", "theme", false));
         StoreItem theme5 = (new StoreItem("Beach", 120, R.mipmap.icon_theme_beach, "Description", "theme", false));
+
         StoreItem music1 = (new StoreItem("Guitar", 50, R.mipmap.icon_music_guitar, "Description", "music", false));
         StoreItem music2 = (new StoreItem("Fire camp", 40, R.mipmap.icon_music_firecamp, "Description", "music", false));
         StoreItem music3 = (new StoreItem("Rain", 30, R.mipmap.icon_music_rain, "Description", "music", false));
@@ -166,6 +170,7 @@ public class StoreFragment extends Fragment {
             storeItemViewModel.insertStoreItem(tree3);
             storeItemViewModel.insertStoreItem(tree4);
             storeItemViewModel.insertStoreItem(tree5);
+            storeItemViewModel.insertStoreItem(tree6);
             storeItemViewModel.insertStoreItem(theme1);
             storeItemViewModel.insertStoreItem(theme2);
             storeItemViewModel.insertStoreItem(theme3);
@@ -181,6 +186,7 @@ public class StoreFragment extends Fragment {
             storeItemViewModel.insertStoreItem(specialItem4);
         }
     }
+
     public static void storeNewMoney(int newMoney) {
         SharedPreferences.Editor editor = StoreFragment.coinSharedPreference.edit();
         editor.putInt("money", newMoney);
