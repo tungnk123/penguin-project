@@ -172,7 +172,6 @@ public class EditHabitActivity extends AppCompatActivity {
                     if (tgb3.isChecked()) choosingDay++;
                     if (tgb4.isChecked()) choosingDay++;
                     if (tgb5.isChecked()) choosingDay++;
-
                     if (tgb6.isChecked()) choosingDay++;
                     if (tgb7.isChecked()) choosingDay++;
                     if (tgbCN.isChecked()) choosingDay++;
@@ -185,20 +184,21 @@ public class EditHabitActivity extends AppCompatActivity {
                     Habits habits = new Habits(title, timeOfDayID, timePerDay, color, img, LocalDate.now(), 0, 0, PlantAdapter.selectedPosition + 1);
                     HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit(habits);
                     List<Habits> ListHabit = HabitDataBase.getInstance(getApplicationContext()).habitDAO().getHabitList();
+                    Habits recentHabit = ListHabit.get(ListHabit.size() - 1);
                     if (tgb2.isChecked())
-                        HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.MONDAY.getValue(), ListHabit.size(), false, 0, false));
+                        HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.MONDAY.getValue(), recentHabit.getHabit_id(), false, 0, false));
                     if (tgb3.isChecked())
-                        HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.TUESDAY.getValue(), ListHabit.size(), false, 0, false));
+                        HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.TUESDAY.getValue(), recentHabit.getHabit_id(), false, 0, false));
                     if (tgb4.isChecked())
-                        HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.WEDNESDAY.getValue(), ListHabit.size(), false, 0, false));
+                        HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.WEDNESDAY.getValue(), recentHabit.getHabit_id(), false, 0, false));
                     if (tgb5.isChecked())
-                        HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.THURSDAY.getValue(), ListHabit.size(), false, 0, false));
+                        HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.THURSDAY.getValue(), recentHabit.getHabit_id(), false, 0, false));
                     if (tgb6.isChecked())
-                        HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.FRIDAY.getValue(), ListHabit.size(), false, 0, false));
+                        HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.FRIDAY.getValue(), recentHabit.getHabit_id(), false, 0, false));
                     if (tgb7.isChecked())
-                        HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.SATURDAY.getValue(), ListHabit.size(), false, 0, false));
+                        HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.SATURDAY.getValue(), recentHabit.getHabit_id(), false, 0, false));
                     if (tgbCN.isChecked())
-                        HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.SUNDAY.getValue(), ListHabit.size(), false, 0, false));
+                        HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.SUNDAY.getValue(), recentHabit.getHabit_id(), false, 0, false));
 
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     startActivity(intent);

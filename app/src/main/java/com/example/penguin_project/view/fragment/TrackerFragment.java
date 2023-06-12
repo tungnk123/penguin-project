@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.penguin_project.R;
 import com.example.penguin_project.model.data.HabitDate;
@@ -25,6 +26,7 @@ import java.util.List;
 public class TrackerFragment extends Fragment {
     private RecyclerView recyclerView;
     private CalendarAdapter calendarAdapter;
+    private TextView txtCurrentStreak, txtMaxStreak;
 
     public TrackerFragment() {
         // Required empty public constructor
@@ -43,8 +45,39 @@ public class TrackerFragment extends Fragment {
         calendarAdapter = new CalendarAdapter(getDaysInCurrentMonth());
         recyclerView.setAdapter(calendarAdapter);
 
+        txtCurrentStreak = view.findViewById(R.id.HabitTracker_txtStreakDay);
+        txtMaxStreak = view.findViewById(R.id.HabitTracker_txtMaxStreakDay);
+
+        settingCurrentStreakAndMaxStreak();
+
         return view;
     }
+
+    private void settingCurrentStreakAndMaxStreak() {
+        List<Habit_Day> habit_dayList = HabitDataBase.getInstance(getContext()).habitDAO().getHabit_DayList();
+        int currentStreak = 0;
+        int maxStreak = 0;
+
+        for(int i = 0; i < habit_dayList.size(); i++){
+            Habit_Day habit_day = habit_dayList.get(i);
+            if(habit_day.getHabit_Day_id() == LocalDate.now()){
+                return;
+            }
+            if(habit_day.getIsDone()){
+                currentStreak += 1;
+                if(maxStreak < currentStreak){
+                    currentStreak = maxStreak;
+                }
+            }
+            else {
+                currentStreak = 0;
+            }
+        }
+
+        txtCurrentStreak.setText(String.valueOf(currentStreak));
+        txtMaxStreak.setText(String.valueOf(maxStreak));
+    }
+
     private List<Habit_Day> getDaysInCurrentMonth() {
         List<Habit_Day> habitDates = new ArrayList<>();
 

@@ -155,6 +155,9 @@ public interface HabitDAO {
     @Query("SELECT * FROM StoreItem WHERE ItemName = :itemName")
     LiveData<List<StoreItem>> getStoreItemByName(String itemName);
 
+    @Query("Select * from Habits where Habits.Habit_id = :id")
+    List<Habits> getHabitsByID(int id);
+
     @Insert
     void insertStoreItem(StoreItem storeItem);
 
