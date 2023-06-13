@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     tools:context=".view.fragment.TodoFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         style="@style/LargeTitle"
         android:layout_width="match_parent"
