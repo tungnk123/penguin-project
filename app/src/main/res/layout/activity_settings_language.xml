@@ -15,7 +15,7 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/btn_activitySettingsForest_btnBack"
+            android:id="@+id/btn_activitySettingsLanguage_btnBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
