@@ -2,65 +2,119 @@ package com.example.penguin_project.view.fragment;
 
 import android.os.Bundle;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.penguin_project.R;
+import com.example.penguin_project.model.data.SettingItem;
+import com.example.penguin_project.view.adapter.SettingListAdapter;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MenuFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class MenuFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public MenuFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MenuFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static MenuFragment newInstance(String param1, String param2) {
-        MenuFragment fragment = new MenuFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    List<SettingItem> customList;
+    List<SettingItem> specialModeList;
+    List<SettingItem> aboutList;
+    List<SettingItem> helpAndFeedBackList;
+    List<SettingItem> connectList;
+    RecyclerView rcvCustomList;
+    RecyclerView rcvSpecialList;
+    RecyclerView rcvAboutList;
+    RecyclerView rcvHAFList;
+    RecyclerView rcvConnectList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_menu, container, false);
+        View view = inflater.inflate(R.layout.fragment_menu, container, false);
+        //region khoi tao list va anh xa recycler view
+        customList = new ArrayList<>();
+        specialModeList = new ArrayList<>();
+        aboutList = new ArrayList<>();
+        helpAndFeedBackList = new ArrayList<>();
+        connectList = new ArrayList<>();
+
+        rcvCustomList = view.findViewById(R.id.rcv_settingsFragment_customList);
+        rcvSpecialList = view.findViewById(R.id.rcv_settingsFragment_speciaModeList);
+        rcvAboutList = view.findViewById(R.id.rcv_settingsFragment_aboutList);
+        rcvHAFList = view.findViewById(R.id.rcv_settingsFragment_helpAndFeedbackList);
+        rcvConnectList = view.findViewById(R.id.rcv_settingsFragment_socialMediaList);
+
+
+
+        //endregion
+        //region Add data into list
+        customList.add(new SettingItem("Change mode", R.mipmap.icon_brush, "Dark mode"));
+        customList.add(new SettingItem("Sounds", R.mipmap.icon_sound, "Fire camp"));
+        customList.add(new SettingItem("Alarm", R.mipmap.icon_alarm, "On"));
+        customList.add(new SettingItem("Weeks starts at", R.mipmap.icon_week, "Monday"));
+
+        specialModeList.add(new SettingItem("Vacation mode", R.mipmap.icon_umbrela, "Off"));
+        specialModeList.add(new SettingItem("Disease mode", R.mipmap.icon_disease, "Off"));
+
+        aboutList.add(new SettingItem("Privacy policy", R.mipmap.icon_umbrela, ""));
+        aboutList.add(new SettingItem("Term of use", R.mipmap.icon_termofuse, ""));
+        aboutList.add(new SettingItem("Version", R.mipmap.icon_version, "v1.0"));
+
+        helpAndFeedBackList.add(new SettingItem("Help", R.mipmap.icon_help, ""));
+        helpAndFeedBackList.add(new SettingItem("FAQs", R.mipmap.icon_faq, ""));
+        helpAndFeedBackList.add(new SettingItem("Suggest feature", R.mipmap.icon_advise, ""));
+
+        connectList.add(new SettingItem("Facebook", R.mipmap.icon_fb, ""));
+        connectList.add(new SettingItem("Github", R.mipmap.icon_github, ""));
+        //endregion
+        //region setdivider item decoration
+        DividerItemDecoration dividerItemDecorationCustom = new DividerItemDecoration(rcvCustomList.getContext(), LinearLayoutManager.VERTICAL);
+        DividerItemDecoration dividerItemDecorationSpecial = new DividerItemDecoration(rcvSpecialList.getContext(), LinearLayoutManager.VERTICAL);
+        DividerItemDecoration dividerItemDecorationAbout = new DividerItemDecoration(rcvAboutList.getContext(), LinearLayoutManager.VERTICAL);
+        DividerItemDecoration dividerItemDecorationHAF = new DividerItemDecoration(rcvHAFList.getContext(), LinearLayoutManager.VERTICAL);
+        DividerItemDecoration dividerItemDecorationConnect = new DividerItemDecoration(rcvConnectList.getContext(), LinearLayoutManager.VERTICAL);
+        dividerItemDecorationCustom.setDrawable(ContextCompat.getDrawable(rcvCustomList.getContext(), R.drawable.divider));
+        dividerItemDecorationSpecial.setDrawable(ContextCompat.getDrawable(rcvCustomList.getContext(), R.drawable.divider));
+        dividerItemDecorationAbout.setDrawable(ContextCompat.getDrawable(rcvCustomList.getContext(), R.drawable.divider));
+        dividerItemDecorationHAF.setDrawable(ContextCompat.getDrawable(rcvCustomList.getContext(), R.drawable.divider));
+        dividerItemDecorationConnect.setDrawable(ContextCompat.getDrawable(rcvCustomList.getContext(), R.drawable.divider));
+
+        rcvCustomList.addItemDecoration(dividerItemDecorationCustom);
+        rcvSpecialList.addItemDecoration(dividerItemDecorationSpecial);
+        rcvAboutList.addItemDecoration(dividerItemDecorationAbout);
+        rcvHAFList.addItemDecoration(dividerItemDecorationHAF);
+        rcvConnectList.addItemDecoration(dividerItemDecorationConnect);
+
+
+
+        //endregion
+        SettingListAdapter customAdapter = new SettingListAdapter(view.getContext(),customList);
+        SettingListAdapter aboutAdapter = new SettingListAdapter(view.getContext(),aboutList);
+        SettingListAdapter specialModeAdapter = new SettingListAdapter(view.getContext(),specialModeList);
+        SettingListAdapter hafAdapter = new SettingListAdapter(view.getContext(),helpAndFeedBackList);
+        SettingListAdapter connectAdapter = new SettingListAdapter(view.getContext(),connectList);
+
+        rcvCustomList.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        rcvSpecialList.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        rcvAboutList.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        rcvHAFList.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        rcvConnectList.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+
+        rcvCustomList.setAdapter(customAdapter);
+        rcvAboutList.setAdapter(aboutAdapter);
+        rcvHAFList.setAdapter(hafAdapter);
+        rcvSpecialList.setAdapter(specialModeAdapter);
+        rcvConnectList.setAdapter(connectAdapter);
+
+
+
+        return view;
     }
 }
