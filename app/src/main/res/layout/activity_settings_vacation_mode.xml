@@ -15,8 +15,8 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/btn_activitySettingsCM_btnBack"
-            android:layout_width="wrap_content"
+            android:id="@+id/btn_activitySettingsVM_btnBack"
+            android:layout_width="35dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:background="@color/black"
