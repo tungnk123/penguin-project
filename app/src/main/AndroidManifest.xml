@@ -12,6 +12,9 @@
         android:theme="@style/Theme.Penguinproject"
         tools:targetApi="31">
         <activity
+            android:name=".SettingsSoundActivity"
+            android:exported="false" />
+        <activity
             android:name=".SettingsChangeModeActivity"
             android:exported="false" />
         <activity

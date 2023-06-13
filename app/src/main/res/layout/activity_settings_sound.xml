@@ -15,7 +15,7 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/btn_activitySettingsCM_btnBack"
+            android:id="@+id/btn_activitySettingsSound_btnBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -24,14 +24,14 @@
             android:src="@mipmap/icon_back" />
 
         <TextView
-            android:id="@+id/tv_activitySettingsCM_title"
+            android:id="@+id/tv_activitySettingsSound_title"
             style="@style/Title1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="20dp"
             android:layout_marginTop="2dp"
-            android:text="Change mode" />
+            android:text="Sounds" />
 
     </LinearLayout>
 
@@ -42,32 +42,53 @@
         app:dividerThickness="1dp" />
 
     <RadioGroup
+        android:id="@+id/rgr_activitySettingsSound_radioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:id="@+id/rgr_activitySettingsCM_radioGroup"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp">
 
-        <RadioButton
-            style="@style/Body"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:buttonTint="@color/lime_energy"
-            android:id="@+id/ra_activitySettingsCM_lightMode"
-            android:paddingStart="15dp"
-            android:paddingTop="5dp"
-            android:text="Light mode" />
 
         <RadioButton
+            android:id="@+id/ra_activitySettingsSound_fireCamp"
             style="@style/Body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="5dp"
-            android:id="@+id/ra_activitySettingsCM_darkMode"
-            android:paddingStart="15dp"
             android:buttonTint="@color/lime_energy"
-            android:text="Dark mode" />
+            android:paddingStart="15dp"
+            android:paddingTop="5dp"
+            android:text="Fire camp" />
+
+        <RadioButton
+            android:id="@+id/ra_activitySettingsSound_piano"
+            style="@style/Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/lime_energy"
+            android:paddingStart="15dp"
+            android:paddingTop="5dp"
+            android:text="Piano" />
+
+        <RadioButton
+            android:id="@+id/ra_activitySettingsSound_rain"
+            style="@style/Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/lime_energy"
+            android:paddingStart="15dp"
+            android:paddingTop="5dp"
+            android:text="Rain" />
+
+        <RadioButton
+            android:id="@+id/ra_activitySettingsSound_guitar"
+            style="@style/Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/lime_energy"
+            android:paddingStart="15dp"
+            android:paddingTop="5dp"
+            android:text="Guitar" />
 
     </RadioGroup>
 
@@ -96,8 +117,7 @@
             style="@style/Body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Change mode is a mode Change mode is a modeChange mode is a mode
-                Change mode is a modeChange mode is a mode" />
+            android:text="To make your experiences more enjoyable, pick the sound that is most to your liking" />
     </LinearLayout>
 
 </LinearLayout>
