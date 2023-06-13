@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Penguinproject"
         tools:targetApi="31">
         <activity
+            android:name=".SettingsVacationModeActivity"
+            android:exported="false" />
+        <activity
             android:name=".SettingsWeekStartAt"
             android:exported="false" />
         <activity

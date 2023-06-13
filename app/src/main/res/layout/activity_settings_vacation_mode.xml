@@ -24,14 +24,14 @@
             android:src="@mipmap/icon_back" />
 
         <TextView
-            android:id="@+id/tv_activitySettingsAlarm_title"
+            android:id="@+id/tv_activitySettingsVM_title"
             style="@style/Title1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="20dp"
             android:layout_marginTop="2dp"
-            android:text="Alarm" />
+            android:text="Vacation mode" />
 
     </LinearLayout>
 
@@ -42,31 +42,31 @@
         app:dividerThickness="1dp" />
 
     <RadioGroup
+        android:id="@+id/rgr_activitySettingsVM_radioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:id="@+id/rgr_activitySettingsAlarm_radioGroup"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp">
 
         <RadioButton
+            android:id="@+id/ra_activitySettingsVM_on"
             style="@style/Body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:buttonTint="@color/lime_energy"
-            android:id="@+id/ra_activitySettingsAlarm_on"
             android:paddingStart="15dp"
             android:paddingTop="5dp"
             android:text="On" />
 
         <RadioButton
+            android:id="@+id/ra_activitySettingsAlarm_off"
             style="@style/Body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="5dp"
-            android:id="@+id/ra_activitySettingsAlarm_off"
-            android:paddingStart="15dp"
             android:buttonTint="@color/lime_energy"
+            android:paddingStart="15dp"
+            android:paddingTop="5dp"
             android:text="Off" />
 
     </RadioGroup>
@@ -96,7 +96,7 @@
             style="@style/Body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="The alarm on/off feature in your app habit tracker allows users to easily enable or disable their alarms, providing control and flexibility over their daily routine." />
+            android:text="The vacation mode feature in your app allows users to temporarily suspend their habit tracking and notifications while they are on vacation or taking a break, providing flexibility and maintaining a healthy work-life balance."/>
     </LinearLayout>
 
 </LinearLayout>

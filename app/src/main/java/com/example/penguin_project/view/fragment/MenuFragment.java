@@ -18,6 +18,7 @@ import com.example.penguin_project.R;
 import com.example.penguin_project.SettingsForestThemeActivity;
 import com.example.penguin_project.SettingsLanguageActivity;
 import com.example.penguin_project.SettingsSoundActivity;
+import com.example.penguin_project.SettingsVacationModeActivity;
 import com.example.penguin_project.SettingsWeekStartAt;
 import com.example.penguin_project.model.data.SettingItem;
 import com.example.penguin_project.view.adapter.SettingListAdapter;
@@ -65,6 +66,10 @@ public class MenuFragment extends Fragment implements SettingListAdapter.OnItemC
             case "Week starts at":
                 Intent weekIntent = new Intent(getContext(), SettingsWeekStartAt.class);
                 startActivity(weekIntent);
+                break;
+            case "Vacation mode":
+                Intent vacationIntent = new Intent(getContext(), SettingsVacationModeActivity.class);
+                startActivity(vacationIntent);
                 break;
 
         }
