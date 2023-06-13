@@ -57,6 +57,7 @@ public class MenuFragment extends Fragment {
         //region Add data into list
         customList.add(new SettingItem("Change mode", R.mipmap.icon_brush, "Dark mode"));
         customList.add(new SettingItem("Sounds", R.mipmap.icon_sound, "Fire camp"));
+        customList.add(new SettingItem("Forest theme", R.mipmap.icon_foresttheme, "Normal"));
         customList.add(new SettingItem("Alarm", R.mipmap.icon_alarm, "On"));
         customList.add(new SettingItem("Weeks starts at", R.mipmap.icon_week, "Monday"));
 
