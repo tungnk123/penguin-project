@@ -87,10 +87,18 @@ public class HabitItemAdapter extends RecyclerView.Adapter<HabitItemAdapter.Item
         habit_dayOfWeeks = HabitDataBase.getInstance(context).habitDAO().findHabitDOWByID(habits.getHabit_id(), dayOfWeek.getValue());
         if (habit_dayOfWeeks.size() > 0) {
             Habit_DayOfWeek habit_dayOfWeek = habit_dayOfWeeks.get(0);
-            if (habit_dayOfWeek.getIsFailed()) {
-                habit_dayOfWeek.setIsFailed(false);
+            if (habit_dayOfWeek.getProgress() == 0) {
+                if(habit_dayOfWeek.getIsFailed()){
+                    habit_dayOfWeek.setIsFailed(false);
+                    habit_dayOfWeek.setIsDone(false);
+                }
+                else {
+                    habit_dayOfWeek.setIsFailed(true);
+                }
             } else {
-                habit_dayOfWeek.setIsFailed(true);
+                habit_dayOfWeek.setProgress(habit_dayOfWeek.getProgress() - 1);
+                habit_dayOfWeek.setIsFailed(false);
+                habit_dayOfWeek.setIsDone(false);
             }
             HabitDataBase.getInstance(context).habitDAO().updateHabit_DayOfWeek(habit_dayOfWeek);
         }
@@ -104,9 +112,13 @@ public class HabitItemAdapter extends RecyclerView.Adapter<HabitItemAdapter.Item
             Habit_DayOfWeek habit_dayOfWeek = habit_dayOfWeeks.get(0);
             if (habits.getTimePerDay() > habit_dayOfWeek.getProgress()) {
                 habit_dayOfWeek.setProgress(habit_dayOfWeek.getProgress() + 1);
+                if(habit_dayOfWeek.getIsFailed()){
+                    habit_dayOfWeek.setIsFailed(false);
+                }
                 HabitDataBase.getInstance(context).habitDAO().updateHabit_DayOfWeek(habit_dayOfWeek);
                 if (habit_dayOfWeek.getProgress() == habits.getTimePerDay()) {
                     habit_dayOfWeek.setIsDone(true);
+                    habit_dayOfWeek.setIsFailed(false);
                     HabitDataBase.getInstance(context).habitDAO().updateHabit_DayOfWeek(habit_dayOfWeek);
                 }
             }
