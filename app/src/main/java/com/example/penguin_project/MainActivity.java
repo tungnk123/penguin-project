@@ -88,6 +88,10 @@ public class MainActivity extends AppCompatActivity {
             replaceFragment(new StoreFragment());
             bottomNavigation.show(4, true);
         }
+        if (selectedFragment != null && selectedFragment.equals("setting")) {
+            replaceFragment(new MenuFragment());
+            bottomNavigation.show(5, true);
+        }
     }
     private void scheduleJobUpdateHabit(Context context, int hour, int minute) {
         Calendar calendar = Calendar.getInstance();
