@@ -19,6 +19,7 @@ import com.example.penguin_project.model.repo.local.DataBase.HabitDataBase;
 import com.example.penguin_project.model.repo.local.Table.Habit_DayOfWeek;
 import com.example.penguin_project.model.repo.local.Table.Habits;
 import com.example.penguin_project.model.repo.local.Table.Tree;
+import com.example.penguin_project.view.fragment.TrackerFragment;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -107,6 +108,7 @@ public class HabitItemAdapter extends RecyclerView.Adapter<HabitItemAdapter.Item
                 HabitDataBase.getInstance(context).habitDAO().updateHabit_DayOfWeek(habit_dayOfWeek);
                 if (habit_dayOfWeek.getProgress() == habits.getTimePerDay()) {
                     habit_dayOfWeek.setIsDone(true);
+                    TrackerFragment.setTree();
                     HabitDataBase.getInstance(context).habitDAO().updateHabit_DayOfWeek(habit_dayOfWeek);
                 }
             }

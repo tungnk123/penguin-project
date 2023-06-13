@@ -458,6 +458,9 @@ public class HomeFragment extends Fragment {
                 if (LocalDate.now().getDayOfWeek().getValue() >= selectedDayOfWeek.getValue()) {
                     habitItemAdapter.checkDoneItem(position);
                     notifyDatabaseChange();
+//                    Habits habits = HabitDataBase.getInstance(getContext()).habitDAO().get
+
+                    Toast.makeText(getContext(), position + " done", Toast.LENGTH_SHORT).show();
                 }
                 notifyDatabaseChange();
             }

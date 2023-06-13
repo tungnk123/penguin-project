@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.penguin_project.R;
 import com.example.penguin_project.model.data.HabitDate;
@@ -25,6 +27,15 @@ import java.util.List;
 public class TrackerFragment extends Fragment {
     private RecyclerView recyclerView;
     private CalendarAdapter calendarAdapter;
+    public static ImageView imgTree1;
+    public ImageView imgTree2;
+    public ImageView imgTree3;
+    public ImageView imgTree4;
+    public ImageView imgTree5;
+    public ImageView imgTree6;
+    public ImageView imgTree7;
+    public ImageView imgTree8;
+
 
     public TrackerFragment() {
         // Required empty public constructor
@@ -35,6 +46,17 @@ public class TrackerFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view =  inflater.inflate(R.layout.fragment_tracker, container, false);
+
+        imgTree1 = view.findViewById(R.id.img_fragmentTracker_tree1);
+        imgTree2 = view.findViewById(R.id.img_fragmentTracker_tree2);
+        imgTree3 = view.findViewById(R.id.img_fragmentTracker_tree3);
+        imgTree4 = view.findViewById(R.id.img_fragmentTracker_tree4);
+        imgTree5 = view.findViewById(R.id.img_fragmentTracker_tree5);
+        imgTree6 = view.findViewById(R.id.img_fragmentTracker_tree6);
+        imgTree7 = view.findViewById(R.id.img_fragmentTracker_tree7);
+        imgTree8 = view.findViewById(R.id.img_fragmentTracker_tree8);
+
+//        imgTree1.setImageResource(R.mipmap.icon_tree_mam);
 
         recyclerView = view.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 7));
@@ -74,5 +96,10 @@ public class TrackerFragment extends Fragment {
         }
         return habitDates;
 
+    }
+
+    public static void setTree() {
+        imgTree1.setImageResource(R.mipmap.icon_tree_hoacam);
+//        Toast.makeText(imgTree1.getContext(), "set tree", Toast.LENGTH_SHORT).show();
     }
 }
