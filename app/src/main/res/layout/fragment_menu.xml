@@ -11,6 +11,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -21,7 +22,7 @@
                 style="@style/LargeTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:text="Settings" />
 
@@ -35,105 +36,27 @@
                     style="@style/TitleWithWrapper"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="30dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
                     android:background="@drawable/title_shape"
                     android:text="Custom"
                     android:textAlignment="center"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/tv_settingsFragment_changeMode"
-                    style="@style/Body"
-                    android:layout_width="wrap_content"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcv_settingsFragment_customList"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:drawablePadding="8dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="25dp"
-                    android:text="Change mode - Light Mode"
+                    android:layout_marginEnd="20dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_settingsFragment_custom"
-                    app:drawableStartCompat="@mipmap/icon_brush" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_settingsFragment_custom" />
 
-                <androidx.appcompat.widget.SwitchCompat
-                    android:id="@+id/sw_settingsFragment_changeModeSwitch"
-                    android:layout_width="57dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="30dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_settingsFragment_custom" />
-
-                <TextView
-                    android:id="@+id/tv_settingsFragment_sound"
-                    style="@style/Body"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="25dp"
-                    android:text="Sound"
-                    android:drawablePadding="8dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_settingsFragment_changeMode"
-                    app:drawableStartCompat="@mipmap/icon_sound" />
-
-                <androidx.appcompat.widget.SwitchCompat
-                    android:id="@+id/sw_settingsFragment_soundSwitch"
-                    android:layout_width="57dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="30dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/sw_settingsFragment_changeModeSwitch" />
-
-                <TextView
-                    android:id="@+id/tv_settingsFragment_alarm"
-                    style="@style/Body"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="25dp"
-                    android:text="Alarm enabled"
-                    android:drawableStart="@mipmap/icon_alarm"
-                    android:drawablePadding="8dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_settingsFragment_sound" />
-
-                <androidx.appcompat.widget.SwitchCompat
-                    android:id="@+id/sw_settingsFragment_alarm"
-                    android:layout_width="57dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="30dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/sw_settingsFragment_soundSwitch" />
-
-                <TextView
-                    android:id="@+id/tv_settings_weekStartAt"
-                    style="@style/Body"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="25dp"
-                    android:text="Week starts at"
-                    android:drawablePadding="8dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_settingsFragment_alarm"
-                    app:drawableStartCompat="@mipmap/icon_week" />
-
-                <Spinner
-                    android:id="@+id/spn_settingsFragment"
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:layout_marginEnd="30dp"
-                    android:background="@color/lavender"
-                    android:contentDescription="Monday"
-                    android:spinnerMode="dropdown"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/sw_settingsFragment_alarm" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -142,76 +65,27 @@
 
 
                 <TextView
-                    android:id="@+id/tv_settingsFragment_changeLanguage"
+                    android:id="@+id/tv_settingsFragment_specialModeTitle"
                     style="@style/TitleWithWrapper"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="30dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
                     android:background="@drawable/title_shape"
-                    android:text="Change Language"
+                    android:text="Special Mode"
                     android:textAlignment="center"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-
-                <Spinner
-                    android:id="@+id/spn_settingsFragment_changeLanguage"
-                    android:layout_width="250dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="25dp"
-                    android:background="@color/lavender"
-                    android:contentDescription="Monday"
-                    android:spinnerMode="dropdown"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_settingsFragment_changeLanguage"
-
-                    />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp">
-
-
-                <TextView
-                    android:id="@+id/tv_settingsFragment_vacationModeTitle"
-                    style="@style/TitleWithWrapper"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcv_settingsFragment_speciaModeList"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="30dp"
-                    android:background="@drawable/title_shape"
-                    android:text="Vacation Mode"
-                    android:textAlignment="center"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-
-                <TextView
-                    android:id="@+id/tv_settingsFragment_vacationMode"
-                    style="@style/Body"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="25dp"
-                    android:text="Vacation Mode"
-                    android:drawablePadding="20dp"
+                    android:layout_marginEnd="20dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_settingsFragment_vacationModeTitle"
-                    app:drawableStartCompat="@mipmap/icon_umbrela" />
-
-                <androidx.appcompat.widget.SwitchCompat
-                    android:id="@+id/sw_settingsFragment_vacationModeSwitch"
-                    android:layout_width="57dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="30dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_settingsFragment_vacationModeTitle" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_settingsFragment_specialModeTitle" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -226,51 +100,86 @@
                     style="@style/TitleWithWrapper"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="30dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
                     android:background="@drawable/title_shape"
                     android:text="About"
                     android:textAlignment="center"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/tv_settingsFragment_privacyPolicy"
-                    style="@style/Body"
-                    android:layout_width="wrap_content"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcv_settingsFragment_aboutList"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
+                    android:layout_marginStart="20dp"
                     android:layout_marginTop="25dp"
-                    android:drawablePadding="20dp"
-                    android:text="Privacy policy"
+                    android:layout_marginEnd="20dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_settingsFragment_about"
-                    app:drawableStartCompat="@mipmap/icon_privacy" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_settingsFragment_about" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp">
 
                 <TextView
-                    android:id="@+id/tv_settingsFragment_termOfUse"
-                    style="@style/Body"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tv_settingsFragment_helpAndFeedback"
+                    style="@style/TitleWithWrapper"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="25dp"
-                    android:drawablePadding="20dp"
-                    android:text="Term of use"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/title_shape"
+                    android:text="Help and feedback"
+                    android:textAlignment="center"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_settingsFragment_privacyPolicy"
-                    app:drawableStartCompat="@mipmap/icon_termofuse" />
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcv_settingsFragment_helpAndFeedbackList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginEnd="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_settingsFragment_helpAndFeedback" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp">
 
                 <TextView
-                    android:id="@+id/tv_settingsFragment_version"
-                    style="@style/Body"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/tv_settingsFragment_connect"
+                    style="@style/TitleWithWrapper"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="25dp"
-                    android:text="Version"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="@drawable/title_shape"
+                    android:text="Connect"
+                    android:textAlignment="center"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_settingsFragment_termOfUse"
-                    app:drawableStartCompat="@mipmap/icon_version" />
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcv_settingsFragment_socialMediaList"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginEnd="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_settingsFragment_connect" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
