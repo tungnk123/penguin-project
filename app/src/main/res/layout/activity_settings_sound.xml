@@ -49,7 +49,15 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp">
 
-
+        <RadioButton
+            android:id="@+id/ra_activitySettingsSound_chillMusic"
+            style="@style/Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/lime_energy"
+            android:paddingStart="15dp"
+            android:paddingTop="5dp"
+            android:text="Chill music" />
         <RadioButton
             android:id="@+id/ra_activitySettingsSound_fireCamp"
             style="@style/Body"
