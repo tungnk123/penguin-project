@@ -33,6 +33,8 @@ public class UpdateHabit_DayWorker extends Worker {
             if(!habit_dayOfWeek.getIsDone()){
                 numberHabitsDOWfalse++;
                 // update habit_streak
+            }
+            else{
                 List<Habits> listHabit = HabitDataBase.getInstance(getApplicationContext()).habitDAO().getHabitsByID(habit_dayOfWeek.getHabit_id());
                 Habits habits = listHabit.get(0);
                 habits.setCurrentStreak(habits.getCurrentStreak() + 1);
