@@ -362,35 +362,69 @@ public class HomeFragment extends Fragment {
         arrDate = new ArrayList<>();
         LocalDate date = LocalDate.now();
         selectedDayOfWeek = date.getDayOfWeek();
-        switch (LocalDate.now().getDayOfWeek()) {
-            case MONDAY:
-                date = date.minusDays(0);
-                datePicker_adapter = new DatePicker_Adapter(arrDate, getContext(), 0);
-                break;
-            case TUESDAY:
-                date = date.minusDays(1);
-                datePicker_adapter = new DatePicker_Adapter(arrDate, getContext(), 1);
-                break;
-            case WEDNESDAY:
-                date = date.minusDays(2);
-                datePicker_adapter = new DatePicker_Adapter(arrDate, getContext(), 2);
-                break;
-            case THURSDAY:
-                date = date.minusDays(3);
-                datePicker_adapter = new DatePicker_Adapter(arrDate, getContext(), 3);
-                break;
-            case FRIDAY:
-                date = date.minusDays(4);
-                datePicker_adapter = new DatePicker_Adapter(arrDate, getContext(), 4);
-                break;
-            case SATURDAY:
-                date = date.minusDays(5);
-                datePicker_adapter = new DatePicker_Adapter(arrDate, getContext(), 5);
-                break;
-            case SUNDAY:
-                date = date.minusDays(6);
-                datePicker_adapter = new DatePicker_Adapter(arrDate, getContext(), 6);
-                break;
+        if (MenuFragment.weekSettingsSP == null || MenuFragment.weekSettingsSP.getString("week_setting", "Monday").equals("Monday") ) {
+            switch (LocalDate.now().getDayOfWeek()) {
+                case MONDAY:
+                    date = date.minusDays(0);
+                    datePicker_adapter = new DatePicker_Adapter(arrDate, getContext(), 0);
+                    break;
+                case TUESDAY:
+                    date = date.minusDays(1);
+                    datePicker_adapter = new DatePicker_Adapter(arrDate, getContext(), 1);
+                    break;
+                case WEDNESDAY:
+                    date = date.minusDays(2);
+                    datePicker_adapter = new DatePicker_Adapter(arrDate, getContext(), 2);
+                    break;
+                case THURSDAY:
+                    date = date.minusDays(3);
+                    datePicker_adapter = new DatePicker_Adapter(arrDate, getContext(), 3);
+                    break;
+                case FRIDAY:
+                    date = date.minusDays(4);
+                    datePicker_adapter = new DatePicker_Adapter(arrDate, getContext(), 4);
+                    break;
+                case SATURDAY:
+                    date = date.minusDays(5);
+                    datePicker_adapter = new DatePicker_Adapter(arrDate, getContext(), 5);
+                    break;
+                case SUNDAY:
+                    date = date.minusDays(6);
+                    datePicker_adapter = new DatePicker_Adapter(arrDate, getContext(), 6);
+                    break;
+            }
+        }
+        else {
+            switch (LocalDate.now().getDayOfWeek()) {
+                case MONDAY:
+                    date = date.minusDays(1);
+                    datePicker_adapter = new DatePicker_Adapter(arrDate, getContext(), 0);
+                    break;
+                case TUESDAY:
+                    date = date.minusDays(2);
+                    datePicker_adapter = new DatePicker_Adapter(arrDate, getContext(), 1);
+                    break;
+                case WEDNESDAY:
+                    date = date.minusDays(3);
+                    datePicker_adapter = new DatePicker_Adapter(arrDate, getContext(), 2);
+                    break;
+                case THURSDAY:
+                    date = date.minusDays(4);
+                    datePicker_adapter = new DatePicker_Adapter(arrDate, getContext(), 3);
+                    break;
+                case FRIDAY:
+                    date = date.minusDays(5);
+                    datePicker_adapter = new DatePicker_Adapter(arrDate, getContext(), 4);
+                    break;
+                case SATURDAY:
+                    date = date.minusDays(6);
+                    datePicker_adapter = new DatePicker_Adapter(arrDate, getContext(), 5);
+                    break;
+                case SUNDAY:
+                    date = date.minusDays(7);
+                    datePicker_adapter = new DatePicker_Adapter(arrDate, getContext(), 6);
+                    break;
+            }
         }
         for (int i = 0; i < 7; i++) {
             arrDate.add(new HabitDate(date.plusDays(i)));
@@ -425,6 +459,8 @@ public class HomeFragment extends Fragment {
         rcv_DatePicker.setAdapter(datePicker_adapter);
         rcv_DatePicker.scrollToPosition(LocalDate.now().getDayOfWeek().getValue() - 1);
     }
+
+
 
     private class SwipeToDeleteCallback extends ItemTouchHelper.SimpleCallback {
 

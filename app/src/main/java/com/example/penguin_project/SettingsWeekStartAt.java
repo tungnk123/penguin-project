@@ -48,8 +48,6 @@ public class SettingsWeekStartAt extends AppCompatActivity {
         super.onPause();
         SharedPreferences.Editor editor = MenuFragment.weekSettingsSP.edit();
         editor.putString("week_setting", rabtnMonday.isChecked() ? "Monday": "Sunday");
-
-        // TODO xu ly thay doi ngay dau tuan o day
         editor.apply();
     }
 }
