@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.penguin_project.SettingsChangeModeActivity;
 import com.example.penguin_project.R;
+import com.example.penguin_project.SettingsForestThemeActivity;
 import com.example.penguin_project.SettingsSoundActivity;
 import com.example.penguin_project.model.data.SettingItem;
 import com.example.penguin_project.view.adapter.SettingListAdapter;
@@ -39,12 +40,16 @@ public class MenuFragment extends Fragment implements SettingListAdapter.OnItemC
     public void onItemClick(SettingItem item) {
         switch (item.getTitle()) {
             case "Change mode":
-                Intent changeModeintent = new Intent(getContext(), SettingsChangeModeActivity.class);
-                startActivity(changeModeintent);
+                Intent changeModeIntent = new Intent(getContext(), SettingsChangeModeActivity.class);
+                startActivity(changeModeIntent);
                 break;
             case "Sounds":
-                Intent soundTntent = new Intent(getContext(), SettingsSoundActivity.class);
-                startActivity(soundTntent);
+                Intent soundIntent = new Intent(getContext(), SettingsSoundActivity.class);
+                startActivity(soundIntent);
+                break;
+            case "Forest theme":
+                Intent forestThemeIntent = new Intent(getContext(), SettingsForestThemeActivity.class);
+                startActivity(forestThemeIntent);
                 break;
         }
     }
