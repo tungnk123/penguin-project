@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.penguin_project.SettingsAlarmActivity;
 import com.example.penguin_project.SettingsChangeModeActivity;
 import com.example.penguin_project.R;
 import com.example.penguin_project.SettingsForestThemeActivity;
@@ -51,6 +52,10 @@ public class MenuFragment extends Fragment implements SettingListAdapter.OnItemC
                 Intent forestThemeIntent = new Intent(getContext(), SettingsForestThemeActivity.class);
                 startActivity(forestThemeIntent);
                 break;
+            case "Alarm":
+                Intent alarmIntent = new Intent(getContext(), SettingsAlarmActivity.class);
+                startActivity(alarmIntent);
+                break;
         }
     }
 
@@ -80,6 +85,7 @@ public class MenuFragment extends Fragment implements SettingListAdapter.OnItemC
         customList.add(new SettingItem("Sounds", R.mipmap.icon_sound, "Fire camp"));
         customList.add(new SettingItem("Forest theme", R.mipmap.icon_foresttheme, "Normal"));
         customList.add(new SettingItem("Alarm", R.mipmap.icon_alarm, "On"));
+        customList.add(new SettingItem("Language", R.mipmap.icon_language, "English"));
         customList.add(new SettingItem("Weeks starts at", R.mipmap.icon_week, "Monday"));
 
         specialModeList.add(new SettingItem("Vacation mode", R.mipmap.icon_umbrela, "Off"));
