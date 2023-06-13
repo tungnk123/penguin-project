@@ -15,7 +15,13 @@
         android:theme="@style/Theme.Penguinproject"
         tools:targetApi="31">
         <activity
-            android:name="com.example.penguin_project.view.activity.AddTodoActivity"
+            android:name=".SettingsForestThemeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SettingsSoundActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SettingsChangeModeActivity"
             android:exported="false" />
         <receiver android:name=".model.data.UpdateHabitReceiver" />
         <activity
