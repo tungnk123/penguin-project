@@ -1,10 +1,13 @@
 package com.example.penguin_project.view.fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -40,6 +43,17 @@ public class MenuFragment extends Fragment implements SettingListAdapter.OnItemC
     RecyclerView rcvAboutList;
     RecyclerView rcvHAFList;
     RecyclerView rcvConnectList;
+
+    public static SharedPreferences modeSettingsSP;
+    public static SharedPreferences soundSettingsSP;
+    public static SharedPreferences forestThemeSettingsSP;
+    public static SharedPreferences alarmSettingsSP;
+    public static SharedPreferences languageSettingsSP;
+    public static SharedPreferences weekSettingsSP;
+    public static SharedPreferences vacationModeSettingsSP;
+    public static SharedPreferences diseaseModeSettingsSP;
+
+
 
     @Override
     public void onItemClick(SettingItem item) {
@@ -86,6 +100,8 @@ public class MenuFragment extends Fragment implements SettingListAdapter.OnItemC
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_menu, container, false);
+
+
         //region khoi tao list va anh xa recycler view
         customList = new ArrayList<>();
         specialModeList = new ArrayList<>();
@@ -110,8 +126,10 @@ public class MenuFragment extends Fragment implements SettingListAdapter.OnItemC
         customList.add(new SettingItem("Language", R.mipmap.icon_language, "English"));
         customList.add(new SettingItem("Week starts at", R.mipmap.icon_week, "Monday"));
 
+
         specialModeList.add(new SettingItem("Vacation mode", R.mipmap.icon_umbrela, "Off"));
         specialModeList.add(new SettingItem("Disease mode", R.mipmap.icon_disease, "Off"));
+
 
         aboutList.add(new SettingItem("Privacy policy", R.mipmap.icon_umbrela, ""));
         aboutList.add(new SettingItem("Term of use", R.mipmap.icon_termofuse, ""));
@@ -174,9 +192,39 @@ public class MenuFragment extends Fragment implements SettingListAdapter.OnItemC
         rcvConnectList.setAdapter(connectAdapter);
 
 
+        //region Khoi tao Shared Preferences de luu Settings
+        modeSettingsSP = view.getContext().getSharedPreferences("mode_setting", Context.MODE_PRIVATE);
+        soundSettingsSP = view.getContext().getSharedPreferences("sound_setting", Context.MODE_PRIVATE);
+        forestThemeSettingsSP = view.getContext().getSharedPreferences("forest_setting", Context.MODE_PRIVATE);
+        alarmSettingsSP = view.getContext().getSharedPreferences("alarm_setting", Context.MODE_PRIVATE);
+        languageSettingsSP = view.getContext().getSharedPreferences("language_setting", Context.MODE_PRIVATE);
+        weekSettingsSP = view.getContext().getSharedPreferences("week_setting", Context.MODE_PRIVATE);
+        vacationModeSettingsSP = view.getContext().getSharedPreferences("vacation_setting", Context.MODE_PRIVATE);
+        diseaseModeSettingsSP = view.getContext().getSharedPreferences("disease_setting", Context.MODE_PRIVATE);
+
+        //region Lay data tu Shared Preferences va gan vao status text view
+
+        customList.get(0).setStatus(modeSettingsSP.getString("mode_setting", "Light mode"));
+        customList.get(1).setStatus(soundSettingsSP.getString("sound_setting", "Chill music"));
+        customList.get(2).setStatus(forestThemeSettingsSP.getString("forest_setting", "Plain"));
+        customList.get(3).setStatus(alarmSettingsSP.getString("alarm_setting", "On"));
+        customList.get(4).setStatus(languageSettingsSP.getString("language_setting", "English"));
+        customList.get(5).setStatus(weekSettingsSP.getString("week_setting", "Monday"));
+        customAdapter.notifyDataSetChanged();
+
+        specialModeList.get(0).setStatus(vacationModeSettingsSP.getString("vacation-setting", "Off"));
+        specialModeList.get(1).setStatus(diseaseModeSettingsSP.getString("disease_setting", "Off"));
+        specialModeAdapter.notifyDataSetChanged();
+        //endregion
+
+
 
 
 
         return view;
+    }
+
+    public void setTextViewSettingStatus() {
+
     }
 }
