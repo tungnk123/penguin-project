@@ -5,23 +5,14 @@ import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-
-import com.example.penguin_project.R;
-import com.example.penguin_project.model.data.SettingItem;
-
-import java.util.List;
-
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.penguin_project.R;
 import com.example.penguin_project.model.data.SettingItem;
 
 import java.util.List;
@@ -29,6 +20,12 @@ import java.util.List;
 public class SettingListAdapter extends RecyclerView.Adapter<SettingListAdapter.SettingViewHolder> {
     private Context context;
     private List<SettingItem> settingItemList;
+
+    private OnItemClickListener listener;
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
 
     public SettingListAdapter(Context context, List<SettingItem> settingItemList) {
         this.context = context;
@@ -62,6 +59,19 @@ public class SettingListAdapter extends RecyclerView.Adapter<SettingListAdapter.
             super(itemView);
             titleTextView = itemView.findViewById(R.id.tv_settingsItem_name);
             tvStatus = itemView.findViewById(R.id.tv_settingItem_status);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            SettingItem item = settingItemList.get(position);
+                            listener.onItemClick(item);
+                        }
+                    }
+                }
+            });
         }
 
         public void bind(SettingItem settingItem) {
@@ -70,5 +80,9 @@ public class SettingListAdapter extends RecyclerView.Adapter<SettingListAdapter.
             Drawable drawableStart = ContextCompat.getDrawable(itemView.getContext(), settingItem.getIcon());
             titleTextView.setCompoundDrawablesRelativeWithIntrinsicBounds(drawableStart, null, null, null);
         }
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(SettingItem item);
     }
 }

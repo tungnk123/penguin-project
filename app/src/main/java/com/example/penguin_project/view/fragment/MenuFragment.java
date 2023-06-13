@@ -1,6 +1,10 @@
 package com.example.penguin_project.view.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -8,10 +12,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
+import com.example.penguin_project.SettingsChangeModeActivity;
 import com.example.penguin_project.R;
 import com.example.penguin_project.model.data.SettingItem;
 import com.example.penguin_project.view.adapter.SettingListAdapter;
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MenuFragment extends Fragment {
+public class MenuFragment extends Fragment implements SettingListAdapter.OnItemClickListener {
 
     List<SettingItem> customList;
     List<SettingItem> specialModeList;
@@ -32,6 +33,15 @@ public class MenuFragment extends Fragment {
     RecyclerView rcvAboutList;
     RecyclerView rcvHAFList;
     RecyclerView rcvConnectList;
+
+    @Override
+    public void onItemClick(SettingItem item) {
+        switch (item.getTitle()) {
+            case "Change mode":
+                Intent intent = new Intent(getContext(), SettingsChangeModeActivity.class);
+                startActivity(intent);
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -102,17 +112,29 @@ public class MenuFragment extends Fragment {
         SettingListAdapter hafAdapter = new SettingListAdapter(view.getContext(),helpAndFeedBackList);
         SettingListAdapter connectAdapter = new SettingListAdapter(view.getContext(),connectList);
 
+        //region OnClick in rcv
+        customAdapter.setOnItemClickListener(this);
+        aboutAdapter.setOnItemClickListener(this);
+        specialModeAdapter.setOnItemClickListener(this);
+        hafAdapter.setOnItemClickListener(this);
+        connectAdapter.setOnItemClickListener(this);
+        //endregion
+
         rcvCustomList.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         rcvSpecialList.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         rcvAboutList.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         rcvHAFList.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         rcvConnectList.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
 
+
+
         rcvCustomList.setAdapter(customAdapter);
         rcvAboutList.setAdapter(aboutAdapter);
         rcvHAFList.setAdapter(hafAdapter);
         rcvSpecialList.setAdapter(specialModeAdapter);
         rcvConnectList.setAdapter(connectAdapter);
+
+
 
 
 

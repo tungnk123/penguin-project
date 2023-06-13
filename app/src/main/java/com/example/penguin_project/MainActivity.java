@@ -79,10 +79,14 @@ public class MainActivity extends AppCompatActivity {
         
         setupHabit_Day();
         setUpHabit_DayWorker();
-        String selectedFragment = getIntent().getStringExtra("Store Fragment");
+        String selectedFragment = getIntent().getStringExtra("SELECTED_FRAGMENT");
         if (selectedFragment != null && selectedFragment.equals("store")) {
             replaceFragment(new StoreFragment());
             bottomNavigation.show(4, true);
+        }
+        if (selectedFragment != null && selectedFragment.equals("setting")) {
+            replaceFragment(new MenuFragment());
+            bottomNavigation.show(5, true);
         }
     }
 
