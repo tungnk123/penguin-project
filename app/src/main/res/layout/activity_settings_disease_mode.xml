@@ -24,14 +24,14 @@
             android:src="@mipmap/icon_back" />
 
         <TextView
-            android:id="@+id/tv_activitySettingsVM_title"
+            android:id="@+id/tv_activitySettingsDM_title"
             style="@style/Title1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="20dp"
             android:layout_marginTop="2dp"
-            android:text="Vacation mode" />
+            android:text="Disease mode" />
 
     </LinearLayout>
 
@@ -42,7 +42,7 @@
         app:dividerThickness="1dp" />
 
     <RadioGroup
-        android:id="@+id/rgr_activitySettingsVM_radioGroup"
+        android:id="@+id/rgr_activitySettingsDM_radioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -50,7 +50,7 @@
         android:layout_marginEnd="20dp">
 
         <RadioButton
-            android:id="@+id/ra_activitySettingsVM_on"
+            android:id="@+id/ra_activitySettingsDM_on"
             style="@style/Body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
             android:text="On" />
 
         <RadioButton
-            android:id="@+id/ra_activitySettingsVM_off"
+            android:id="@+id/ra_activitySettingsDM_off"
             style="@style/Body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

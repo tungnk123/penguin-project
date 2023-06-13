@@ -96,6 +96,7 @@
             style="@style/Body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/grey"
             android:text="The alarm on/off feature in your app habit tracker allows users to easily enable or disable their alarms, providing control and flexibility over their daily routine." />
     </LinearLayout>
 

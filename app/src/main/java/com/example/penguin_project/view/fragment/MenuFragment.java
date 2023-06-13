@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.penguin_project.SettingsAlarmActivity;
 import com.example.penguin_project.SettingsChangeModeActivity;
 import com.example.penguin_project.R;
+import com.example.penguin_project.SettingsDiseaseModeActivity;
 import com.example.penguin_project.SettingsForestThemeActivity;
 import com.example.penguin_project.SettingsLanguageActivity;
 import com.example.penguin_project.SettingsSoundActivity;
@@ -71,6 +72,11 @@ public class MenuFragment extends Fragment implements SettingListAdapter.OnItemC
                 Intent vacationIntent = new Intent(getContext(), SettingsVacationModeActivity.class);
                 startActivity(vacationIntent);
                 break;
+            case "Disease mode":
+                Intent diseaseIntent = new Intent(getContext(), SettingsDiseaseModeActivity.class);
+                startActivity(diseaseIntent);
+                break;
+
 
         }
     }

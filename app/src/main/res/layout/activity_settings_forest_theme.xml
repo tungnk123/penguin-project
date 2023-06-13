@@ -137,6 +137,7 @@
             style="@style/Body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/grey"
             android:text="Forest theme is the display of the forest in the Forest. To make your experiences more enjoyable, pick the forest theme that is most to your liking" />
     </LinearLayout>
 

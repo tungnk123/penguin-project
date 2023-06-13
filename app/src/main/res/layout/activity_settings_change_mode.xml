@@ -96,6 +96,7 @@
             style="@style/Body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/grey"
             android:text="The light or dark mode feature in your app allows users to switch between a bright or dark interface, catering to their visual preferences and enhancing the overall user experience." />
     </LinearLayout>
 
