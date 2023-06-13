@@ -117,7 +117,8 @@
             style="@style/Body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="To make your experiences more enjoyable, pick the sound that is most to your liking" />
+            android:textColor="@color/grey"
+            android:text="The store offers a wide range of music for you to purchase and enjoy. Whether you're looking for the latest hits, classic albums, or niche genres, you'll find an extensive selection to suit your musical tastes. Explore the store and discover an array of songs and albums available for purchase, allowing you to build your personal music library and support your favorite artists. Happy shopping and happy listening!" />
     </LinearLayout>
 
 </LinearLayout>
