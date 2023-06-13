@@ -24,14 +24,14 @@
             android:src="@mipmap/icon_back" />
 
         <TextView
-            android:id="@+id/tv_activitySettingsCM_title"
+            android:id="@+id/tv_activitySettingsAlarm_title"
             style="@style/Title1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="20dp"
             android:layout_marginTop="2dp"
-            android:text="Change mode" />
+            android:text="Alarm" />
 
     </LinearLayout>
 
@@ -45,7 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:id="@+id/rgr_activitySettingsCM_radioGroup"
+        android:id="@+id/rgr_activitySettingsAlarm_radioGroup"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp">
 
@@ -54,20 +54,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:buttonTint="@color/lime_energy"
-            android:id="@+id/ra_activitySettingsCM_lightMode"
+            android:id="@+id/ra_activitySettingsAlarm_off"
             android:paddingStart="15dp"
             android:paddingTop="5dp"
-            android:text="Light mode" />
+            android:text="On" />
 
         <RadioButton
             style="@style/Body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="5dp"
-            android:id="@+id/ra_activitySettingsCM_darkMode"
+            android:id="@+id/ra_activitySettingsAlarm_On"
             android:paddingStart="15dp"
             android:buttonTint="@color/lime_energy"
-            android:text="Dark mode" />
+            android:text="Off" />
 
     </RadioGroup>
 
@@ -96,7 +96,7 @@
             style="@style/Body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="The light or dark mode feature in your app allows users to switch between a bright or dark interface, catering to their visual preferences and enhancing the overall user experience." />
+            android:text="The alarm on/off feature in your app habit tracker allows users to easily enable or disable their alarms, providing control and flexibility over their daily routine." />
     </LinearLayout>
 
 </LinearLayout>

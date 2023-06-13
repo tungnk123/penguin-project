@@ -17,7 +17,7 @@
         style="@style/SettingTitle"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:drawablePadding="8dp"
+        android:drawablePadding="10dp"
         android:text="Sound"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
