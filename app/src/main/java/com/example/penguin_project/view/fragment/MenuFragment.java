@@ -16,6 +16,7 @@ import com.example.penguin_project.SettingsAlarmActivity;
 import com.example.penguin_project.SettingsChangeModeActivity;
 import com.example.penguin_project.R;
 import com.example.penguin_project.SettingsForestThemeActivity;
+import com.example.penguin_project.SettingsLanguageActivity;
 import com.example.penguin_project.SettingsSoundActivity;
 import com.example.penguin_project.model.data.SettingItem;
 import com.example.penguin_project.view.adapter.SettingListAdapter;
@@ -56,6 +57,11 @@ public class MenuFragment extends Fragment implements SettingListAdapter.OnItemC
                 Intent alarmIntent = new Intent(getContext(), SettingsAlarmActivity.class);
                 startActivity(alarmIntent);
                 break;
+            case "Language":
+                Intent languageIntent = new Intent(getContext(), SettingsLanguageActivity.class);
+                startActivity(languageIntent);
+                break;
+
         }
     }
 
