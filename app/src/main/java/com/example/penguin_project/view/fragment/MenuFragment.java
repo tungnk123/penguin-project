@@ -18,6 +18,7 @@ import com.example.penguin_project.R;
 import com.example.penguin_project.SettingsForestThemeActivity;
 import com.example.penguin_project.SettingsLanguageActivity;
 import com.example.penguin_project.SettingsSoundActivity;
+import com.example.penguin_project.SettingsWeekStartAt;
 import com.example.penguin_project.model.data.SettingItem;
 import com.example.penguin_project.view.adapter.SettingListAdapter;
 
@@ -61,6 +62,10 @@ public class MenuFragment extends Fragment implements SettingListAdapter.OnItemC
                 Intent languageIntent = new Intent(getContext(), SettingsLanguageActivity.class);
                 startActivity(languageIntent);
                 break;
+            case "Week starts at":
+                Intent weekIntent = new Intent(getContext(), SettingsWeekStartAt.class);
+                startActivity(weekIntent);
+                break;
 
         }
     }
@@ -92,7 +97,7 @@ public class MenuFragment extends Fragment implements SettingListAdapter.OnItemC
         customList.add(new SettingItem("Forest theme", R.mipmap.icon_foresttheme, "Normal"));
         customList.add(new SettingItem("Alarm", R.mipmap.icon_alarm, "On"));
         customList.add(new SettingItem("Language", R.mipmap.icon_language, "English"));
-        customList.add(new SettingItem("Weeks starts at", R.mipmap.icon_week, "Monday"));
+        customList.add(new SettingItem("Week starts at", R.mipmap.icon_week, "Monday"));
 
         specialModeList.add(new SettingItem("Vacation mode", R.mipmap.icon_umbrela, "Off"));
         specialModeList.add(new SettingItem("Disease mode", R.mipmap.icon_disease, "Off"));
