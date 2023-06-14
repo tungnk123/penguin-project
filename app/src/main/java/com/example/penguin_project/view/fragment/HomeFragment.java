@@ -1,6 +1,7 @@
 package com.example.penguin_project.view.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -33,7 +34,6 @@ import android.widget.Toast;
 import com.example.penguin_project.CreateHabitActivity;
 import com.example.penguin_project.HabitsInfoActivity;
 import com.example.penguin_project.R;
-import com.example.penguin_project.model.data.CoinManager;
 import com.example.penguin_project.model.data.HabitDate;
 import com.example.penguin_project.model.data.ResetHabitsWorker;
 import com.example.penguin_project.model.repo.local.DataBase.HabitDataBase;
@@ -78,7 +78,7 @@ public class HomeFragment extends Fragment {
         rcv_DatePicker = view.findViewById(R.id.rcv_datePicker);
         txt_DayOfWeek = view.findViewById(R.id.txt_ActionBar_DayOfWeek);
         txt_DayOfMonth = view.findViewById(R.id.txt_ActionBar_DayOfMonth);
-        txt_Coin = view.findViewById(R.id.txt_Home_Coin);
+        txt_Coin = view.findViewById(R.id.txt_ActionBar_coin);
         btn_AddHabit = view.findViewById(R.id.btn_Home_AddHabit);
 
         rcv_HabitListAnytime = view.findViewById(R.id.rcv_Home_AnytimeHabit);
@@ -88,7 +88,8 @@ public class HomeFragment extends Fragment {
         rcv_HabitListCompleted = view.findViewById(R.id.rcv_Home_CompletedHabit);
         rcv_HabitListFailed = view.findViewById(R.id.rcv_Home_FailedHabit);
 
-        txt_Coin.setText(String.valueOf(CoinManager.getInstance(getContext()).getData("Coin", 100)));
+        MenuFragment.weekSettingsSP = view.getContext().getSharedPreferences("week_setting", Context.MODE_PRIVATE);
+
 
 //        getContext().deleteDatabase("Habit.db");
 //
@@ -109,6 +110,7 @@ public class HomeFragment extends Fragment {
         Setting_rcvHabitConpletedList();
         Setting_rcvHabitFailedList();
         Setting_btnAddHabit();
+
 
         return view;
     }
@@ -362,7 +364,11 @@ public class HomeFragment extends Fragment {
         arrDate = new ArrayList<>();
         LocalDate date = LocalDate.now();
         selectedDayOfWeek = date.getDayOfWeek();
-        if (MenuFragment.weekSettingsSP == null || MenuFragment.weekSettingsSP.getString("week_setting", "Monday").equals("Monday") ) {
+        if (MenuFragment.weekSettingsSP == null) {
+            Toast.makeText(getContext(), "null", Toast.LENGTH_SHORT).show();
+        }
+        if ( MenuFragment.weekSettingsSP.getString("week_setting", "Monday").equals("Monday") ) {
+
             switch (LocalDate.now().getDayOfWeek()) {
                 case MONDAY:
                     date = date.minusDays(0);
@@ -395,6 +401,7 @@ public class HomeFragment extends Fragment {
             }
         }
         else {
+
             switch (LocalDate.now().getDayOfWeek()) {
                 case MONDAY:
                     date = date.minusDays(1);
