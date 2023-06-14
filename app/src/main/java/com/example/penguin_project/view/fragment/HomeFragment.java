@@ -401,7 +401,6 @@ public class HomeFragment extends Fragment {
             }
         }
         else {
-
             switch (LocalDate.now().getDayOfWeek()) {
                 case MONDAY:
                     date = date.minusDays(1);

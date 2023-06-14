@@ -155,6 +155,9 @@ public interface HabitDAO {
     @Query("SELECT * FROM StoreItem WHERE StoreItemType = :itemType")
     LiveData<List<StoreItem>> getStoreItemByType(String itemType);
 
+    @Query("SELECT * FROM StoreItem WHERE StoreItemType = 'music'")
+    List<StoreItem> getMusicListNotLiveData();
+
     @Query("SELECT * FROM StoreItem WHERE Item_id=:item_id")
     LiveData<List<StoreItem>> getStoreItemById(int item_id);
 
