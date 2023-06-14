@@ -2,17 +2,17 @@ package com.example.penguin_project;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.work.ExistingPeriodicWorkPolicy;
-import androidx.work.PeriodicWorkRequest;
-import androidx.work.WorkManager;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.example.penguin_project.model.data.LocalDateConverter;
-import com.example.penguin_project.model.data.UpdateHabit_DayWorker;
+import com.example.penguin_project.model.data.UpdateHabitReceiver;
 import com.example.penguin_project.model.repo.local.DataBase.HabitDataBase;
 import com.example.penguin_project.model.repo.local.Table.Habit_Day;
 import com.example.penguin_project.view.fragment.HomeFragment;
@@ -24,7 +24,6 @@ import com.example.penguin_project.view.fragment.TrackerFragment;
 import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import kotlin.Unit;
 import kotlin.jvm.functions.Function1;
@@ -78,37 +77,24 @@ public class MainActivity extends AppCompatActivity {
         });
         
         setupHabit_Day();
-        setUpHabit_DayWorker();
+        scheduleJobUpdateHabit(getApplicationContext(), 23, 58);
         String selectedFragment = getIntent().getStringExtra("Store Fragment");
         if (selectedFragment != null && selectedFragment.equals("store")) {
             replaceFragment(new StoreFragment());
             bottomNavigation.show(4, true);
         }
     }
+    private void scheduleJobUpdateHabit(Context context, int hour, int minute) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        calendar.set(Calendar.HOUR_OF_DAY, hour);
+        calendar.set(Calendar.MINUTE, minute);
 
-    private void setUpHabit_DayWorker() {
-        PeriodicWorkRequest workRequest = new PeriodicWorkRequest.Builder(
-                UpdateHabit_DayWorker.class,
-                1,
-                TimeUnit.DAYS)
-                .setInitialDelay(getDelayToNextMidnight(), TimeUnit.MILLISECONDS)
-                .build();
+        Intent intent = new Intent(context, UpdateHabitReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
-        WorkManager.getInstance(this).enqueueUniquePeriodicWork(
-                "update_data_work",
-                ExistingPeriodicWorkPolicy.KEEP,
-                workRequest);
-    }
-    private long getDelayToNextMidnight() {
-        Calendar midnight = Calendar.getInstance();
-        midnight.set(Calendar.HOUR_OF_DAY, 23);
-        midnight.set(Calendar.MINUTE, 55);
-        midnight.set(Calendar.SECOND, 0);
-        midnight.set(Calendar.MILLISECOND, 0);
-        midnight.add(Calendar.DAY_OF_MONTH, 1);
-
-        long delay = midnight.getTimeInMillis() - System.currentTimeMillis();
-        return delay;
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
     }
 
     private void setupHabit_Day() {

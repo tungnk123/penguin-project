@@ -105,7 +105,7 @@ public interface HabitDAO {
     @Query("Select * from Habit_Day where Habit_Day.Habit_Day_id = :date")
     List<Habit_Day> getHabit_DayByID(Long date);
 
-    @Query("Select * from Habit_DayOfWeek where Habit_DayOfWeek.Habit_id = :Dow")
+    @Query("Select * from Habit_DayOfWeek where Habit_DayOfWeek.Habit_DayOfWeek_id = :Dow")
     List<Habit_DayOfWeek> getListHabitDowByDow(int Dow);
 
     @Update
