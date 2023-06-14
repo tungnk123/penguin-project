@@ -14,6 +14,8 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -44,9 +46,12 @@ public class EditHabitActivity extends AppCompatActivity {
     RelativeLayout habitItemColor, btn_addHabit;
     ToggleButton tgb2, tgb3, tgb4, tgb5, tgb6, tgb7, tgbCN;
     LinearLayout btn_anytime, btn_morning, btn_afternoon, btn_evening;
+    Button btn_EditHour;
+    CheckBox cb_RemindTime;
     int imgResource;
     boolean isEdit = false;
     Habits editHabit;
+    int Hour, Minutes;
 
     // Plant
 
@@ -58,6 +63,9 @@ public class EditHabitActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_habit);
 
+        Hour = 20;
+        Minutes = 0;
+
         settingToggleButton();
         settingTimeOfDay();
         settingColorButton();
@@ -66,6 +74,7 @@ public class EditHabitActivity extends AppCompatActivity {
         imgResource = R.mipmap.icon_drink_water;
         receiveIntent();
         settingAddHabit();
+        settingRemindTime();
 
         //region Plant
         plantRecyclerView = findViewById(R.id.rcv_EditHabit_plantRecyclerView);
@@ -84,6 +93,11 @@ public class EditHabitActivity extends AppCompatActivity {
         plantRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         plantRecyclerView.setAdapter(plantAdapter);
         //endregion
+    }
+
+    private void settingRemindTime() {
+        cb_RemindTime = findViewById(R.id.EditHabit_cbRemindTime);
+        btn_EditHour = findViewById(R.id.EditHabit_btnEditHour);
     }
 
     private void settingAddHabit() {

@@ -475,6 +475,43 @@
                         android:textSize="20dp"
                         android:textStyle="bold" />
                 </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/item_icon_shape"
+                    android:orientation="horizontal"
+                    android:padding="5dp">
+
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/EditHabit_cbRemindTime"
+                        android:layout_marginStart="80dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="REMIND TIME"
+                        android:textColor="@color/white"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:backgroundTint="@color/black_item"
+                    android:id="@+id/EditHabit_btnEditHour"
+                    android:text="20:00"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="40dp"
+                    />
+
             </LinearLayout>
 
             <RelativeLayout
@@ -491,7 +528,7 @@
                     android:text="PLANT"
                     android:textColor="@color/white"
                     android:textSize="18dp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"/>
             </RelativeLayout>
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
