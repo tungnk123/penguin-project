@@ -9,6 +9,7 @@ import com.example.penguin_project.model.repo.local.DataBase.HabitDataBase;
 import com.example.penguin_project.model.repo.local.Table.StoreItem;
 
 import java.util.List;
+import java.util.Objects;
 
 public class StoreItemViewModel extends AndroidViewModel {
     private HabitDataBase habitDataBase;
@@ -69,6 +70,14 @@ public class StoreItemViewModel extends AndroidViewModel {
     }
     public void updateItemPurchased(int item_id,boolean isPurchased) {
         habitDataBase.habitDAO().updateIsPurchasedById(item_id, isPurchased);
+    }
+    public int getMusicListSize() {
+        if (musicsList == null) return 0;
+        return Objects.requireNonNull(musicsList.getValue()).size();
+    }
+
+    public List<StoreItem> getMusicListNotLiveData() {
+        return habitDataBase.habitDAO().getMusicListNotLiveData();
     }
 
 }
