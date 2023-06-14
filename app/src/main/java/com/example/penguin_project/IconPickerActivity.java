@@ -23,6 +23,7 @@ public class IconPickerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_icon_picker);
 
         settingIcon();
+        this.setTitle("Pick one icon");
 
     }
 
