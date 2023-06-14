@@ -1,6 +1,7 @@
 package com.example.penguin_project.view.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -87,6 +88,9 @@ public class HomeFragment extends Fragment {
         rcv_HabitListCompleted = view.findViewById(R.id.rcv_Home_CompletedHabit);
         rcv_HabitListFailed = view.findViewById(R.id.rcv_Home_FailedHabit);
 
+        MenuFragment.weekSettingsSP = view.getContext().getSharedPreferences("week_setting", Context.MODE_PRIVATE);
+
+
 //        getContext().deleteDatabase("Habit.db");
 //
 
@@ -106,6 +110,7 @@ public class HomeFragment extends Fragment {
         Setting_rcvHabitConpletedList();
         Setting_rcvHabitFailedList();
         Setting_btnAddHabit();
+
 
         return view;
     }
@@ -359,7 +364,11 @@ public class HomeFragment extends Fragment {
         arrDate = new ArrayList<>();
         LocalDate date = LocalDate.now();
         selectedDayOfWeek = date.getDayOfWeek();
-        if (MenuFragment.weekSettingsSP == null || MenuFragment.weekSettingsSP.getString("week_setting", "Monday").equals("Monday") ) {
+        if (MenuFragment.weekSettingsSP == null) {
+            Toast.makeText(getContext(), "null", Toast.LENGTH_SHORT).show();
+        }
+        if ( MenuFragment.weekSettingsSP.getString("week_setting", "Monday").equals("Monday") ) {
+
             switch (LocalDate.now().getDayOfWeek()) {
                 case MONDAY:
                     date = date.minusDays(0);
@@ -392,6 +401,7 @@ public class HomeFragment extends Fragment {
             }
         }
         else {
+
             switch (LocalDate.now().getDayOfWeek()) {
                 case MONDAY:
                     date = date.minusDays(1);
