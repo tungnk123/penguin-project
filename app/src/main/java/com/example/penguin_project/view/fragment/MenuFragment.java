@@ -205,7 +205,7 @@ public class MenuFragment extends Fragment implements SettingListAdapter.OnItemC
         //region Lay data tu Shared Preferences va gan vao status text view
 
         customList.get(0).setStatus(modeSettingsSP.getString("mode_setting", "Dark mode"));
-        customList.get(1).setStatus(soundSettingsSP.getString("sound_setting", "Chill music"));
+        customList.get(1).setStatus(soundSettingsSP.getString("sound_setting", "Nope"));
         customList.get(2).setStatus(forestThemeSettingsSP.getString("forest_setting", "Plain"));
         customList.get(3).setStatus(alarmSettingsSP.getString("alarm_setting", "On"));
         customList.get(4).setStatus(languageSettingsSP.getString("language_setting", "English"));

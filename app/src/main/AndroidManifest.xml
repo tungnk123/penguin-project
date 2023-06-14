@@ -76,6 +76,11 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <service
+            android:name=".view.service.BackgroundMusicService"
+            android:enabled="true"
+            android:exported="false" />
     </application>
 
 </manifest>

@@ -8,6 +8,7 @@ import androidx.work.ExistingPeriodicWorkPolicy;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
@@ -20,6 +21,7 @@ import com.example.penguin_project.view.fragment.MenuFragment;
 import com.example.penguin_project.view.fragment.StoreFragment;
 import com.example.penguin_project.view.fragment.TodoFragment;
 import com.example.penguin_project.view.fragment.TrackerFragment;
+import com.example.penguin_project.view.service.BackgroundMusicService;
 
 import java.time.LocalDate;
 import java.util.Calendar;
@@ -32,10 +34,16 @@ import kotlin.jvm.functions.Function1;
 public class MainActivity extends AppCompatActivity {
 
     MeowBottomNavigation bottomNavigation;
+    private Intent musicServiceIntent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        musicServiceIntent = new Intent(this, BackgroundMusicService.class);
+        startService(musicServiceIntent);
+
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
 
@@ -89,6 +97,25 @@ public class MainActivity extends AppCompatActivity {
             bottomNavigation.show(5, true);
         }
     }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        stopService(musicServiceIntent);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        startService(musicServiceIntent);
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        stopService(musicServiceIntent);
+    }
+
 
     private void setUpHabit_DayWorker() {
         PeriodicWorkRequest workRequest = new PeriodicWorkRequest.Builder(

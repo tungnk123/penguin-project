@@ -1,3 +1,4 @@
+
 package com.example.penguin_project;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,13 +9,15 @@ import android.content.SharedPreferences;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
-import android.widget.Toast;
 
-import com.example.penguin_project.model.repo.local.DataBase.HabitDataBase;
+import com.example.penguin_project.MainActivity;
+import com.example.penguin_project.R;
 import com.example.penguin_project.model.repo.local.Table.StoreItem;
 import com.example.penguin_project.view.fragment.MenuFragment;
+import com.example.penguin_project.view.service.BackgroundMusicService;
 import com.example.penguin_project.viewmodel.StoreItemViewModel;
 
 import java.util.List;
@@ -32,6 +35,7 @@ public class SettingsSoundActivity extends AppCompatActivity {
     RadioButton rabtnNope;
 
     StoreItemViewModel storeItemViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,12 +56,15 @@ public class SettingsSoundActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent backIntent = new Intent(SettingsSoundActivity.this, MainActivity.class);
                 backIntent.putExtra("SELECTED_FRAGMENT", "setting");
+                if (rabtnNope.isChecked()) {
+                    stopService(new Intent(SettingsSoundActivity.this, BackgroundMusicService.class));
+                }
                 startActivity(backIntent);
             }
         });
 
-        String music = MenuFragment.soundSettingsSP.getString("sound_setting", "Chill music");
-        List< StoreItem> musicList = storeItemViewModel.getMusicListNotLiveData();
+        String music = MenuFragment.soundSettingsSP.getString("sound_setting", "Nope");
+        List<StoreItem> musicList = storeItemViewModel.getMusicListNotLiveData();
         if (!musicList.get(1).getIsPurchased()) {
             rabtnFire.setClickable(false);
             rabtnFire.setPaintFlags(rabtnFire.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
@@ -74,6 +81,76 @@ public class SettingsSoundActivity extends AppCompatActivity {
             rabtnPiano.setClickable(false);
             rabtnPiano.setPaintFlags(rabtnPiano.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         }
+
+        Intent musicIntent = new Intent(SettingsSoundActivity.this, BackgroundMusicService.class);
+        startService(musicIntent);
+        rabtnChill.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    Intent intent = new Intent("com.example.penguin_project.UPDATE_MUSIC");
+                    intent.putExtra("music", "Chill music");
+                    sendBroadcast(intent);
+                }
+            }
+        });
+
+        rabtnNope.setOnCheckedChangeListener(new CompoundButton
+
+                .OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    Intent intent = new Intent("com.example.penguin_project.UPDATE_MUSIC");
+                    intent.putExtra("music", "Nope");
+                    sendBroadcast(intent);
+                }
+            }
+        });
+
+        rabtnFire.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    Intent intent = new Intent("com.example.penguin_project.UPDATE_MUSIC");
+                    intent.putExtra("music", "Fire camp");
+                    sendBroadcast(intent);
+                }
+            }
+        });
+
+        rabtnGuitar.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    Intent intent = new Intent("com.example.penguin_project.UPDATE_MUSIC");
+                    intent.putExtra("music", "Guitar");
+                    sendBroadcast(intent);
+                }
+            }
+        });
+
+        rabtnPiano.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    Intent intent = new Intent("com.example.penguin_project.UPDATE_MUSIC");
+                    intent.putExtra("music", "Piano");
+                    sendBroadcast(intent);
+                }
+            }
+        });
+
+        rabtnRain.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    Intent intent = new Intent("com.example.penguin_project.UPDATE_MUSIC");
+                    intent.putExtra("music", "Rain");
+                    sendBroadcast(intent);
+                }
+            }
+        });
 
         switch (music) {
             case "Chill music":
@@ -98,6 +175,13 @@ public class SettingsSoundActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        Intent musicIntent = new Intent(SettingsSoundActivity.this, BackgroundMusicService.class);
+        startService(musicIntent);
+    }
+
+    @Override
     protected void onPause() {
         super.onPause();
         SharedPreferences.Editor editor = MenuFragment.soundSettingsSP.edit();
@@ -119,7 +203,6 @@ public class SettingsSoundActivity extends AppCompatActivity {
         if (rabtnFire.isChecked()) {
             editor.putString("sound_setting", "Fire camp");
         }
-        // TODO xu ly sound o day
         editor.apply();
     }
 }
