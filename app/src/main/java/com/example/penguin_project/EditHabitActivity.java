@@ -10,6 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -23,6 +26,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -36,6 +40,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class EditHabitActivity extends AppCompatActivity {
 
@@ -98,6 +103,24 @@ public class EditHabitActivity extends AppCompatActivity {
     private void settingRemindTime() {
         cb_RemindTime = findViewById(R.id.EditHabit_cbRemindTime);
         btn_EditHour = findViewById(R.id.EditHabit_btnEditHour);
+
+        btn_EditHour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TimePickerDialog.OnTimeSetListener onTimeSetListener = new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                        Hour = selectedHour;
+                        Minutes = selectedMinute;
+                        btn_EditHour.setText(String.format(Locale.getDefault(), "%02d:%02d", Hour, Minutes));
+                    }
+                };
+                int style = AlertDialog.THEME_HOLO_DARK;
+                TimePickerDialog timePickerDialog = new TimePickerDialog(EditHabitActivity.this, style, onTimeSetListener, Hour, Minutes, true);
+                timePickerDialog.setTitle("Select time");
+                timePickerDialog.show();
+            }
+        });
     }
 
     private void settingAddHabit() {
