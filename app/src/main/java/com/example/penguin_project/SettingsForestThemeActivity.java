@@ -1,15 +1,21 @@
 package com.example.penguin_project;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 
+import com.example.penguin_project.model.repo.local.Table.StoreItem;
 import com.example.penguin_project.view.fragment.MenuFragment;
+import com.example.penguin_project.viewmodel.StoreItemViewModel;
+
+import java.util.List;
 
 public class SettingsForestThemeActivity extends AppCompatActivity {
 
@@ -21,6 +27,8 @@ public class SettingsForestThemeActivity extends AppCompatActivity {
     RadioButton rabtnSwamp;
     RadioButton rabtnFlower;
     RadioButton rabtnBeach;
+
+    public StoreItemViewModel storeItemViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +41,8 @@ public class SettingsForestThemeActivity extends AppCompatActivity {
         rabtnPlain = findViewById(R.id.ra_activitySettingsForest_plain);
         rabtnSwamp = findViewById(R.id.ra_activitySettingsForest_swamp);
 
+        storeItemViewModel = new ViewModelProvider(this).get(StoreItemViewModel.class);
+
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,6 +51,28 @@ public class SettingsForestThemeActivity extends AppCompatActivity {
                 startActivity(backIntent);
             }
         });
+        List<StoreItem> themeList = storeItemViewModel.getThemeListNotLiveData();
+        if (!themeList.get(0).getIsPurchased()) {
+            rabtnPine.setClickable(false);
+            rabtnPine.setPaintFlags(rabtnPine.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        }
+        if (!themeList.get(1).getIsPurchased()) {
+            rabtnSand.setClickable(false);
+            rabtnSand.setPaintFlags(rabtnSand.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        }
+        if (!themeList.get(2).getIsPurchased()) {
+            rabtnSwamp.setClickable(false);
+            rabtnSwamp.setPaintFlags(rabtnSwamp.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        }
+        if (!themeList.get(3).getIsPurchased()) {
+            rabtnFlower.setClickable(false);
+            rabtnFlower.setPaintFlags(rabtnFlower.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        }
+        if (!themeList.get(4).getIsPurchased()) {
+            rabtnBeach.setClickable(false);
+            rabtnBeach.setPaintFlags(rabtnBeach.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        }
+
 
         String forestTheme = MenuFragment.forestThemeSettingsSP.getString("forest_setting", "Plain");
         switch (forestTheme) {

@@ -81,4 +81,8 @@ public class StoreItemViewModel extends AndroidViewModel {
         return habitDataBase.habitDAO().getMusicListNotLiveData();
     }
 
+    public List<StoreItem> getThemeListNotLiveData() {
+        return habitDataBase.habitDAO().getThemeListNotLiveData();
+    }
+
 }
