@@ -58,7 +58,7 @@ public class StoreFragment extends Fragment {
 //        editor.putInt("money", 100 );
 //        editor.commit();
         tvCoinNumber = (TextView) view.findViewById(R.id.txt_ActionBar_coin);
-        tvCoinNumber.setText(String.valueOf(coinSharedPreference.getInt("money", 100)));
+        tvCoinNumber.setText(String.valueOf(coinSharedPreference.getInt("money", 1000)));
         //endregion
         treeItemsList = new ArrayList<>();
         musicItemsList = new ArrayList<>();

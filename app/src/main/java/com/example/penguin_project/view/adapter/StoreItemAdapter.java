@@ -102,13 +102,13 @@ public class StoreItemAdapter extends RecyclerView.Adapter<StoreItemAdapter.Stor
 
                                     if (!clickedItem.getIsPurchased()) {
                                         // Update the purchase status
-                                        if (StoreFragment.coinSharedPreference.getInt("money", 100) >= clickedItem.getItemPrice()) {
+                                        if (StoreFragment.coinSharedPreference.getInt("money", 1000) >= clickedItem.getItemPrice()) {
                                             clickedItem.setIsPurchased(true);
                                             storeItemViewModel.updateItemPurchased(clickedItem.getItem_id(), true);
                                             // Update the UI
                                             tvCoinNumber.setText("Purchased");
                                             imgCoin.setVisibility(View.GONE);
-                                            int newMoney = StoreFragment.coinSharedPreference.getInt("money", 100) - clickedItem.getItemPrice();
+                                            int newMoney = StoreFragment.coinSharedPreference.getInt("money", 1000) - clickedItem.getItemPrice();
                                             StoreFragment.storeNewMoney(newMoney);
                                             Toast.makeText(itemView.getContext(), "Item bought!", Toast.LENGTH_SHORT).show();
                                             // neu mua item la tree se cap nhap trong db la plant da mua
