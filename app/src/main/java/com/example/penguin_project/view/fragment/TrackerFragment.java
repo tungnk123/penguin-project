@@ -1,5 +1,7 @@
 package com.example.penguin_project.view.fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -36,6 +38,8 @@ public class TrackerFragment extends Fragment {
     public ImageView imgTree7;
     public ImageView imgTree8;
 
+    public ImageView imgBackground;
+
 
     public TrackerFragment() {
         // Required empty public constructor
@@ -55,6 +59,7 @@ public class TrackerFragment extends Fragment {
         imgTree6 = view.findViewById(R.id.img_fragmentTracker_tree6);
         imgTree7 = view.findViewById(R.id.img_fragmentTracker_tree7);
         imgTree8 = view.findViewById(R.id.img_fragmentTracker_tree8);
+        imgBackground = view.findViewById(R.id.img_fragmentTracker_background);
 
 //        imgTree1.setImageResource(R.mipmap.icon_tree_mam);
 
@@ -64,6 +69,31 @@ public class TrackerFragment extends Fragment {
         // Khởi tạo và gán Adapter cho RecyclerView
         calendarAdapter = new CalendarAdapter(getDaysInCurrentMonth());
         recyclerView.setAdapter(calendarAdapter);
+
+        MenuFragment.forestThemeSettingsSP = view.getContext().getSharedPreferences("forest_setting", Context.MODE_PRIVATE);
+        String theme = MenuFragment.forestThemeSettingsSP.getString("forest_setting", "Plain");
+        switch (theme) {
+            case "PLain":
+                imgBackground.setImageResource(R.drawable.background_plain);
+                break;
+            case "Sand":
+                imgBackground.setImageResource(R.drawable.background_sand);
+                break;
+            case "Swamp":
+                imgBackground.setImageResource(R.drawable.background_swamp);
+                break;
+            case "Flower garden":
+                imgBackground.setImageResource(R.drawable.background_flower_garden);
+                break;
+            case "Beach":
+                imgBackground.setImageResource(R.drawable.background_beach);
+                break;
+            case "Pine forest":
+                imgBackground.setImageResource(R.drawable.background_pine);
+                break;
+            default:
+                imgBackground.setImageResource(R.drawable.background_plain);
+        }
 
         return view;
     }
