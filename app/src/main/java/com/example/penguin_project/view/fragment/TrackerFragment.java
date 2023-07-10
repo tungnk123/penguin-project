@@ -68,14 +68,16 @@ public class TrackerFragment extends Fragment {
             treeList[i].setImageDrawable(null);
         }
         List<Habits> habitsList = HabitDataBase.getInstance(getContext()).habitDAO().getHabitList();
-//        if (habitsList.size() > 0) {
-//            Tree tree = HabitDataBase.getInstance(getContext()).habitDAO().getTreeForestById(habitsList.get(0).getTree_id());
-//            tree1.setImageResource(tree.getIcon());
-//        }
-
         for (int i = 0; i < habitsList.size(); i++) {
             Tree tree = HabitDataBase.getInstance(getContext()).habitDAO().getTreeForestById(habitsList.get(i).getTree_id());
-            treeList[i].setImageResource(tree.getIcon());
+            int currentStreak = habitsList.get(i).getCurrentStreak();
+
+            if (currentStreak < tree.getTimeToGrow()) {
+                treeList[i].setImageResource(R.mipmap.icon_tree_mam2);
+            }
+            else {
+                treeList[i].setImageResource(tree.getIcon());
+            }
         }
         //
 
