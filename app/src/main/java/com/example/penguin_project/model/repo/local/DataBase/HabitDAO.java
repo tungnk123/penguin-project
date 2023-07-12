@@ -52,7 +52,10 @@ public interface HabitDAO {
     void insertSteps(Steps steps);
 
     @Query("SELECT * FROM Todo")
-    List<Todo> getTodoList();
+    LiveData<List<Todo>> getTodoList();
+
+    @Query("SELECT * FROM todo WHERE IsDone = :isDone ")
+    LiveData<List<Todo>> getTodoListByIsDone(boolean isDone);
 
     @Query("SELECT * FROM Steps")
     List<Steps> getStepsList();
@@ -72,6 +75,9 @@ public interface HabitDAO {
 
     @Query("UPDATE Todo SET Title = :newTodoName WHERE Todo_id = :todoId")
     void updateTodoName(int todoId, String newTodoName);
+
+    @Query("UPDATE Todo SET IsDone = :isDone WHERE Todo_id = :todoId")
+    void updateIsDoneById(boolean isDone, int todoId);
 
     @Query("DELETE FROM Todo WHERE Todo_id = :todoId")
     void deleteTodo(int todoId);

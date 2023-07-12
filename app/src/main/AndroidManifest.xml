@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM"/>
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Penguinproject"
         tools:targetApi="31">
+        <activity
+            android:name="com.example.penguin_project.view.activity.AddTodoActivity"
+            android:exported="false" />
         <receiver android:name=".model.data.UpdateHabitReceiver" />
         <activity
             android:name=".IconPickerActivity"
@@ -53,6 +59,16 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        // notification broadcast receiver
+        <receiver
+            android:name=".utils.NotificationBroadcastReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.example.penguin_project.ACTION_NOTIFICATION" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
