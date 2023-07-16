@@ -44,7 +44,7 @@ public class NotificationBroadcastReceiver extends BroadcastReceiver {
 
         // Build the notification
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "1")
-                .setSmallIcon(R.drawable.icon_sun)
+                .setSmallIcon(R.mipmap.icon_sun)
                 .setContentTitle(todoName)
                 .setContentText(description)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)

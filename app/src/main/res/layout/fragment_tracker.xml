@@ -24,7 +24,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:text="@string/forest_streak"
+                android:text="Forest and Streak"
                 android:textColor="@color/lime_energy"
                 android:textSize="34dp"
                 android:textStyle="bold" />
