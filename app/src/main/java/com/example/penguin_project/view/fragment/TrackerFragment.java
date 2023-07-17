@@ -92,7 +92,7 @@ public class TrackerFragment extends Fragment {
         for(int i = 0; i < habit_dayList.size(); i++){
             Habit_Day habit_day = habit_dayList.get(i);
             if(habit_day.getHabit_Day_id() == LocalDate.now()){
-                return;
+                break;
             }
             if(habit_day.getIsDone()){
                 currentStreak += 1;
