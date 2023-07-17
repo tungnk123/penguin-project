@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -29,6 +30,7 @@ import com.example.penguin_project.view.adapter.CustomSpinnerAdapter;
 import com.example.penguin_project.viewmodel.TodoViewModel;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -53,6 +55,8 @@ public class AddTodoActivity extends AppCompatActivity {
     public boolean isRepeating = false;
     public String repeatType;
 
+    public TextView tvType;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +67,7 @@ public class AddTodoActivity extends AppCompatActivity {
         btnRemind = findViewById(R.id.btn_activityAddTodo_remindButton);
         btnDueTime = findViewById(R.id.btn_activityAddTodo_ChooseButton);
         btnAddSteps = findViewById(R.id.btn_activityAddTodo_addStepsButton);
-
+        tvType = findViewById(R.id.tv_activityAddTodo_type);
         todoViewModel = new ViewModelProvider(this).get(TodoViewModel.class);
 
         Toolbar toolbar = findViewById(R.id.tb_activityAddTodo_toolbar);
@@ -170,6 +174,31 @@ public class AddTodoActivity extends AppCompatActivity {
                 // Handle the case when nothing is selected
             }
         });
+
+        Intent intent = getIntent();
+        if (intent != null) {
+            String title = intent.getStringExtra("title");
+            String description = intent.getStringExtra("description");
+            String dueTime =  intent.getStringExtra("due time");
+            String remindTime =  intent.getStringExtra("remind time");
+            String type = intent.getStringExtra("type");
+
+            if (title != null) {
+                etTodoName.setText(title);
+            }
+            if (etDesc != null) {
+                etDesc.setText(description);
+            }
+            if (remindTime != null) {
+                btnRemind.setText(remindTime);
+            }
+            if (dueTime != null) {
+                btnDueTime.setText(dueTime);
+            }
+            tvType.setText(type);
+
+
+        }
 
     }
 
