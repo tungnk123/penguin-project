@@ -106,6 +106,7 @@ public class TodoFragment extends Fragment implements TodoAdapter.OnItemClickLis
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), AddTodoActivity.class);
                 intent.putExtra("type", "Add new Todo");
+                intent.putExtra("delete button", "Off");
                 startActivity(intent);
             }
         });
@@ -127,6 +128,8 @@ public class TodoFragment extends Fragment implements TodoAdapter.OnItemClickLis
             intent.putExtra("remind time", todo.getRemindTime().toString());
         }
         intent.putExtra("type", "Edit Todo");
+        intent.putExtra("delete button", "On");
+        intent.putExtra("position", todo.getTodo_id());
         startActivity(intent);
     }
 
