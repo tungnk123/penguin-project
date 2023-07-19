@@ -8,6 +8,9 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.os.Build;
 import android.os.Bundle;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
@@ -31,10 +34,12 @@ import kotlin.jvm.functions.Function1;
 public class MainActivity extends AppCompatActivity {
 
     MeowBottomNavigation bottomNavigation;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
 

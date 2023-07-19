@@ -1,5 +1,6 @@
 package com.example.penguin_project.view.fragment;
 
+import android.media.Image;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.penguin_project.R;
@@ -16,6 +18,8 @@ import com.example.penguin_project.model.data.HabitDate;
 import com.example.penguin_project.model.data.LocalDateConverter;
 import com.example.penguin_project.model.repo.local.DataBase.HabitDataBase;
 import com.example.penguin_project.model.repo.local.Table.Habit_Day;
+import com.example.penguin_project.model.repo.local.Table.Habits;
+import com.example.penguin_project.model.repo.local.Table.Tree;
 import com.example.penguin_project.view.adapter.CalendarAdapter;
 
 import java.time.LocalDate;
@@ -27,6 +31,7 @@ public class TrackerFragment extends Fragment {
     private RecyclerView recyclerView;
     private CalendarAdapter calendarAdapter;
     private TextView txtCurrentStreak, txtMaxStreak;
+    public ImageView[] treeList = new ImageView[7];
 
     public TrackerFragment() {
         // Required empty public constructor
@@ -49,6 +54,32 @@ public class TrackerFragment extends Fragment {
         txtMaxStreak = view.findViewById(R.id.HabitTracker_txtMaxStreakDay);
 
         settingCurrentStreakAndMaxStreak();
+        // TODO Xu ly trong cay
+        treeList[0] = (ImageView) view.findViewById(R.id.img_fragmentTracker_tree1);
+        treeList[1] = (ImageView) view.findViewById(R.id.img_fragmentTracker_tree2);
+        treeList[2] = (ImageView) view.findViewById(R.id.img_fragmentTracker_tree3);
+        treeList[3] = (ImageView) view.findViewById(R.id.img_fragmentTracker_tree4);
+        treeList[4] = (ImageView) view.findViewById(R.id.img_fragmentTracker_tree5);
+        treeList[5] = (ImageView) view.findViewById(R.id.img_fragmentTracker_tree6);
+        treeList[6] = (ImageView) view.findViewById(R.id.img_fragmentTracker_tree7);
+
+        // Reset het cay khi mo lai
+        for (int i = 0; i < 7; i++) {
+            treeList[i].setImageDrawable(null);
+        }
+        List<Habits> habitsList = HabitDataBase.getInstance(getContext()).habitDAO().getHabitList();
+        for (int i = 0; i < habitsList.size(); i++) {
+            Tree tree = HabitDataBase.getInstance(getContext()).habitDAO().getTreeForestById(habitsList.get(i).getTree_id());
+            int currentStreak = habitsList.get(i).getCurrentStreak();
+
+            if (currentStreak < tree.getTimeToGrow()) {
+                treeList[i].setImageResource(R.mipmap.icon_tree_mam2);
+            }
+            else {
+                treeList[i].setImageResource(tree.getIcon());
+            }
+        }
+        //
 
         return view;
     }
@@ -61,7 +92,7 @@ public class TrackerFragment extends Fragment {
         for(int i = 0; i < habit_dayList.size(); i++){
             Habit_Day habit_day = habit_dayList.get(i);
             if(habit_day.getHabit_Day_id() == LocalDate.now()){
-                return;
+                break;
             }
             if(habit_day.getIsDone()){
                 currentStreak += 1;

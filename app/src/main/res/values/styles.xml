@@ -26,15 +26,27 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
+    <style name="TodoTitle" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
     <style name="Subheadline" parent="TextAppearance.AppCompat">
         <item name="android:fontFamily">@font/poppins</item>
         <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/black</item>
     </style>
+
     <style name="LavenderSwitch" parent="Widget.AppCompat.CompoundButton.Switch">
         <item name="android:colorBackground">@color/lavender</item>
         <item name="android:layout_width">57dp</item>
         <item name="android:layout_height">25dp</item>
+    </style>
+
+    <style name="CustomCheckbox02" parent="@style/Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/checkbox_seletor</item>
+        <item name="android:background">@android:color/transparent</item>
     </style>
     // theme
 
