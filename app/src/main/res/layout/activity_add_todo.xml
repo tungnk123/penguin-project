@@ -17,7 +17,7 @@
         app:navigationIcon="@drawable/icon_arrowback">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
@@ -26,9 +26,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Add new todo"
+                android:id="@+id/tv_activityAddTodo_type"
                 android:textColor="@color/lime_energy" />
 
         </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/btn_activityAddTodo_deleteButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:visibility="invisible"
+            android:layout_marginStart="100dp"
+            android:src="@drawable/coin_wrapper" />
     </androidx.appcompat.widget.Toolbar>
 
 

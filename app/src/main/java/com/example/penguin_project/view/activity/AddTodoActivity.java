@@ -1,10 +1,12 @@
 package com.example.penguin_project.view.activity;
 
 import android.app.AlarmManager;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +15,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -22,6 +26,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.penguin_project.MainActivity;
 import com.example.penguin_project.R;
 import com.example.penguin_project.model.repo.local.Table.Todo;
 import com.example.penguin_project.utils.NotificationBroadcastReceiver;
@@ -29,8 +34,12 @@ import com.example.penguin_project.view.adapter.CustomSpinnerAdapter;
 import com.example.penguin_project.viewmodel.TodoViewModel;
 
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Objects;
 
 public class AddTodoActivity extends AppCompatActivity {
 
@@ -53,6 +62,14 @@ public class AddTodoActivity extends AppCompatActivity {
     public boolean isRepeating = false;
     public String repeatType;
 
+    public TextView tvType;
+
+    public ImageButton btnDelete;
+
+    public int position;
+    LocalDateTime dueTime;
+    LocalDateTime remindTime;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +80,8 @@ public class AddTodoActivity extends AppCompatActivity {
         btnRemind = findViewById(R.id.btn_activityAddTodo_remindButton);
         btnDueTime = findViewById(R.id.btn_activityAddTodo_ChooseButton);
         btnAddSteps = findViewById(R.id.btn_activityAddTodo_addStepsButton);
+        tvType = findViewById(R.id.tv_activityAddTodo_type);
+        btnDelete = findViewById(R.id.btn_activityAddTodo_deleteButton);
 
         todoViewModel = new ViewModelProvider(this).get(TodoViewModel.class);
 
@@ -87,10 +106,20 @@ public class AddTodoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String todoName = etTodoName.getText().toString();
                 String description = etDesc.getText().toString();
-
-                Todo todo = new Todo(todoName, description, false);
+                // Typecast Date to LocalDateTime
+                if (dueTimePick != null) {
+                    dueTime = Instant.ofEpochMilli(dueTimePick.getTime())
+                            .atZone(ZoneId.systemDefault())
+                            .toLocalDateTime();
+                }
+                if (notificationTime != null) {
+                    remindTime = Instant.ofEpochMilli(notificationTime.getTime())
+                            .atZone(ZoneId.systemDefault())
+                            .toLocalDateTime();
+                }
+                Todo todo = new Todo(todoName, description, false, dueTime, remindTime);
+                todoViewModel.deleteTodo(position);
                 todoViewModel.insertTodo(todo);
-
                 if (notificationTime != null) {
                     setNotification(notificationTime, todoName, "Remind task ! ❤❤😊😂😁💕🤞🤞😊😂😁💕🤞🤞", "reminder");
                 }
@@ -98,12 +127,9 @@ public class AddTodoActivity extends AppCompatActivity {
                 if (dueTimePick != null) {
                     setNotification(dueTimePick, todoName, "Your task is due! Please go and do it! ❤❤❤❤❤❤❤❤😊😊😊😊😊", "dueTime");
                 }
-
-
                 onBackPressed();
             }
         });
-
 
         btnRemind.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,6 +152,38 @@ public class AddTodoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // TODO: Xu ly add steps
                 Toast.makeText(AddTodoActivity.this, "Add steps Button Clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(AddTodoActivity.this);
+
+
+                builder.setTitle("Confirm Delete");
+                builder.setMessage("Are you sure you want to delete?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        Toast.makeText(AddTodoActivity.this, "Item deleted", Toast.LENGTH_SHORT).show();
+                        todoViewModel.deleteTodo(position);
+                        Intent intent = new Intent(AddTodoActivity.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                // Create and show the AlertDialog
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
         });
 
@@ -170,6 +228,38 @@ public class AddTodoActivity extends AppCompatActivity {
                 // Handle the case when nothing is selected
             }
         });
+
+        Intent intent = getIntent();
+
+        if (intent != null) {
+            String title = intent.getStringExtra("title");
+            String description = intent.getStringExtra("description");
+            String dueTime =  intent.getStringExtra("due time");
+            String remindTime =  intent.getStringExtra("remind time");
+            String type = intent.getStringExtra("type");
+            String isOn = intent.getStringExtra("delete button");
+            position = intent.getIntExtra("position", 0);
+
+            if (title != null) {
+                etTodoName.setText(title);
+            }
+            if (etDesc != null) {
+                etDesc.setText(description);
+            }
+            if (remindTime != null) {
+                btnRemind.setText(remindTime);
+            }
+            if (dueTime != null) {
+                btnDueTime.setText(dueTime);
+            }
+            if (Objects.equals(isOn, "On")) {
+                btnDelete.setVisibility(View.VISIBLE);
+            }
+            tvType.setText(type);
+
+
+        }
+
 
     }
 
