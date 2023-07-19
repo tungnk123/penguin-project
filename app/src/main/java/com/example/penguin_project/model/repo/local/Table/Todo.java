@@ -94,6 +94,14 @@ public class Todo {
         this.Description = Description;
         this.IsDone = IsDone;
     }
+    @Ignore
+    public Todo( String Title, String Description, boolean IsDone, LocalDateTime DueDate, LocalDateTime RemindTime) {
+        this.Title = Title;
+        this.Description = Description;
+        this.IsDone = IsDone;
+        this.DueDate = DueDate;
+        this.RemindTime = RemindTime;
+    }
 
 
 }

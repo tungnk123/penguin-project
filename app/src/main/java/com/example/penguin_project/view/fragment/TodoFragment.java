@@ -121,7 +121,10 @@ public class TodoFragment extends Fragment implements TodoAdapter.OnItemClickLis
         Todo todo = todoList.get(position);
         intent.putExtra("title", todo.getTitle());
         intent.putExtra("description", todo.getDescription());
+
+
         if (todo.getDueDate() != null) {
+
             intent.putExtra("due time", todo.getDueDate().toString());
         }
         if (todo.getRemindTime() != null) {

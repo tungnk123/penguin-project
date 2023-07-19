@@ -34,7 +34,9 @@ import com.example.penguin_project.view.adapter.CustomSpinnerAdapter;
 import com.example.penguin_project.viewmodel.TodoViewModel;
 
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
@@ -65,6 +67,8 @@ public class AddTodoActivity extends AppCompatActivity {
     public ImageButton btnDelete;
 
     public int position;
+    LocalDateTime dueTime;
+    LocalDateTime remindTime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,10 +106,20 @@ public class AddTodoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String todoName = etTodoName.getText().toString();
                 String description = etDesc.getText().toString();
-
-                Todo todo = new Todo(todoName, description, false);
+                // Typecast Date to LocalDateTime
+                if (dueTimePick != null) {
+                    dueTime = Instant.ofEpochMilli(dueTimePick.getTime())
+                            .atZone(ZoneId.systemDefault())
+                            .toLocalDateTime();
+                }
+                if (notificationTime != null) {
+                    remindTime = Instant.ofEpochMilli(notificationTime.getTime())
+                            .atZone(ZoneId.systemDefault())
+                            .toLocalDateTime();
+                }
+                Todo todo = new Todo(todoName, description, false, dueTime, remindTime);
+                todoViewModel.deleteTodo(position);
                 todoViewModel.insertTodo(todo);
-
                 if (notificationTime != null) {
                     setNotification(notificationTime, todoName, "Remind task ! ❤❤😊😂😁💕🤞🤞😊😂😁💕🤞🤞", "reminder");
                 }
@@ -216,6 +230,7 @@ public class AddTodoActivity extends AppCompatActivity {
         });
 
         Intent intent = getIntent();
+
         if (intent != null) {
             String title = intent.getStringExtra("title");
             String description = intent.getStringExtra("description");
@@ -244,6 +259,7 @@ public class AddTodoActivity extends AppCompatActivity {
 
 
         }
+
 
     }
 
