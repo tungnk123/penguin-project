@@ -87,7 +87,7 @@ public class HomeFragment extends Fragment {
         rcv_HabitListCompleted = view.findViewById(R.id.rcv_Home_CompletedHabit);
         rcv_HabitListFailed = view.findViewById(R.id.rcv_Home_FailedHabit);
 
-//        getContext().deleteDatabase("Habit.db");
+        getContext().deleteDatabase("Habit.db");
 //
 
         setTimeOfDay();
@@ -140,18 +140,18 @@ public class HomeFragment extends Fragment {
         WorkManager.getInstance(getContext()).enqueue(resetHabitsRequest);
     }
 
-    private void setData() {
-        HabitDataBase.getInstance(getContext());
-        selectedDayOfWeek = LocalDate.now().getDayOfWeek();
-        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("Uong nuoc", 2, 5, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 0, 1));
-        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("Doc Sach", 3, 2, R.color.purple_200, R.mipmap.icon_water, LocalDate.now().minusDays(1), 0, 0, 3));
-        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("uong nuoc", 2, 5, R.color.purple_200, R.mipmap.icon_water, LocalDate.now().minusDays(2), 0, 0, 2));
-//        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("Choi game", 2, 5, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 0, 1));
-        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(selectedDayOfWeek.getValue(), 1, false, 0, false));
-        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(selectedDayOfWeek.getValue(), 2, false, 0, false));
-        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.TUESDAY.getValue(), 1, false, 0, false));
-        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.WEDNESDAY.getValue(), 4, false, 0, false));
-    }
+//    private void setData() {
+//        HabitDataBase.getInstance(getContext());
+//        selectedDayOfWeek = LocalDate.now().getDayOfWeek();
+//        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("Uong nuoc", 2, 5, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 0, 1));
+//        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("Doc Sach", 3, 2, R.color.purple_200, R.mipmap.icon_water, LocalDate.now().minusDays(1), 0, 0, 3));
+//        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("uong nuoc", 2, 5, R.color.purple_200, R.mipmap.icon_water, LocalDate.now().minusDays(2), 0, 0, 2));
+////        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit(new Habits("Choi game", 2, 5, R.color.purple_200, R.mipmap.icon_water, LocalDate.now(), 0, 0, 1));
+//        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(selectedDayOfWeek.getValue(), 1, false, 0, false));
+//        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(selectedDayOfWeek.getValue(), 2, false, 0, false));
+//        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.TUESDAY.getValue(), 1, false, 0, false));
+//        HabitDataBase.getInstance(getContext()).habitDAO().insertHabit_DayOfWeek(new Habit_DayOfWeek(DayOfWeek.WEDNESDAY.getValue(), 4, false, 0, false));
+//    }
 
 
     // Hàm kiểm tra xem trong database có data trong table TimeOfDat hay không? Nếu không thì thêm?

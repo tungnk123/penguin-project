@@ -6,15 +6,17 @@ import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
 import com.example.penguin_project.model.data.LocalDateConverter;
+import com.example.penguin_project.model.data.LocalDateTimeConverter;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity(tableName = "Habits", foreignKeys = {
         @ForeignKey(entity = TimeOfDay.class, parentColumns = "TimeOfDay_id", childColumns = "TimeOfDay_id", onDelete = ForeignKey.CASCADE),
         @ForeignKey(entity = Tree.class, parentColumns = "Tree_id", childColumns = "Tree_id", onDelete = ForeignKey.CASCADE)
 })
-@TypeConverters(LocalDateConverter.class)
+@TypeConverters({LocalDateConverter.class, LocalDateTimeConverter.class})
 public class Habits implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private int Habit_id;
@@ -28,8 +30,17 @@ public class Habits implements Serializable {
     private int MaxStreak;
 
     private int Tree_id;
+    private LocalDateTime HourOfDay;
 
-    public Habits( String title, int timeOfDay_id, int timePerDay, int color, int icon, LocalDate createDay, int currentStreak, int maxStreak, int tree_id) {
+    public LocalDateTime getHourOfDay() {
+        return HourOfDay;
+    }
+
+    public void setHourOfDay(LocalDateTime hourOfDay) {
+        HourOfDay = hourOfDay;
+    }
+
+    public Habits(String title, int timeOfDay_id, int timePerDay, int color, int icon, LocalDate createDay, int currentStreak, int maxStreak, int tree_id, LocalDateTime hourOfDay) {
         Title = title;
         TimeOfDay_id = timeOfDay_id;
         TimePerDay = timePerDay;
@@ -39,6 +50,7 @@ public class Habits implements Serializable {
         CurrentStreak = currentStreak;
         MaxStreak = maxStreak;
         Tree_id = tree_id;
+        HourOfDay = hourOfDay;
     }
 
     public int getTree_id() {
