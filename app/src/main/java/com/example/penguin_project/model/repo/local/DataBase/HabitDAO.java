@@ -184,7 +184,8 @@ public interface HabitDAO {
     @Query("DELETE FROM StoreItem WHERE Item_id =:item_id")
     void deleteItem(int item_id);
 
-
+    @Query("SELECT * FROM StoreItem WHERE StoreItemType = :itemType")
+    List<StoreItem> getStoreItemByTypeNotLiveData(String itemType);
 
 
     //endregion

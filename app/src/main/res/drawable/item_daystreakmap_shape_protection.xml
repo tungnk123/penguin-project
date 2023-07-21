@@ -9,7 +9,7 @@
 
     <!-- Layer 2: Image -->
     <item
-        android:drawable="@drawable/icon_freeze_white"
+        android:drawable="@drawable/icon_item_protection"
         android:left="5dp"
         android:right="5dp"
         android:top="5dp"
