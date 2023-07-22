@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.penguin_project.R;
+import com.example.penguin_project.model.data.CoinManager;
 import com.example.penguin_project.model.repo.local.DataBase.HabitDataBase;
 import com.example.penguin_project.model.repo.local.Table.StoreItem;
 import com.example.penguin_project.view.fragment.StoreFragment;
@@ -102,14 +103,15 @@ public class StoreItemAdapter extends RecyclerView.Adapter<StoreItemAdapter.Stor
 
                                     if (!clickedItem.getIsPurchased()) {
                                         // Update the purchase status
-                                        if (StoreFragment.coinSharedPreference.getInt("money", 100) >= clickedItem.getItemPrice()) {
+                                        if (CoinManager.getInstance(itemView.getContext()).getData("Coin", 100) >= clickedItem.getItemPrice()) {
                                             clickedItem.setIsPurchased(true);
                                             storeItemViewModel.updateItemPurchased(clickedItem.getItem_id(), true);
                                             // Update the UI
                                             tvCoinNumber.setText("Purchased");
                                             imgCoin.setVisibility(View.GONE);
-                                            int newMoney = StoreFragment.coinSharedPreference.getInt("money", 100) - clickedItem.getItemPrice();
-                                            StoreFragment.storeNewMoney(newMoney);
+                                            int newMoney = CoinManager.getInstance(itemView.getContext()).getData("Coin", 100) - clickedItem.getItemPrice();
+                                            CoinManager.getInstance(itemView.getContext()).saveData("Coin", newMoney);
+                                            StoreFragment.storeNewMoney();
                                             Toast.makeText(itemView.getContext(), "Item bought!", Toast.LENGTH_SHORT).show();
                                             // neu mua item la tree se cap nhap trong db la plant da mua
                                             if (Objects.equals(clickedItem.getStoreItemType(), "tree")) {
