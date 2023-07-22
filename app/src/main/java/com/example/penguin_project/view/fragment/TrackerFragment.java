@@ -97,7 +97,7 @@ public class TrackerFragment extends Fragment {
             if(habit_day.getIsDone()){
                 currentStreak += 1;
                 if(maxStreak < currentStreak){
-                    currentStreak = maxStreak;
+                    maxStreak = currentStreak;
                 }
             }
             else {
