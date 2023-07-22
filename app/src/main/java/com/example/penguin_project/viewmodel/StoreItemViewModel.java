@@ -17,6 +17,7 @@ public class StoreItemViewModel extends AndroidViewModel {
     private LiveData<List<StoreItem>> themesList;
     private LiveData<List<StoreItem>> specialItemsList;
 
+
     public int getStoreItemSize() {
         return storeItemSize;
     }
