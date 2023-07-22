@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.penguin_project.R;
+import com.example.penguin_project.model.data.CoinManager;
 import com.example.penguin_project.model.repo.local.Table.StoreItem;
 import com.example.penguin_project.view.adapter.StoreItemAdapter;
 import com.example.penguin_project.viewmodel.StoreItemViewModel;
@@ -45,7 +46,6 @@ public class StoreFragment extends Fragment {
     private StoreItemAdapter themeAdapter;
     private StoreItemAdapter specialItemAdapter;
 
-    public static SharedPreferences coinSharedPreference;
     public static TextView tvCoinNumber;
 
     @Override
@@ -53,12 +53,12 @@ public class StoreFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_store, container, false);
         //region Set Shared Preferences for coin number
-        coinSharedPreference = getContext().getSharedPreferences("coin_number", Context.MODE_PRIVATE);
+//        CoinManager.getInstance(getContext()).saveData("Coin", 120);
 //        SharedPreferences.Editor editor = coinSharedPreference.edit();
 //        editor.putInt("money", 100 );
 //        editor.commit();
         tvCoinNumber = (TextView) view.findViewById(R.id.txt_ActionBar_coin);
-        tvCoinNumber.setText(String.valueOf(coinSharedPreference.getInt("money", 100)));
+        tvCoinNumber.setText(String.valueOf(CoinManager.getInstance(getContext()).getData("Coin", 100)));
         //endregion
         treeItemsList = new ArrayList<>();
         musicItemsList = new ArrayList<>();
@@ -188,11 +188,8 @@ public class StoreFragment extends Fragment {
         }
     }
 
-    public static void storeNewMoney(int newMoney) {
-        SharedPreferences.Editor editor = StoreFragment.coinSharedPreference.edit();
-        editor.putInt("money", newMoney);
-        editor.commit();
-        tvCoinNumber.setText(String.valueOf(newMoney));
+    public static void storeNewMoney() {
+        tvCoinNumber.setText(String.valueOf(CoinManager.getInstance(tvCoinNumber.getContext()).getData("Coin", 100)));
     }
 
 
