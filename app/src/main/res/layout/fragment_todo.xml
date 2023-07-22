@@ -40,20 +40,49 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <TextView
-                        android:id="@+id/tv_todoFragment_largeTitle"
-                        style="@style/LargeTitle"
+                    <LinearLayout
+                        android:id="@+id/ln1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="20dp"
-                        android:text="@string/tv_fragmentTodo_TodoList"
+                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/tv_todoFragment_largeTitle"
+                            style="@style/LargeTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="30dp"
+                            android:layout_marginTop="20dp"
+                            android:text="@string/tv_fragmentTodo_TodoList"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <LinearLayout
+                            android:id="@+id/layout_iconWrapper"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="87dp"
+                            android:layout_marginTop="31dp"
+                            android:background="@drawable/item_coin_shape">
+                            <TextView
+                                android:id="@+id/txt_Home_Coin"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:padding="3dp"
+                                android:text="30"
+                                android:textColor="@color/black"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
 
-
-
-
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_marginTop="3dp"
+                                android:layout_marginEnd="5dp"
+                                android:src="@mipmap/icon_coin" />
+                        </LinearLayout>
+                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/tv_todoFragment_title1"
@@ -64,7 +93,7 @@
                         android:layout_marginTop="10dp"
                         android:text="Todo"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_todoFragment_largeTitle" />
+                        app:layout_constraintTop_toBottomOf="@+id/ln1" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rcv_todoFragment_todoList"
