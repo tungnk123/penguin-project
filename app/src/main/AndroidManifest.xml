@@ -80,8 +80,7 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
-        // notification broadcast receiver
+        
         <receiver
             android:name=".utils.NotificationBroadcastReceiver"
             android:enabled="true"
