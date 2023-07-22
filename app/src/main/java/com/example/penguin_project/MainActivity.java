@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigation.add(new MeowBottomNavigation.Model(4, R.mipmap.ic_navbar_store));
         bottomNavigation.add(new MeowBottomNavigation.Model(5, R.mipmap.ic_navbar_settings));
         // hien HomeFragment ngay ban dau luon
+        replaceFragment(new StoreFragment()); // Tao data cho store item trong database
         replaceFragment(new HomeFragment());
         bottomNavigation.show(1, true);
 
