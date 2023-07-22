@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.example.penguin_project.MainActivity;
 import com.example.penguin_project.R;
+import com.example.penguin_project.model.data.CoinManager;
 import com.example.penguin_project.model.repo.local.Table.Todo;
 import com.example.penguin_project.view.activity.AddTodoActivity;
 import com.example.penguin_project.view.adapter.CompletedTodoAdapter;
@@ -49,6 +50,7 @@ public class TodoFragment extends Fragment implements TodoAdapter.OnItemClickLis
     private static List<Todo> completedTodoList = new ArrayList<>();
     public int draggedItemIndex;
     public FloatingActionButton addTodoButton;
+    private TextView txt_Coin;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -98,6 +100,8 @@ public class TodoFragment extends Fragment implements TodoAdapter.OnItemClickLis
         lvCompletedTodo.setAdapter(completedTodoAdapter);
 
         //
+        txt_Coin = view.findViewById(R.id.txt_Todo_Coin);
+        txt_Coin.setText(String.valueOf(CoinManager.getInstance(getContext()).getData("Coin", 100)));
 
         addTodoButton = (FloatingActionButton) view.findViewById(R.id.fabtn_fragmentTodo_addTodoButton);
 

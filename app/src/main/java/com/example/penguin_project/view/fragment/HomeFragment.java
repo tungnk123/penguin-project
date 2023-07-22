@@ -33,6 +33,7 @@ import android.widget.Toast;
 import com.example.penguin_project.CreateHabitActivity;
 import com.example.penguin_project.HabitsInfoActivity;
 import com.example.penguin_project.R;
+import com.example.penguin_project.model.data.CoinManager;
 import com.example.penguin_project.model.data.HabitDate;
 import com.example.penguin_project.model.data.ResetHabitsWorker;
 import com.example.penguin_project.model.repo.local.DataBase.HabitDataBase;
@@ -77,7 +78,7 @@ public class HomeFragment extends Fragment {
         rcv_DatePicker = view.findViewById(R.id.rcv_datePicker);
         txt_DayOfWeek = view.findViewById(R.id.txt_ActionBar_DayOfWeek);
         txt_DayOfMonth = view.findViewById(R.id.txt_ActionBar_DayOfMonth);
-        txt_Coin = view.findViewById(R.id.txt_ActionBar_coin);
+        txt_Coin = view.findViewById(R.id.txt_Home_Coin);
         btn_AddHabit = view.findViewById(R.id.btn_Home_AddHabit);
 
         rcv_HabitListAnytime = view.findViewById(R.id.rcv_Home_AnytimeHabit);
@@ -86,6 +87,8 @@ public class HomeFragment extends Fragment {
         rcv_HabitListEvening = view.findViewById(R.id.rcv_Home_EveningHabit);
         rcv_HabitListCompleted = view.findViewById(R.id.rcv_Home_CompletedHabit);
         rcv_HabitListFailed = view.findViewById(R.id.rcv_Home_FailedHabit);
+
+        txt_Coin.setText(String.valueOf(CoinManager.getInstance(getContext()).getData("Coin", 100)));
 
 //        getContext().deleteDatabase("Habit.db");
 //
