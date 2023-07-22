@@ -92,6 +92,10 @@
                 <action android:name="com.example.penguin_project.ACTION_NOTIFICATION" />
             </intent-filter>
         </receiver>
+        <service
+            android:name=".view.service.BackgroundMusicService"
+            android:enabled="true"
+            android:exported="false" />
     </application>
 
 </manifest>
