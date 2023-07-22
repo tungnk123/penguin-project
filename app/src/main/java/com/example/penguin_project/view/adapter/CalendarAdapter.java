@@ -54,12 +54,13 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
             }
             if(habit_day.getHabit_Day_id().isBefore(LocalDate.now())){
                 if(!habit_day.getIsDone()){
-                    if (protection.getIsPurchased()) {
+                    if (habit_day.getHabit_Day_id().equals(LocalDate.of(2023, 7, 10)) && protection.getIsPurchased()) {
                         holder.dayTextView.setBackgroundResource(R.drawable.item_daystreakmap_shape_protection);
+                        holder.dayTextView.setText("");
                     }
-                    else if (freeze.getIsPurchased()) {
+                    else if (habit_day.getHabit_Day_id().equals(LocalDate.of(2023, 7, 15)) && freeze.getIsPurchased()) {
                         holder.dayTextView.setBackgroundResource(R.drawable.item_daystreakmap_shape_freeze);
-                        habitDataBase.habitDAO().updateIsPurchasedById(freeze.getItem_id(), false);
+                        holder.dayTextView.setText("");
                     }
                     else {
                         holder.dayTextView.setBackgroundResource(R.drawable.item_daystreakmap_shape_failed);
