@@ -1,5 +1,6 @@
 package com.example.penguin_project.view.fragment;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -8,6 +9,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -240,7 +242,9 @@ public class TodoFragment extends Fragment implements TodoAdapter.OnItemClickLis
         todoViewModel.updataIsDoneById(true, item.getTodo_id());
 //        // Add the item to the completedTodoList
 //        completedTodoList.add(completedItem);
+        addMoney();
         completedTodoAdapter.notifyDataSetChanged();
+
 
     }
 
@@ -252,7 +256,42 @@ public class TodoFragment extends Fragment implements TodoAdapter.OnItemClickLis
 
         todoViewModel.updataIsDoneById(false, completedItem.getTodo_id());
 //
+        subMoney();
         todoAdapter.notifyDataSetChanged();
 
+    }
+    private void subMoney(){
+        int NewMoney = CoinManager.getInstance(getContext()).getData("Coin", 100) - 5;
+        CoinManager.getInstance(getContext()).saveData("Coin", NewMoney);
+        txt_Coin.setText(String.valueOf(NewMoney));
+    }
+    private void addMoney() {
+        // Thực hiện hành động cộng tiền ở đây (ví dụ: cộng tiền vào tài khoản người dùng)
+
+        // Sau khi cộng tiền thành công, hiển thị Dialog thông báo
+        int amountToAdd = 5; // Số tiền cộng vào
+        showAddMoneyDialog(amountToAdd);
+    }
+    private void showAddMoneyDialog(int amountToAdd) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+
+        // Thiết lập tiêu đề và thông điệp cho Dialog
+        builder.setTitle("Thông báo cộng tiền")
+                .setMessage("Bạn đã cộng " + amountToAdd + " tiền vào tài khoản.");
+
+        // Thiết lập nút "Đồng ý" và xử lý sự kiện khi người dùng nhấn vào
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                // Đóng Dialog khi người dùng nhấn nút "Đồng ý"
+                dialog.dismiss();
+            }
+        });
+
+        // Tạo và hiển thị Dialog
+        AlertDialog alertDialog = builder.create();
+        int NewMoney = CoinManager.getInstance(getContext()).getData("Coin", 100) + amountToAdd;
+        CoinManager.getInstance(getContext()).saveData("Coin", NewMoney);
+        txt_Coin.setText(String.valueOf(NewMoney));
+        alertDialog.show();
     }
 }
