@@ -45,6 +45,8 @@ public class UpdateHabitReceiver extends BroadcastReceiver {
         }
         else {
             habit_day.setIsDone(true);
+            int NewMoney = CoinManager.getInstance(context).getData("Coin", 100) + 20;
+            CoinManager.getInstance(context).saveData("Coin", NewMoney);
             HabitDataBase.getInstance(context).habitDAO().updateHabit_Day(habit_day);
         }
     }
