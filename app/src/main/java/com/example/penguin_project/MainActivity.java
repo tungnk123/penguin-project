@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         
         setupHabit_Day();
         scheduleJobUpdateHabit(getApplicationContext(), 23, 58);
-        String selectedFragment = getIntent().getStringExtra("Store Fragment");
+        String selectedFragment = getIntent().getStringExtra("SELECTED_FRAGMENT");
         if (selectedFragment != null && selectedFragment.equals("store")) {
             replaceFragment(new StoreFragment());
             bottomNavigation.show(4, true);
