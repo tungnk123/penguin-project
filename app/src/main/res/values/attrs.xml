@@ -5,4 +5,5 @@
     <attr name="mainBackGround" format="reference|color"/>
     <attr name="itemHabitBackground" format="reference|color"/>
     <attr name="mainTitleColor" format="reference|color"/>
+    <attr name="normalTitleColor" format="reference|color"/>
 </resources>

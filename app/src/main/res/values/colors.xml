@@ -23,6 +23,16 @@
 
     <color name="mainBackgroundDark">#000000</color>
     <color name="mainBackgroundLight">#F5F2F2</color>
+    <color name="datePickerItemBackgroundDark">#2C2C2C</color>
+    <color name="datePickerItemBackgroundLight">#B9B7B7</color>
+    <color name="datePickerItemSelectedBackgroundDark">#FF6200EE</color>
+    <color name="datePickerItemSelectedBackgroundLight">#4D96FF</color>
+    <color name="mainTitleDark">#B2F042</color>
+    <color name="mainTitleLight">#4D96FF</color>
+    <color name="normalTitleDark">#ffff</color>
+    <color name="normalTitleLight">#000000</color>
+    <color name="itemhabitBackgroundDark">@color/black_item</color>
+    <color name="itemhabitBackgroundLight">#D6D2D2</color>
 
     
 </resources>
