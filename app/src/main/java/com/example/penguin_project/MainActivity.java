@@ -102,11 +102,11 @@ public class MainActivity extends AppCompatActivity {
             CoinManager.getInstance(getApplicationContext()).saveData("Coin", 50);
         }
 
-//        if(ThemeControl.getInstance(getApplicationContext()).getData("Mode", -1) == -1){
-//            ThemeControl.getInstance(getApplicationContext()).saveData("Mode", 0);
-//            setTheme(R.style.AppTheme_Dark);
-//            recreate();
-//        }
+        if(ThemeControl.getInstance(getApplicationContext()).getData("Mode", -1) == -1){
+            ThemeControl.getInstance(getApplicationContext()).saveData("Mode", 0);
+            setTheme(R.style.AppTheme_Dark);
+            recreate();
+        }
         if(ThemeControl.getInstance(getApplicationContext()).getData("Mode", -1) == 1){
             setTheme(R.style.AppTheme_Dark);
             recreate();
