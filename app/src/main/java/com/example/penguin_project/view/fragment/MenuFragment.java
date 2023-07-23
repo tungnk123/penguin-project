@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.penguin_project.LoginActivity;
 import com.example.penguin_project.SettingsAlarmActivity;
 import com.example.penguin_project.SettingsChangeModeActivity;
 import com.example.penguin_project.R;
@@ -52,6 +54,8 @@ public class MenuFragment extends Fragment implements SettingListAdapter.OnItemC
     public static SharedPreferences weekSettingsSP;
     public static SharedPreferences vacationModeSettingsSP;
     public static SharedPreferences diseaseModeSettingsSP;
+
+    private Button btnLogin;
 
 
 
@@ -92,6 +96,7 @@ public class MenuFragment extends Fragment implements SettingListAdapter.OnItemC
                 break;
 
 
+
         }
     }
 
@@ -100,6 +105,16 @@ public class MenuFragment extends Fragment implements SettingListAdapter.OnItemC
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_menu, container, false);
+        btnLogin = view.findViewById(R.id.btn_settingsFragment_btnLogin);
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent loginIntent = new Intent(getContext(), LoginActivity.class);
+                startActivity(loginIntent);
+            }
+        });
 
 
         //region khoi tao list va anh xa recycler view
