@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 
+import com.example.penguin_project.model.data.ThemeControl;
 import com.example.penguin_project.view.fragment.MenuFragment;
 
 public class SettingsChangeModeActivity extends AppCompatActivity {
@@ -36,16 +37,16 @@ public class SettingsChangeModeActivity extends AppCompatActivity {
 
         if (MenuFragment.modeSettingsSP.getString("mode_setting", "Dark mode").equals("Dark mode")) {
             rabtnDarkMode.setChecked(true);
+            ThemeControl.getInstance(getApplicationContext()).saveData("Mode", 0);
             setTheme(R.style.AppTheme_Dark);
             recreate();
         }
         else {
             rabtnLightMode.setChecked(true);
             setTheme(R.style.AppTheme_Light);
+            ThemeControl.getInstance(getApplicationContext()).saveData("Mode", 1);
             recreate();
         }
-
-
 
     }
     @Override

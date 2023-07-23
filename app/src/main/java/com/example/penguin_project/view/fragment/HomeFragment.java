@@ -33,6 +33,7 @@ import android.widget.Toast;
 
 import com.example.penguin_project.CreateHabitActivity;
 import com.example.penguin_project.HabitsInfoActivity;
+import com.example.penguin_project.MainActivity;
 import com.example.penguin_project.R;
 import com.example.penguin_project.model.data.HabitDate;
 import com.example.penguin_project.model.data.ResetHabitsWorker;
@@ -112,6 +113,7 @@ public class HomeFragment extends Fragment {
         Setting_btnAddHabit();
 
 
+
         return view;
     }
 
@@ -119,6 +121,7 @@ public class HomeFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        MainActivity.getInstance().changeTheme();
         notifyDatabaseChange();
     }
 
