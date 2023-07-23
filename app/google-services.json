@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "54129121017",
+    "project_id": "penguin-project-12197",
+    "storage_bucket": "penguin-project-12197.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:54129121017:android:0da60d4476e456e8ba7428",
+        "android_client_info": {
+          "package_name": "com.example.penguin_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "54129121017-taqn3ddee7dt8jsubvcsiasag6tpqsm7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCw4nFy0pCFUtUMWloG60BpR_MmiJLFwrQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "54129121017-taqn3ddee7dt8jsubvcsiasag6tpqsm7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

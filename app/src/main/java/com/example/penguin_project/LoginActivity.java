@@ -1,12 +1,12 @@
 package com.example.penguin_project;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,15 +17,22 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthCredential;
+import com.google.firebase.auth.GoogleAuthProvider;
 
 public class LoginActivity extends AppCompatActivity {
+    private TextView textView;
+    private GoogleSignInClient client;
 
-    GoogleSignInOptions gso;
-    GoogleSignInClient gsc;
     ImageView googleBtn;
     ImageButton btnBack;
+    String default_web_client_id = "54129121017-ellud7jc5ecupa7k7492bauf842pu42j.apps.googleusercontent.com";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,49 +50,92 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestEmail().build();
-        gsc = GoogleSignIn.getClient(this,gso);
 
-        GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
-        if(acct!=null){
-            navigateToSecondActivity();
-        }
+
+        GoogleSignInOptions options = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(default_web_client_id)
+                .requestEmail()
+                .build();
+        client = GoogleSignIn.getClient(this,options);
 
 
         googleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                signIn();
+                Intent i = client.getSignInIntent();
+                startActivityForResult(i,1234);
             }
         });
 
-
-
-    }
-
-    void signIn(){
-        Intent signInIntent = gsc.getSignInIntent();
-        startActivityForResult(signInIntent,1000);
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode,Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 1000){
+        if(requestCode == 1234){
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-
             try {
-                task.getResult(ApiException.class);
-                navigateToSecondActivity();
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+
+                AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(),null);
+                FirebaseAuth.getInstance().signInWithCredential(credential)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if(task.isSuccessful()){
+
+                                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                    Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
+                                    updateUI(user);
+                                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                                    intent.putExtra("SELECTED_FRAGMENT", "setting");
+                                    startActivity(intent);
+
+                                }else {
+                                    Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+
+                            }
+                        });
+
             } catch (ApiException e) {
-                Toast.makeText(getApplicationContext(), "Something went wrong", Toast.LENGTH_SHORT).show();
+                e.printStackTrace();
             }
+
         }
 
     }
-    void navigateToSecondActivity(){
-        finish();
-        Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-        startActivity(intent);
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if(user!= null){
+            Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+            intent.putExtra("SELECTED_FRAGMENT", "setting");
+            startActivity(intent);
+        }
+    }
+    private void updateUI(FirebaseUser user) {
+        if (user != null) {
+            // User is logged in, update the UI accordingly
+            String displayName = user.getDisplayName();
+            String email = user.getEmail();
+
+            // For example, display a welcome message with the user's name and email
+            String welcomeMessage = "Welcome, " + displayName + "!\n" + "Email: " + email;
+            Toast.makeText(this, welcomeMessage, Toast.LENGTH_SHORT).show();
+
+            // Optionally, you can navigate to the MainActivity or any other desired activity
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            intent.putExtra("SELECTED_FRAGMENT", "setting");
+            startActivity(intent);
+            finish(); // Optional: Finish the LoginActivity so that the user cannot go back using the back button.
+        } else {
+            // User is not logged in, handle the UI accordingly
+            // For example, show a login button or prompt the user to sign in.
+        }
     }
 }
