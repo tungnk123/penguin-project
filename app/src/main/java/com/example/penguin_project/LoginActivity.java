@@ -3,6 +3,7 @@ package com.example.penguin_project;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,6 +15,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.penguin_project.model.repo.local.DataBase.HabitDataBase;
+import com.example.penguin_project.model.repo.local.Table.Habits;
+import com.example.penguin_project.model.repo.local.Table.StoreItem;
+import com.example.penguin_project.model.repo.local.Table.Todo;
+import com.example.penguin_project.model.repo.remote.FirebaseUserHelper;
 import com.example.penguin_project.view.fragment.MenuFragment;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -28,6 +34,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthCredential;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class LoginActivity extends AppCompatActivity {
     private TextView textView;
@@ -142,5 +156,45 @@ public class LoginActivity extends AppCompatActivity {
 
     private void backUpData() {
         Toast.makeText(this, "Backed up successfully!", Toast.LENGTH_SHORT).show();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("backup");
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String username = user.getDisplayName();
+        String email = user.getEmail();
+        List<Habits> habitsList = HabitDataBase.getInstance(this).habitDAO().getHabitList();
+        List<HashMap<String, Object>> habitMapList = new ArrayList<>();
+
+        for (Habits habit : habitsList) {
+            HashMap<String, Object> habitMap = new HashMap<>();
+            habitMap.put("Habit_id", habit.getHabit_id());
+            habitMap.put("Title", habit.getTitle());
+            habitMap.put("TimeOfDay_id", habit.getTimeOfDay_id());
+            habitMap.put("TimePerDay", habit.getTimePerDay());
+            habitMap.put("Color", habit.getColor());
+            habitMap.put("Icon", habit.getIcon());
+            habitMap.put("CreateDay", habit.getCreateDay().toString()); // Convert LocalDate to String
+            habitMap.put("CurrentStreak", habit.getCurrentStreak());
+            habitMap.put("MaxStreak", habit.getMaxStreak());
+            habitMap.put("Tree_id", habit.getTree_id());
+            habitMapList.add(habitMap);
+        }
+
+        List<StoreItem> storeItemList = HabitDataBase.getInstance(this).habitDAO().getStoreItemByTypeNotLiveData("theme");
+        List<HashMap<String, Object>> storeItemMapList = new ArrayList<>();
+
+        for (StoreItem storeItem : storeItemList) {
+            HashMap<String, Object> storeItemMap = new HashMap<>();
+            storeItemMap.put("Item_id", storeItem.getItem_id());
+            storeItemMap.put("ItemName", storeItem.getItemName());
+            storeItemMap.put("ItemPrice", storeItem.getItemPrice());
+            storeItemMap.put("ItemImg", storeItem.getItemImg());
+            storeItemMap.put("Description", storeItem.getDescription());
+            storeItemMap.put("StoreItemType", storeItem.getStoreItemType());
+            storeItemMap.put("IsPurchased", storeItem.getIsPurchased());
+
+            storeItemMapList.add(storeItemMap);
+        }
+        FirebaseUserHelper userHelper = new FirebaseUserHelper(username, email, habitMapList, storeItemMapList);
+        myRef.child(username).setValue(userHelper);
     }
 }
