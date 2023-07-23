@@ -49,7 +49,6 @@ public class SettingsChangeModeActivity extends AppCompatActivity {
         super.onPause();
         SharedPreferences.Editor editor = MenuFragment.modeSettingsSP.edit();
         editor.putString("mode_setting", rabtnDarkMode.isChecked() ? "Dark mode" : "Light mode");
-
         // TODO xu ly thay doi che do sang toi o day
         editor.apply();
     }

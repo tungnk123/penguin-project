@@ -5,6 +5,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -12,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.penguin_project.view.fragment.MenuFragment;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -123,19 +126,21 @@ public class LoginActivity extends AppCompatActivity {
             // User is logged in, update the UI accordingly
             String displayName = user.getDisplayName();
             String email = user.getEmail();
-
-            // For example, display a welcome message with the user's name and email
-            String welcomeMessage = "Welcome, " + displayName + "!\n" + "Email: " + email;
-            Toast.makeText(this, welcomeMessage, Toast.LENGTH_SHORT).show();
-
-            // Optionally, you can navigate to the MainActivity or any other desired activity
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            intent.putExtra("SELECTED_FRAGMENT", "setting");
-            startActivity(intent);
-            finish(); // Optional: Finish the LoginActivity so that the user cannot go back using the back button.
+            Uri uri = user.getPhotoUrl();
+            SharedPreferences.Editor editor = MenuFragment.userSP.edit();
+            editor.putString("username", displayName);
+            editor.putString("email", email);
+            editor.putString("uri", uri.toString());
+            editor.apply();
+            backUpData();
+            finish();
         } else {
             // User is not logged in, handle the UI accordingly
             // For example, show a login button or prompt the user to sign in.
         }
+    }
+
+    private void backUpData() {
+        Toast.makeText(this, "Backed up successfully!", Toast.LENGTH_SHORT).show();
     }
 }

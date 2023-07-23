@@ -3,12 +3,18 @@ package com.example.penguin_project.view.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -16,7 +22,11 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.penguin_project.LoginActivity;
+import com.example.penguin_project.MainActivity;
 import com.example.penguin_project.SettingsAlarmActivity;
 import com.example.penguin_project.SettingsChangeModeActivity;
 import com.example.penguin_project.R;
@@ -28,9 +38,11 @@ import com.example.penguin_project.SettingsVacationModeActivity;
 import com.example.penguin_project.SettingsWeekStartAt;
 import com.example.penguin_project.model.data.SettingItem;
 import com.example.penguin_project.view.adapter.SettingListAdapter;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 
 public class MenuFragment extends Fragment implements SettingListAdapter.OnItemClickListener {
@@ -55,7 +67,13 @@ public class MenuFragment extends Fragment implements SettingListAdapter.OnItemC
     public static SharedPreferences vacationModeSettingsSP;
     public static SharedPreferences diseaseModeSettingsSP;
 
+    public static SharedPreferences userSP;
+
     private Button btnLogin;
+
+    public TextView tvUsername;
+    public TextView tvEmail;
+    public ImageView profileLogo;
 
 
 
@@ -106,13 +124,32 @@ public class MenuFragment extends Fragment implements SettingListAdapter.OnItemC
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_menu, container, false);
         btnLogin = view.findViewById(R.id.btn_settingsFragment_btnLogin);
+        tvUsername = view.findViewById(R.id.tv_fragmentMenu_username);
+        tvEmail = view.findViewById(R.id.tv_fragmentMenu_email);
+        profileLogo = view.findViewById(R.id.profile_picture);
+
+
+
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Intent loginIntent = new Intent(getContext(), LoginActivity.class);
-                startActivity(loginIntent);
+                if (btnLogin.getText().equals("LOGIN")) {
+                    Intent loginIntent = new Intent(getContext(), LoginActivity.class);
+                    startActivity(loginIntent);
+                }
+                else {
+
+                    FirebaseAuth.getInstance().signOut();
+                    SharedPreferences.Editor editor = MenuFragment.userSP.edit();
+                    editor.clear();
+                    editor.apply();
+                    Toast.makeText(getContext(), "Log out successful! ", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getContext(), MainActivity.class);
+                    intent.putExtra("SELECTED_FRAGMENT","setting");
+                    startActivity(intent);
+                }
             }
         });
 
@@ -235,7 +272,22 @@ public class MenuFragment extends Fragment implements SettingListAdapter.OnItemC
 
 
 
+        userSP = view.getContext().getSharedPreferences("user", Context.MODE_PRIVATE);
+        tvUsername.setText(MenuFragment.userSP.getString("username", "Username"));
+        tvEmail.setText(MenuFragment.userSP.getString("email", "username@gmail.com"));
+        String uriString = MenuFragment.userSP.getString("uri", "");
+        if (!uriString.isEmpty()) {
+            btnLogin.setText("LOGOUT");
+        }
+        Uri uri = Uri.parse(uriString);
 
+//        profileLogo.setImageURI(uri);
+
+        Glide.with(this)
+                .load(uri)
+                .placeholder(R.drawable.icon_userblue)
+                .apply(RequestOptions.bitmapTransform(new CircleCrop())) // Apply CircleCrop to make it circular
+                .into(profileLogo);
         return view;
     }
 
