@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="?attr/mainBackGround"
     android:orientation="vertical"
     android:padding="20dp">
     <LinearLayout
@@ -17,13 +17,13 @@
             android:id="@+id/CreateHabitHealthyMind_btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/black"
+            android:background="?attr/mainBackGround"
             android:src="@mipmap/icon_back"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Healthy Mind"
-            android:textColor="@color/lime_energy"
+            android:textColor="?attr/mainTitleColor"
             android:textSize="30sp"
             android:textStyle="bold"
             android:padding="3dp"
@@ -59,7 +59,7 @@
                     android:text="Meditation"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
-                    android:textColor="@color/white"
+                    android:textColor="?attr/normalTitleColor"
                     android:textSize="23sp"
                     android:textStyle="bold" />
 
@@ -103,7 +103,7 @@
                     android:text="Connect to nature"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
-                    android:textColor="@color/white"
+                    android:textColor="?attr/normalTitleColor"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -146,7 +146,7 @@
                     android:text="Drink Water"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
-                    android:textColor="@color/white"
+                    android:textColor="?attr/normalTitleColor"
                     android:textSize="23sp"
                     android:textStyle="bold" />
 
@@ -189,7 +189,7 @@
                     android:text="Go out for walk"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
-                    android:textColor="@color/white"
+                    android:textColor="?attr/normalTitleColor"
                     android:textSize="23sp"
                     android:textStyle="bold" />
 
@@ -232,7 +232,7 @@
                     android:text="Relax"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
-                    android:textColor="@color/white"
+                    android:textColor="?attr/normalTitleColor"
                     android:textSize="23sp"
                     android:textStyle="bold" />
 

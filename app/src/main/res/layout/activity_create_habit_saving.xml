@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="?attr/mainBackGround"
     android:orientation="vertical"
     android:padding="20dp">
     <LinearLayout
@@ -17,13 +17,13 @@
             android:id="@+id/CreateHabitSaving_btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/black"
+            android:background="?attr/mainBackGround"
             android:src="@mipmap/icon_back"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Saving"
-            android:textColor="@color/lime_energy"
+            android:textColor="?attr/mainTitleColor"
             android:textSize="30sp"
             android:textStyle="bold"
             android:padding="3dp"
@@ -59,7 +59,7 @@
                     android:text="Pay bills"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
-                    android:textColor="@color/white"
+                    android:textColor="?attr/normalTitleColor"
                     android:textSize="23sp"
                     android:textStyle="bold" />
                 <ImageView
@@ -102,7 +102,7 @@
                     android:text="Plan expense"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
-                    android:textColor="@color/white"
+                    android:textColor="?attr/normalTitleColor"
                     android:textSize="23sp"
                     android:textStyle="bold" />
 
@@ -145,7 +145,7 @@
                     android:text="List of weekly shopping"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
-                    android:textColor="@color/white"
+                    android:textColor="?attr/normalTitleColor"
                     android:textSize="17sp"
                     android:textStyle="bold" />
 
@@ -188,7 +188,7 @@
                     android:text="Save 10% your income"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
-                    android:textColor="@color/white"
+                    android:textColor="?attr/normalTitleColor"
                     android:textSize="17sp"
                     android:textStyle="bold" />
 
@@ -231,7 +231,7 @@
                     android:text="Keep track of expenses"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
-                    android:textColor="@color/white"
+                    android:textColor="?attr/normalTitleColor"
                     android:textSize="17sp"
                     android:textStyle="bold" />
 

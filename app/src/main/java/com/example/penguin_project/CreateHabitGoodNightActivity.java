@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
+
+import com.example.penguin_project.model.data.ThemeControl;
 
 public class CreateHabitGoodNightActivity extends AppCompatActivity {
     ImageButton btn_back;
@@ -14,6 +17,13 @@ public class CreateHabitGoodNightActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(ThemeControl.getInstance(getApplicationContext()).getData("Mode", -1) == 1){
+            setTheme(R.style.AppTheme_Dark);
+        }
+        else {
+            setTheme(R.style.AppTheme_Light);
+        }
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_create_habit_good_night);
 
         settingButton();
