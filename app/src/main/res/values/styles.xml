@@ -53,7 +53,17 @@
         <item name="android:button">@drawable/checkbox_seletor</item>
         <item name="android:background">@android:color/transparent</item>
     </style>
+
+
     // theme
 
+
+    <style name="AppTheme.Light" parent="Theme.AppCompat.Light">
+        <item name="mainBackGround">@color/mainBackgroundLight</item>
+    </style>
+
+    <style name="AppTheme.Dark" parent="Theme.AppCompat">
+        <item name="mainBackGround">@color/mainBackgroundDark</item>
+    </style>
 
 </resources>

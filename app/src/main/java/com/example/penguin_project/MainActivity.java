@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -42,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
-
 
         // add menu item
         bottomNavigation.add(new MeowBottomNavigation.Model(1, R.mipmap.ic_navbar_home));

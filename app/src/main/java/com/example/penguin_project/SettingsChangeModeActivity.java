@@ -36,9 +36,13 @@ public class SettingsChangeModeActivity extends AppCompatActivity {
 
         if (MenuFragment.modeSettingsSP.getString("mode_setting", "Dark mode").equals("Dark mode")) {
             rabtnDarkMode.setChecked(true);
+            setTheme(R.style.AppTheme_Dark);
+            recreate();
         }
         else {
             rabtnLightMode.setChecked(true);
+            setTheme(R.style.AppTheme_Light);
+            recreate();
         }
 
 
