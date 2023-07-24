@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -16,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -37,10 +40,19 @@ import com.example.penguin_project.SettingsSoundActivity;
 import com.example.penguin_project.SettingsVacationModeActivity;
 import com.example.penguin_project.SettingsWeekStartAt;
 import com.example.penguin_project.model.data.SettingItem;
+import com.example.penguin_project.model.repo.local.DataBase.HabitDataBase;
+import com.example.penguin_project.model.repo.local.Table.Habits;
+import com.example.penguin_project.model.repo.local.Table.StoreItem;
+import com.example.penguin_project.model.repo.remote.FirebaseUserHelper;
 import com.example.penguin_project.view.adapter.SettingListAdapter;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -140,7 +152,6 @@ public class MenuFragment extends Fragment implements SettingListAdapter.OnItemC
                     startActivity(loginIntent);
                 }
                 else {
-
                     FirebaseAuth.getInstance().signOut();
                     SharedPreferences.Editor editor = MenuFragment.userSP.edit();
                     editor.clear();
@@ -148,6 +159,7 @@ public class MenuFragment extends Fragment implements SettingListAdapter.OnItemC
                     Toast.makeText(getContext(), "Log out successful! ", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getContext(), MainActivity.class);
                     intent.putExtra("SELECTED_FRAGMENT","setting");
+
                     startActivity(intent);
                 }
             }
@@ -294,4 +306,62 @@ public class MenuFragment extends Fragment implements SettingListAdapter.OnItemC
     public void setTextViewSettingStatus() {
 
     }
+
+//    private void backUpData() {
+//        Toast.makeText(getContext(), "Backed up successfully!", Toast.LENGTH_SHORT).show();
+//        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        DatabaseReference myRef = database.getReference("backup");
+//        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+//        if (user != null) {
+//            String username = user.getDisplayName();
+//            String email = user.getEmail();
+//            List<Habits> habitsList = HabitDataBase.getInstance(getContext()).habitDAO().getHabitList();
+//            List<HashMap<String, Object>> habitMapList = new ArrayList<>();
+//
+//            for (Habits habit : habitsList) {
+//                HashMap<String, Object> habitMap = new HashMap<>();
+//                habitMap.put("Habit_id", habit.getHabit_id());
+//                habitMap.put("Title", habit.getTitle());
+//                habitMap.put("TimeOfDay_id", habit.getTimeOfDay_id());
+//                habitMap.put("TimePerDay", habit.getTimePerDay());
+//                habitMap.put("Color", habit.getColor());
+//                habitMap.put("Icon", habit.getIcon());
+//                habitMap.put("CreateDay", habit.getCreateDay().toString()); // Convert LocalDate to String
+//                habitMap.put("CurrentStreak", habit.getCurrentStreak());
+//                habitMap.put("MaxStreak", habit.getMaxStreak());
+//                habitMap.put("Tree_id", habit.getTree_id());
+//                habitMapList.add(habitMap);
+//            }
+//
+//            List<StoreItem> storeItemList = HabitDataBase.getInstance(getContext()).habitDAO().getStoreItemByTypeNotLiveData("theme");
+//            List<HashMap<String, Object>> storeItemMapList = new ArrayList<>();
+//
+//            for (StoreItem storeItem : storeItemList) {
+//                HashMap<String, Object> storeItemMap = new HashMap<>();
+//                storeItemMap.put("Item_id", storeItem.getItem_id());
+//                storeItemMap.put("ItemName", storeItem.getItemName());
+//                storeItemMap.put("ItemPrice", storeItem.getItemPrice());
+//                storeItemMap.put("ItemImg", storeItem.getItemImg());
+//                storeItemMap.put("Description", storeItem.getDescription());
+//                storeItemMap.put("StoreItemType", storeItem.getStoreItemType());
+//                storeItemMap.put("IsPurchased", storeItem.getIsPurchased());
+//
+//                storeItemMapList.add(storeItemMap);
+//            }
+//
+//            FirebaseUserHelper userHelper = new FirebaseUserHelper(username, email, habitMapList, storeItemMapList);
+//            myRef.child(username).setValue(userHelper, new DatabaseReference.CompletionListener() {
+//                @Override
+//                public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+//                    if (error != null) {
+//                        // Handle any error occurred while setting the value
+//                        Log.e("FirebaseError", error.getMessage());
+//                    } else {
+//                        Log.d("FirebaseSuccess", "Data backup successful");
+//                    }
+//                }
+//            });
+//        }
+//    }
+
 }

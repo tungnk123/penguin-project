@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -34,8 +35,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthCredential;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -146,6 +150,7 @@ public class LoginActivity extends AppCompatActivity {
             editor.putString("email", email);
             editor.putString("uri", uri.toString());
             editor.apply();
+            getDataFromFirebase();
             backUpData();
             finish();
         } else {
@@ -154,47 +159,106 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    private void getDataFromFirebase() {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("backup");
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                try {
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        FirebaseUserHelper userHelper = dataSnapshot.getValue(FirebaseUserHelper.class);
+                        Toast.makeText(LoginActivity.this, String.valueOf(userHelper.habitMapList.size()), Toast.LENGTH_SHORT).show();
+
+                        for (HashMap<String, Object> habitMap : userHelper.habitMapList) {
+                            int habit_id = ((Long) habitMap.get("Habit_id")).intValue(); // Convert Long to int
+                            String title = (String) habitMap.get("Title");
+                            int timeOfDay_id = ((Long) habitMap.get("TimeOfDay_id")).intValue(); // Convert Long to int
+                            int timePerDay = ((Long) habitMap.get("TimePerDay")).intValue(); // Convert Long to int
+                            int color = ((Long) habitMap.get("Color")).intValue(); // Convert Long to int
+                            int icon = ((Long) habitMap.get("Icon")).intValue(); // Convert Long to int
+                            LocalDate createDay = LocalDate.parse((String) habitMap.get("CreateDay"));
+                            int currentStreak = ((Long) habitMap.get("CurrentStreak")).intValue(); // Convert Long to int
+                            int maxStreak = ((Long) habitMap.get("MaxStreak")).intValue(); // Convert Long to int
+                            int tree_id = ((Long) habitMap.get("Tree_id")).intValue(); // Convert Long to int
+
+                            Habits habit = new Habits(title, timeOfDay_id, timePerDay, color, icon, createDay, currentStreak, maxStreak, tree_id);
+                            habit.setHabit_id(habit_id);
+                            HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit(habit);
+
+                        }
+                    }
+                } catch (Exception ex) {
+                    Toast.makeText(LoginActivity.this, "Get data failed!", Toast.LENGTH_SHORT).show();
+                    Log.d("ERRRRRRRRRRRRRRRRRRR", ex.getMessage());
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+
     private void backUpData() {
         Toast.makeText(this, "Backed up successfully!", Toast.LENGTH_SHORT).show();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("backup");
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        String username = user.getDisplayName();
-        String email = user.getEmail();
-        List<Habits> habitsList = HabitDataBase.getInstance(this).habitDAO().getHabitList();
-        List<HashMap<String, Object>> habitMapList = new ArrayList<>();
+        if (user != null) {
+            String username = user.getDisplayName();
+            String email = user.getEmail();
+            List<Habits> habitsList = HabitDataBase.getInstance(this).habitDAO().getHabitList();
+            List<HashMap<String, Object>> habitMapList = new ArrayList<>();
 
-        for (Habits habit : habitsList) {
-            HashMap<String, Object> habitMap = new HashMap<>();
-            habitMap.put("Habit_id", habit.getHabit_id());
-            habitMap.put("Title", habit.getTitle());
-            habitMap.put("TimeOfDay_id", habit.getTimeOfDay_id());
-            habitMap.put("TimePerDay", habit.getTimePerDay());
-            habitMap.put("Color", habit.getColor());
-            habitMap.put("Icon", habit.getIcon());
-            habitMap.put("CreateDay", habit.getCreateDay().toString()); // Convert LocalDate to String
-            habitMap.put("CurrentStreak", habit.getCurrentStreak());
-            habitMap.put("MaxStreak", habit.getMaxStreak());
-            habitMap.put("Tree_id", habit.getTree_id());
-            habitMapList.add(habitMap);
+            for (Habits habit : habitsList) {
+                HashMap<String, Object> habitMap = new HashMap<>();
+                habitMap.put("Habit_id", habit.getHabit_id());
+                habitMap.put("Title", habit.getTitle());
+                habitMap.put("TimeOfDay_id", habit.getTimeOfDay_id());
+                habitMap.put("TimePerDay", habit.getTimePerDay());
+                habitMap.put("Color", habit.getColor());
+                habitMap.put("Icon", habit.getIcon());
+                habitMap.put("CreateDay", habit.getCreateDay().toString()); // Convert LocalDate to String
+                habitMap.put("CurrentStreak", habit.getCurrentStreak());
+                habitMap.put("MaxStreak", habit.getMaxStreak());
+                habitMap.put("Tree_id", habit.getTree_id());
+                habitMapList.add(habitMap);
+            }
+
+            List<StoreItem> storeItemList = HabitDataBase.getInstance(this).habitDAO().getStoreItemByTypeNotLiveData("theme");
+            List<HashMap<String, Object>> storeItemMapList = new ArrayList<>();
+
+            for (StoreItem storeItem : storeItemList) {
+                HashMap<String, Object> storeItemMap = new HashMap<>();
+                storeItemMap.put("Item_id", storeItem.getItem_id());
+                storeItemMap.put("ItemName", storeItem.getItemName());
+                storeItemMap.put("ItemPrice", storeItem.getItemPrice());
+                storeItemMap.put("ItemImg", storeItem.getItemImg());
+                storeItemMap.put("Description", storeItem.getDescription());
+                storeItemMap.put("StoreItemType", storeItem.getStoreItemType());
+                storeItemMap.put("IsPurchased", storeItem.getIsPurchased());
+
+                storeItemMapList.add(storeItemMap);
+            }
+
+            FirebaseUserHelper userHelper = new FirebaseUserHelper(username, email, habitMapList, storeItemMapList);
+            myRef.child(username).setValue(userHelper, new DatabaseReference.CompletionListener() {
+                @Override
+                public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                    if (error != null) {
+                        // Handle any error occurred while setting the value
+                        Log.e("FirebaseError", error.getMessage());
+                    } else {
+                        Log.d("FirebaseSuccess", "Data backup successful");
+                    }
+                }
+            });
         }
-
-        List<StoreItem> storeItemList = HabitDataBase.getInstance(this).habitDAO().getStoreItemByTypeNotLiveData("theme");
-        List<HashMap<String, Object>> storeItemMapList = new ArrayList<>();
-
-        for (StoreItem storeItem : storeItemList) {
-            HashMap<String, Object> storeItemMap = new HashMap<>();
-            storeItemMap.put("Item_id", storeItem.getItem_id());
-            storeItemMap.put("ItemName", storeItem.getItemName());
-            storeItemMap.put("ItemPrice", storeItem.getItemPrice());
-            storeItemMap.put("ItemImg", storeItem.getItemImg());
-            storeItemMap.put("Description", storeItem.getDescription());
-            storeItemMap.put("StoreItemType", storeItem.getStoreItemType());
-            storeItemMap.put("IsPurchased", storeItem.getIsPurchased());
-
-            storeItemMapList.add(storeItemMap);
-        }
-        FirebaseUserHelper userHelper = new FirebaseUserHelper(username, email, habitMapList, storeItemMapList);
-        myRef.child(username).setValue(userHelper);
     }
+
 }

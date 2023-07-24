@@ -16,6 +16,10 @@ public class FirebaseUserHelper {
     public List<HashMap<String, Object>> habitMapList;
 
     public List<HashMap<String, Object>> storeItemMapList;
+    public FirebaseUserHelper() {
+        habitMapList = new ArrayList<>();
+        storeItemMapList = new ArrayList<>();
+    }
 
     public FirebaseUserHelper(String username, String email, List<HashMap<String, Object>> habitMapList, List<HashMap<String, Object>> storeItemMapList) {
         this.username = username;
