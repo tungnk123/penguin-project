@@ -188,6 +188,20 @@ public class LoginActivity extends AppCompatActivity {
                             HabitDataBase.getInstance(getApplicationContext()).habitDAO().insertHabit(habit);
 
                         }
+                        for (HashMap<String, Object> storeItemMap : userHelper.storeItemMapList) {
+                            int item_id = ((Long) storeItemMap.get("Item_id")).intValue(); // Convert Long to int
+                            String itemName = (String) storeItemMap.get("ItemName");
+                            int itemPrice = ((Long) storeItemMap.get("ItemPrice")).intValue(); // Convert Long to int
+                            int itemImg = ((Long) storeItemMap.get("ItemImg")).intValue(); // Convert Long to int
+                            String description = (String) storeItemMap.get("Description");
+                            String storeItemType = (String) storeItemMap.get("StoreItemType");
+                            boolean isPurchased = (boolean) storeItemMap.get("IsPurchased");
+                            Toast.makeText(LoginActivity.this, itemName, Toast.LENGTH_SHORT).show();
+
+//                            StoreItem storeItem = new StoreItem(itemName, itemPrice, itemImg, description, storeItemType, isPurchased);
+                            HabitDataBase.getInstance(getApplicationContext()).habitDAO().updateIsPurchasedById(item_id, isPurchased);
+                        }
+
                     }
                 } catch (Exception ex) {
                     Toast.makeText(LoginActivity.this, "Get data failed!", Toast.LENGTH_SHORT).show();
@@ -230,7 +244,7 @@ public class LoginActivity extends AppCompatActivity {
                 habitMapList.add(habitMap);
             }
 
-            List<StoreItem> storeItemList = HabitDataBase.getInstance(this).habitDAO().getStoreItemByTypeNotLiveData("theme");
+            List<StoreItem> storeItemList = HabitDataBase.getInstance(this).habitDAO().getStoreItemByTypeNotLiveData("tree");
             List<HashMap<String, Object>> storeItemMapList = new ArrayList<>();
 
             for (StoreItem storeItem : storeItemList) {
