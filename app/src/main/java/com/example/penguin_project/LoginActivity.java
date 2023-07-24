@@ -196,7 +196,6 @@ public class LoginActivity extends AppCompatActivity {
                             String description = (String) storeItemMap.get("Description");
                             String storeItemType = (String) storeItemMap.get("StoreItemType");
                             boolean isPurchased = (boolean) storeItemMap.get("IsPurchased");
-                            Toast.makeText(LoginActivity.this, itemName, Toast.LENGTH_SHORT).show();
 
 //                            StoreItem storeItem = new StoreItem(itemName, itemPrice, itemImg, description, storeItemType, isPurchased);
                             HabitDataBase.getInstance(getApplicationContext()).habitDAO().updateIsPurchasedById(item_id, isPurchased);
