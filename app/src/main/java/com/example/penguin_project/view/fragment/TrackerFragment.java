@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.penguin_project.MainActivity;
 import com.example.penguin_project.R;
 import com.example.penguin_project.model.data.HabitDate;
 import com.example.penguin_project.model.data.LocalDateConverter;
@@ -82,6 +83,12 @@ public class TrackerFragment extends Fragment {
         //
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        MainActivity.getInstance().changeTheme();
     }
 
     private void settingCurrentStreakAndMaxStreak() {
