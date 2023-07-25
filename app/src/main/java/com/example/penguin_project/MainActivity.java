@@ -10,11 +10,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 
 import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
+import com.example.penguin_project.model.data.CoinManager;
 import com.example.penguin_project.model.data.LocalDateConverter;
+import com.example.penguin_project.model.data.ThemeControl;
 import com.example.penguin_project.model.data.UpdateHabitReceiver;
 import com.example.penguin_project.model.repo.local.DataBase.HabitDataBase;
 import com.example.penguin_project.model.repo.local.Table.Habit_Day;
@@ -34,15 +37,16 @@ import kotlin.jvm.functions.Function1;
 public class MainActivity extends AppCompatActivity {
 
     MeowBottomNavigation bottomNavigation;
+    private static MainActivity instance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        instance = this;
 
 
         bottomNavigation = findViewById(R.id.bottom_navigation);
-
 
         // add menu item
         bottomNavigation.add(new MeowBottomNavigation.Model(1, R.mipmap.ic_navbar_home));
@@ -92,6 +96,33 @@ public class MainActivity extends AppCompatActivity {
         if (selectedFragment != null && selectedFragment.equals("setting")) {
             replaceFragment(new MenuFragment());
             bottomNavigation.show(5, true);
+        }
+
+        if(CoinManager.getInstance(getApplicationContext()).getData("Coin", -1) == -1){
+            CoinManager.getInstance(getApplicationContext()).saveData("Coin", 50);
+        }
+
+        if(ThemeControl.getInstance(getApplicationContext()).getData("Mode", -1) == -1){
+            ThemeControl.getInstance(getApplicationContext()).saveData("Mode", 1);
+            setTheme(R.style.AppTheme_Dark);
+        }
+        if(ThemeControl.getInstance(getApplicationContext()).getData("Mode", -1) == 1){
+            setTheme(R.style.AppTheme_Dark);
+        }
+        else {
+            setTheme(R.style.AppTheme_Light);
+        }
+
+    }
+    public static MainActivity getInstance() {
+        return instance;
+    }
+    public void changeTheme() {
+        if(ThemeControl.getInstance(getApplicationContext()).getData("Mode", -1) == 1){
+            setTheme(R.style.AppTheme_Dark);
+        }
+        else {
+            setTheme(R.style.AppTheme_Light);
         }
     }
     private void scheduleJobUpdateHabit(Context context, int hour, int minute) {

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="?attr/mainBackGround"
     android:orientation="vertical"
     tools:context=".SettingsChangeModeActivity">
 
@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:background="@color/black"
+            android:background="?attr/mainBackGround"
             android:contentDescription="back button"
             android:src="@mipmap/icon_back" />
 
@@ -55,7 +55,8 @@
             style="@style/Body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/lime_energy"
+            android:buttonTint="?attr/mainTitleColor"
+            android:textColor="?attr/normalTitleColor"
             android:paddingStart="15dp"
             android:paddingTop="5dp"
             android:text="Plain" />
@@ -65,7 +66,8 @@
             style="@style/Body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/lime_energy"
+            android:buttonTint="?attr/mainTitleColor"
+            android:textColor="?attr/normalTitleColor"
             android:paddingStart="15dp"
             android:paddingTop="5dp"
             android:text="Pine forest" />
@@ -75,7 +77,8 @@
             style="@style/Body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/lime_energy"
+            android:buttonTint="?attr/mainTitleColor"
+            android:textColor="?attr/normalTitleColor"
             android:paddingStart="15dp"
             android:paddingTop="5dp"
             android:text="Sand" />
@@ -85,7 +88,8 @@
             style="@style/Body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/lime_energy"
+            android:buttonTint="?attr/mainTitleColor"
+            android:textColor="?attr/normalTitleColor"
             android:paddingStart="15dp"
             android:paddingTop="5dp"
             android:text="Swamp" />
@@ -95,7 +99,8 @@
             style="@style/Body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/lime_energy"
+            android:buttonTint="?attr/mainTitleColor"
+            android:textColor="?attr/normalTitleColor"
             android:paddingStart="15dp"
             android:paddingTop="5dp"
             android:text="Flower garden" />
@@ -105,7 +110,8 @@
             style="@style/Body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/lime_energy"
+            android:buttonTint="?attr/mainTitleColor"
+            android:textColor="?attr/normalTitleColor"
             android:paddingStart="15dp"
             android:paddingTop="5dp"
             android:text="Beach" />
@@ -131,13 +137,14 @@
             style="@style/Title1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="?attr/normalTitleColor"
             android:text="About" />
 
         <TextView
             style="@style/Body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/grey"
+            android:textColor="?attr/normalTitleColor"
             android:text="Forest theme is the display of the forest in the Forest. To make your experiences more enjoyable, pick the forest theme that is most to your liking" />
     </LinearLayout>
 

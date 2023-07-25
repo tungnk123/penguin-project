@@ -7,9 +7,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 
+import com.example.penguin_project.model.data.ThemeControl;
 import com.example.penguin_project.view.fragment.MenuFragment;
 
 public class SettingsLanguageActivity extends AppCompatActivity {
@@ -21,6 +23,13 @@ public class SettingsLanguageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(ThemeControl.getInstance(getApplicationContext()).getData("Mode", -1) == 1){
+            setTheme(R.style.AppTheme_Dark);
+        }
+        else {
+            setTheme(R.style.AppTheme_Light);
+        }
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_settings_language);
         btnBack = findViewById(R.id.btn_activitySettingsLanguage_btnBack);
         rabtnEnglish = findViewById(R.id.ra_activitySettingsLanguage_english);

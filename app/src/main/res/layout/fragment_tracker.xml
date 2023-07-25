@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="?attr/mainBackGround"
     android:orientation="vertical"
     android:padding="10dp"
     tools:context=".view.fragment.TrackerFragment">
@@ -12,7 +12,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="9dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -22,11 +23,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                style="@style/LargeTitle"
-                android:text="@string/forest_streak"
-                android:textColor="@color/lime_energy" />
+                android:layout_marginLeft="20dp"
+                android:text="Forest and Streak"
+                android:textColor="?attr/mainTitleColor"
+                android:textSize="34dp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -144,7 +145,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/item_icon_shape"
+                android:background="@drawable/item_shape_3"
                 android:padding="6dp">
 
                 <TextView
@@ -153,7 +154,7 @@
                     android:layout_centerInParent="true"
                     android:text="OVERALL HISTORY"
                     android:textAlignment="center"
-                    android:textColor="@color/white"
+                    android:textColor="?attr/normalTitleColor"
                     android:textSize="20dp"
                     android:textStyle="bold" />
             </RelativeLayout>
@@ -178,7 +179,7 @@
                         android:layout_height="wrap_content"
                         android:text="Month"
                         android:textAlignment="center"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/normalTitleColor"
                         android:textSize="20dp"
                         android:textStyle="bold" />
 
@@ -188,7 +189,7 @@
                         android:layout_height="match_parent"
                         android:text="April"
                         android:textAlignment="center"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/normalTitleColor"
                         android:textSize="35dp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -198,7 +199,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="50dp"
                     android:layout_marginTop="5dp"
-                    android:background="@drawable/item_icon_shape"
+                    android:background="@drawable/item_icon_2_shape"
                     android:padding="10dp"
                     app:layout_constraintStart_toEndOf="@+id/linearLayout"
                     app:layout_constraintTop_toTopOf="parent">
@@ -217,7 +218,7 @@
                             android:padding="5dp"
                             android:text="4"
                             android:textAlignment="center"
-                            android:textColor="@color/white"
+                            android:textColor="?attr/normalTitleColor"
                             android:textSize="50dp"
                             android:textStyle="bold" />
 
@@ -226,7 +227,7 @@
                             android:layout_height="wrap_content"
                             android:text="Days"
                             android:textAlignment="center"
-                            android:textColor="@color/white"
+                            android:textColor="?attr/normalTitleColor"
                             android:textSize="25sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -251,7 +252,7 @@
                         android:layout_marginEnd="5dp"
                         android:text="s"
                         android:textAlignment="center"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/normalTitleColor"
                         android:textSize="25sp"
                         android:textStyle="bold" />
 
@@ -261,7 +262,7 @@
                         android:layout_margin="5dp"
                         android:text="|"
                         android:textAlignment="center"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/normalTitleColor"
                         android:textSize="25sp"
                         android:textStyle="bold" />
 
@@ -271,7 +272,7 @@
                         android:layout_margin="5dp"
                         android:text="m"
                         android:textAlignment="center"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/normalTitleColor"
                         android:textSize="25sp"
                         android:textStyle="bold" />
 
@@ -281,7 +282,7 @@
                         android:layout_margin="5dp"
                         android:text="|"
                         android:textAlignment="center"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/normalTitleColor"
                         android:textSize="25sp"
                         android:textStyle="bold" />
 
@@ -291,7 +292,7 @@
                         android:layout_margin="5dp"
                         android:text="t"
                         android:textAlignment="center"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/normalTitleColor"
                         android:textSize="25sp"
                         android:textStyle="bold" />
 
@@ -301,7 +302,7 @@
                         android:layout_margin="5dp"
                         android:text="|"
                         android:textAlignment="center"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/normalTitleColor"
                         android:textSize="25sp"
                         android:textStyle="bold" />
 
@@ -311,7 +312,7 @@
                         android:layout_margin="5dp"
                         android:text="w"
                         android:textAlignment="center"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/normalTitleColor"
                         android:textSize="25sp"
                         android:textStyle="bold" />
 
@@ -321,7 +322,7 @@
                         android:layout_margin="5dp"
                         android:text="|"
                         android:textAlignment="center"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/normalTitleColor"
                         android:textSize="25sp"
                         android:textStyle="bold" />
 
@@ -331,7 +332,7 @@
                         android:layout_margin="5dp"
                         android:text="t"
                         android:textAlignment="center"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/normalTitleColor"
                         android:textSize="25sp"
                         android:textStyle="bold" />
 
@@ -341,7 +342,7 @@
                         android:layout_margin="5dp"
                         android:text="|"
                         android:textAlignment="center"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/normalTitleColor"
                         android:textSize="25sp"
                         android:textStyle="bold" />
 
@@ -351,7 +352,7 @@
                         android:layout_margin="5dp"
                         android:text="f"
                         android:textAlignment="center"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/normalTitleColor"
                         android:textSize="25sp"
                         android:textStyle="bold" />
 
@@ -361,7 +362,7 @@
                         android:layout_margin="5dp"
                         android:text="|"
                         android:textAlignment="center"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/normalTitleColor"
                         android:textSize="25sp"
                         android:textStyle="bold" />
 
@@ -372,7 +373,7 @@
                         android:layout_marginTop="5dp"
                         android:text="s"
                         android:textAlignment="center"
-                        android:textColor="@color/white"
+                        android:textColor="?attr/normalTitleColor"
                         android:textSize="25sp"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -387,7 +388,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/item_shape_2"
+                android:background="@drawable/item_shape_3"
                 android:padding="20dp">
 
                 <RelativeLayout
@@ -415,7 +416,7 @@
                             android:padding="5dp"
                             android:text="4"
                             android:textAlignment="center"
-                            android:textColor="@color/white"
+                            android:textColor="?attr/normalTitleColor"
                             android:textSize="40dp"
                             android:textStyle="bold" />
 
@@ -424,7 +425,7 @@
                             android:layout_height="wrap_content"
                             android:text="Days"
                             android:textAlignment="center"
-                            android:textColor="@color/white"
+                            android:textColor="?attr/normalTitleColor"
                             android:textSize="20sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -445,7 +446,7 @@
                     android:layout_marginLeft="60dp"
                     android:layout_marginTop="20dp"
                     android:text="Your longest streak"
-                    android:textColor="@color/white"
+                    android:textColor="?attr/normalTitleColor"
                     android:textSize="25dp"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"

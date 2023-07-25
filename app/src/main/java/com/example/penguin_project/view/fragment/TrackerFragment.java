@@ -113,6 +113,12 @@ public class TrackerFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        MainActivity.getInstance().changeTheme();
+    }
+
     private void settingCurrentStreakAndMaxStreak() {
         List<Habit_Day> habit_dayList = HabitDataBase.getInstance(getContext()).habitDAO().getHabit_DayList();
         int currentStreak = 0;

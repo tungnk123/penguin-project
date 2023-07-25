@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.penguin_project.R;
 import com.example.penguin_project.model.data.CoinManager;
+import com.example.penguin_project.model.data.ThemeControl;
 import com.example.penguin_project.model.repo.local.Table.StoreItem;
 import com.example.penguin_project.view.adapter.StoreItemAdapter;
 import com.example.penguin_project.viewmodel.StoreItemViewModel;
@@ -47,6 +49,7 @@ public class StoreFragment extends Fragment {
     private StoreItemAdapter specialItemAdapter;
 
     public static TextView tvCoinNumber;
+    private NestedScrollView mainBackground;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -69,6 +72,16 @@ public class StoreFragment extends Fragment {
         rcvThemeItems = view.findViewById(R.id.rcv_storeFragment_themeList);
         rcvMusicItems = view.findViewById(R.id.rcv_storeFragment_musicList);
         rcvSpecialItems = view.findViewById(R.id.rcv_storeFragment_specialItemsList);
+
+        mainBackground = view.findViewById(R.id.MainBackground);
+
+        if(ThemeControl.getInstance(getContext()).getData("Mode", -1) == 1){
+            mainBackground.setBackgroundResource(R.drawable.background_2);
+        }
+        else {
+            mainBackground.setBackgroundResource(R.drawable.background_3);
+        }
+
         //endregion
 
         //region set ViewModel

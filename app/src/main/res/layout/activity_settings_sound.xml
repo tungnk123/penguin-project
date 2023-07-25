@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="?attr/mainBackGround"
     android:orientation="vertical"
     tools:context=".SettingsChangeModeActivity">
 
@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:background="@color/black"
+            android:background="?attr/mainBackGround"
             android:contentDescription="back button"
             android:src="@mipmap/icon_back" />
 
@@ -31,6 +31,7 @@
             android:layout_gravity="center"
             android:layout_marginStart="20dp"
             android:layout_marginTop="2dp"
+            android:textColor="?attr/mainTitleColor"
             android:text="Sounds" />
 
     </LinearLayout>
@@ -54,9 +55,10 @@
             style="@style/Body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/lime_energy"
+            android:buttonTint="?attr/mainTitleColor"
             android:paddingStart="15dp"
             android:paddingTop="5dp"
+            android:textColor="?attr/normalTitleColor"
             android:text="Nope" />
 
         <RadioButton
@@ -64,9 +66,10 @@
             style="@style/Body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/lime_energy"
+            android:buttonTint="?attr/mainTitleColor"
             android:paddingStart="15dp"
             android:paddingTop="5dp"
+            android:textColor="?attr/normalTitleColor"
             android:text="Chill music" />
 
         <RadioButton
@@ -74,9 +77,10 @@
             style="@style/Body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/lime_energy"
+            android:buttonTint="?attr/mainTitleColor"
             android:paddingStart="15dp"
             android:paddingTop="5dp"
+            android:textColor="?attr/normalTitleColor"
             android:text="Fire camp" />
 
         <RadioButton
@@ -84,9 +88,10 @@
             style="@style/Body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/lime_energy"
+            android:buttonTint="?attr/mainTitleColor"
             android:paddingStart="15dp"
             android:paddingTop="5dp"
+            android:textColor="?attr/normalTitleColor"
             android:text="Piano" />
 
         <RadioButton
@@ -94,9 +99,10 @@
             style="@style/Body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/lime_energy"
+            android:buttonTint="?attr/mainTitleColor"
             android:paddingStart="15dp"
             android:paddingTop="5dp"
+            android:textColor="?attr/normalTitleColor"
             android:text="Rain" />
 
         <RadioButton
@@ -104,9 +110,10 @@
             style="@style/Body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/lime_energy"
+            android:buttonTint="?attr/mainTitleColor"
             android:paddingStart="15dp"
             android:paddingTop="5dp"
+            android:textColor="?attr/normalTitleColor"
             android:text="Guitar" />
 
     </RadioGroup>
@@ -130,13 +137,14 @@
             style="@style/Title1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="?attr/normalTitleColor"
             android:text="About" />
 
         <TextView
             style="@style/Body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/grey"
+            android:textColor="?attr/normalTitleColor"
             android:text="The store offers a wide range of music for you to purchase and enjoy. Whether you're looking for the latest hits, classic albums, or niche genres, you'll find an extensive selection to suit your musical tastes. Explore the store and discover an array of songs and albums available for purchase, allowing you to build your personal music library and support your favorite artists. Happy shopping and happy listening!" />
     </LinearLayout>
 

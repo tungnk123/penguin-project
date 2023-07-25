@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="?attr/mainBackGround"
     android:orientation="vertical"
     android:padding="20dp">
     <LinearLayout
@@ -17,14 +17,14 @@
             android:id="@+id/CreateHabitTrending_btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/black"
+            android:background="?attr/mainBackGround"
             android:src="@mipmap/icon_back"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Trending"
-            android:textColor="@color/lime_energy"
-            android:textSize="25sp"
+            android:textColor="?attr/mainTitleColor"
+            android:textSize="30sp"
             android:textStyle="bold"
             android:padding="3dp"
             android:layout_marginLeft="10dp"
@@ -59,8 +59,8 @@
                     android:text="Eat healthy meal"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
-                    android:textColor="@color/white"
-                    android:textSize="17sp"
+                    android:textColor="?attr/normalTitleColor"
+                    android:textSize="23sp"
                     android:textStyle="bold" />
 
                 <ImageView
@@ -103,8 +103,8 @@
                     android:text="Study"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
-                    android:textColor="@color/white"
-                    android:textSize="17sp"
+                    android:textColor="?attr/normalTitleColor"
+                    android:textSize="23sp"
                     android:textStyle="bold" />
 
                 <ImageView
@@ -146,8 +146,8 @@
                     android:text="Excercise"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
-                    android:textColor="@color/white"
-                    android:textSize="17sp"
+                    android:textColor="?attr/normalTitleColor"
+                    android:textSize="23sp"
                     android:textStyle="bold" />
 
                 <ImageView
@@ -189,8 +189,8 @@
                     android:text="Clean the house"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
-                    android:textColor="@color/white"
-                    android:textSize="17sp"
+                    android:textColor="?attr/normalTitleColor"
+                    android:textSize="23sp"
                     android:textStyle="bold" />
 
                 <ImageView
@@ -232,8 +232,8 @@
                     android:text="Make your bed"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
-                    android:textColor="@color/white"
-                    android:textSize="17sp"
+                    android:textColor="?attr/normalTitleColor"
+                    android:textSize="23sp"
                     android:textStyle="bold" />
 
                 <ImageView

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="70dp"
     android:layout_marginBottom="10dp"
-    android:background="@color/purple_700">
+    android:background="@drawable/item_shape_2">
 
     <TextView
         android:id="@+id/tv_completedTodoItem_todoTitle"
@@ -24,9 +24,9 @@
         android:checked="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="23dp"
         android:layout_marginEnd="24dp"
-        android:buttonTint="@color/lime_energy"
+        android:buttonTint="?attr/mainTitleColor"
         android:scaleX="2"
         android:scaleY="2"
         app:layout_constraintEnd_toEndOf="parent"

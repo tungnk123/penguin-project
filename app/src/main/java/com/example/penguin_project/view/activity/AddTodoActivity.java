@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -28,6 +29,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.penguin_project.MainActivity;
 import com.example.penguin_project.R;
+import com.example.penguin_project.model.data.ThemeControl;
 import com.example.penguin_project.model.repo.local.Table.Todo;
 import com.example.penguin_project.utils.NotificationBroadcastReceiver;
 import com.example.penguin_project.view.adapter.CustomSpinnerAdapter;
@@ -73,6 +75,13 @@ public class AddTodoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(ThemeControl.getInstance(getApplicationContext()).getData("Mode", -1) == 1){
+            setTheme(R.style.AppTheme_Dark);
+        }
+        else {
+            setTheme(R.style.AppTheme_Light);
+        }
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_add_todo);
 
         etTodoName = findViewById(R.id.et_activityAddTodo_todoName);

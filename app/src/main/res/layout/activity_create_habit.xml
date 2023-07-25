@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="?attr/mainBackGround"
     android:orientation="vertical"
     android:padding="20dp">
     <LinearLayout
@@ -16,14 +16,14 @@
             android:id="@+id/CreateHabit_btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/black"
+            android:background="?attr/mainBackGround"
             android:src="@mipmap/icon_back"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Add new habit"
-            android:textColor="@color/lime_energy"
-            android:textSize="25sp"
+            android:textColor="?attr/mainTitleColor"
+            android:textSize="30sp"
             android:textStyle="bold"
             android:padding="3dp"
             android:layout_marginLeft="10dp"
@@ -40,7 +40,6 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
                 android:id="@+id/CreateHabit_btnAddNewHabit"
                 android:padding="15dp"
                 android:background="@drawable/item_shape_3"
@@ -50,10 +49,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:layout_marginStart="35dp"
-                    android:layout_marginTop="15dp"
                     android:text="New habit"
-                    android:textColor="@color/white"
+                    android:textColor="?attr/normalTitleColor"
                     android:textSize="23sp"
                     android:textStyle="bold" />
                 <RelativeLayout
@@ -81,13 +78,13 @@
                     android:textAlignment="center"
                     android:layout_centerInParent="true"
                     android:textSize="18dp"
-                    android:textColor="@color/white"
+                    android:textColor="?attr/normalTitleColor"
                     android:textStyle="bold"/>
             </RelativeLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/white"
+                android:background="?attr/normalTitleColor"
                 android:layout_marginBottom="25dp"
                 />
             <RelativeLayout
@@ -106,7 +103,7 @@
                     android:text="Trending"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="35dp"
-                    android:textColor="@color/white"
+                    android:textColor="?attr/normalTitleColor"
                     android:textSize="23sp"
                     android:textStyle="bold" />
 
@@ -136,7 +133,7 @@
                     android:text="Healthy Mind"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="35dp"
-                    android:textColor="@color/white"
+                    android:textColor="?attr/normalTitleColor"
                     android:textSize="23sp"
                     android:textStyle="bold" />
 
@@ -165,7 +162,7 @@
                     android:text="Good night"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="35dp"
-                    android:textColor="@color/white"
+                    android:textColor="?attr/normalTitleColor"
                     android:textSize="23sp"
                     android:textStyle="bold" />
 
@@ -194,7 +191,7 @@
                     android:text="Focus"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="35dp"
-                    android:textColor="@color/white"
+                    android:textColor="?attr/normalTitleColor"
                     android:textSize="23sp"
                     android:textStyle="bold" />
 
@@ -223,7 +220,7 @@
                     android:text="Saving"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="35dp"
-                    android:textColor="@color/white"
+                    android:textColor="?attr/normalTitleColor"
                     android:textSize="23sp"
                     android:textStyle="bold" />
 

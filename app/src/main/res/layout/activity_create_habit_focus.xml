@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="?attr/mainBackGround"
     android:orientation="vertical"
     android:padding="20dp">
     <LinearLayout
@@ -17,14 +17,14 @@
             android:id="@+id/CreateHabitFocus_btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/black"
+            android:background="?attr/mainBackGround"
             android:src="@mipmap/icon_back"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Focus"
-            android:textColor="@color/lime_energy"
-            android:textSize="25sp"
+            android:textColor="?attr/mainTitleColor"
+            android:textSize="30sp"
             android:textStyle="bold"
             android:padding="3dp"
             android:layout_marginLeft="10dp"
@@ -59,8 +59,8 @@
                     android:text="Learn something new"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
-                    android:textColor="@color/white"
-                    android:textSize="17sp"
+                    android:textColor="?attr/normalTitleColor"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <ImageView
@@ -103,8 +103,8 @@
                     android:text="Read 20 pages"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
-                    android:textColor="@color/white"
-                    android:textSize="17sp"
+                    android:textColor="?attr/normalTitleColor"
+                    android:textSize="23sp"
                     android:textStyle="bold" />
 
                 <ImageView
@@ -146,8 +146,8 @@
                     android:text="Listen to podcast"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
-                    android:textColor="@color/white"
-                    android:textSize="17sp"
+                    android:textColor="?attr/normalTitleColor"
+                    android:textSize="23sp"
                     android:textStyle="bold" />
 
                 <ImageView
@@ -189,8 +189,8 @@
                     android:text="Write diary"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
-                    android:textColor="@color/white"
-                    android:textSize="17sp"
+                    android:textColor="?attr/normalTitleColor"
+                    android:textSize="23sp"
                     android:textStyle="bold" />
 
                 <ImageView
@@ -232,8 +232,8 @@
                     android:text="Stretching"
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
-                    android:textColor="@color/white"
-                    android:textSize="17sp"
+                    android:textColor="?attr/normalTitleColor"
+                    android:textSize="23sp"
                     android:textStyle="bold" />
 
                 <ImageView

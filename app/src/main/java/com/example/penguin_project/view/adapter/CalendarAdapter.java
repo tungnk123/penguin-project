@@ -1,5 +1,6 @@
 package com.example.penguin_project.view.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.penguin_project.R;
 import com.example.penguin_project.model.data.HabitDate;
+import com.example.penguin_project.model.data.ThemeControl;
 import com.example.penguin_project.model.repo.local.DataBase.HabitDataBase;
 import com.example.penguin_project.model.repo.local.Table.Habit_Day;
 import com.example.penguin_project.model.repo.local.Table.StoreItem;
@@ -75,7 +77,13 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
         }
         else {
             holder.dayTextView.setText("");
-            holder.dayTextView.setBackgroundColor(Color.BLACK);
+            if(ThemeControl.getInstance(holder.itemView.getContext()).getData("Mode", -1) == 1){
+                holder.dayTextView.setBackgroundResource(R.color.mainBackgroundDark);
+            }
+            else {
+                holder.dayTextView.setBackgroundResource(R.color.mainBackgroundLight);
+            }
+
         }
     }
 

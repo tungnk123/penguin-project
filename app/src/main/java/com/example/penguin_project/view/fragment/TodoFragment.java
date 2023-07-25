@@ -120,6 +120,12 @@ public class TodoFragment extends Fragment implements TodoAdapter.OnItemClickLis
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        MainActivity.getInstance().changeTheme();
+    }
+
+    @Override
     public void onItemClick(int position) {
 
         Toast.makeText(getContext(), "Item clicked at position: " + position, Toast.LENGTH_SHORT).show();

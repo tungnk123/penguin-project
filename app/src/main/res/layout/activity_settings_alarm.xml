@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="?attr/mainBackGround"
     android:orientation="vertical"
     tools:context=".SettingsChangeModeActivity">
 
@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:background="@color/black"
+            android:background="?attr/mainBackGround"
             android:contentDescription="back button"
             android:src="@mipmap/icon_back" />
 
@@ -31,6 +31,7 @@
             android:layout_gravity="center"
             android:layout_marginStart="20dp"
             android:layout_marginTop="2dp"
+            android:textColor="?attr/mainTitleColor"
             android:text="Alarm" />
 
     </LinearLayout>
@@ -53,10 +54,11 @@
             style="@style/Body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/lime_energy"
+            android:buttonTint="?attr/mainTitleColor"
             android:id="@+id/ra_activitySettingsAlarm_on"
             android:paddingStart="15dp"
             android:paddingTop="5dp"
+            android:textColor="?attr/normalTitleColor"
             android:text="On" />
 
         <RadioButton
@@ -66,7 +68,8 @@
             android:paddingTop="5dp"
             android:id="@+id/ra_activitySettingsAlarm_off"
             android:paddingStart="15dp"
-            android:buttonTint="@color/lime_energy"
+            android:buttonTint="?attr/mainTitleColor"
+            android:textColor="?attr/normalTitleColor"
             android:text="Off" />
 
     </RadioGroup>
@@ -90,13 +93,14 @@
             style="@style/Title1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="?attr/normalTitleColor"
             android:text="About" />
 
         <TextView
             style="@style/Body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/grey"
+            android:textColor="?attr/normalTitleColor"
             android:text="The alarm on/off feature in your app habit tracker allows users to easily enable or disable their alarms, providing control and flexibility over their daily routine." />
     </LinearLayout>
 
