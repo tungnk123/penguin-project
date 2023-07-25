@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="?attr/mainBackGround"
     tools:context=".view.fragment.TodoFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -22,7 +22,7 @@
             android:contentDescription="floating button"
             android:focusable="true"
             android:src="@drawable/icon_add"
-            app:backgroundTint="@color/lime_energy"
+            app:backgroundTint="?attr/mainTitleColor"
             app:fabSize="normal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -55,6 +55,7 @@
                             android:layout_marginStart="30dp"
                             android:layout_marginTop="20dp"
                             android:text="@string/tv_fragmentTodo_TodoList"
+                            android:textColor="?attr/mainTitleColor"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
                         <LinearLayout
@@ -91,6 +92,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="30dp"
                         android:layout_marginTop="10dp"
+                        android:textColor="?attr/normalTitleColor"
                         android:text="Todo"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/ln1" />
@@ -114,9 +116,10 @@
                         android:layout_marginStart="30dp"
                         android:layout_marginTop="30dp"
                         android:layout_marginEnd="30dp"
-                        android:background="@drawable/title_shape"
+                        android:background="@drawable/item_shape_3"
                         android:padding="5dp"
                         android:text="COMPLETED"
+                        android:textColor="?attr/normalTitleColor"
                         android:textAlignment="center"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
