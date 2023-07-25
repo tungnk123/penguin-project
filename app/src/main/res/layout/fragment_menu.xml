@@ -53,6 +53,7 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/profile_picture"
                     android:id="@+id/tv_fragmentMenu_username"
+                    android:textColor="?attr/normalTitleColor"
                     android:text="Username" />
 
                 <TextView
@@ -63,6 +64,7 @@
                     android:layout_marginStart="20dp"
                     android:text="username@gmail.com"
                     android:layout_marginTop="20dp"
+                    android:textColor="?attr/normalTitleColor"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/profile_picture" />
 
@@ -73,6 +75,8 @@
                     android:text="LOGIN"
                     android:layout_marginStart="30dp"
                     android:layout_marginTop="15dp"
+                    android:background="@drawable/item_shape_5"
+                    android:textColor="?attr/normalTitleColor"
                     app:layout_constraintStart_toEndOf="@+id/tv_fragmentMenu_username"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
