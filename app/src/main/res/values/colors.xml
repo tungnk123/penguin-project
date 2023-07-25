@@ -33,6 +33,9 @@
     <color name="normalTitleLight">#000000</color>
     <color name="itemhabitBackgroundDark">@color/black_item</color>
     <color name="itemhabitBackgroundLight">#D6D2D2</color>
+    <color name="itemhabitBackground1Dark">#2C2C2C</color>
+    <color name="itemhabitBackground1Light">#B6B2B2</color>
+
 
     
 </resources>

@@ -5,14 +5,14 @@
     android:layout_height="wrap_content"
     android:padding="16dp"
     android:elevation="4dp"
-    android:layout_margin="10dp"
     android:backgroundTint="?attr/mainBackGround"
     >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:background="@drawable/item_shape"
+        android:background="@drawable/item_shape_5"
+        android:layout_marginBottom="5dp"
         android:padding="5dp">
         <RelativeLayout
             android:id="@+id/rll_habitItem_habitCircle"

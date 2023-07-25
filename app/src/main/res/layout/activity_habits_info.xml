@@ -232,7 +232,6 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/item_shape"
                 android:padding="10dp"
-                android:layout_marginStart="5dp"
                 android:id="@+id/Habits_info_btnMorning"
                 >
                 <ImageView
@@ -251,7 +250,7 @@
                     />
             </LinearLayout>
             <LinearLayout
-                android:layout_width="160dp"
+                android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/item_shape"
                 android:padding="10dp"
@@ -270,7 +269,7 @@
                     android:text="Afternoon"
                     android:textColor="?attr/normalTitleColor"
                     android:layout_marginStart="10dp"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold"
                     />
             </LinearLayout>
@@ -280,7 +279,6 @@
                 android:background="@drawable/item_shape"
                 android:padding="10dp"
                 android:id="@+id/Habits_info_btnEvening"
-                android:layout_marginStart="5dp"
                 android:layout_marginTop="20dp"
                 android:layout_below="@id/Habits_info_btnMorning"
                 >
@@ -300,7 +298,7 @@
                     />
             </LinearLayout>
             <LinearLayout
-                android:layout_width="160dp"
+                android:layout_width="170dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/item_shape"
                 android:padding="10dp"

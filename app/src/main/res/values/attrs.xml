@@ -6,4 +6,5 @@
     <attr name="itemHabitBackground" format="reference|color"/>
     <attr name="mainTitleColor" format="reference|color"/>
     <attr name="normalTitleColor" format="reference|color"/>
+    <attr name="itemHabitBackground1" format="reference|color"/>
 </resources>

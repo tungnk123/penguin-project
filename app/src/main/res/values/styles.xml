@@ -65,6 +65,7 @@
         <item name="mainTitleColor">@color/mainTitleLight</item>
         <item name="normalTitleColor">@color/normalTitleLight</item>
         <item name="itemHabitBackground">@color/itemhabitBackgroundLight</item>
+        <item name="itemHabitBackground1">@color/itemhabitBackground1Light</item>
     </style>
 
     <style name="AppTheme.Dark" parent="Theme.AppCompat">
@@ -74,6 +75,7 @@
         <item name="mainTitleColor">@color/mainTitleDark</item>
         <item name="normalTitleColor">@color/normalTitleDark</item>
         <item name="itemHabitBackground">@color/itemhabitBackgroundDark</item>
+        <item name="itemHabitBackground1">@color/itemhabitBackground1Dark</item>
     </style>
 
 </resources>
