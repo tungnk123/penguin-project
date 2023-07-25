@@ -65,6 +65,7 @@ public class HomeFragment extends Fragment {
     HabitItemAdapter habitItemAnytimeAdapter, habitItemMorningAdapter, habitItemAfterNoonAdapter, habitItemEveningAdapter, habitItemCompletedAdapter, habitItemFailedAdapter;
     FloatingActionButton btn_AddHabit;
     DayOfWeek selectedDayOfWeek;
+    LinearLayout lnAnytime, lnMorning, lnAfternoon, lnEvening, lnCompleted, lnFailed;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -92,6 +93,13 @@ public class HomeFragment extends Fragment {
 
         MenuFragment.weekSettingsSP = view.getContext().getSharedPreferences("week_setting", Context.MODE_PRIVATE);
 
+        lnAnytime = view.findViewById(R.id.ln_Home_AnytimeTitle);
+        lnMorning = view.findViewById(R.id.ln_Home_MorningTitle);
+        lnAfternoon = view.findViewById(R.id.ln_Home_AfernoonTitle);
+        lnEvening = view.findViewById(R.id.ln_Home_EveningTitle);
+        lnCompleted = view.findViewById(R.id.ln_Home_CompletedTitle);
+        lnFailed = view.findViewById(R.id.ln_Home_FailedTitle);
+
 
 //        getContext().deleteDatabase("Habit.db");
 //
@@ -114,7 +122,7 @@ public class HomeFragment extends Fragment {
         Setting_rcvHabitFailedList();
         Setting_btnAddHabit();
 
-
+        notifyDatabaseChange();
 
         return view;
     }
@@ -560,25 +568,61 @@ public class HomeFragment extends Fragment {
         habitsListAnytime.clear();
         habitsListAnytime = HabitDataBase.getInstance(getContext()).habitDAO().getAnytimeHabits(selectedDayOfWeek.getValue());
         habitItemAnytimeAdapter.setHabits(habitsListAnytime);
+        if(habitsListAnytime.size() > 0){
+            lnAnytime.setVisibility(View.VISIBLE);
+        }
+        else {
+            lnAnytime.setVisibility(View.INVISIBLE);
+        }
 
         habitsListMorning.clear();
         habitsListMorning = HabitDataBase.getInstance(getContext()).habitDAO().getMorningHabits(selectedDayOfWeek.getValue());
         habitItemMorningAdapter.setHabits(habitsListMorning);
+        if(habitsListMorning.size() > 0){
+            lnMorning.setVisibility(View.VISIBLE);
+        }
+        else {
+            lnMorning.setVisibility(View.INVISIBLE);
+        }
 
         habitsListAfternoon.clear();
         habitsListAfternoon = HabitDataBase.getInstance(getContext()).habitDAO().getAfternoonHabits(selectedDayOfWeek.getValue());
         habitItemAfterNoonAdapter.setHabits(habitsListAfternoon);
+        if(habitsListAfternoon.size() > 0){
+            lnAfternoon.setVisibility(View.VISIBLE);
+        }
+        else {
+            lnAfternoon.setVisibility(View.INVISIBLE);
+        }
 
         habitsListEvening.clear();
         habitsListEvening = HabitDataBase.getInstance(getContext()).habitDAO().getEveningHabits(selectedDayOfWeek.getValue());
         habitItemEveningAdapter.setHabits(habitsListEvening);
+        if(habitsListEvening.size() > 0){
+            lnEvening.setVisibility(View.VISIBLE);
+        }
+        else {
+            lnEvening.setVisibility(View.INVISIBLE);
+        }
 
         habitsListCompleted.clear();
         habitsListCompleted = HabitDataBase.getInstance(getContext()).habitDAO().getDoneHabits(selectedDayOfWeek.getValue());
         habitItemCompletedAdapter.setHabits(habitsListCompleted);
+        if(habitsListCompleted.size() > 0){
+            lnCompleted.setVisibility(View.VISIBLE);
+        }
+        else {
+            lnCompleted.setVisibility(View.INVISIBLE);
+        }
 
         habitsListFailed.clear();
         habitsListFailed = HabitDataBase.getInstance(getContext()).habitDAO().getFailedHabits(selectedDayOfWeek.getValue());
         habitItemFailedAdapter.setHabits(habitsListFailed);
+        if(habitsListFailed.size() > 0){
+            lnFailed.setVisibility(View.VISIBLE);
+        }
+        else {
+            lnFailed.setVisibility(View.INVISIBLE);
+        }
     }
 }

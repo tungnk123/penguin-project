@@ -101,6 +101,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/item_shape"
                     android:layout_marginBottom="5dp"
+                    android:id="@+id/ln_Home_AnytimeTitle"
                     android:orientation="horizontal">
                     <ImageView
                         android:layout_width="30dp"
@@ -128,6 +129,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/item_shape"
                     android:layout_marginBottom="5dp"
+                    android:id="@+id/ln_Home_MorningTitle"
                     android:orientation="horizontal">
                     <ImageView
                         android:layout_width="30dp"
@@ -154,6 +156,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/item_shape"
                     android:layout_marginBottom="5dp"
+                    android:id="@+id/ln_Home_AfernoonTitle"
                     android:orientation="horizontal">
                     <ImageView
                         android:layout_width="30dp"
@@ -181,6 +184,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/item_shape"
                     android:layout_marginBottom="5dp"
+                    android:id="@+id/ln_Home_EveningTitle"
                     android:orientation="horizontal">
                     <ImageView
                         android:layout_width="30dp"
@@ -207,6 +211,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/item_shape"
                     android:layout_marginBottom="5dp"
+                    android:id="@+id/ln_Home_CompletedTitle"
                     android:orientation="horizontal">
                     <ImageView
                         android:layout_width="30dp"
@@ -233,6 +238,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/item_shape"
                     android:layout_marginBottom="5dp"
+                    android:id="@+id/ln_Home_FailedTitle"
                     android:orientation="horizontal">
                     <ImageView
                         android:layout_width="30dp"
