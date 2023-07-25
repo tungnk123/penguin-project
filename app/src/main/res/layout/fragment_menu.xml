@@ -9,7 +9,8 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="?attr/mainBackGround">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -23,6 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
+                android:textColor="?attr/mainTitleColor"
                 android:text="Settings" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -37,8 +39,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
-                    android:background="@drawable/title_shape"
+                    android:background="@drawable/item_shape_3"
                     android:text="Custom"
+                    android:textColor="?attr/normalTitleColor"
                     android:textAlignment="center"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -70,7 +73,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
-                    android:background="@drawable/title_shape"
+                    android:background="@drawable/item_shape_3"
+                    android:textColor="?attr/normalTitleColor"
                     android:text="Special Mode"
                     android:textAlignment="center"
                     app:layout_constraintStart_toStartOf="parent"
@@ -101,7 +105,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
-                    android:background="@drawable/title_shape"
+                    android:background="@drawable/item_shape_3"
+                    android:textColor="?attr/normalTitleColor"
                     android:text="About"
                     android:textAlignment="center"
                     app:layout_constraintStart_toStartOf="parent"
@@ -132,7 +137,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
-                    android:background="@drawable/title_shape"
+                    android:background="@drawable/item_shape_3"
+                    android:textColor="?attr/normalTitleColor"
                     android:text="Help and feedback"
                     android:textAlignment="center"
                     app:layout_constraintStart_toStartOf="parent"
@@ -163,7 +169,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="20dp"
-                    android:background="@drawable/title_shape"
+                    android:background="@drawable/item_shape_3"
+                    android:textColor="?attr/normalTitleColor"
                     android:text="Connect"
                     android:textAlignment="center"
                     app:layout_constraintStart_toStartOf="parent"

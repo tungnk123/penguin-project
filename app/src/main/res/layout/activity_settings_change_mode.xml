@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="?attr/mainBackGround"
     android:orientation="vertical"
     tools:context=".SettingsChangeModeActivity">
 
@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:background="@color/black"
+            android:background="?attr/mainBackGround"
             android:contentDescription="back button"
             android:src="@mipmap/icon_back" />
 
@@ -31,6 +31,7 @@
             android:layout_gravity="center"
             android:layout_marginStart="20dp"
             android:layout_marginTop="2dp"
+            android:textColor="?attr/normalTitleColor"
             android:text="Change mode" />
 
     </LinearLayout>
@@ -53,9 +54,10 @@
             style="@style/Body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/lime_energy"
+            android:buttonTint="?attr/mainTitleColor"
             android:id="@+id/ra_activitySettingsCM_lightMode"
             android:paddingStart="15dp"
+            android:textColor="?attr/normalTitleColor"
             android:paddingTop="5dp"
             android:text="Light mode" />
 
@@ -66,7 +68,8 @@
             android:paddingTop="5dp"
             android:id="@+id/ra_activitySettingsCM_darkMode"
             android:paddingStart="15dp"
-            android:buttonTint="@color/lime_energy"
+            android:textColor="?attr/normalTitleColor"
+            android:buttonTint="?attr/mainTitleColor"
             android:text="Dark mode" />
 
     </RadioGroup>
@@ -90,13 +93,14 @@
             style="@style/Title1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="?attr/normalTitleColor"
             android:text="About" />
 
         <TextView
             style="@style/Body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/grey"
+            android:textColor="?attr/normalTitleColor"
             android:text="The light or dark mode feature in your app allows users to switch between a bright or dark interface, catering to their visual preferences and enhancing the overall user experience." />
     </LinearLayout>
 

@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.penguin_project.MainActivity;
 import com.example.penguin_project.SettingsAlarmActivity;
 import com.example.penguin_project.SettingsChangeModeActivity;
 import com.example.penguin_project.R;
@@ -228,6 +229,12 @@ public class MenuFragment extends Fragment implements SettingListAdapter.OnItemC
 
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        MainActivity.getInstance().changeTheme();
     }
 
     public void setTextViewSettingStatus() {

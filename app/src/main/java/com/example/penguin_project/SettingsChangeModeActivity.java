@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 
@@ -22,6 +24,13 @@ public class SettingsChangeModeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(ThemeControl.getInstance(getApplicationContext()).getData("Mode", -1) == 1){
+            setTheme(R.style.AppTheme_Dark);
+        }
+        else {
+            setTheme(R.style.AppTheme_Light);
+        }
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_settings_change_mode);
         btnBack = findViewById(R.id.btn_activitySettingsCM_btnBack);
         rabtnLightMode = findViewById(R.id.ra_activitySettingsCM_lightMode);
@@ -37,16 +46,33 @@ public class SettingsChangeModeActivity extends AppCompatActivity {
 
         if (MenuFragment.modeSettingsSP.getString("mode_setting", "Dark mode").equals("Dark mode")) {
             rabtnDarkMode.setChecked(true);
-            ThemeControl.getInstance(getApplicationContext()).saveData("Mode", 0);
+            ThemeControl.getInstance(getApplicationContext()).saveData("Mode", 1);
             setTheme(R.style.AppTheme_Dark);
             recreate();
         }
         else {
             rabtnLightMode.setChecked(true);
             setTheme(R.style.AppTheme_Light);
-            ThemeControl.getInstance(getApplicationContext()).saveData("Mode", 1);
+            ThemeControl.getInstance(getApplicationContext()).saveData("Mode", 0);
             recreate();
         }
+
+        rabtnDarkMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(rabtnDarkMode.isChecked()){
+                    ThemeControl.getInstance(getApplicationContext()).saveData("Mode", 1);
+                    setTheme(R.style.AppTheme_Dark);
+                    recreate();
+                }
+                else {
+                    ThemeControl.getInstance(getApplicationContext()).saveData("Mode", 0);
+                    setTheme(R.style.AppTheme_Light);
+                    recreate();
+                }
+            }
+        });
+
 
     }
     @Override
