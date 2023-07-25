@@ -215,11 +215,10 @@
                             android:id="@+id/HabitTracker_txtStreakDay"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:padding="5dp"
                             android:text="4"
                             android:textAlignment="center"
                             android:textColor="?attr/normalTitleColor"
-                            android:textSize="50dp"
+                            android:textSize="45dp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -413,11 +412,10 @@
                             android:id="@+id/HabitTracker_txtMaxStreakDay"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:padding="5dp"
                             android:text="4"
                             android:textAlignment="center"
                             android:textColor="?attr/normalTitleColor"
-                            android:textSize="40dp"
+                            android:textSize="35dp"
                             android:textStyle="bold" />
 
                         <TextView

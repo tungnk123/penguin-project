@@ -25,15 +25,17 @@ import com.example.penguin_project.model.repo.local.Table.Habits;
 import com.example.penguin_project.model.repo.local.Table.Tree;
 import com.example.penguin_project.view.adapter.CalendarAdapter;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 public class TrackerFragment extends Fragment {
     private RecyclerView recyclerView;
     private CalendarAdapter calendarAdapter;
-    private TextView txtCurrentStreak, txtMaxStreak;
+    private TextView txtCurrentStreak, txtMaxStreak, txtCurrentMonth;
     public ImageView[] treeList = new ImageView[7];
     public ImageView imgBackground;
 
@@ -56,6 +58,12 @@ public class TrackerFragment extends Fragment {
 
         txtCurrentStreak = view.findViewById(R.id.HabitTracker_txtStreakDay);
         txtMaxStreak = view.findViewById(R.id.HabitTracker_txtMaxStreakDay);
+
+        txtCurrentMonth = view.findViewById(R.id.HabitTracker_txtCurrentMonth);
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM", Locale.ENGLISH);
+        String monthInEnglish = dateFormat.format(calendar.getTime());
+        txtCurrentMonth.setText(monthInEnglish);
 
         settingCurrentStreakAndMaxStreak();
         // TODO Xu ly trong cay
