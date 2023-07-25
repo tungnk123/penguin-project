@@ -10,7 +10,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background_2">
+        android:id="@+id/MainBackground">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -24,6 +24,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="20dp"
                 android:text="Store"
+                android:textColor="?attr/mainTitleColor"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -78,6 +79,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
                 android:text="Trees"
+                android:textColor="?attr/normalTitleColor"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_storeFragment_largeTitle" />
 
@@ -101,6 +103,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="20dp"
                 android:text="Theme"
+                android:textColor="?attr/normalTitleColor"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rcv_storeFragment_treeList" />
 
@@ -124,6 +127,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="20dp"
                 android:text="Music"
+                android:textColor="?attr/normalTitleColor"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rcv_storeFragment_themeList" />
 
@@ -147,6 +151,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="20dp"
                 android:text="Special Items"
+                android:textColor="?attr/normalTitleColor"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/rcv_storeFragment_musicList" />
 
