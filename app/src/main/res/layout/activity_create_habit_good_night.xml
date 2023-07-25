@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:text="Good night"
             android:textColor="@color/lime_energy"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:textStyle="bold"
             android:padding="3dp"
             android:layout_marginLeft="10dp"
@@ -61,7 +61,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
                     android:textColor="@color/white"
-                    android:textSize="19sp"
+                    android:textSize="17sp"
                     android:textStyle="bold" />
 
                 <ImageView
@@ -105,7 +105,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
                     android:textColor="@color/white"
-                    android:textSize="20sp"
+                    android:textSize="17sp"
                     android:textStyle="bold" />
 
                 <ImageView
@@ -148,7 +148,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
                     android:textColor="@color/white"
-                    android:textSize="23sp"
+                    android:textSize="17sp"
                     android:textStyle="bold" />
 
                 <ImageView
@@ -191,7 +191,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
                     android:textColor="@color/white"
-                    android:textSize="23sp"
+                    android:textSize="17sp"
                     android:textStyle="bold" />
 
                 <ImageView
@@ -234,7 +234,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
                     android:textColor="@color/white"
-                    android:textSize="23sp"
+                    android:textSize="17sp"
                     android:textStyle="bold" />
 
                 <ImageView
