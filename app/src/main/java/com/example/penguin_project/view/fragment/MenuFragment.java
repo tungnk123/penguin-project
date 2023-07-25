@@ -41,6 +41,7 @@ import com.example.penguin_project.SettingsVacationModeActivity;
 import com.example.penguin_project.SettingsWeekStartAt;
 import com.example.penguin_project.SuggestFeatureActivity;
 import com.example.penguin_project.model.data.SettingItem;
+import com.example.penguin_project.model.data.ThemeControl;
 import com.example.penguin_project.model.repo.local.DataBase.HabitDataBase;
 import com.example.penguin_project.model.repo.local.Table.Habits;
 import com.example.penguin_project.model.repo.local.Table.StoreItem;
@@ -309,7 +310,12 @@ public class MenuFragment extends Fragment implements SettingListAdapter.OnItemC
 
         //region Lay data tu Shared Preferences va gan vao status text view
 
-        customList.get(0).setStatus(modeSettingsSP.getString("mode_setting", "Dark mode"));
+        if(ThemeControl.getInstance(getContext()).getData("Mode", 0) == 0){
+            customList.get(0).setStatus(modeSettingsSP.getString("mode_setting", "Dark mode"));
+        }
+        else {
+            customList.get(0).setStatus(modeSettingsSP.getString("mode_setting", "Light mode"));
+        }
         customList.get(1).setStatus(soundSettingsSP.getString("sound_setting", "Nope"));
         customList.get(2).setStatus(forestThemeSettingsSP.getString("forest_setting", "Plain"));
         customList.get(3).setStatus(alarmSettingsSP.getString("alarm_setting", "On"));
@@ -343,6 +349,12 @@ public class MenuFragment extends Fragment implements SettingListAdapter.OnItemC
                 .into(profileLogo);
         return view;
     }
+    @Override
+    public void onResume() {
+        super.onResume();
+        MainActivity.getInstance().changeTheme();
+    }
+
 
     public void setTextViewSettingStatus() {
 

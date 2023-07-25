@@ -80,7 +80,7 @@ public class HomeFragment extends Fragment {
         rcv_DatePicker = view.findViewById(R.id.rcv_datePicker);
         txt_DayOfWeek = view.findViewById(R.id.txt_ActionBar_DayOfWeek);
         txt_DayOfMonth = view.findViewById(R.id.txt_ActionBar_DayOfMonth);
-        txt_Coin = view.findViewById(R.id.txt_Home_Coin);
+        //txt_Coin = view.findViewById(R.id.txt_Home_Coin);
         btn_AddHabit = view.findViewById(R.id.btn_Home_AddHabit);
 
         rcv_HabitListAnytime = view.findViewById(R.id.rcv_Home_AnytimeHabit);
@@ -95,7 +95,7 @@ public class HomeFragment extends Fragment {
 
 //        getContext().deleteDatabase("Habit.db");
 //
-        txt_Coin.setText(String.valueOf(CoinManager.getInstance(getContext()).getData("Coin", -1)));
+//        txt_Coin.setText(String.valueOf(CoinManager.getInstance(getContext()).getData("Coin", -1)));
 
         setTimeOfDay();
         setTreeForest();
