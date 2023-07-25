@@ -236,7 +236,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_activityAddTodo_description" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_activityAddTodo_saveButton"
                 style="@style/Title1"
                 android:layout_width="match_parent"
@@ -246,7 +246,8 @@
                 android:layout_marginEnd="30dp"
                 android:text="Save"
                 android:textColor="?attr/normalTitleColor"
-                android:background="@drawable/item_shape_3"
+                android:background="@drawable/item_shape"
+                android:backgroundTint="?attr/mainTitleColor"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/et_activityAddTodo_description" />
 
