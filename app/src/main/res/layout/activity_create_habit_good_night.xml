@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:text="Good night"
             android:textColor="?attr/mainTitleColor"
-            android:textSize="30sp"
+            android:textSize="27sp"
             android:textStyle="bold"
             android:padding="3dp"
             android:layout_marginLeft="10dp"
@@ -33,7 +33,7 @@
         <ImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginLeft="60dp"
+            android:layout_marginLeft="50dp"
             android:src="@mipmap/icon_good_night" />
     </LinearLayout>
     <androidx.core.widget.NestedScrollView
@@ -61,7 +61,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
                     android:textColor="?attr/normalTitleColor"
-                    android:textSize="19sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <ImageView
@@ -105,7 +105,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
                     android:textColor="?attr/normalTitleColor"
-                    android:textSize="20sp"
+                    android:textSize="17sp"
                     android:textStyle="bold" />
 
                 <ImageView
@@ -148,7 +148,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
                     android:textColor="?attr/normalTitleColor"
-                    android:textSize="23sp"
+                    android:textSize="17sp"
                     android:textStyle="bold" />
 
                 <ImageView
@@ -191,7 +191,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
                     android:textColor="?attr/normalTitleColor"
-                    android:textSize="23sp"
+                    android:textSize="17sp"
                     android:textStyle="bold" />
 
                 <ImageView
@@ -234,7 +234,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
                     android:textColor="?attr/normalTitleColor"
-                    android:textSize="23sp"
+                    android:textSize="17sp"
                     android:textStyle="bold" />
 
                 <ImageView

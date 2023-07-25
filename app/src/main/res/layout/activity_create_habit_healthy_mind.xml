@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:text="Healthy Mind"
             android:textColor="?attr/mainTitleColor"
-            android:textSize="30sp"
+            android:textSize="23sp"
             android:textStyle="bold"
             android:padding="3dp"
             android:layout_marginLeft="10dp"
@@ -33,7 +33,7 @@
             android:layout_width="55dp"
             android:layout_height="55dp"
             android:src="@mipmap/icon_healthy_mind"
-            android:layout_marginLeft="30dp"/>
+            android:layout_marginLeft="27dp"/>
     </LinearLayout>
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -60,7 +60,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
                     android:textColor="?attr/normalTitleColor"
-                    android:textSize="23sp"
+                    android:textSize="17sp"
                     android:textStyle="bold" />
 
                 <ImageView
@@ -104,7 +104,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
                     android:textColor="?attr/normalTitleColor"
-                    android:textSize="20sp"
+                    android:textSize="17sp"
                     android:textStyle="bold" />
 
                 <ImageView
@@ -147,7 +147,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
                     android:textColor="?attr/normalTitleColor"
-                    android:textSize="23sp"
+                    android:textSize="17sp"
                     android:textStyle="bold" />
 
                 <ImageView
@@ -190,7 +190,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
                     android:textColor="?attr/normalTitleColor"
-                    android:textSize="23sp"
+                    android:textSize="17sp"
                     android:textStyle="bold" />
 
                 <ImageView
@@ -233,7 +233,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
                     android:textColor="?attr/normalTitleColor"
-                    android:textSize="23sp"
+                    android:textSize="17sp"
                     android:textStyle="bold" />
 
                 <ImageView

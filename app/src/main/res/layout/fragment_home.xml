@@ -100,7 +100,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/item_shape"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="10dp"
                     android:id="@+id/ln_Home_AnytimeTitle"
                     android:orientation="horizontal">
                     <ImageView
@@ -123,12 +123,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="?attr/mainBackGround"
+                    android:layout_marginBottom="10dp"
                     android:id="@+id/rcv_Home_AnytimeHabit"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/item_shape"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="10dp"
                     android:id="@+id/ln_Home_MorningTitle"
                     android:orientation="horizontal">
                     <ImageView
@@ -150,12 +151,13 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:id="@+id/rcv_Home_MorningHabit"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/item_shape"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="10dp"
                     android:id="@+id/ln_Home_AfernoonTitle"
                     android:orientation="horizontal">
                     <ImageView
@@ -178,12 +180,13 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:id="@+id/rcv_Home_AfternoonHabit"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/item_shape"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="10dp"
                     android:id="@+id/ln_Home_EveningTitle"
                     android:orientation="horizontal">
                     <ImageView
@@ -205,12 +208,13 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:id="@+id/rcv_Home_EveningHabit"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/item_shape"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="10dp"
                     android:id="@+id/ln_Home_CompletedTitle"
                     android:orientation="horizontal">
                     <ImageView
@@ -232,12 +236,13 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:id="@+id/rcv_Home_CompletedHabit"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/item_shape"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="10dp"
                     android:id="@+id/ln_Home_FailedTitle"
                     android:orientation="horizontal">
                     <ImageView
@@ -259,6 +264,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
                     android:id="@+id/rcv_Home_FailedHabit"/>
                 <LinearLayout
                     android:layout_width="match_parent"

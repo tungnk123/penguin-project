@@ -60,7 +60,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
                     android:textColor="?attr/normalTitleColor"
-                    android:textSize="18sp"
+                    android:textSize="15sp"
                     android:textStyle="bold" />
 
                 <ImageView
@@ -104,7 +104,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
                     android:textColor="?attr/normalTitleColor"
-                    android:textSize="23sp"
+                    android:textSize="17sp"
                     android:textStyle="bold" />
 
                 <ImageView
@@ -147,7 +147,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
                     android:textColor="?attr/normalTitleColor"
-                    android:textSize="23sp"
+                    android:textSize="17sp"
                     android:textStyle="bold" />
 
                 <ImageView
@@ -190,7 +190,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
                     android:textColor="?attr/normalTitleColor"
-                    android:textSize="23sp"
+                    android:textSize="17sp"
                     android:textStyle="bold" />
 
                 <ImageView
@@ -233,7 +233,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginStart="90dp"
                     android:textColor="?attr/normalTitleColor"
-                    android:textSize="23sp"
+                    android:textSize="17sp"
                     android:textStyle="bold" />
 
                 <ImageView
