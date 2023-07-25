@@ -39,6 +39,7 @@ import com.example.penguin_project.SettingsLanguageActivity;
 import com.example.penguin_project.SettingsSoundActivity;
 import com.example.penguin_project.SettingsVacationModeActivity;
 import com.example.penguin_project.SettingsWeekStartAt;
+import com.example.penguin_project.SuggestFeatureActivity;
 import com.example.penguin_project.model.data.SettingItem;
 import com.example.penguin_project.model.repo.local.DataBase.HabitDataBase;
 import com.example.penguin_project.model.repo.local.Table.Habits;
@@ -123,6 +124,46 @@ public class MenuFragment extends Fragment implements SettingListAdapter.OnItemC
             case "Disease mode":
                 Intent diseaseIntent = new Intent(getContext(), SettingsDiseaseModeActivity.class);
                 startActivity(diseaseIntent);
+                break;
+            case "Privacy policy":
+                //
+                Toast.makeText(getContext(), "Privacy policy", Toast.LENGTH_SHORT).show();
+                break;
+            case "Term of use":
+                //
+                Toast.makeText(getContext(), "Term of use", Toast.LENGTH_SHORT).show();
+                break;
+            case "Version":
+                //
+                Toast.makeText(getContext(), "Version", Toast.LENGTH_SHORT).show();
+                String url = "https://github.com/tungnk123/penguin-project";
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(intent);
+                break;
+            case "Help":
+                //
+                Toast.makeText(getContext(), "Help", Toast.LENGTH_SHORT).show();
+                break;
+            case "FAQs":
+                //
+                Toast.makeText(getContext(), "FAQs", Toast.LENGTH_SHORT).show();
+                break;
+            case "Suggest feature":
+                //
+                intent = new Intent(getContext(), SuggestFeatureActivity.class);
+                startActivity(intent);
+                break;
+            case "Facebook":
+                //
+                url = "https://www.facebook.com/funthaner";
+                intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(intent);
+                break;
+            case "Github":
+                //
+                url = "https://github.com/tungnk123/penguin-project";
+                intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(intent);
                 break;
 
 
