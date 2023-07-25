@@ -8,9 +8,11 @@ import android.content.SharedPreferences;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 
+import com.example.penguin_project.model.data.ThemeControl;
 import com.example.penguin_project.model.repo.local.Table.StoreItem;
 import com.example.penguin_project.view.fragment.MenuFragment;
 import com.example.penguin_project.viewmodel.StoreItemViewModel;
@@ -32,6 +34,13 @@ public class SettingsForestThemeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(ThemeControl.getInstance(getApplicationContext()).getData("Mode", -1) == 1){
+            setTheme(R.style.AppTheme_Dark);
+        }
+        else {
+            setTheme(R.style.AppTheme_Light);
+        }
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_settings_forest_theme);
         btnBack = findViewById(R.id.btn_activitySettingsForest_btnBack);
         rabtnSand = findViewById(R.id.ra_activitySettingsForest_sand);

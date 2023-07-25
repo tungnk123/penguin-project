@@ -103,17 +103,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if(ThemeControl.getInstance(getApplicationContext()).getData("Mode", -1) == -1){
-            ThemeControl.getInstance(getApplicationContext()).saveData("Mode", 0);
+            ThemeControl.getInstance(getApplicationContext()).saveData("Mode", 1);
             setTheme(R.style.AppTheme_Dark);
-            recreate();
         }
         if(ThemeControl.getInstance(getApplicationContext()).getData("Mode", -1) == 1){
             setTheme(R.style.AppTheme_Dark);
-            recreate();
         }
         else {
             setTheme(R.style.AppTheme_Light);
-            recreate();
         }
 
     }

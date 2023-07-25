@@ -48,13 +48,11 @@ public class SettingsChangeModeActivity extends AppCompatActivity {
             rabtnDarkMode.setChecked(true);
             ThemeControl.getInstance(getApplicationContext()).saveData("Mode", 1);
             setTheme(R.style.AppTheme_Dark);
-            recreate();
         }
         else {
             rabtnLightMode.setChecked(true);
             setTheme(R.style.AppTheme_Light);
             ThemeControl.getInstance(getApplicationContext()).saveData("Mode", 0);
-            recreate();
         }
 
         rabtnDarkMode.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
