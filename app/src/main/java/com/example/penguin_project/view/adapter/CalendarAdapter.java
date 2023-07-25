@@ -16,6 +16,7 @@ import com.example.penguin_project.model.data.HabitDate;
 import com.example.penguin_project.model.repo.local.DataBase.HabitDataBase;
 import com.example.penguin_project.model.repo.local.Table.Habit_Day;
 import com.example.penguin_project.model.repo.local.Table.StoreItem;
+import com.example.penguin_project.view.fragment.MenuFragment;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -66,6 +67,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
                         holder.dayTextView.setBackgroundResource(R.drawable.item_daystreakmap_shape_failed);
                     }
                 }
+
             }
             else {
                 holder.dayTextView.setBackgroundResource(R.drawable.item_daystreakmap_shape_defaut);

@@ -2,6 +2,8 @@ package com.example.penguin_project;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -27,9 +29,20 @@ public class SettingsDiseaseModeActivity extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent backIntent = new Intent(SettingsDiseaseModeActivity.this, MainActivity.class);
                 backIntent.putExtra("SELECTED_FRAGMENT", "setting");
                 startActivity(backIntent);
+
+
+            }
+        });
+
+        rabtnOff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean isDiseaseModeOn = rabtnOn.isChecked();
+                showDiseaseModeChangeDialog(isDiseaseModeOn);
             }
         });
 
@@ -49,5 +62,21 @@ public class SettingsDiseaseModeActivity extends AppCompatActivity {
 
         // TODO xu ly disease mode o day
         editor.apply();
+    }
+    private void showDiseaseModeChangeDialog(boolean isDiseaseModeOn) {
+        String dialogTitle = "Suggests habits 🥰🥰";
+        String dialogMessage = "We suggest you some habits to do to increase your health in home. Please come and do it! 😎😎";
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(dialogTitle)
+                .setMessage(dialogMessage)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

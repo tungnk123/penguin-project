@@ -9,6 +9,7 @@ import com.example.penguin_project.model.repo.local.DataBase.HabitDataBase;
 import com.example.penguin_project.model.repo.local.Table.Habit_Day;
 import com.example.penguin_project.model.repo.local.Table.Habit_DayOfWeek;
 import com.example.penguin_project.model.repo.local.Table.Habits;
+import com.example.penguin_project.view.fragment.MenuFragment;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -40,7 +41,21 @@ public class UpdateHabitReceiver extends BroadcastReceiver {
         List<Habit_Day> habit_days = HabitDataBase.getInstance(context).habitDAO().getHabit_DayByID(dateInMillis);
         Habit_Day habit_day = habit_days.get(0);
         if(numberHabitsDOWfalse > 0){
-            habit_day.setIsDone(false);
+            if (MenuFragment.vacationModeSettingsSP.getString("vacation_setting", "Off").equals("Off")) {
+                habit_day.setIsDone(false);
+            }
+            else {
+                habit_day.setIsDone(true);
+            }
+
+            if (MenuFragment.diseaseModeSettingsSP.getString("disease_setting", "Off").equals("Off")) {
+                habit_day.setIsDone(false);
+            }
+            else {
+                habit_day.setIsDone(true);
+            }
+
+
             HabitDataBase.getInstance(context).habitDAO().updateHabit_Day(habit_day);
         }
         else {
