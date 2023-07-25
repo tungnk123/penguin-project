@@ -1,5 +1,6 @@
 package com.example.penguin_project.view.fragment;
 
+import android.content.Context;
 import android.media.Image;
 import android.os.Bundle;
 
@@ -34,6 +35,7 @@ public class TrackerFragment extends Fragment {
     private CalendarAdapter calendarAdapter;
     private TextView txtCurrentStreak, txtMaxStreak;
     public ImageView[] treeList = new ImageView[7];
+    public ImageView imgBackground;
 
     public TrackerFragment() {
         // Required empty public constructor
@@ -82,6 +84,31 @@ public class TrackerFragment extends Fragment {
             }
         }
         //
+        imgBackground = view.findViewById(R.id.img_fragmentTracker_background);
+        MenuFragment.forestThemeSettingsSP = view.getContext().getSharedPreferences("forest_setting", Context.MODE_PRIVATE);
+        String theme = MenuFragment.forestThemeSettingsSP.getString("forest_setting", "Plain");
+        switch (theme) {
+            case "PLain":
+                imgBackground.setImageResource(R.drawable.background_plain);
+                break;
+            case "Sand":
+                imgBackground.setImageResource(R.drawable.background_sand);
+                break;
+            case "Swamp":
+                imgBackground.setImageResource(R.drawable.background_swamp);
+                break;
+            case "Flower garden":
+                imgBackground.setImageResource(R.drawable.background_flower_garden);
+                break;
+            case "Beach":
+                imgBackground.setImageResource(R.drawable.background_beach);
+                break;
+            case "Pine forest":
+                imgBackground.setImageResource(R.drawable.background_pine);
+                break;
+            default:
+                imgBackground.setImageResource(R.drawable.background_plain);
+        }
 
         return view;
     }
