@@ -12,7 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.penguin_project.MainActivity;
 import com.example.penguin_project.R;
 import com.example.penguin_project.model.data.HabitDate;
 import com.example.penguin_project.model.data.LocalDateConverter;
@@ -91,7 +93,7 @@ public class TrackerFragment extends Fragment {
 
         for(int i = 0; i < habit_dayList.size(); i++){
             Habit_Day habit_day = habit_dayList.get(i);
-            if(habit_day.getHabit_Day_id() == LocalDate.now()){
+            if(habit_day.getHabit_Day_id().equals(LocalDate.now())){
                 break;
             }
             if(habit_day.getIsDone()){
@@ -104,6 +106,7 @@ public class TrackerFragment extends Fragment {
                 currentStreak = 0;
             }
         }
+
 
         txtCurrentStreak.setText(String.valueOf(currentStreak));
         txtMaxStreak.setText(String.valueOf(maxStreak));
