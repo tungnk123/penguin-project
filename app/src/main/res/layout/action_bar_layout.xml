@@ -48,41 +48,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/item_coin_shape">
-
-            <TextView
-                android:id="@+id/txt_ActionBar_coin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:padding="3dp"
-                android:text="30"
-                android:textColor="@color/black"
-                android:textSize="15dp"
-                android:textStyle="bold" />
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="3dp"
-                android:layout_marginEnd="5dp"
-                android:src="@drawable/icon_coin" />
-        </LinearLayout>
-
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="10dp"
-            android:maxWidth="50dp"
-            android:maxHeight="50dp"
-            android:background="@drawable/item_circle_shape"
-            android:src="@drawable/icon_user" />
-
     </LinearLayout>
 
 </LinearLayout>

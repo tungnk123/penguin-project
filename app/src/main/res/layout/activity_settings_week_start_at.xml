@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/mainBackGround"
+    android:orientation="vertical"
+    tools:context=".view.activity.SettingsChangeModeActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btn_activitySettingsWeek_btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:background="?attr/mainBackGround"
+            android:contentDescription="back button"
+            android:src="@mipmap/icon_back" />
+
+        <TextView
+            android:id="@+id/tv_activitySettingsWeek_title"
+            style="@style/Title1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="2dp"
+            android:textColor="?attr/mainTitleColor"
+            android:text="Week starts at" />
+
+    </LinearLayout>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:dividerColor="@color/black_item"
+        app:dividerThickness="1dp" />
+
+    <RadioGroup
+        android:id="@+id/rgr_activitySettingsWeek_radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp">
+
+
+        <RadioButton
+            android:id="@+id/ra_activitySettingsWeek_monday"
+            style="@style/Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="?attr/mainTitleColor"
+            android:textColor="?attr/normalTitleColor"
+            android:paddingStart="15dp"
+            android:paddingTop="5dp"
+            android:text="Monday" />
+
+        <RadioButton
+            android:id="@+id/ra_activitySettingsWeek_sunday"
+            style="@style/Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="?attr/mainTitleColor"
+            android:textColor="?attr/normalTitleColor"
+            android:paddingStart="15dp"
+            android:paddingTop="5dp"
+            android:text="Sunday" />
+
+
+
+    </RadioGroup>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:dividerColor="@color/black_item"
+        app:dividerThickness="1dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/Title1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="?attr/normalTitleColor"
+            android:text="About" />
+
+        <TextView
+            style="@style/Body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="?attr/normalTitleColor"
+            android:text="The week start preference feature in your app allows users to choose whether their week begins on Monday or Sunday, accommodating different cultural and regional calendar conventions."/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -2,17 +2,92 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SENDTO" />
+    <uses-permission android:name="android.permission.WRITE_EMAIL" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/icon_logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Penguinproject"
         tools:targetApi="31">
         <activity
             android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.SuggestFeatureActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.SettingsDiseaseModeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.SettingsVacationModeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.SettingsWeekStartAt"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.SettingsLanguageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.SettingsAlarmActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.SettingsForestThemeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.SettingsSoundActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.SettingsChangeModeActivity"
+            android:exported="false" />
+
+        <receiver android:name=".model.data.UpdateHabitReceiver" />
+
+        <activity
+            android:name=".view.activity.IconPickerActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Dialog" />
+        <activity
+            android:name=".view.activity.EditHabitActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.CreateHabitSavingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.CreateHabitFocusActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.CreateHabitGoodNightActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.CreateHabitHealthyMindActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.CreateHabitTrendingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.CreateHabitActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.HabitsInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.activity.AddTodoActivity"
+            android:exported="false"
+            android:label="" />
+        <activity
+            android:name=".view.activity.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,9 +95,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <receiver
+            android:name=".utils.NotificationBroadcastReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.example.penguin_project.ACTION_NOTIFICATION" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".view.service.BackgroundMusicService"
+            android:enabled="true"
+            android:exported="false" />
     </application>
 
 </manifest>

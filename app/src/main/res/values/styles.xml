@@ -16,7 +16,7 @@
 
     <style name="TitleWithWrapper" parent="TextAppearance.AppCompat">
         <item name="android:fontFamily">@font/poppins_bold</item>
-        <item name="android:textSize">10sp</item>
+        <item name="android:textSize">17sp</item>
         <item name="android:textColor">@color/white</item>
     </style>
 
@@ -26,16 +26,56 @@
         <item name="android:textColor">@color/white</item>
     </style>
 
+    <style name="TodoTitle" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
     <style name="Subheadline" parent="TextAppearance.AppCompat">
         <item name="android:fontFamily">@font/poppins</item>
         <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/black</item>
     </style>
+
     <style name="LavenderSwitch" parent="Widget.AppCompat.CompoundButton.Switch">
         <item name="android:colorBackground">@color/lavender</item>
         <item name="android:layout_width">57dp</item>
         <item name="android:layout_height">25dp</item>
     </style>
+
+    <style name="SettingTitle" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/poppins_bold</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+    <style name="CustomCheckbox02" parent="@style/Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/checkbox_seletor</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+
     // theme
+
+
+    <style name="AppTheme.Light" parent="Theme.AppCompat.Light">
+        <item name="mainBackGround">@color/mainBackgroundLight</item>
+        <item name="itemDayBackground">@color/datePickerItemBackgroundLight</item>
+        <item name="itemDaySelectedBackground">@color/datePickerItemSelectedBackgroundLight</item>
+        <item name="mainTitleColor">@color/mainTitleLight</item>
+        <item name="normalTitleColor">@color/normalTitleLight</item>
+        <item name="itemHabitBackground">@color/itemhabitBackgroundLight</item>
+        <item name="itemHabitBackground1">@color/itemhabitBackground1Light</item>
+    </style>
+
+    <style name="AppTheme.Dark" parent="Theme.AppCompat">
+        <item name="mainBackGround">@color/mainBackgroundDark</item>
+        <item name="itemDayBackground">@color/datePickerItemBackgroundDark</item>
+        <item name="itemDaySelectedBackground">@color/datePickerItemSelectedBackgroundDark</item>
+        <item name="mainTitleColor">@color/mainTitleDark</item>
+        <item name="normalTitleColor">@color/normalTitleDark</item>
+        <item name="itemHabitBackground">@color/itemhabitBackgroundDark</item>
+        <item name="itemHabitBackground1">@color/itemhabitBackground1Dark</item>
+    </style>
 
 </resources>

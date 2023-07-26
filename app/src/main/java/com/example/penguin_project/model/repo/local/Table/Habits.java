@@ -7,6 +7,7 @@ import androidx.room.TypeConverters;
 
 import com.example.penguin_project.model.data.LocalDateConverter;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity(tableName = "Habits", foreignKeys = {
@@ -14,7 +15,7 @@ import java.time.LocalDate;
         @ForeignKey(entity = Tree.class, parentColumns = "Tree_id", childColumns = "Tree_id", onDelete = ForeignKey.CASCADE)
 })
 @TypeConverters(LocalDateConverter.class)
-public class Habits {
+public class Habits implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private int Habit_id;
     private String Title;
@@ -28,8 +29,7 @@ public class Habits {
 
     private int Tree_id;
 
-    public Habits(int habit_id, String title, int timeOfDay_id, int timePerDay, int color, int icon, LocalDate createDay, int currentStreak, int maxStreak, int tree_id) {
-        Habit_id = habit_id;
+    public Habits( String title, int timeOfDay_id, int timePerDay, int color, int icon, LocalDate createDay, int currentStreak, int maxStreak, int tree_id) {
         Title = title;
         TimeOfDay_id = timeOfDay_id;
         TimePerDay = timePerDay;

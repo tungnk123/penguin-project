@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/mainBackGround"
+    android:orientation="vertical"
+    tools:context=".view.activity.SettingsChangeModeActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btn_activitySettingsDM_btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:background="?attr/mainBackGround"
+            android:contentDescription="back button"
+            android:src="@mipmap/icon_back" />
+
+        <TextView
+            android:id="@+id/tv_activitySettingsDM_title"
+            style="@style/Title1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="2dp"
+            android:textColor="?attr/mainTitleColor"
+            android:text="Disease mode" />
+
+    </LinearLayout>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:dividerColor="@color/black_item"
+        app:dividerThickness="1dp" />
+
+    <RadioGroup
+        android:id="@+id/rgr_activitySettingsDM_radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp">
+
+        <RadioButton
+            android:id="@+id/ra_activitySettingsDM_on"
+            style="@style/Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="?attr/mainTitleColor"
+            android:textColor="?attr/normalTitleColor"
+            android:paddingStart="15dp"
+            android:paddingTop="5dp"
+            android:text="On" />
+
+        <RadioButton
+            android:id="@+id/ra_activitySettingsDM_off"
+            style="@style/Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="?attr/mainTitleColor"
+            android:textColor="?attr/normalTitleColor"
+            android:paddingStart="15dp"
+            android:paddingTop="5dp"
+            android:text="Off" />
+
+    </RadioGroup>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:dividerColor="@color/black_item"
+        app:dividerThickness="1dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/Title1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="?attr/normalTitleColor"
+            android:text="About" />
+
+        <TextView
+            style="@style/Body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="?attr/normalTitleColor"
+            android:text="The vacation mode feature in your app allows users to temporarily suspend their habit tracking and notifications while they are on vacation or taking a break, providing flexibility and maintaining a healthy work-life balance."/>
+    </LinearLayout>
+
+</LinearLayout>

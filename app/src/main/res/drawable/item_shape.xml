@@ -2,9 +2,8 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="@color/black_item"/>
+            <solid android:color="?attr/itemHabitBackground"/>
             <corners android:radius="14dp"/>
-
         </shape>
     </item>
 </selector>

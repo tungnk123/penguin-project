@@ -2,7 +2,7 @@
 <resources>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
+    <color name="purple_700">#21074E</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#000000</color>
@@ -19,6 +19,23 @@
     <color name="black_title">#232323</color>
     <color name="black_icon">#464646</color>
     <color name="black_item">#575757</color>
+
+
+    <color name="mainBackgroundDark">#000000</color>
+    <color name="mainBackgroundLight">#F5F2F2</color>
+    <color name="datePickerItemBackgroundDark">#2C2C2C</color>
+    <color name="datePickerItemBackgroundLight">#B9B7B7</color>
+    <color name="datePickerItemSelectedBackgroundDark">#FF6200EE</color>
+    <color name="datePickerItemSelectedBackgroundLight">#4D96FF</color>
+    <color name="mainTitleDark">#B2F042</color>
+    <color name="mainTitleLight">#4D96FF</color>
+    <color name="normalTitleDark">#ffff</color>
+    <color name="normalTitleLight">#000000</color>
+    <color name="itemhabitBackgroundDark">@color/black_item</color>
+    <color name="itemhabitBackgroundLight">#D6D2D2</color>
+    <color name="itemhabitBackground1Dark">#2C2C2C</color>
+    <color name="itemhabitBackground1Light">#B6B2B2</color>
+
 
     
 </resources>

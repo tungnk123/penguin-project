@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/mainBackGround"
+    android:orientation="vertical"
+    tools:context=".view.activity.SettingsChangeModeActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btn_activitySettingsCM_btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:background="?attr/mainBackGround"
+            android:contentDescription="back button"
+            android:src="@mipmap/icon_back" />
+
+        <TextView
+            android:id="@+id/tv_activitySettingsCM_title"
+            style="@style/Title1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="2dp"
+            android:textColor="?attr/normalTitleColor"
+            android:text="Change mode" />
+
+    </LinearLayout>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:dividerColor="@color/black_item"
+        app:dividerThickness="1dp" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:id="@+id/rgr_activitySettingsCM_radioGroup"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp">
+
+        <RadioButton
+            style="@style/Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="?attr/mainTitleColor"
+            android:id="@+id/ra_activitySettingsCM_lightMode"
+            android:paddingStart="15dp"
+            android:textColor="?attr/normalTitleColor"
+            android:paddingTop="5dp"
+            android:text="Light mode" />
+
+        <RadioButton
+            style="@style/Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:id="@+id/ra_activitySettingsCM_darkMode"
+            android:paddingStart="15dp"
+            android:textColor="?attr/normalTitleColor"
+            android:buttonTint="?attr/mainTitleColor"
+            android:text="Dark mode" />
+
+    </RadioGroup>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:dividerColor="@color/black_item"
+        app:dividerThickness="1dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/Title1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="?attr/normalTitleColor"
+            android:text="About" />
+
+        <TextView
+            style="@style/Body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="?attr/normalTitleColor"
+            android:text="The light or dark mode feature in your app allows users to switch between a bright or dark interface, catering to their visual preferences and enhancing the overall user experience." />
+    </LinearLayout>
+
+</LinearLayout>

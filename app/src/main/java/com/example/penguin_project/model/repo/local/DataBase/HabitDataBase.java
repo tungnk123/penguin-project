@@ -13,11 +13,13 @@ import com.example.penguin_project.model.repo.local.Table.Habit_Day;
 import com.example.penguin_project.model.repo.local.Table.Habit_DayOfWeek;
 import com.example.penguin_project.model.repo.local.Table.Habits;
 import com.example.penguin_project.model.repo.local.Table.Steps;
+import com.example.penguin_project.model.repo.local.Table.StoreItem;
 import com.example.penguin_project.model.repo.local.Table.TimeOfDay;
 import com.example.penguin_project.model.repo.local.Table.Todo;
 import com.example.penguin_project.model.repo.local.Table.Tree;
 
-@Database(entities = {Habits.class, Habit_Day.class, Habit_DayOfWeek.class, TimeOfDay.class, Todo.class, Steps.class, Tree.class}, version = 2)
+@Database(entities = {Habits.class, Habit_Day.class, Habit_DayOfWeek.class, TimeOfDay.class, Todo.class, Steps.class, Tree.class, StoreItem.class}, version = 2)
+
 public abstract class HabitDataBase extends RoomDatabase {
 
     private static final String DATABASE_NAME = "Habit.db";
@@ -40,6 +42,8 @@ public abstract class HabitDataBase extends RoomDatabase {
             database.execSQL("ALTER TABLE Habit_DayOfWeek ADD COLUMN IsFailed boolean");
         }
     };
+
+
 
     public abstract HabitDAO habitDAO();
 }

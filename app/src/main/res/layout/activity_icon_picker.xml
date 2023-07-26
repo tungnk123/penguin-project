@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.IconPickerActivity"
+    android:orientation="vertical"
+    android:background="@color/black">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/item_icon_shape"
+            android:layout_margin="4dp"
+            >
+            <ImageView
+                android:id="@+id/icon1"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_keep_track_of_expense" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/item_icon_shape"
+            android:layout_margin="4dp"
+            >
+
+            <ImageView
+                android:id="@+id/icon2"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_list_of_weekly_shopping" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/item_icon_shape"
+            android:layout_margin="4dp"
+            >
+
+            <ImageView
+                android:id="@+id/icon3"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_plan_expenses" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/item_icon_shape"
+            android:layout_margin="4dp"
+            >
+
+            <ImageView
+                android:id="@+id/icon4"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_pay_bills" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/item_icon_shape"
+            android:layout_margin="4dp"
+            >
+
+            <ImageView
+                android:id="@+id/icon5"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_stretching" />
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/item_icon_shape"
+            android:layout_margin="4dp"
+            >
+
+            <ImageView
+                android:id="@+id/icon6"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_write_diary" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/item_icon_shape"
+            android:layout_margin="4dp"
+            >
+
+            <ImageView
+                android:id="@+id/icon7"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_listen_to_podcast" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/item_icon_shape"
+            android:layout_margin="4dp"
+            >
+
+            <ImageView
+                android:id="@+id/icon8"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_avoid_cafein" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/item_icon_shape"
+            android:layout_margin="4dp"
+            >
+
+            <ImageView
+                android:id="@+id/icon9"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_read_book" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/item_icon_shape"
+            android:layout_margin="4dp"
+            >
+
+            <ImageView
+                android:id="@+id/icon10"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_sleep_8_hour" />
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/item_icon_shape"
+            android:layout_margin="4dp"
+            >
+
+            <ImageView
+                android:id="@+id/icon11"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_dont_touch_phone" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/item_icon_shape"
+            android:layout_margin="4dp"
+            >
+
+            <ImageView
+                android:id="@+id/icon12"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_think_about_your_day" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/item_icon_shape"
+            android:layout_margin="4dp"
+            >
+
+            <ImageView
+                android:id="@+id/icon13"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_relax" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/item_icon_shape"
+            android:layout_margin="4dp"
+            >
+
+            <ImageView
+                android:id="@+id/icon14"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_walk" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/item_icon_shape"
+            android:layout_margin="4dp"
+            >
+
+            <ImageView
+                android:id="@+id/icon15"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_drink_water" />
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/item_icon_shape"
+            android:layout_margin="4dp"
+            >
+
+            <ImageView
+                android:id="@+id/icon16"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_connect_nature" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/item_icon_shape"
+            android:layout_margin="4dp"
+            >
+
+            <ImageView
+                android:id="@+id/icon17"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_meditation" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/item_icon_shape"
+            android:layout_margin="4dp"
+            >
+
+            <ImageView
+                android:id="@+id/icon18"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_make_bed" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/item_icon_shape"
+            android:layout_margin="4dp"
+            >
+
+            <ImageView
+                android:id="@+id/icon19"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_clean_the_house" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/item_icon_shape"
+            android:layout_margin="4dp"
+            >
+
+            <ImageView
+                android:id="@+id/icon20"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_study" />
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/item_icon_shape"
+            android:layout_margin="4dp"
+            >
+
+            <ImageView
+                android:id="@+id/icon21"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_healthy_meal" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/item_icon_shape"
+            android:layout_margin="4dp"
+            >
+
+            <ImageView
+                android:id="@+id/icon22"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_healthy_mind" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/item_icon_shape"
+            android:layout_margin="4dp"
+            >
+
+            <ImageView
+                android:id="@+id/icon23"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_exercise" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/item_icon_shape"
+            android:layout_margin="4dp"
+            >
+
+            <ImageView
+                android:id="@+id/icon24"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_focus" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/item_icon_shape"
+            android:layout_margin="4dp"
+            >
+
+            <ImageView
+                android:id="@+id/icon25"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_good_night" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

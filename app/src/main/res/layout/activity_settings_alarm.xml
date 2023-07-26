@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/mainBackGround"
+    android:orientation="vertical"
+    tools:context=".view.activity.SettingsChangeModeActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btn_activitySettingsAlarm_btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:background="?attr/mainBackGround"
+            android:contentDescription="back button"
+            android:src="@mipmap/icon_back" />
+
+        <TextView
+            android:id="@+id/tv_activitySettingsAlarm_title"
+            style="@style/Title1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="2dp"
+            android:textColor="?attr/mainTitleColor"
+            android:text="Alarm" />
+
+    </LinearLayout>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:dividerColor="@color/black_item"
+        app:dividerThickness="1dp" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:id="@+id/rgr_activitySettingsAlarm_radioGroup"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp">
+
+        <RadioButton
+            style="@style/Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="?attr/mainTitleColor"
+            android:id="@+id/ra_activitySettingsAlarm_on"
+            android:paddingStart="15dp"
+            android:paddingTop="5dp"
+            android:textColor="?attr/normalTitleColor"
+            android:text="On" />
+
+        <RadioButton
+            style="@style/Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:id="@+id/ra_activitySettingsAlarm_off"
+            android:paddingStart="15dp"
+            android:buttonTint="?attr/mainTitleColor"
+            android:textColor="?attr/normalTitleColor"
+            android:text="Off" />
+
+    </RadioGroup>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:dividerColor="@color/black_item"
+        app:dividerThickness="1dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/Title1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="?attr/normalTitleColor"
+            android:text="About" />
+
+        <TextView
+            style="@style/Body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="?attr/normalTitleColor"
+            android:text="The alarm on/off feature in your app habit tracker allows users to easily enable or disable their alarms, providing control and flexibility over their daily routine." />
+    </LinearLayout>
+
+</LinearLayout>
