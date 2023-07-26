@@ -1,9 +1,10 @@
 # Penguin - App theo dõi thói quen và lập danh sách công việc
 
 <div align="center">
-  <img src="https://github.com/tungnk123/penguin-project/assets/108881998/a2ea0096-b0a7-4851-a5b0-a09be6fa9a1c" width="30%">
-  <img src="https://github.com/tungnk123/penguin-project/assets/108881998/791147ea-9ecf-4918-a990-43b8d05eee79" width="30%">
-  <img src="https://github.com/tungnk123/penguin-project/assets/108881998/4816f5fa-b3ec-4d84-a147-707c9afdf627" width="30%">
+  <img src="https://github.com/tungnk123/penguin-project/assets/108881998/84231818-4aa0-4d59-92fd-cc9546f3fc6f" width="40%">
+  <img src="https://github.com/tungnk123/penguin-project/assets/108881998/a2ea0096-b0a7-4851-a5b0-a09be6fa9a1c" width="40%">
+  <img src="https://github.com/tungnk123/penguin-project/assets/108881998/791147ea-9ecf-4918-a990-43b8d05eee79" width="40%">
+  <img src="https://github.com/tungnk123/penguin-project/assets/108881998/4816f5fa-b3ec-4d84-a147-707c9afdf627" width="40%">
 </div>
 
 ## Giới thiệu
@@ -26,7 +27,7 @@ Penguin là một ứng dụng Android được thiết kế để giúp bạn t
 
 ## Hướng dẫn cài đặt
 
-1. https://docs.google.com/document/d/1jYXQCmp1g9rwda24MZzuV-d_6nhgXM5o/edit
+1. [Thêm hướng dẫn cài đặt ứng dụng của bạn tại đây](https://docs.google.com/document/d/1jYXQCmp1g9rwda24MZzuV-d_6nhgXM5o/edit)
 
 ## Đóng góp và Phát triển
 
@@ -43,4 +44,3 @@ Nếu bạn quan tâm và muốn đóng góp vào dự án, vui lòng làm theo 
 ## Bản quyền và Giấy phép
 
 [Thêm thông tin về bản quyền và giấy phép của ứng dụng của bạn tại đây]
-
