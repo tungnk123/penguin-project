@@ -128,7 +128,6 @@ public class TodoFragment extends Fragment implements TodoAdapter.OnItemClickLis
     @Override
     public void onItemClick(int position) {
 
-        Toast.makeText(getContext(), "Item clicked at position: " + position, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getContext(), AddTodoActivity.class);
         Todo todo = todoList.get(position);
         intent.putExtra("title", todo.getTitle());

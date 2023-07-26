@@ -75,6 +75,7 @@ public class AddTodoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if(ThemeControl.getInstance(getApplicationContext()).getData("Mode", -1) == 1){
             setTheme(R.style.AppTheme_Dark);
         }
