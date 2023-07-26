@@ -1,4 +1,4 @@
-package com.example.penguin_project;
+package com.example.penguin_project.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.example.penguin_project.R;
 
 import java.util.ArrayList;
 import java.util.List;

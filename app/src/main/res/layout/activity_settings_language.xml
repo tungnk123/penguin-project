@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="?attr/mainBackGround"
     android:orientation="vertical"
-    tools:context=".SettingsChangeModeActivity">
+    tools:context=".view.activity.SettingsChangeModeActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

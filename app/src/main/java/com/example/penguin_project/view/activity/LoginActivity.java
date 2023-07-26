@@ -1,9 +1,8 @@
-package com.example.penguin_project;
+package com.example.penguin_project.view.activity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,10 +15,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.penguin_project.MainActivity;
+import com.example.penguin_project.R;
 import com.example.penguin_project.model.repo.local.DataBase.HabitDataBase;
 import com.example.penguin_project.model.repo.local.Table.Habits;
 import com.example.penguin_project.model.repo.local.Table.StoreItem;
-import com.example.penguin_project.model.repo.local.Table.Todo;
 import com.example.penguin_project.model.repo.remote.FirebaseUserHelper;
 import com.example.penguin_project.view.fragment.MenuFragment;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -33,7 +33,6 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.GoogleAuthCredential;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -42,7 +41,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

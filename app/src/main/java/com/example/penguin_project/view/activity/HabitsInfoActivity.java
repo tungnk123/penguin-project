@@ -1,4 +1,4 @@
-package com.example.penguin_project;
+package com.example.penguin_project.view.activity;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import com.example.penguin_project.R;
 import com.example.penguin_project.model.data.ThemeControl;
 import com.example.penguin_project.model.repo.local.DataBase.HabitDataBase;
 import com.example.penguin_project.model.repo.local.Table.Habit_DayOfWeek;

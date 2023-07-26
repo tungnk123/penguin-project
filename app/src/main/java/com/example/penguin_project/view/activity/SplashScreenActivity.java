@@ -1,4 +1,4 @@
-package com.example.penguin_project;
+package com.example.penguin_project.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
+
+import com.example.penguin_project.MainActivity;
+import com.example.penguin_project.R;
 
 public class SplashScreenActivity extends AppCompatActivity {
 

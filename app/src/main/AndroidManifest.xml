@@ -22,72 +22,72 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".SuggestFeatureActivity"
+            android:name=".view.activity.SuggestFeatureActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".view.activity.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingsDiseaseModeActivity"
+            android:name=".view.activity.SettingsDiseaseModeActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingsVacationModeActivity"
+            android:name=".view.activity.SettingsVacationModeActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingsWeekStartAt"
+            android:name=".view.activity.SettingsWeekStartAt"
             android:exported="false" />
         <activity
-            android:name=".SettingsLanguageActivity"
+            android:name=".view.activity.SettingsLanguageActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingsAlarmActivity"
+            android:name=".view.activity.SettingsAlarmActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingsForestThemeActivity"
+            android:name=".view.activity.SettingsForestThemeActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingsSoundActivity"
+            android:name=".view.activity.SettingsSoundActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingsChangeModeActivity"
+            android:name=".view.activity.SettingsChangeModeActivity"
             android:exported="false" />
 
         <receiver android:name=".model.data.UpdateHabitReceiver" />
 
         <activity
-            android:name=".IconPickerActivity"
+            android:name=".view.activity.IconPickerActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Dialog" />
         <activity
-            android:name=".EditHabitActivity"
+            android:name=".view.activity.EditHabitActivity"
             android:exported="false" />
         <activity
-            android:name=".CreateHabitSavingActivity"
+            android:name=".view.activity.CreateHabitSavingActivity"
             android:exported="false" />
         <activity
-            android:name=".CreateHabitFocusActivity"
+            android:name=".view.activity.CreateHabitFocusActivity"
             android:exported="false" />
         <activity
-            android:name=".CreateHabitGoodNightActivity"
+            android:name=".view.activity.CreateHabitGoodNightActivity"
             android:exported="false" />
         <activity
-            android:name=".CreateHabitHealthyMindActivity"
+            android:name=".view.activity.CreateHabitHealthyMindActivity"
             android:exported="false" />
         <activity
-            android:name=".CreateHabitTrendingActivity"
+            android:name=".view.activity.CreateHabitTrendingActivity"
             android:exported="false" />
         <activity
-            android:name=".CreateHabitActivity"
+            android:name=".view.activity.CreateHabitActivity"
             android:exported="false" />
         <activity
-            android:name=".HabitsInfoActivity"
+            android:name=".view.activity.HabitsInfoActivity"
             android:exported="false" />
         <activity
             android:name=".view.activity.AddTodoActivity"
             android:exported="false"
             android:label="" />
         <activity
-            android:name=".SplashScreenActivity"
+            android:name=".view.activity.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

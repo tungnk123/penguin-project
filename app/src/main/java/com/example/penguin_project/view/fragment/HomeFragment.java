@@ -7,23 +7,17 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.constraintlayout.widget.Constraints;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.work.NetworkType;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,11 +25,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.penguin_project.CreateHabitActivity;
-import com.example.penguin_project.HabitsInfoActivity;
+import com.example.penguin_project.view.activity.CreateHabitActivity;
+import com.example.penguin_project.view.activity.HabitsInfoActivity;
 import com.example.penguin_project.MainActivity;
 import com.example.penguin_project.R;
-import com.example.penguin_project.model.data.CoinManager;
 import com.example.penguin_project.model.data.HabitDate;
 import com.example.penguin_project.model.data.ResetHabitsWorker;
 import com.example.penguin_project.model.repo.local.DataBase.HabitDataBase;
@@ -47,7 +40,6 @@ import com.example.penguin_project.view.adapter.DatePicker_Adapter;
 import com.example.penguin_project.view.adapter.HabitItemAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.sql.Time;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;

@@ -80,17 +80,24 @@ public class TrackerFragment extends Fragment {
             treeList[i].setImageDrawable(null);
         }
         List<Habits> habitsList = HabitDataBase.getInstance(getContext()).habitDAO().getHabitList();
-        for (int i = 0; i < habitsList.size(); i++) {
-            Tree tree = HabitDataBase.getInstance(getContext()).habitDAO().getTreeForestById(habitsList.get(i).getTree_id());
-            int currentStreak = habitsList.get(i).getCurrentStreak();
+        if (habitsList.size() <= 7) {
+            for (int i = 0; i < habitsList.size(); i++) {
+                Tree tree = HabitDataBase.getInstance(getContext()).habitDAO().getTreeForestById(habitsList.get(i).getTree_id());
+                int currentStreak = habitsList.get(i).getCurrentStreak();
 
-            if (currentStreak < tree.getTimeToGrow()) {
-                treeList[i].setImageResource(R.mipmap.icon_tree_mam2);
-            }
-            else {
-                treeList[i].setImageResource(tree.getIcon());
+                if (currentStreak < tree.getTimeToGrow()) {
+                    treeList[i].setImageResource(R.mipmap.icon_tree_mam2);
+                }
+                else {
+                    treeList[i].setImageResource(tree.getIcon());
+                }
             }
         }
+
+        else {
+            Toast.makeText(getContext(), "Exceed max tree in forest!", Toast.LENGTH_SHORT).show();
+        }
+
         //
         imgBackground = view.findViewById(R.id.img_fragmentTracker_background);
         MenuFragment.forestThemeSettingsSP = view.getContext().getSharedPreferences("forest_setting", Context.MODE_PRIVATE);

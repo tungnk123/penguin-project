@@ -1,4 +1,4 @@
-package com.example.penguin_project;
+package com.example.penguin_project.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,7 @@ import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
+import com.example.penguin_project.R;
 import com.example.penguin_project.model.data.ThemeControl;
 
 public class CreateHabitTrendingActivity extends AppCompatActivity {

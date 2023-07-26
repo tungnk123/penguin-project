@@ -1,4 +1,4 @@
-package com.example.penguin_project;
+package com.example.penguin_project.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,11 +9,12 @@ import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
+import com.example.penguin_project.R;
 import com.example.penguin_project.model.data.ThemeControl;
 
-public class CreateHabitHealthyMindActivity extends AppCompatActivity {
+public class CreateHabitGoodNightActivity extends AppCompatActivity {
     ImageButton btn_back;
-    RelativeLayout btn_meditation, btn_connectToNature, btn_drinkWater, btn_goOutForWalk, btn_relax;
+    RelativeLayout btn_thinkAboutYourDay, btn_dontTouchPhone, btn_sleep8Hour, btn_readToRelax, btn_avoidCaffein;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,74 +25,75 @@ public class CreateHabitHealthyMindActivity extends AppCompatActivity {
             setTheme(R.style.AppTheme_Light);
         }
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_create_habit_healthy_mind);
+        setContentView(R.layout.activity_create_habit_good_night);
 
         settingButton();
     }
 
     private void settingButton() {
-        btn_back = findViewById(R.id.CreateHabitHealthyMind_btn_back);
+        btn_back = findViewById(R.id.CreateHabitGoodNight_btn_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
-        btn_meditation = findViewById(R.id.CreateHabitHealthyMind_btnHabitMeditation);
-        btn_connectToNature = findViewById(R.id.CreateHabitHealthyMind_btnHabitConnectToNature);
-        btn_drinkWater = findViewById(R.id.CreateHabitHealthyMind_btnHabitDrinkWater);
-        btn_goOutForWalk = findViewById(R.id.CreateHabitHealthyMind_btnHabitGoOutForWalk);
-        btn_relax = findViewById(R.id.CreateHabitHealthyMind_btnHabitRelax);
+        btn_thinkAboutYourDay = findViewById(R.id.CreateHabitGoodNight_btnHabitThinkYourDay);
+        btn_dontTouchPhone = findViewById(R.id.CreateHabitGoodNight_btnHabitDontTouchPhone);
+        btn_sleep8Hour = findViewById(R.id.CreateHabitGoodNight_btnHabitSleep8Hour);
+        btn_readToRelax = findViewById(R.id.CreateHabitGoodNight_btnHabitReadToRelax);
+        btn_avoidCaffein = findViewById(R.id.CreateHabitGoodNight_btnHabitAvoidCafein);
 
-        btn_meditation.setOnClickListener(new View.OnClickListener() {
+        btn_thinkAboutYourDay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), EditHabitActivity.class);
-                intent.putExtra("Title", "Meditation");
-                intent.putExtra("Icon", R.mipmap.icon_meditation);
+                intent.putExtra("Title", "Think about your day");
+                intent.putExtra("Icon", R.mipmap.icon_think_about_your_day);
                 intent.setAction("New habit");
                 startActivity(intent);
             }
         });
-        btn_connectToNature.setOnClickListener(new View.OnClickListener() {
+        btn_dontTouchPhone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), EditHabitActivity.class);
-                intent.putExtra("Title", "Connect to nature");
-                intent.putExtra("Icon", R.mipmap.icon_connect_nature);
+                intent.putExtra("Title", "Don't touch phone");
+                intent.putExtra("Icon", R.mipmap.icon_dont_touch_phone);
                 intent.setAction("New habit");
                 startActivity(intent);
             }
         });
-        btn_drinkWater.setOnClickListener(new View.OnClickListener() {
+        btn_sleep8Hour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), EditHabitActivity.class);
-                intent.putExtra("Title", "Drink water");
-                intent.putExtra("Icon", R.mipmap.icon_drink_water);
+                intent.putExtra("Title", "Sleep 8 hour");
+                intent.putExtra("Icon", R.mipmap.icon_sleep_8_hour);
                 intent.setAction("New habit");
                 startActivity(intent);
             }
         });
-        btn_goOutForWalk.setOnClickListener(new View.OnClickListener() {
+        btn_readToRelax.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), EditHabitActivity.class);
-                intent.putExtra("Title", "Go out for walk");
-                intent.putExtra("Icon", R.mipmap.icon_walk);
+                intent.putExtra("Title", "Read to relax");
+                intent.putExtra("Icon", R.mipmap.icon_read_book);
                 intent.setAction("New habit");
                 startActivity(intent);
             }
         });
-        btn_relax.setOnClickListener(new View.OnClickListener() {
+        btn_avoidCaffein.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), EditHabitActivity.class);
-                intent.putExtra("Title", "Relax");
-                intent.putExtra("Icon", R.mipmap.icon_relax);
+                intent.putExtra("Title", "Avoid caffein");
+                intent.putExtra("Icon", R.mipmap.icon_avoid_cafein);
                 intent.setAction("New habit");
                 startActivity(intent);
             }
         });
     }
+
 }

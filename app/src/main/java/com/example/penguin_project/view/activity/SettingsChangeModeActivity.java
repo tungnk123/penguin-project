@@ -1,8 +1,7 @@
-package com.example.penguin_project;
+package com.example.penguin_project.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -12,6 +11,8 @@ import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 
+import com.example.penguin_project.MainActivity;
+import com.example.penguin_project.R;
 import com.example.penguin_project.model.data.ThemeControl;
 import com.example.penguin_project.view.fragment.MenuFragment;
 

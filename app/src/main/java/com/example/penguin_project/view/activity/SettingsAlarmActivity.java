@@ -1,4 +1,4 @@
-package com.example.penguin_project;
+package com.example.penguin_project.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,8 +9,9 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 
+import com.example.penguin_project.MainActivity;
+import com.example.penguin_project.R;
 import com.example.penguin_project.model.data.ThemeControl;
 import com.example.penguin_project.view.fragment.MenuFragment;
 
