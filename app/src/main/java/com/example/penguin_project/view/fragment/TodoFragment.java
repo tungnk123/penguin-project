@@ -281,8 +281,9 @@ public class TodoFragment extends Fragment implements TodoAdapter.OnItemClickLis
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
         // Thiết lập tiêu đề và thông điệp cho Dialog
-        builder.setTitle("Thông báo cộng tiền")
-                .setMessage("Bạn đã cộng " + amountToAdd + " tiền vào tài khoản.");
+        builder.setTitle("Plus Money")
+                .setIcon(R.drawable.icon_dollar)
+                .setMessage("💰🎁You get " + amountToAdd + " money.🎁💰" );
 
         // Thiết lập nút "Đồng ý" và xử lý sự kiện khi người dùng nhấn vào
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {

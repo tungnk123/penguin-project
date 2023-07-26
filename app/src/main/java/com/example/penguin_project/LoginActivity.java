@@ -169,7 +169,6 @@ public class LoginActivity extends AppCompatActivity {
                 try {
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         FirebaseUserHelper userHelper = dataSnapshot.getValue(FirebaseUserHelper.class);
-                        Toast.makeText(LoginActivity.this, String.valueOf(userHelper.habitMapList.size()), Toast.LENGTH_SHORT).show();
 
                         for (HashMap<String, Object> habitMap : userHelper.habitMapList) {
                             int habit_id = ((Long) habitMap.get("Habit_id")).intValue(); // Convert Long to int
@@ -203,7 +202,6 @@ public class LoginActivity extends AppCompatActivity {
 
                     }
                 } catch (Exception ex) {
-                    Toast.makeText(LoginActivity.this, "Get data failed!", Toast.LENGTH_SHORT).show();
                     Log.d("ERRRRRRRRRRRRRRRRRRR", ex.getMessage());
                 }
 
