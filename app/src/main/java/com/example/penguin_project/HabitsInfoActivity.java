@@ -76,9 +76,9 @@ public class HabitsInfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(HabitsInfoActivity.this);
-                builder.setTitle("Xác nhận xóa");
-                builder.setMessage("Bạn có chắc chắn muốn xóa thói quen này");
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                builder.setTitle("Confirm Delete");
+                builder.setMessage("Are you sure you want to delete?");
+                builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         // Thực hiện xóa bản ghi
@@ -91,7 +91,7 @@ public class HabitsInfoActivity extends AppCompatActivity {
                         finish();
                     }
                 });
-                builder.setNegativeButton("Hủy", null);
+                builder.setNegativeButton("NO", null);
 
                 AlertDialog dialog = builder.create();
                 dialog.show();

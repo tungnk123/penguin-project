@@ -21,7 +21,7 @@ import java.util.List;
 public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHolder> {
 
     private List<Tree> plantList;
-    public static int selectedPosition = RecyclerView.NO_POSITION;
+    public static int selectedPosition = 0;
 
     public PlantAdapter(List<Tree> plantList) {
         this.plantList = plantList;
@@ -85,12 +85,11 @@ public class PlantAdapter extends RecyclerView.Adapter<PlantAdapter.PlantViewHol
                     notifyItemChanged(selectedPosition);
 
                     Tree plant = plantList.get(position);
-                    Toast.makeText(view.getContext(), plant.getTitle(), Toast.LENGTH_SHORT).show();
                 }
                 // truong hop chua mua plant se chuyen den storefragment
                 else {
                     Intent intent = new Intent(view.getContext(), MainActivity.class);
-                    intent.putExtra("Store Fragment", "store");
+                    intent.putExtra("SELECTED_FRAGMENT", "store");
                     view.getContext().startActivity(intent);
                 }
             }
