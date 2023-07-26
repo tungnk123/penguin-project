@@ -19,6 +19,7 @@ import com.example.penguin_project.model.repo.local.Table.Todo;
 import com.example.penguin_project.model.repo.local.Table.Tree;
 
 @Database(entities = {Habits.class, Habit_Day.class, Habit_DayOfWeek.class, TimeOfDay.class, Todo.class, Steps.class, Tree.class, StoreItem.class}, version = 2)
+
 public abstract class HabitDataBase extends RoomDatabase {
 
     private static final String DATABASE_NAME = "Habit.db";
@@ -28,7 +29,7 @@ public abstract class HabitDataBase extends RoomDatabase {
         if (instance == null) {
             instance = Room.databaseBuilder(context.getApplicationContext(), HabitDataBase.class, DATABASE_NAME)
                     .allowMainThreadQueries()
-                    .addMigrations(MIGRATION_1_2)
+//                    .addMigrations(MIGRATION_1_2)
                     .build();
         }
         return instance;
