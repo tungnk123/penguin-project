@@ -111,14 +111,7 @@ public class MenuFragment extends Fragment implements SettingListAdapter.OnItemC
                 Intent diseaseIntent = new Intent(getContext(), SettingsDiseaseModeActivity.class);
                 startActivity(diseaseIntent);
                 break;
-            case "Privacy policy":
-                //
-                Toast.makeText(getContext(), "Privacy policy", Toast.LENGTH_SHORT).show();
-                break;
-            case "Term of use":
-                //
-                Toast.makeText(getContext(), "Term of use", Toast.LENGTH_SHORT).show();
-                break;
+
             case "Version":
                 //
                 Toast.makeText(getContext(), "Version", Toast.LENGTH_SHORT).show();
@@ -126,13 +119,14 @@ public class MenuFragment extends Fragment implements SettingListAdapter.OnItemC
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                 startActivity(intent);
                 break;
-            case "Help":
-                //
-                Toast.makeText(getContext(), "Help", Toast.LENGTH_SHORT).show();
-                break;
+            case "Privacy policy":
             case "FAQs":
+            case "Help":
+            case "Term of use":
                 //
-                Toast.makeText(getContext(), "FAQs", Toast.LENGTH_SHORT).show();
+                url = "https://docs.google.com/document/d/1jYXQCmp1g9rwda24MZzuV-d_6nhgXM5o/edit?usp=drive_link&ouid=104030596767851385156&rtpof=true&sd=true";
+                intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(intent);
                 break;
             case "Suggest feature":
                 //
