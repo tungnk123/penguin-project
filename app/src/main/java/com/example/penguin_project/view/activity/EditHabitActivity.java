@@ -121,7 +121,7 @@ public class EditHabitActivity extends AppCompatActivity {
                     if (tgb7.isChecked()) choosingDay++;
                     if (tgbCN.isChecked()) choosingDay++;
 
-                    if(edt_habitTimePerDay.getText().equals("0")){
+                    if(edt_habitTimePerDay.getText().equals("0") || edt_habitTimePerDay.getText().length() == 0){
                         Toast.makeText(EditHabitActivity.this, "Time per day must greater than 0", Toast.LENGTH_SHORT).show();
                         return;
                     }
@@ -166,7 +166,14 @@ public class EditHabitActivity extends AppCompatActivity {
                     startActivity(intent);
                 } else {
                     String title = String.valueOf(edt_habitName.getText());
-                    int timePerDay = Integer.parseInt(String.valueOf(edt_habitTimePerDay.getText()));
+                    int timePerDay;
+                    try {
+                        timePerDay = Integer.parseInt(String.valueOf(edt_habitTimePerDay.getText()));
+                    }
+                    catch (Exception e){
+                        Toast.makeText(EditHabitActivity.this, "Time per day must greater than 0", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     int timeOfDayID = 1;
                     if ((int) btn_anytime.getTag() == R.drawable.item_timeofday_shape) {
                         timeOfDayID = 1;
