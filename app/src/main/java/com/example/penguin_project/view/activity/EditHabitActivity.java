@@ -121,6 +121,17 @@ public class EditHabitActivity extends AppCompatActivity {
                     if (tgb7.isChecked()) choosingDay++;
                     if (tgbCN.isChecked()) choosingDay++;
 
+                    if(edt_habitTimePerDay.getText().equals("0")){
+                        Toast.makeText(EditHabitActivity.this, "Time per day must greater than 0", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    if(edt_habitName.getText().length() == 0){
+                        Toast.makeText(EditHabitActivity.this, "Input Habit name", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+
                     if (choosingDay == 0) {
                         Toast.makeText(getApplicationContext(), "choose at least 1 day of the week", Toast.LENGTH_SHORT).show();
                         return;
@@ -183,6 +194,14 @@ public class EditHabitActivity extends AppCompatActivity {
 
                     if (choosingDay == 0) {
                         Toast.makeText(getApplicationContext(), "choose at least 1 day of the week", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    if(timePerDay <= 0){
+                        Toast.makeText(EditHabitActivity.this, "Time per day must greater than 0", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    if(edt_habitName.getText().length() == 0){
+                        Toast.makeText(EditHabitActivity.this, "Input Habit name", Toast.LENGTH_SHORT).show();
                         return;
                     }
 

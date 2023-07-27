@@ -127,6 +127,10 @@ public class AddTodoActivity extends AppCompatActivity {
                             .atZone(ZoneId.systemDefault())
                             .toLocalDateTime();
                 }
+                if(todoName.isEmpty()){
+                    Toast.makeText(AddTodoActivity.this, "Input Todo name", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 Todo todo = new Todo(todoName, description, false, dueTime, remindTime);
                 todoViewModel.deleteTodo(position);
                 todoViewModel.insertTodo(todo);
