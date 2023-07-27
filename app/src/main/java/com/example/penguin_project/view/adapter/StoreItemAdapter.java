@@ -112,10 +112,8 @@ public class StoreItemAdapter extends RecyclerView.Adapter<StoreItemAdapter.Stor
                                             int newMoney = CoinManager.getInstance(itemView.getContext()).getData("Coin", 100) - clickedItem.getItemPrice();
                                             CoinManager.getInstance(itemView.getContext()).saveData("Coin", newMoney);
                                             StoreFragment.storeNewMoney();
-                                            Toast.makeText(itemView.getContext(), "Item bought!", Toast.LENGTH_SHORT).show();
                                             // neu mua item la tree se cap nhap trong db la plant da mua
                                             if (Objects.equals(clickedItem.getStoreItemType(), "tree")) {
-                                                Toast.makeText(itemView.getContext(), clickedItem.getItemName() + " " + clickedItem.getItem_id(), Toast.LENGTH_LONG).show();
                                                 HabitDataBase.getInstance(itemView.getContext()).habitDAO().updateTreeForestIsPurchased(clickedItem.getItem_id(), true);
                                                 notifyDataSetChanged();
                                             }

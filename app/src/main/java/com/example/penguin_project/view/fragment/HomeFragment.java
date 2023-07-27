@@ -510,7 +510,6 @@ public class HomeFragment extends Fragment {
                     notifyDatabaseChange();
 //                    Habits habits = HabitDataBase.getInstance(getContext()).habitDAO().get
 
-                    Toast.makeText(getContext(), position + " done", Toast.LENGTH_SHORT).show();
                 }
                 notifyDatabaseChange();
             }

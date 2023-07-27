@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if(CoinManager.getInstance(getApplicationContext()).getData("Coin", -1) == -1){
-            CoinManager.getInstance(getApplicationContext()).saveData("Coin", 50);
+            CoinManager.getInstance(getApplicationContext()).saveData("Coin", 500);
         }
 
         if(ThemeControl.getInstance(getApplicationContext()).getData("Mode", -1) == -1){
